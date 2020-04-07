@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>In this video, we're gonna do a deep dive into prefabs and 3
+<br><br>understand them right down at the file level. 4
+<br><br>Let's start with a simple example. 5
+<br><br>If I look at my rocket ship here, 6
+<br><br>you can see that I've got a rocket ship instance and a rocket ship prefab. 7
+<br><br>They're pretty much the same at the moment. 8
+<br><br>When I look at the instance, its sometimes getting knocked off its axis and 9
+<br><br>that's because we haven't got our constraints turned on. 10
+<br><br>And I think what's happened is the prefab didn't have the constraint, so each time 11
+<br><br>we create a new level its bringing in this slightly broken rocket ship. 12
+<br><br>So we need to go and turn on XY freeze rotation and the Z freeze position. 13
+<br><br>Now we've done this before. 14
+<br><br>But we probably haven't applied it back to the prefab. 15
+<br><br>Cuz when we look at the prefab it's different. 16
+<br><br>The prefab stays just being a prefab hanging out until we say 17
+<br><br>be a different prefab. 18
+<br><br>So if I click on the rocket ship, you guys have done this already, 19
+<br><br>if I hit Apply, blink. 20
+<br><br>Now when I click on the prefab. It has that information updated. 21
+<br><br>What I'd like to do is get a little bit more tricky. 22
+<br><br>I'm gonna duplicate my Level 1, and just create a sandbox level. 23
+<br><br>This is a great place, a designer tool, to just play around with your game. 24
+<br><br>Jump into Sandbox, and. I've got Sandbox.Unity. 25
+<br><br>It looks the same, but you check up here and 26
+<br><br>it tells me that I'm in this particular level. 27
+<br><br>If I go and find this, right click show in Explorer. 28
+<br><br>That file it's on my hard drive now called Sandbox.Unity. 29
+<br><br>Okay, we can see it's down here,. Sandbox.Unity as well okay? 30
+<br><br>Now if I create a new game object. 31
+<br><br>Let's create a cube, throw the cube into our scene. 32
+<br><br>I'm gonna move it towards the camera a little bit. 33
+<br><br>Get it out of the way. 34
+<br><br>I'll clean up the positioning just to make it nice and clean to look at, okay? 35
+<br><br>54 minus 22. 36
+<br><br>We have an object. 37
+<br><br>There it is.. The only that this lives at the moment is 38
+<br><br>in the Sandbox.Unity file. 39
+<br><br>It doesn't leave in the Level1.unity or. Level2.unity. 40
+<br><br>I'm actually gonna rename this to example object just so 41
+<br><br>it's super clear what we're looking at. 42
+<br><br>ExampleObject, if I drag ExampleObject down into my assets area, 43
+<br><br>it's created a prefab which is ExampleObject wonderful. 44
+<br><br>So I started off with my ExampleObject and the Position &amp; Rotation. 45
+<br><br>All the other details are within the .unity scene file. 46
+<br><br>So I can see it's got the here is the. Position and Rotation as well as Scale. 47
+<br><br>It's got a Mesh Filter, a Box Collider, a Mesh Renderer. 48
+<br><br>And it's got a Material Applied to it. 49
+<br><br>So this is all living on the object. 50
+<br><br>In the scene file and then the moment that I created is a Prefab and then if 51
+<br><br>I save it to the scene, then we'll be able to see this exactly in our source control. 52
+<br><br>But the moment I created as a Prefab, in that very instance, 53
+<br><br>there's a new Prefab file that's created that has all of the other details 54
+<br><br>not including Position &amp; Rotation. 55
+<br><br>The Position &amp; Rotation stay in the .unity scene file. 56
+<br><br>So the .unity scene file's gonna say I am an object. 57
+<br><br>I have this particular code number so that you know who I am. 58
+<br><br>And I am living in the Unity scene file here's my Position &amp; Rotation. 59
+<br><br>Everything else goes into this new Prefab file, which we have a look at in here. 60
+<br><br>ExampleObject, Show in Explorer. 61
+<br><br>And I can see ExampleObject Prefab file. 62
+<br><br>That's gonna have all of the information saved in it. 63
+<br><br>So here in the scene, 64
+<br><br>all that it's doing is saying. Position &amp; Rotation 54 minus 22, 000. 65
+<br><br>Keep this information. 66
+<br><br>Every single object in Unity has to have its very own transform information for 67
+<br><br>position and rotation. 68
+<br><br>Not for scale, interestingly. 69
+<br><br>That's a good thing to remember. 70
+<br><br>For position and rotation. 71
+<br><br>And everything else, it says, hey, just do whatever the prefab wants me to do. 72
+<br><br>That way we can have, let's see, two and three and four and 73
+<br><br>a thousand of these things. 74
+<br><br>And we don't have to go and store the information, all of this information for 75
+<br><br>that one, all of the information for that one, all of the information for that one. 76
+<br><br>It's just storing just the position and rotation, some very simple information. 77
+<br><br>Everything else, it gets from the prefab. 78
+<br><br>When I make a change to my instance, that is different from the prefab for 79
+<br><br>example, I'll go and change the Z Scaling to 5. 80
+<br><br>This is now different on the Z axis scaling to the prefab. 81
+<br><br>The prefab you can see is 1. 82
+<br><br>And this one has 5. 83
+<br><br>You can see that it's now in bold. 84
+<br><br>It's in bold saying I am different from the prefab. 85
+<br><br>If I was to click Apply, it would apply that 5 back to the prefab. 86
+<br><br>We will do that now. 87
+<br><br>And because I've got these other instances in the scene, it instantly changes those. 88
+<br><br>Which is really handy to do. 89
+<br><br>If I wanna say you know what,. I want all of these things to be orange, 90
+<br><br>I'll make this one orange. 91
+<br><br>Then I'll apply everything to be orange. 92
+<br><br>If your prefab isn't updating, if you've just gone and 93
+<br><br>changed it to blue and applied. 94
+<br><br>Let me click on that, and applied and it didn't change to blue, 95
+<br><br>you can right click and say Reimport. 96
+<br><br>Sometimes it needs a little bit of a poke to speed up like that. 97
+<br><br>Or if you save your scene it does it as well. 98
+<br><br>Just gonna change this back to the orange color, if I make a change to it. 99
+<br><br>That's a good example to show. 100
+<br><br>If I drag the material straight onto the prefab, 101
+<br><br>everything becomes orange straight away. 102
+<br><br>If I go and change this guy to blue, 103
+<br><br>it doesn't change the prefab therefore it doesn't change these things. 104
+<br><br>Now, what gets really interesting is if. I go and change the scale of this to 2, 105
+<br><br>I'm like that particular thing needs to be a 2, that's great. 106
+<br><br>And you know what? 107
+<br><br>This one here, it needs to be a 10, yes, that would be really neat. 108
+<br><br>And this one here,. I'm gonna make that a 1. 109
+<br><br>Okay, so I've made changes just to the Z or Z axis scaling for all of these. 110
+<br><br>And if when I look at my prefab, the prefab is 5. 111
+<br><br>This one here is 5, so it's not bold. 112
+<br><br>This one here is 1, it is bold. 113
+<br><br>This is 10, it is bold. 114
+<br><br>That's 2, it is bold. 115
+<br><br>If I change any of these with the bold, if I hit Apply for 116
+<br><br>any of these it will change the prefab. 117
+<br><br>What's really interesting is any of my instances that are exactly 118
+<br><br>the same as the prefab for that particular aspect will also change. 119
+<br><br>In this moment, the only one that's the same as the prefab is this blue 120
+<br><br>guy down the end here, it's 5 and it's 5. 121
+<br><br>So if I pick any of these, let's say I'll pick this one in the middle here 10, 122
+<br><br>and hit Apply it changed that to 10. 123
+<br><br>It changed our prefab to 10. 124
+<br><br>But it didn't change these other two that weren't the same as the prefab. 125
+<br><br>So this is something really important to know. 126
+<br><br>Is that as per what's happening over here. 127
+<br><br>At the start it said, Position &amp; Rotation, 128
+<br><br>it's not gonna be the same as the prefab ever. 129
+<br><br>But everything else is the same. 130
+<br><br>The moment we go and change something on this object and say, okay that's different 131
+<br><br>I'm going to put that back into the same file and not on to the prefab file. 132
+<br><br>Until it becomes exactly the same as the prefab and then I'll say, we don't 133
+<br><br>need this anymore in the same file we'll just derive it from the prefab file. 134
+<br><br>So I'd like to explore Prefabs, create your own sandbox scene, and 135
+<br><br>explore prefabs until you really feel that you get it. 136
+<br><br>And then a very specific action we need to do is we need to create ourselves 137
+<br><br>a Launch Pad. 138
+<br><br>So we've got to place where the player can, happy ways land on the launch pad. 139
+<br><br>We need to make it green I think, and 140
+<br><br>to make sure that's its prefabbed as a landing pad and tagged as finished. 141
+<br><br>So jump in, do that and I will see you guys when you feel that you really 142
+<br><br>are understanding prefabs and you're getting it. 143
+<br><br>I will see you back in a moment. 144
+<br><br>Okay, so now seeing at the moment we have a landing pad, it's tagged as friendly. 145
+<br><br>And it is being, if I right click, oops, if I right click over here in 146
+<br><br>the Hierarchy and select Prefab we can see that is coming from the launch pad. 147
+<br><br>Now I've got a launch pad over here which. I think is probably also going to be 148
+<br><br>coming from the launch pad. 149
+<br><br>They're just both being instantiated from this one prefab. 150
+<br><br>I'd prefer that not to be the case. 151
+<br><br>I'm going to prefab the landing pad. 152
+<br><br>You can see it's just there and there. 153
+<br><br>And I'm going to change the color of that. 154
+<br><br>I'll make a new material, just duplicate blue. 155
+<br><br>And as we've done in the past just drop blue straight onto the landing pad so 156
+<br><br>you can see live when you're making any changes. 157
+<br><br>Click over here on Albedo. 158
+<br><br>Change that to a nice bright old green. 159
+<br><br>So why green? 160
+<br><br>Well, blue in our language here, is saying friendly. 161
+<br><br>Red, or an orangey kind of color anything that's got that warmish color to it is 162
+<br><br>going to be bad. 163
+<br><br>Don't bump into me. 164
+<br><br>Black is neutral. 165
+<br><br>Green is a target or a goal. 166
+<br><br>The other thing we needed to do is tag this as finished so 167
+<br><br>you guys can use it in your code to say I am the finished point. 168
+<br><br>And that's it for now. 169
+<br><br>This is pretty important to really understand prefabs. 170
+<br><br>Well done for following through this. 171
+<br><br>Any questions at all, throw it in the Q&amp;A and 172
+<br><br>I will see you guys in an upcoming video.
+	</p>
+  </BODY>
+</HTML>

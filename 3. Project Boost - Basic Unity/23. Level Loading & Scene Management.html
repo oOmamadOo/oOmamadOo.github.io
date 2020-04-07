@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hello, in this video, we're going to organize it so that if you manage to get 3
+<br><br>to your landing pad that Rick has so lovingly helped you craft and prefab. 4
+<br><br>Then we're going to load the next level, 5
+<br><br>we're only going to do two levels in this video. 6
+<br><br>So, boom, there we go, we have a lighting bug, but we'll live with that. 7
+<br><br>And then if you die, then you're going to go back to the beginning of the first 8
+<br><br>level, so let's see how that's done. 9
+<br><br>So let's start off by getting our levels or scenes, and 10
+<br><br>I'm gonna use the word level and scene interchangeably, because basically, 11
+<br><br>they are the same thing in our case. 12
+<br><br>Rick has made this sandbox level, 13
+<br><br>it slightly worries me that it looks almost exactly the same as the rest. 14
+<br><br>So I'm just going to leave the sandbox, in case he wants it, but 15
+<br><br>I'm going to turn the launch pad on its side and save, all right? 16
+<br><br>So this should interrupt your vision and go, what's that? 17
+<br><br>Because it's really easy to do work in the wrong scene, so 18
+<br><br>this will help us not make that mistake. 19
+<br><br>So we need to kind of sanitize our levels and make sure they're ready for this. 20
+<br><br>So level one, we just want to make sure that the launch pad is a launch pad. 21
+<br><br>And if you select the prefab by right clicking under the hierarchy, 22
+<br><br>that it actually is linked to the launch pad prefab, it is. 23
+<br><br>So why don't we apply this back to the prefab, so 24
+<br><br>that the prefab in the assets looks like a launch pad. 25
+<br><br>That's great, now let's also look at the landing pad, 26
+<br><br>click on the landing pad and let's check that. 27
+<br><br>It's tagged with finish, so that we know when we're hitting something that's gonna 28
+<br><br>load the next level, and also that it's linked to a landing pad. 29
+<br><br>And that the landing pad prefab has the finished tag, it doesn't, so 30
+<br><br>let's fix that now. 31
+<br><br>So all future landing pads will now come in green, with a finish tag on them, 32
+<br><br>that is cool. 33
+<br><br>So now we can differentiate between hitting a wall, which is untagged. 34
+<br><br>The majority of the obstacles in the game are untagged, and will kill you. 35
+<br><br>And will take you back to the beginning, ie, to level one, permadeath, remember. 36
+<br><br>If you hit anything that's tagged as friendly, nothing happens, it's fine. 37
+<br><br>And if you have anything that's tagged as finish, the next level will load. 38
+<br><br>All right, so we want to make sure that that's the case in level one, and 39
+<br><br>then we go to level two, and just double check. 40
+<br><br>Is the launch pad friendly, is it linked to a launchpad prefab, all good to go. 41
+<br><br>But when we get to the landing pad and 42
+<br><br>select the prefab, it's linked to a launchpad, mess. 43
+<br><br>Now, if you'd added a ton of value to this landing pad and you'd rotated it and 44
+<br><br>moved it and scoured it, and 45
+<br><br>you thought, I don't want to lose those values I carefully crafted. 46
+<br><br>Here's a trick for you to fix this problem, 47
+<br><br>you can go to the cog of the transform on the landing pad. 48
+<br><br>You can click copy component, and 49
+<br><br>it will copy all these component values into your keyboard buffer. 50
+<br><br>Now, be careful you don't copy something else on your keyboard buffer, no popping 51
+<br><br>over to social media and copying a link to a YouTube cat video right now. 52
+<br><br>But assuming you keep that copy buffer, then you can delete that landing pad 53
+<br><br>safely, put a new landing pad either into the scene or behind, it doesn't matter. 54
+<br><br>And you can recover that position, rotation, and 55
+<br><br>scale information by clicking on the cog, and clicking Paste Component Values. 56
+<br><br>Boom, and you've recovered that dodgy piece of tuning you had done. 57
+<br><br>But imagine it was valuable, then you would want to know how to do that. 58
+<br><br>So I'm just gonna roughly put that back, and we're good. 59
+<br><br>The difference here is that this landing pad is linked to a landing pad prefab, and 60
+<br><br>it's tagged as friendly. 61
+<br><br>So we are in good shape, so level one is good, level two is good. 62
+<br><br>Let's crack on with showing you how to actually load scenes programmatically. 63
+<br><br>So the key here with loading scenes is that you need to go to File &gt; 64
+<br><br>Build Settings. 65
+<br><br>In your Build Settings, the easiest way to get multiple levels or 66
+<br><br>scenes in here is to find them in the project tab. 67
+<br><br>Have it open and available, and drag it into the scenes in the build menu. 68
+<br><br>I popped you a little slide that shows you how to do this as well. 69
+<br><br>There is an alternative, which is that when you're on an open scene that you just 70
+<br><br>click add open scenes button, whichever. 71
+<br><br>Let's switch our platform to WebGL for the moment, 72
+<br><br>because that's what we're gonna ultimately build to. 73
+<br><br>And before we leave this, let's just note that there's something on the right which 74
+<br><br>is quite subtle and unlabeled, but this is your scene index. 75
+<br><br>This is what we're going to refer to the scene as in code. 76
+<br><br>Now, we're gonna be grown ups here, and we're gonna deal with the fact that 77
+<br><br>level one has a scene index of one, and level two has a scene index of one. 78
+<br><br>It's gonna remind us that we start counting at zero in code, and 79
+<br><br>that we should always be thinking carefully about these types of things. 80
+<br><br>And actually, 81
+<br><br>this is gonna be a useful paradigm later, which we'll understand later. 82
+<br><br>But anyway, for the moment, just remember that level one is build index zero, 83
+<br><br>and level two is build index one. 84
+<br><br>And it will go up like that, all right, so there you go. 85
+<br><br>Once the scenes are in this build list and are available to the build system to be 86
+<br><br>packaged off and shared with your friends on the web. 87
+<br><br>You are also able to load these scenes from code, all right? 88
+<br><br>So they need to be in the builder, that's basically the bottom line here. 89
+<br><br>Let's dive into rocket.cs and get some stuff actually happening. 90
+<br><br>So let's start at the top of the file, these things up here are called name 91
+<br><br>spaces, they give us access to a collection of functions. 92
+<br><br>UnityEngine here is in black, 93
+<br><br>because a lot of UnityEngine functions are being used. 94
+<br><br>These guys are grey because they're not being used, in fact, we can delete them. 95
+<br><br>If we were to comment out this using UnityEngine line, 96
+<br><br>a whole bunch of stuff would break. 97
+<br><br>And that actually shows you which things are using the UnityEngine code. 98
+<br><br>All the stuff that's got red underlines doesn't make any sense to pure C#, 99
+<br><br>it needs UnityEngine to help it do that stuff, okay? 100
+<br><br>So that's just a bit of the background about what this means at the top. 101
+<br><br>Now when we say using. UnityEngine.SceneManagement, 102
+<br><br>this now gives us access to. Unity scene management code. 103
+<br><br>Now, we're jumping ahead a little bit here, 104
+<br><br>this is dealing with something called name spaces, 105
+<br><br>which require you to understand classes, which we'll learn in the next section. 106
+<br><br>So for the moment, like using a light switch, you can use it, but 107
+<br><br>you don't need to know all the details of how your car engine or 108
+<br><br>your light switch or your airplane work, in order to use them. 109
+<br><br>Okay, so let's just use scene management without fully understanding it just yet. 110
+<br><br>So we have using. UnityEngine.SceneManagement in the top, 111
+<br><br>we can start using it. 112
+<br><br>What do we wanna do, well, if you hit something friendly, we do nothing. 113
+<br><br>So we can just remove the lines, as we said we would. 114
+<br><br>We've decided to take fuel out of the game, we don't need fuel to make 115
+<br><br>the game sufficiently interesting, so let's change this fuel case to finish. 116
+<br><br>Now, be very careful when you match a string to a tag, 117
+<br><br>we won't do a lot of use of strings in our journey in Unity, but in this case, 118
+<br><br>we will use tags cuz they're so convenient. 119
+<br><br>And just don't copy and paste it, because you have to go into the edit box of 120
+<br><br>the tag, and you're more likely to mess up the tag than anything. 121
+<br><br>So just copy it, type it rather carefully, type it carefully. 122
+<br><br>So, when we finish, I'm gonna make a print statement, it's gonna say Hit finish. 123
+<br><br>Okay, and when we're dead I'm just gonna say just Dead, just leave it like that. 124
+<br><br>So now we have the foundation as to the right places 125
+<br><br>to put our scene management code. 126
+<br><br>So if we were to hit the finish, what do we want to do? 127
+<br><br>Well, for the moment, let's just show you how to load a scene, 128
+<br><br>we go SceneManager.LoadScene. 129
+<br><br>Now if we use the up and down arrow when we get to this stage with LoadScene and 130
+<br><br>the open brackets there with the cursor in the middle. 131
+<br><br>You can go through four different variants of this method, 132
+<br><br>the one we want is the third variant, at least on my machine. 133
+<br><br>And it's saying, give me an integer which is the sceneBuildIndex. 134
+<br><br>What are we doing, we're hitting the finish, so 135
+<br><br>let's load scene index 1 at the moment. 136
+<br><br>Let's assume we've started on scene index 0, level 1, and 137
+<br><br>let's load the next one, and if we die, we want to do the same thing. 138
+<br><br>Now, I know it's confusing with the zeroes and ones, but 139
+<br><br>that's what programming can be like, so let's deal with it and get used to it. 140
+<br><br>If we die, we load scene zero, so for the moment, 141
+<br><br>the level flow is kinda permadeath, right? 142
+<br><br>Let's see if this works, then I'll put you into a challenge, and then we will 143
+<br><br>understand how it all comes together, hopefully by the end of that challenge. 144
+<br><br>So if we land on a landing pad, what happens, nothing. 145
+<br><br>If we go and hit the roof, it loads this level immediately, 146
+<br><br>there's a bug with lighting. 147
+<br><br>We're gonna not fix that lighting bug right now, but you know what? 148
+<br><br>When something like this comes, put it maybe on top of your file for the moment, 149
+<br><br>and just say, to do, fix lighting bug. 150
+<br><br>And now let's just move on and get on with what we're doing, right? 151
+<br><br>So you hit the thing at the top, it reloads this scene, let's try and 152
+<br><br>get to the landing pad even with the lighting bug. 153
+<br><br>In fact, I'll restart so that the lighting goes away. 154
+<br><br>I know what the problem is, I just don't want to distract you with it right now. 155
+<br><br>Let's just get under here, go get on this landing pad. 156
+<br><br>Now this will only work properly if you start on level one. 157
+<br><br>If you start on level two, of course, then it's not gonna behave quite right. 158
+<br><br>We just wanna do the simple basics of scene loading, for the moment. 159
+<br><br>So can I, can I get to the landing pad without dying? 160
+<br><br>It's difficult, it's difficult when you rush it and talk at the same time. 161
+<br><br>Boom, now that loaded level two, okay, scene index one. 162
+<br><br>Now here, if we hit the landing pad, well, we haven't coded for that, 163
+<br><br>that's going to be a challenge for you. 164
+<br><br>But if we hit the wall, what happens, permadeath, 165
+<br><br>back to the beginning of level one. 166
+<br><br>Wicked, I'm gonna give you an end of video challenge, 167
+<br><br>there's no solution to show you cuz I've done the solution to the basic challenge. 168
+<br><br>So I want you to catch up with where we are now, and 169
+<br><br>this is how the behavior should be. 170
+<br><br>Which is, if you're in level one, and you die, you reload level one. 171
+<br><br>If you succeed and you hit the landing pad, you go to level two. 172
+<br><br>If you're on level two and you hit the landing pad, if you look at our current 173
+<br><br>code, you will see that we currently just reload level two, or scene one, 174
+<br><br>that's fine for now. 175
+<br><br>And then if you die on level two, you go back to the beginning of level one, 176
+<br><br>all right? 177
+<br><br>So that flow there looks like a mouse on its side or something, anyway, 178
+<br><br>see you in the next video.
+	</p>
+  </BODY>
+</HTML>

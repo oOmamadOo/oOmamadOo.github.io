@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, in this video we are going to get our screen doing something like this. 3
+<br><br>I'm gonna actually only give you two difficulty levels for now. 4
+<br><br>And you're gonna just have a welcome menu and understand a little bit more about 5
+<br><br>code, and how we write to the terminal versus our developer console, okay? 6
+<br><br>See you in there. 7
+<br><br>I'm gonna start this particular video with a challenge for you. 8
+<br><br>Very simple, we want the WM2000 game object that we imported to have a single 9
+<br><br>script attached to the top level object, that parent object let me show you that in 10
+<br><br>Unity to this little if I highlighted here. 11
+<br><br>This scrip should be called Hacker.cs exactly like that if you make a mistake 12
+<br><br>just delete and start again. 13
+<br><br>An this game should play in the same way,. I do basic game nothing. 14
+<br><br>Common gotcha's include not having the Game scene open, 15
+<br><br>make sure you double click Game scene, &amp; the scene being collapsed in Hierarchy. 16
+<br><br>That is double click the game scene here to open it, and 17
+<br><br>make sure it's not collapsed in the Hierarchy on the left. 18
+<br><br>Okay, go ahead do this really quick challenge now. 19
+<br><br>All right, welcome back. 20
+<br><br>So this is a revision of what we've done before. 21
+<br><br>I am going to right click create C# Script like so inside the Project Assets window. 22
+<br><br>Gonna call it precisely. Hacker with a capital H, 23
+<br><br>and then I'm gonna drag that onto WM2000. 24
+<br><br>To verify that it's on there and you have just one of them, you click on it, and 25
+<br><br>check in the inspector that there is just a single WM2000. 26
+<br><br>If there isn't, and I've made a mistake, like in my case, it's not there, 27
+<br><br>it's not on any of the sub-objects. 28
+<br><br>So I've made a mistake, so I just try again. 29
+<br><br>Hacker so there, boom! 30
+<br><br>Click on it and you see a single Hacker. 31
+<br><br>Remember, if you've got multiple ones, you can remove the component. 32
+<br><br>We've seen that before. 33
+<br><br>All right, so we are set up. 34
+<br><br>Now, what I wanna do is I wanna go into the actual code and 35
+<br><br>have a look at what you start with. 36
+<br><br>We start with a whole bunch of stuff whenever you open a new Script and 37
+<br><br>we need to just focus in for a little bit, just inside Start, all right? 38
+<br><br>We don't wanna see anything else. 39
+<br><br>And we can go something like, print,. Hello console, and if you remember before, 40
+<br><br>I'm gonna use a capital C, that will print to the developer Console. 41
+<br><br>And so let's try this, pop hello Print Hello Console in here. 42
+<br><br>Nothing comes up on the terminal screen, but down in the developer console, 43
+<br><br>we get Hello Console. 44
+<br><br>Let me just make that really clear for you, okay? 45
+<br><br>This is the Console down here, this bit, this is the developer console. 46
+<br><br>This is our game terminal window. 47
+<br><br>I know they're similar sounding words, 48
+<br><br>but Console matches Console there and then this is a Terminal. 49
+<br><br>All right, so its all very well printing to the Console, but 50
+<br><br>we want to learn how to print to the Terminal, 51
+<br><br>to this place where the little green underscore is flashing. 52
+<br><br>How do we do that? 53
+<br><br>Well, with most new things when you start in unity, and 54
+<br><br>you don't know how to do them you have to go to the documentation. 55
+<br><br>So we have linked you to the documentation for a method that we've given you or 56
+<br><br>a function we've given you called Terminal.WriteLine. 57
+<br><br>We'll understand what methods, functions, all this stuff are later. 58
+<br><br>But if you were to end up on this documentation screen, 59
+<br><br>which you can get to by following the link in resources, have a quick look at this. 60
+<br><br>I've specifically written this doc, that we wrote this ourselves, and 61
+<br><br>it is specific to this WM2000 which is specific to this section of this course. 62
+<br><br>It's not really about unity. 63
+<br><br>Again, remember, this section's about learning C#, 64
+<br><br>but see if you can read my example code on this documentation and 65
+<br><br>print something just anything to the screen. 66
+<br><br>That's a micro challenge for you. 67
+<br><br>It's pretty simple because it's kind of it answers on the screen. 68
+<br><br>So if you can print to Terminal. 69
+<br><br>So one way to do this is just a common thing is to copy from the docs, 70
+<br><br>the thing that you'll trying to use, so. I'm gonna copy Terminal.WriteLine there. 71
+<br><br>Go back into Unity and have a go at it, play, don't be afraid of breaking things. 72
+<br><br>I can put it here, Terminal.WriteLine, so what I'm hoping is it will say 73
+<br><br>Hello Console I'm there and maybe Hello Terminal. 74
+<br><br>And do change things, don't be afraid to change things, 75
+<br><br>Hello Terminal, so let's play. 76
+<br><br>So we have Hello Console on the console and Hello Terminal on the screen. 77
+<br><br>Awesome, we have something actually printed out on our main screen. 78
+<br><br>Fantastic. 79
+<br><br>So that puts me into the challenge. 80
+<br><br>So that's what our menu screen is going to end up looking like. 81
+<br><br>Clearly, it's not gonna do anything yet but 82
+<br><br>it's just gonna print something like that out. 83
+<br><br>So that's your challenge. 84
+<br><br>I want you to write your welcome menu your way. 85
+<br><br>The user should know what to do, it should be clear why they wanna do it? 86
+<br><br>So in our case that's like, well, hacking into NASA or the police station. 87
+<br><br>Pretty clear that that would be fun. 88
+<br><br>Anything compatible with an anagram game is OK. 89
+<br><br>We talked about the general flow of our game. 90
+<br><br>You don't have to follow exactly the role that we do. 91
+<br><br>We're on the main menu, it's gonna let people go off and 92
+<br><br>solve an anagram of various different levels of difficulty. 93
+<br><br>Then the only constraints on you. 94
+<br><br>How could you make more interesting and remarkable? 95
+<br><br>And show your main menu over in the community. 96
+<br><br>Take a quick screenshot, copy over on the community site for 97
+<br><br>us please, please, please. 98
+<br><br>We'd love to see that. 99
+<br><br>So go ahead, pause the video, 100
+<br><br>and write your main menu with a series of Terminal.WriteLine commands now. 101
+<br><br>All right, welcome back. 102
+<br><br>So I didn't know what you learn from that. 103
+<br><br>Everybody will learn something different. 104
+<br><br>But the point is that you need to get in here and 105
+<br><br>start having a little bit of a play. 106
+<br><br>And making sure you understand where things go. 107
+<br><br>Now as we go here, I'm gonna just explain a bit more about what we're doing. 108
+<br><br>Starting with making sure you're clear on what a string is. 109
+<br><br>You've heard me talk about a string. 110
+<br><br>A string is a string of characters. 111
+<br><br>Think of it like bunting like that, all right? 112
+<br><br>So when we put a string together, 113
+<br><br>these things here in orange are a string of characters. 114
+<br><br>All right, and the other thing you can hear me talk about as I go through the 115
+<br><br>solution to this challenge is statements and whitespace and all sorts of others. 116
+<br><br>So let's define these things. 117
+<br><br>Actions in code are called statements. 118
+<br><br>So, these things here both print. Hello Console and Terminal.WriteLine, 119
+<br><br>anything that ends in a semicolon is a statement. 120
+<br><br>They are just action items that the code needs to do. 121
+<br><br>They always end with a semicolon whitespace is ignored by the compiler. 122
+<br><br>So whitespace is all of this stuff here. 123
+<br><br>So I can put spaces in here, in here, all that stuff is. 124
+<br><br>And even between there and there in Start, all this stuff is whitespace. 125
+<br><br>The only place there isn't really whitespace is inside a string literally. 126
+<br><br>If I put several spaces there, it will look different. 127
+<br><br>And the orange guides your eye with that, but 128
+<br><br>we don't want always extraneous spaces, we want it to look really clear and simple. 129
+<br><br>So were gonna go with that layout, all right? 130
+<br><br>But that's whitespace. 131
+<br><br>Common whitespace includes space, tab and return. 132
+<br><br>The whitespace does not matter as far as the compiler is concerned but 133
+<br><br>it's very important for out code style. 134
+<br><br>So we are gonna be quite precise whitespaces we go through. 135
+<br><br>All right, so strings are strings of characters, 136
+<br><br>whitespace is all this stuff in between. 137
+<br><br>Let's go ahead and get on with it. 138
+<br><br>I'm gonna get rid of hello console. 139
+<br><br>And I'm gonna now just start writing up my menu. 140
+<br><br>So what would you like to hack into?, 141
+<br><br>question mark, new line,. I'm gonna start typing Terminal. 142
+<br><br>Notice that I can hit the Enter key to finish the word when I hit dot, 143
+<br><br>again notice that right line is in that list. 144
+<br><br>I can use the arrow keys or my mouse to get to it. 145
+<br><br>And it already does the brackets and the semi colon for us, which is helpful. 146
+<br><br>Remember you need your double quotes and let's get the next one going. 147
+<br><br>Press 1 for the local library like that, okay. 148
+<br><br>I'm not actually gonna do three levels because it's too painful, 149
+<br><br>I'm going to just do two levels of difficulty for the moment. 150
+<br><br>And press 2 for the the police station. 151
+<br><br>So at least there's a choice. 152
+<br><br>And then, you need also to tell the user what they're able to do or 153
+<br><br>to make it very clear that it's time for them to do something. 154
+<br><br>So you can copy and paste again, if you want, but remember when you copy and 155
+<br><br>paste, you copy and paste any errors you have as well. 156
+<br><br>So, you have any red errors, please don't copy and paste a line that has that. 157
+<br><br>End to your selection, and. I am putting a space in here so 158
+<br><br>that when they start typing, if they would just start typing on the same line. 159
+<br><br>And we just don't know yet, how it's gonna work? 160
+<br><br>But then they would be able to space, right? 161
+<br><br>So that is a sort thing you may wanna consider, maybe not necessary here. 162
+<br><br>Let's try it, if we are not sure about it, let's try it. 163
+<br><br>Save with your scrips, run the game and see where we start typing, it comes up. 164
+<br><br>Well, it comes up on the next line, so we don't need extra space on there. 165
+<br><br>All right, that's it, 166
+<br><br>that is the result of this entire lecture is that you've got a welcome menu. 167
+<br><br>What would you like to hack them into? 168
+<br><br>And of course, it's ignoring your input which is what we're gonna need to focus on 169
+<br><br>very shortly is how to process this input. 170
+<br><br>I'll also be adding my third difficulty level much later or 171
+<br><br>you all as a challenge. 172
+<br><br>So congratulations on getting this far. 173
+<br><br>Here is the code we've written in this video, it's just three sets of 174
+<br><br>Terminal.WriteLines being very careful laid out. 175
+<br><br>All indented to the same level inside the Start function here. 176
+<br><br>Remember, that a function is just a collection of statement and 177
+<br><br>is just defines what the recipe of Start is. 178
+<br><br>We wanna make sure that these things are all lined up down here, 179
+<br><br>all these Terminal statements, nice and neat. 180
+<br><br>And then we have semi colons on the end of every line. 181
+<br><br>And that it looks very much like I've done it but with different words. 182
+<br><br>Please write different stuff in orange. 183
+<br><br>Okay, congratulations. 184
+<br><br>I'll see you in the next video.
+	</p>
+  </BODY>
+</HTML>

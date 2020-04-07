@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hi, I'm pretty excited, 3
+<br><br>by the end of this video you'd be able to better also rotate your ship. 4
+<br><br>So it'd be to get some sort of flight going even if it's a little bit squiffy 5
+<br><br>like that,. I look forward to seeing you in there. 6
+<br><br>We've got tons to do in this video, so let's get on with it. 7
+<br><br>But just before we start, notice that if you change a property 8
+<br><br>over in the inspector, like the mass of this rigid body, when the game is running. 9
+<br><br>That it will disappear, that change will disappear when the game stops running, 10
+<br><br>that is actually super helpful. 11
+<br><br>And it allows us to experiment without messing up our values, so 12
+<br><br>my value's back up .05 even though I wanted it to be .01. 13
+<br><br>I discovered it was 0.5 while I was playing, so a quick tip for 14
+<br><br>you, go to your Unity preferences. 15
+<br><br>Slightly different menu on the PC but 16
+<br><br>it would be a good opportunity to explore your menus and find Unity preferences. 17
+<br><br>Under Colors, you'll find something called Play mode tint, 18
+<br><br>what I wanna do is just set that to something pretty obvious. 19
+<br><br>I'm gonna set it to a red like this but plenty see through, 20
+<br><br>it wants to be pretty transparent. 21
+<br><br>Maybe the alpha comes down and just set yourself a red Play mode tint. 22
+<br><br>Now if you play the game, all the stuff that goes red, that is too much, so 23
+<br><br>back to Unity preferences, back to colors, back to Play mode tint. 24
+<br><br>Let's make it really quite light and see through, let's try again. 25
+<br><br>Okay, that's good enough for now. 26
+<br><br>All this stuff that goes red are things that you can change at runtime 27
+<br><br>and if you do, the changes will be lost when you stop playing. 28
+<br><br>Now I'm putting it in red because don't spend too long in Play mode tweaking your 29
+<br><br>values for them to get lost. 30
+<br><br>It's a very useful facility, you just need to be aware of it, all right, 31
+<br><br>that's Play mode tint. 32
+<br><br>Now, let's talk about how we're gonna rotate this ship. 33
+<br><br>See, the movement of this ship is at the moment being entirely controlled by 34
+<br><br>the physics engine, the gravity is pulling it down to the pad. 35
+<br><br>And the fact that if we've got the mass right and the thrust right, 36
+<br><br>that is determining its vertical movement or acting on the rigid body. 37
+<br><br>That's fine, that's great but we can actually have a hybrid. 38
+<br><br>When we want to rotate the ship, sure we could come in and put actual thrusters on 39
+<br><br>the ship and use actual forces at displaced positions on the ship. 40
+<br><br>In a rocket you have things called. RCS's or reaction control thrusters, 41
+<br><br>let me just see if I can find you a picture of an RCS, here you go. 42
+<br><br>These guys here, you have these type of thrusters on a ship, and 43
+<br><br>that's what would be responsible for changing the rotation. 44
+<br><br>But we're gonna do it a different way, we're not gonna use physical forces, 45
+<br><br>we're gonna control this thing in two ways at the same time. 46
+<br><br>The physics engine can be responsible for the up and down and the thrust, and 47
+<br><br>we are going to directly manipulate the rotation of this guy. 48
+<br><br>And that is fine to do that, you can combine these different paradigms. 49
+<br><br>So let me show you how we're going to do that, 50
+<br><br>we need to directly change the rotation. 51
+<br><br>When you directly deal directly with the movement of something in a game engine, 52
+<br><br>you need to think about frame rate independence. 53
+<br><br>So a few notes, let me talk you through this, 54
+<br><br>the time each frame takes to render can vary wildly. 55
+<br><br>Hopefully, when the game's all tuned up, it shouldn't vary too wildly but 56
+<br><br>it can vary wildly from moment to moment and from machine to machine. 57
+<br><br>From maybe a 1000th of a second down to maybe a 10th of a second, 58
+<br><br>although at 10th of a second, the game would be very stuttery. 59
+<br><br>Time.deltaTime tells you the last frame time in 60
+<br><br>milliseconds, maybe 16 or something. 61
+<br><br>This is a good predictor of the time of the current frame, the one that we are in, 62
+<br><br>this very moment we are in, the whole game is a series of frames. 63
+<br><br>It's an illusion that things are moving, 64
+<br><br>just like a movie is an illusion of movement. 65
+<br><br>This current frame, the best way to predict the time that the current frame is 66
+<br><br>gonna take is to look how long the last one took, tends to vary fairly smoothly. 67
+<br><br>We can use this to adjust our movement, so 68
+<br><br>longer frame time should lead to more movement in the frame. 69
+<br><br>If the frame took a second to render, then the ship needs to rotate a lot more 70
+<br><br>than if it only took a 100th of a second to render, you've gotta catch up. 71
+<br><br>And that way, regardless of how the frame rate fluctuates or whatever hardware 72
+<br><br>you're running on, you're gonna get the same apparent movement speed. 73
+<br><br>So take a second to just pause and make sure that what I've said so 74
+<br><br>far makes sense. 75
+<br><br>All right, and then shorter frame times should lead to less movement. 76
+<br><br>If the frame is really quick, 77
+<br><br>you move it less on the screen to get the same apparent rotation speed. 78
+<br><br>So for example, we may calculate a rotation as some sort of RCS, 79
+<br><br>reaction control thruster thrust value times Time.deltaTime, now why times? 80
+<br><br>Well, think about it,. If Time.deltaTime gets smaller, 81
+<br><br>then the rotation must get smaller. 82
+<br><br>I don't know how your math is, but if this is constant for the moment, 83
+<br><br>the rcsThrust, we said it was constant. 84
+<br><br>If this value gets smaller then the whole right-hand side gets smaller, so 85
+<br><br>therefore the left-hand side gets smaller. 86
+<br><br>If the frame gets longer,. Time.deltaTime gets bigger, 87
+<br><br>then the rotation gets bigger, so that there is what we need. 88
+<br><br>Let's take a look at how we'd actually do it, in the case of the rigid body. 89
+<br><br>We had to go and make a member variable of type rigidBody, 90
+<br><br>we had to go find it, and then use it. 91
+<br><br>Now, in the case of the transform that we want to rotate, 92
+<br><br>remember what we're going with this rocket ship is grab its transform and 93
+<br><br>rotate it amongst, which axis? 94
+<br><br>We'll look here, each axis is like a pencil and 95
+<br><br>you stick the blue pencil through the rocket. 96
+<br><br>That's the z-axis, so 97
+<br><br>that tells you it's the z-axis we need to rotate the rocket about, okay? 98
+<br><br>The z-axis you can play like that too, just use Control + Z strangely 99
+<br><br>to reset your rocket to vertical, so it's the z-axis we need to rotate around. 100
+<br><br>So what we're gonna do is we're gonna say, transform. 101
+<br><br>And we can get the transform directly, it's about the only 102
+<br><br>thing that you can get without doing this sort of business up here. 103
+<br><br>It's a component that's on every single game object so Unity gives you permanent 104
+<br><br>access to it just through the word, transform, which is nice. 105
+<br><br>So .Rotate, we're gonna use the rotate method here. 106
+<br><br>Now, we need to rotate around,. I said the z-axis, another way for 107
+<br><br>the z-axis is Vector3.forward. 108
+<br><br>So we rotate around the Vector3.forward axis if we hit A, now 109
+<br><br>I don't know if that's gonna go clockwise or anti-clockwise, let's find out. 110
+<br><br>Let's go into the game, hit the A key, and 111
+<br><br>it goes left, anticlockwise, that's actually luckily, what we want. 112
+<br><br>What do you think you need to put in here into this line for 113
+<br><br>rotating clockwise, what do you think you'd do? 114
+<br><br>So this to me looks like we have a left-handed coordinate system. 115
+<br><br>If you take out your left hand, put your left thumb in the direction of the blue 116
+<br><br>arrow, ie., into the screen, notice your fingers curl around. 117
+<br><br>And if you follow the direction of your fingers, they go anti-clockwise. 118
+<br><br>So what this means is a positive rotation in the z or 119
+<br><br>forward direction is anti-clockwise, so when I hit A, we go anti-clockwise. 120
+<br><br>If I come in and put a negative in for the clockwise, then the vector is pointing 121
+<br><br>out of the screen, your thumb is pointing is straight at your left thumb. 122
+<br><br>Your fingers, if your left thumb is pointing straight out, 123
+<br><br>your fingers are curved around clockwise. 124
+<br><br>And that's what you get if you hit the D key, look at that, awesome. 125
+<br><br>So now we can thrust and we can rotate our ship, 126
+<br><br>now we have no control over the amount of thrust. 127
+<br><br>Only by changing the gravity, the mass of the ship, or 128
+<br><br>the speed of rotation yet, but isn't that awesome progress? 129
+<br><br>So I've given you a couple of links and resources, what I'd like you to do as 130
+<br><br>a challenge in this video is to read up on what I've just told you about. 131
+<br><br>Go to our slide deck, read up about framerate independence, 132
+<br><br>make sure that this argument makes sense to you. 133
+<br><br>Have a quick look at Unity's docs about transform.rotate, 134
+<br><br>just see them using it in different ways. 135
+<br><br>And then make sure that your project is caught up to this 136
+<br><br>point that your ship can fly. 137
+<br><br>And that you understand what we're doing with this code at least 138
+<br><br>on a cursory basis. 139
+<br><br>Or on a, I could do that again myself basis, that's what matters, 140
+<br><br>we'll get more and more into that. 141
+<br><br>And if you wanna look up handedness and coordinate systems, then just look up 142
+<br><br>left-handed coordinates for example, in Google. 143
+<br><br>And then you'll get a bunch of results,. I would typically trust Wikipedia, 144
+<br><br>say Cartesian coordinate systems would be good here. 145
+<br><br>And if you search within Wikipedia for handed, you can find orientation and 146
+<br><br>handedness. 147
+<br><br>This will explain a bit about the handedness I was telling you about, and 148
+<br><br>here is some handedness diagrams. 149
+<br><br>I'm gonna link you to this section of this Wikipedia 150
+<br><br>article as well in the resources. 151
+<br><br>And your homework on this video is to go and read up on all the resources.
+	</p>
+  </BODY>
+</HTML>

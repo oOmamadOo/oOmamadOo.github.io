@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys welcome, so in this video we're going to provide the facility that if 3
+<br><br>they type some rubbish that it reminds the user to choose a valid level. 4
+<br><br>If they type the word menu rather, it goes back to the main menu and clears 5
+<br><br>the screen like this, and furthermore, if there's a little Easter egg in here, 6
+<br><br>if they type 007 it says please select a level, Mr. Bond. 7
+<br><br>What doesn't happen yet is if we choose 1, 2 or 3, 8
+<br><br>it considers all levels invalid, because we haven't written the code from out yet, 9
+<br><br>but we're making different choices, and printing different things depending on 10
+<br><br>what they type, which is a huge step forward. 11
+<br><br>I am probably far more excited than a grown man should get to 12
+<br><br>be introducing you to this next topic. 13
+<br><br>But this is fundamental, we now get to control the execution flow. 14
+<br><br>So previously, our statements were just one after the other. 15
+<br><br>We did this thing, we did that thing, and we did the other. 16
+<br><br>But there was no opportunity to change the way the program executes while 17
+<br><br>it's running. 18
+<br><br>So now there is. 19
+<br><br>This is a flow chart on the right. 20
+<br><br>We have a start method, and start calls a block of code, and that block of code 21
+<br><br>is wrapped up into a function called show main menu, I'm summarizing it there. 22
+<br><br>So we call show main menu. 23
+<br><br>Now what we're gonna be able to do is ask a question, and in a flow chart, 24
+<br><br>a question is a diamond, and we gonna be able to say what did the user type and 25
+<br><br>do something differently? 26
+<br><br>If they do one thing we can go over here perhaps and 27
+<br><br>execute this block of code, and if they do a different thing we can go over here and 28
+<br><br>execute a different block of code. 29
+<br><br>And then from there on and you can go off, and do all sorts of other weird, and 30
+<br><br>wonderful things, until eventually your program ends down here. 31
+<br><br>So this is pretty cool. 32
+<br><br>This allows us to actually do something different on every subsequent run of 33
+<br><br>the game. 34
+<br><br>Awesome, so how do we do it? 35
+<br><br>Let's look at an if statement. 36
+<br><br>So this is the way it works, we write if some expression evaluates to true, 37
+<br><br>then a curly brace, yeah, and a load of people are gonna want to put that curly 38
+<br><br>brace up here, and you can if you want, it's just style. 39
+<br><br>I don't mind spreading it out personally. 40
+<br><br>Then you execute this code block, and you can have as many different statements in 41
+<br><br>that code block as you like, then you close the curly brace. 42
+<br><br>Then you can have as many of these else if blocks are you want as well. 43
+<br><br>So this else if bit gets done, only if this other expression evaluates to true, 44
+<br><br>and then finally at the end you got this opportunity to use else to say well, 45
+<br><br>if none of the above expression evaluated true, 46
+<br><br>then just do this kind of catch all at the bottom, which is good practice. 47
+<br><br>It's good practice to do a catch all at the end and 48
+<br><br>make sure that you deal with the weird cases. 49
+<br><br>All right, so that is the structure of an if statement. 50
+<br><br>So instead of just printing out the Boolean value, 51
+<br><br>what we can do now is we can use this. 52
+<br><br>We can say if (input == "1") then you can get your curly braces. 53
+<br><br>Now this is a good time to make all of our curly braces consistent like this. 54
+<br><br>Let's just put them all like that. 55
+<br><br>Don't be afraid to spread your code out a little bit. 56
+<br><br>It's not about cramming it all together. 57
+<br><br>But some people will think this is really ugly, and won't like this still, and 58
+<br><br>will want the curly brace here, whatever. 59
+<br><br>Let's not argue about formatting, just pick a style, and stick to it. 60
+<br><br>So if (input == "1"), now this is the block of code that gets executed, 61
+<br><br>so you could do for instance print("You chose level 1");. 62
+<br><br>Lets just try that. 63
+<br><br>Play the game 1, you chose level 1, 2, 3, 4, 64
+<br><br>and it ignores everything else. 65
+<br><br>All right, so what I would like you to do is to use this as reference, and 66
+<br><br>here's your challenge. 67
+<br><br>If the user types "menu" they should go back to the main menu. 68
+<br><br>Feel free to respond to other inputs, easter eggs would be good here. 69
+<br><br>So you're asking the user for one, two, or three, but if they type something else 70
+<br><br>like maybe 007, then it says, hey James Bond, or something like that. 71
+<br><br>And use else at the end to catch everything else, and 72
+<br><br>give a meaningful message if the user types something that your system doesn't 73
+<br><br>know how to respond to. 74
+<br><br>So, that's your challenges, is to just get menu working, but 75
+<br><br>also get it printing something else in response to other inputs. 76
+<br><br>We're not making the whole game flow work yet. 77
+<br><br>We're not changing levels or anything, but we are responding to the possible inputs. 78
+<br><br>So, have a go, make it your own, just have a play, see how all this works. 79
+<br><br>Here's a script sheet for how the if statement is structured, 80
+<br><br>and I will see you on the other side. 81
+<br><br>Awesome, guys. 82
+<br><br>Hopefully you had fun with that, and 83
+<br><br>hopefully you are sharing the output of what you're doing with other people. 84
+<br><br>Try and make people laugh, or cry, or something, 85
+<br><br>evokes an emotion over in the community, and it will pay off dividends. 86
+<br><br>So let's have a look at this then. 87
+<br><br>If (input == "menu") then we want to not print anything, but 88
+<br><br>we want to ShowMainMenu(); we're reusing that code. 89
+<br><br>That's pretty cool. 90
+<br><br>Now what's the concern?. The concern is that ShowMainMenu wants 91
+<br><br>a greeting. 92
+<br><br>So a couple of options, you could provide a greeting here, 93
+<br><br>you could say ("Hello, thanks for coming back to the main menu"); whatever. 94
+<br><br>You know what I'm gonna do though? 95
+<br><br>I'm actually gonna not bother with this parameter. 96
+<br><br>I'm gonna change my mind about the way ShowMainMenu works, and 97
+<br><br>just remove the parameter for the brackets like that. 98
+<br><br>We don't actually need to greet people, 99
+<br><br>this was just a show you variable parameters. 100
+<br><br>Okay, gonna make all my spacing consistent. 101
+<br><br>So I've just slightly changed the way. ShowMainMenu works taking away greeting. 102
+<br><br>This is changing our code up a little bit, all right. 103
+<br><br>So we're gonna get rid of the whole greeting line. 104
+<br><br>So now ShowMainMenu is back to just a plain function that doesn't do anything. 105
+<br><br>So if the inputs menu was ShowMainMenu, let's try that, see if that works. 106
+<br><br>It should do. 107
+<br><br>So let's just type some other stuff and then type menu. 108
+<br><br>Boom, and it clears the screen, and goes back to the main menu. 109
+<br><br>Awesome.. Now it's starting to feel a bit sensible. 110
+<br><br>Now I said let's put some Easter eggs in. 111
+<br><br>Let's do that, else (input = "007"), 112
+<br><br>then what I want to do is I'm gonna Terminal.WriteLine("Please 113
+<br><br>select a level Mr Bond!");, Mr. 114
+<br><br>Bone [LAUGH] okay, so that's that, and 115
+<br><br>then we also said we gonna have an else condition. 116
+<br><br>So else if, by the way, if you type else without the if you're gonna get 117
+<br><br>a complaint, and ==, remember another common mistake if we don't put two 118
+<br><br>equals in then we're doing assignment not a comparison. 119
+<br><br>So if input == that, and then we go to the else condition, 120
+<br><br>and we re going to say something like 121
+<br><br>Terminal.WriteLine("Please choose a valid level"); okay. 122
+<br><br>So that is the catch all condition, so this is currently how we are handling 123
+<br><br>user input, on the assumption that they are at the MainMenu, but the MainMenu's 124
+<br><br>the only thing we've got at the moment, so it's a reasonable assumption. 125
+<br><br>Let's have a look. 126
+<br><br>Let's play the game. 127
+<br><br>I choose 1.. It says, Please choose a valid level 2, 128
+<br><br>3 fine, because we haven't yet put handlers in for handling those levels. 129
+<br><br>We type menu, clears the screen. 130
+<br><br>We type 007. 131
+<br><br>We got an Easter egg. 132
+<br><br>Please select a level Mr Bond! 133
+<br><br>Okay, anything else just gets, Please chose a valid Level, that's awesome. 134
+<br><br>So up next, we'll start to work out what we can actually do with the fact they've 135
+<br><br>chosen a level, and how to move the game forward.
+	</p>
+  </BODY>
+</HTML>

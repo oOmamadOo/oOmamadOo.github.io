@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND] Hey guys, welcome back. 2
+<br><br>In this video, what we're going to do is introduce a new thing called 3
+<br><br>an enumeration that will keep track of the screen we're on. 4
+<br><br>If we were to enter a valid level, we'd end up on the password entry screen and 5
+<br><br>the system will know, I've run this member variable in the inspector that we're on 6
+<br><br>a different screen. 7
+<br><br>Once we've got the idea of a different screen, 8
+<br><br>we can then process input appropriately for the screen we're on. 9
+<br><br>So by the end of the video, this will be the case. 10
+<br><br>We'll still have the problem there if I enter 1 on the password entry screen, 11
+<br><br>it doesn't treat it like a password. 12
+<br><br>But when I've got as far as having the information we need to be able to process 13
+<br><br>input differently, 14
+<br><br>when you are in the password entry screen compared to when you are on the main menu. 15
+<br><br>Cuz, of course, 1 should be being interpreted now as a password guess. 16
+<br><br>So we're setting ourselves up to be able to do that. 17
+<br><br>All righty then, so we're doing well but we've run into a spot of bother now, 18
+<br><br>which is that we choose 1. 19
+<br><br>You've chosen level 1. 20
+<br><br>We could program the machine now to ask us for our password. 21
+<br><br>So where it says you have chosen level 1, that's fine. 22
+<br><br>It could now write Terminal.WriteLine. 23
+<br><br>Please enter your password. 24
+<br><br>Let's do that just for fun. 25
+<br><br>Please enter your password. 26
+<br><br>And then if we do that, let's see what happens. 27
+<br><br>Obviously, it's just going to say, please enter your password underneath where it 28
+<br><br>says, you have chosen level 1 or you've chosen level 2. 29
+<br><br>Let's just try few other things first, some rubbish. 30
+<br><br>Please choose a valid level, level 1. 31
+<br><br>Good, you've chosen level 1. 32
+<br><br>Please enter your password. 33
+<br><br>Now, hello. 34
+<br><br>Please choose a valid level, you see? 35
+<br><br>It's very confused now. 36
+<br><br>The problem is, the game doesn't know what state it's in. 37
+<br><br>Remember Rick's nice state diagram? 38
+<br><br>This is basically exactly the same thing. 39
+<br><br>I've just renamed a couple of different things. 40
+<br><br>Difficulty 1 for easy, 2 for medium. 41
+<br><br>And I've just renamed this state Waiting For Password, 42
+<br><br>to be more consistent with the code. 43
+<br><br>But the general flow is that from any states, now Main Menu is a state. 44
+<br><br>Waiting For Password is a state. 45
+<br><br>The machine's in, and. Win Screen is a state. 46
+<br><br>From any state, we should be to get back to the menu with Return to "menu", 47
+<br><br>which we can kind of do at the moment. 48
+<br><br>In Waiting For Password, we need to see if it's correct or incorrect and 49
+<br><br>behave appropriately. 50
+<br><br>But the problem we've got right now is we're in Main Menu. 51
+<br><br>And then once we enter 1 or 2, we're effectively going into Wait For 52
+<br><br>Password state, or we want to be but we're not. 53
+<br><br>We're still processing input as if we were at the Main Menu. 54
+<br><br>You need to process input very differently when you're processing as a password. 55
+<br><br>You see, 1 or 2 may be a password guess and we don't know, because where 56
+<br><br>we have our code that says OnUserInput, it doesn't know what state the game's in. 57
+<br><br>Therefore, it's processing input the same regardless of where we are in 58
+<br><br>the flow of the game. 59
+<br><br>So what we need to do is have a way of storing the state of the game that we 60
+<br><br>actually are in. 61
+<br><br>This bit's valid. 62
+<br><br>If the input's menu, we would always show the main menu. 63
+<br><br>But the rest of it, all of this stuff here, is actually doing something else. 64
+<br><br>All of this is running the main menu, all right? 65
+<br><br>But we need to know under what condition are we running the main menu, and 66
+<br><br>then how to run the main menu. 67
+<br><br>So we need a new construct, and that construct is an enum. 68
+<br><br>We're gonna use enums, short for enumeration, for menu items. 69
+<br><br>Now I wanna be clear here, 70
+<br><br>what I'm saying is that enums are like a menu in a restaurant. 71
+<br><br>It's nothing to do with our main menu, okay? 72
+<br><br>They may have numbers, just like a Chinese menu may have numbers. 73
+<br><br>We don't really care. 74
+<br><br>So behind the scenes, these enums are stored as integers, as numbers, 75
+<br><br>but we don't care. 76
+<br><br>And we don't wanna think of it like that, all right? 77
+<br><br>Very much like a menu, they group similar items. 78
+<br><br>So you may have three groupings on a menu,. Starter, Main and Dessert. 79
+<br><br>All right, they're different types of dish. 80
+<br><br>A starter type dish, the main type dishes, and the dessert type dishes. 81
+<br><br>Each grouping has a fixed list of items. 82
+<br><br>So in code, that looks like that. 83
+<br><br>Starter.Soup or Main.FishPie, for example, each one's a fixed list. 84
+<br><br>All right, we choose the type name. 85
+<br><br>So we could call this type Starter or it could be appetizer.soup, doesn't matter. 86
+<br><br>We get to choose that. 87
+<br><br>We're defining a new type here with an enum. 88
+<br><br>Previously, we have used int for introduce, or string for strings, or 89
+<br><br>var if you wanted to leave it to the computer to try and guess the type. 90
+<br><br>But in this case, we're defining a new type of thing, okay, 91
+<br><br>called Starter/Appetiser, etc. 92
+<br><br>So Soup is of type Starter, Fish type. 93
+<br><br>[NOISE] Let me try that again. 94
+<br><br>Soup is of type Starter,. FishPie is of type Main, all right? 95
+<br><br>That's what we're doing here, and it gives us a fixed list to get to. 96
+<br><br>So we can say Starter., and it shows us all the Starters, or 97
+<br><br>Main., and it shows us all the main courses. 98
+<br><br>And this is what we want for our screen. 99
+<br><br>We want to enumerate different screens. 100
+<br><br>So this is what enumerations are in C#. 101
+<br><br>And so how do you use them? 102
+<br><br>You define the new type of variable, for example, enum Screen. 103
+<br><br>And then we use these curly braces. 104
+<br><br>All right, so it's a block of code separated by commas. 105
+<br><br>You can put these things on new lines,. Mainmenu, Password, etc. 106
+<br><br>But the main thing is this enum Screen curly braces, 107
+<br><br>there's still a statement and at the end a semicolon. 108
+<br><br>And then you just list out all the different states of Screen. 109
+<br><br>So this gives you screen.MainMenu, screen.Password, Screen.Win, or whatever. 110
+<br><br>Declare a variable of the new type of things. 111
+<br><br>So once you've defined a new type called. Screen, we can say Screen currentScreen. 112
+<br><br>We're making a variable called currentScreen of this new type Screen that 113
+<br><br>we've made. 114
+<br><br>And that's where we're gonna store the currentScreen. 115
+<br><br>And then we can use it like this, currentScreen = Screen.MainMenu, 116
+<br><br>for example. 117
+<br><br>We're assigning Screen.ManMenu, the value. Screen.MainMenu to currentScreen. 118
+<br><br>Why do we do all this? 119
+<br><br>Because we don't wanna look up a table. 120
+<br><br>We don't wanna say or remember the screen into just screen one is MainMenu and 121
+<br><br>screen two is Password, whatever. 122
+<br><br>We wanna use plain English in our code. 123
+<br><br>It massively reduces errors. 124
+<br><br>It means we don't need a separate lookup table. 125
+<br><br>So these enums are a bit weird when you first see them, but 126
+<br><br>they are super cool once you get used to them. 127
+<br><br>So let's dive into our code and use it a little bit. 128
+<br><br>So what I'm gonna do, another piece of game state is the following. 129
+<br><br>Firstly, we need to declare that this enum exists. 130
+<br><br>Now we could actually do it here or we could do it outside the class, but 131
+<br><br>we're doing everything inside the class for the moment. 132
+<br><br>So enum Screen with a capital. S because it's a new type, and 133
+<br><br>we talked about types and why they're capitalized later on. 134
+<br><br>enum Screen { }; on the end. 135
+<br><br>So what screens are we gonna have? 136
+<br><br>Well, let's go back to our flow diagram. 137
+<br><br>We want Main Menu, Waiting For. Password, and Win Screen. 138
+<br><br>So let's do that. 139
+<br><br>No spaces, of course. 140
+<br><br>MainMenu, I say of course. 141
+<br><br>Why, because this is a single token. 142
+<br><br>If I put Main space Menu, then it's gonna get confused. 143
+<br><br>What does it say? 144
+<br><br>It's expecting a comma, 145
+<br><br>because it's a space which splits those two terms apart, okay? 146
+<br><br>So it does need to not have spaces. 147
+<br><br>We also use capitals for the values here, so MainMenu, 148
+<br><br>WaitingForPassword and. WinScreen or just Win. 149
+<br><br>Okay, now are these good names,. Screen.MainMenu, 150
+<br><br>Screen.WaitingForPassword? 151
+<br><br>That's long, isn't it? 152
+<br><br>Let's just call it Password and. Screen.Win. 153
+<br><br>Okay, so I've changed my mind as. I've gone and simplified it down. 154
+<br><br>So we've made a new type. 155
+<br><br>Now we can make a variable of this type. 156
+<br><br>We can say, Screen which is the type, remember type first like int level. 157
+<br><br>So Screen is like int. 158
+<br><br>It's in blue because it's a type that we've defined ourselves, 159
+<br><br>whereas these other things are kind of built in. 160
+<br><br>So Screen currentScreen, and that's it, okay, for the moment. 161
+<br><br>In fact, you could initialize this to. Main Menu by saying Screen.MainMenu, 162
+<br><br>if you wanted. 163
+<br><br>Remember that we said that we can declare a variable, and 164
+<br><br>then initialize it with a new value at the same time if we want. 165
+<br><br>So we may as well do that. 166
+<br><br>The currentScreen starts off as the Main Menu. 167
+<br><br>Now what has this done? 168
+<br><br>Well, let's take a look. 169
+<br><br>There is a way we can peek into this is. 170
+<br><br>We can play the game. 171
+<br><br>And as long as your inspector is in debug mode, remember the hamburger and debug. 172
+<br><br>You can see current screen.MainMenu. 173
+<br><br>It looks like a drop-down, because enums are kind of a list, a menu. 174
+<br><br>We can't change it because it is a private member variable. 175
+<br><br>We're not allowed to change this thing. 176
+<br><br>But we can view it, and it shows that we're on the main menu. 177
+<br><br>That's awesome. 178
+<br><br>So what I'd like you to do then is given all of this and understanding, hopefully, 179
+<br><br>roughly what enums are and that this is how we use them. 180
+<br><br>We define them as a list of possible states. 181
+<br><br>We declare a member variable of type screen, and then we go ahead and use it. 182
+<br><br>What I want you to do is the following. 183
+<br><br>I want you to set the currentScreen Member. 184
+<br><br>It should be set to Screen.MainMenu at the start, where I've done that for you. 185
+<br><br>Once a valid level is selected, it should be set to Screen.WaitingForPassword. 186
+<br><br>Or if we changed our mind on this, 187
+<br><br>we decided it was just gonna be. Screen.Password, so I'll change the slide. 188
+<br><br>Cuz we decided to make it simpler. 189
+<br><br>And remember, 190
+<br><br>you can use the inspector in debug mode to verify that you've got the value right. 191
+<br><br>So basically, the change I want you to make is when you chose level 1 or 192
+<br><br>2, I want you to set the currentScreen member variable to Screen.Password. 193
+<br><br>All right, welcome back. 194
+<br><br>So let's come and have a little look at the code, relatively simple, or should be. 195
+<br><br>When we start the game, that is the moment the common code path. 196
+<br><br>This is the place where whether we selected level 1 or 2, it's when we 197
+<br><br>start the game that we are pretty much in the asking for password screen. 198
+<br><br>So I'm gonna do it here to start with, 199
+<br><br>currentScreen = Screen.Password, and just see that it works. 200
+<br><br>So let's play the game. 201
+<br><br>Look at currentScreen over here, it's the main menu. 202
+<br><br>Whatever I type, it stays on the main menu, and even if I type the string 007, 203
+<br><br>but if I type 1 or 2, we go to current Screen Password. 204
+<br><br>It knows that we're on level 1, and we're not asking for password screen. 205
+<br><br>That's awesome. 206
+<br><br>That allows us to really move forward now, and to use that information 207
+<br><br>to do something different, and to change the whole flow of the game. 208
+<br><br>I'm just gonna remove this Hello World print cuz it's annoying me, and 209
+<br><br>we no longer need it. 210
+<br><br>I'm gonna have a quick view over my code, and make sure it still make sense to me. 211
+<br><br>So this stuff here is all about game state. 212
+<br><br>I might tuck these guys up next to each other. 213
+<br><br>So this block's about game state. 214
+<br><br>At Start we Show the Main Menu. 215
+<br><br>It's good to have a revision now and then. 216
+<br><br>That showing the Main Menu. 217
+<br><br>On user input we're gonna need to change shortly. 218
+<br><br>We're going to need to, we can put ourselves a TODO, 219
+<br><br>TODO handle differently depending on screen. 220
+<br><br>So this TODO comment is a comment that tells me what in future I want to do 221
+<br><br>something, as I have a quick code review. 222
+<br><br>So this stuff is more like handling the Main Menu, 223
+<br><br>not really always what we wanna do on user input. 224
+<br><br>Because when we're in the password screen, we want to handle the input differently. 225
+<br><br>Then we start the game, where we set the Screen to the password Screen and 226
+<br><br>the table at the chosen level what is, and 227
+<br><br>we ask for the user to enter their password. 228
+<br><br>Awesome, so it's big progress. 229
+<br><br>And what we need to do next is continue to push the game forward. 230
+<br><br>Now I'm just gonna show you quickly the code changes cuz I think that's helpful 231
+<br><br>for you to see what's changed. 232
+<br><br>Green has been added. 233
+<br><br>Red has been removed on the right-hand side here. 234
+<br><br>Put a comment in, and then just a little bit more and start game. 235
+<br><br>So we're done. 236
+<br><br>Hopefully that's made sense. 237
+<br><br>This is how we keep track of the state that we're in in a game. 238
+<br><br>It's called a finite state machine. 239
+<br><br>I've linked you to Wikipedia to read all about finite state machines. 240
+<br><br>I wouldn't spend too long cuz it's a bit technical over there. 241
+<br><br>And I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

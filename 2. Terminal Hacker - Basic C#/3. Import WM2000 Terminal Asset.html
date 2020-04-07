@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND] Hello, hello, hello. 2
+<br><br>Ben back with you. 3
+<br><br>By the end of this video you will have our terminal asset imported and 4
+<br><br>a very simple dumb terminal sitting here waiting for you to type into it. 5
+<br><br>Okay.. See you soon. 6
+<br><br>Hey guys, welcome back. 7
+<br><br>It's Ben here. 8
+<br><br>Now I've switched over to my Mac. 9
+<br><br>I use a Mac because it allows me to do both Mac specific stuff, 10
+<br><br>like iOS development, etc, and also PC specific stuff. 11
+<br><br>If I need to, I can load Windows. 12
+<br><br>So excuse that I'm on a Mac, but the differences are gonna be very, very minor, 13
+<br><br>and I'll point them out as we go along. 14
+<br><br>So against this lecture there are a set of downloads, and there is a 3 15
+<br><br>TH_CU2 DownloadFiles now you're gonna see these weird codes all over the shop so 16
+<br><br>let me just explain what it is it's video three, of terminal hacker of 17
+<br><br>the complete unity developer 2.0, and then this is just the download files zip, okay? 18
+<br><br>So these are our unique video references. 19
+<br><br>And each video has one of those that never changes. 20
+<br><br>Cool, so in that zip file, you're gonna have something called WM, 21
+<br><br>Wood Master 2,000 package.unity package, all right? 22
+<br><br>And that is a unity asset pack. 23
+<br><br>We'll be using that in a moment. 24
+<br><br>If you have inadvertently in your excitement already double clicked on it, 25
+<br><br>don't worry, what that'll do is that'll just bring up 26
+<br><br>Unity's project window which we'll gonna need anyway. 27
+<br><br>So Unity's project window you've seen before. 28
+<br><br>What this does when it first loads is it looks for 29
+<br><br>all the things that it knows you've opened before, and 30
+<br><br>if they're still where they were on your disk then it will give them in a list. 31
+<br><br>So at the moment we've just got 1_First_Steps, our first project. 32
+<br><br>So the challenge here is simply gonna be to make ourselves a new project, and 33
+<br><br>then we'll worry towards the end of this video about how we import that asset pack. 34
+<br><br>All right.. So what I want you to 35
+<br><br>do is to set up this section's project. 36
+<br><br>At the end of it, the folder structure should look something like this, 37
+<br><br>1_First_Steps, and then, at the same level as that, alongside it, 38
+<br><br>2_Terminal_Hacker, of course, a little less pixellated. 39
+<br><br>It's gonna be in your Explorer. 40
+<br><br>Okay so let's also, if you need to rename your previous section, 41
+<br><br>let's name it like this 1_First_Steps. 42
+<br><br>This is just an exercise in getting your 43
+<br><br>Unity project's named exactly how you want them. 44
+<br><br>You can of course choose your own name as you get more experience. 45
+<br><br>The project should have 2D defaults when you create it. 46
+<br><br>Both projects should open, so you should be able to either go to the Unity Splash 47
+<br><br>screen I just showed you, this one here where you go to the Unity open screen. 48
+<br><br>Or you can go into, as a hint, the .unity files. 49
+<br><br>Let me just show you that for the previous section. 50
+<br><br>If you were on the previous section, and you go into first steps, assets. 51
+<br><br>You can always find a scene which start or ends with .unity, and 52
+<br><br>you can always open from that. 53
+<br><br>So that's just a hint for 54
+<br><br>you, and that would be the same effect as clicking on first steps here. 55
+<br><br>All right.. So your job is to get the second project 56
+<br><br>setup with the folder in the right place. 57
+<br><br>2D defaults project and it should just be a simple blank project. 58
+<br><br>Go ahead, pause the video, and see if you can get that done. 59
+<br><br>All right, welcome back. 60
+<br><br>So the way that I'm gonna do that is to just use NEW here in the Unity Interface, 61
+<br><br>I'm gonna tell it where I want to go when it opens up and 62
+<br><br>then of course I'm gonna point to this folder here now. 63
+<br><br>On our pc these forward slashes will be back slashes and 64
+<br><br>you may have a C: in front, but same type of idea. 65
+<br><br>You don't have to use that exact same path just know where you're storing all your 66
+<br><br>cost folders in my case that's in my Repos folder. 67
+<br><br>Unity2 for this course, then I am gonna call it 2 _Terminal _ Hacker. 68
+<br><br>Now it's not that this name matters in terms of how it's gonna run but 69
+<br><br>I just wanna already as we are gonna learn coding soon get your eye in for 70
+<br><br>being really clear about spaces, underscores and capitalization. 71
+<br><br>I am gonna start training your eye. 72
+<br><br>Gonna make it a 2D project and then just click Create project. 73
+<br><br>All right, so that's gonna create the project. 74
+<br><br>Now, what you can see here on my file system is immediately we got first steps 75
+<br><br>and then at the same level, we've got terminal hacker and it's already started 76
+<br><br>to make these random folders you always get when all unity projects. 77
+<br><br>And then it's built something called a solution file which 78
+<br><br>we'll learn about later. 79
+<br><br>Awesome.. So here, 80
+<br><br>we go in Unity if we click play, absolutely nothing happens. 81
+<br><br>Blue screen. 82
+<br><br>If it looks different to that, it may be that you selected 3D defaults. 83
+<br><br>Doesn't really matter to be honest. 84
+<br><br>Just, that you're in Unity that's the achievement. 85
+<br><br>Now, on a Mac a couple of things are different I've got little pills at 86
+<br><br>the top left instead of your standard window close minimize and maximize 87
+<br><br>things would be at your top right and also the menus are swapped round right. 88
+<br><br>On Windows you're gonna have this menus are gonna be below, 89
+<br><br>the word Unity Personal blah, and on Mac it's gonna be above big deal and there's 90
+<br><br>a slight difference in the menus, which don't affect us at all for this section. 91
+<br><br>Awesome, so now let's talk about how we use this Asset Pack and 92
+<br><br>what an Asset Pack is and what the point of it is? 93
+<br><br>What the point of it is is it provides us with a way of 94
+<br><br>giving you some stuff to start with and there are several ways you can get it in. 95
+<br><br>You can either go to the Project tab, right click inside Assets and 96
+<br><br>say Import Package, Custom Package. 97
+<br><br>So, this is one way to do it, and then you do that you go ahead in your file system 98
+<br><br>and find that custom package that we provided you which is inside a folder. 99
+<br><br>Called WM2000 Package.unitypackage, that's one way. 100
+<br><br>You just click Open. 101
+<br><br>I'm always gonna show you another way, 102
+<br><br>which is that you could just drag the Unity package 103
+<br><br>from your file system over into the Project tab in the Assets part. 104
+<br><br>All right, and whichever way you do it, you'll end up here. 105
+<br><br>You'll end up with an import. Unity package window. 106
+<br><br>And it's gonna show you something very much like this. 107
+<br><br>There's basically a folder called Wordmaster 2000, and 108
+<br><br>in it is a load of stuff that we're not gonna concern ourselves with, 109
+<br><br>at all basically, in this section. 110
+<br><br>This section is to teach pure C#. 111
+<br><br>But what will be familiar to you is the fact that it's already got a script in it, 112
+<br><br>it's actually got a few scripts in it, and it's got a prefab. 113
+<br><br>So let's just go ahead and import everything. 114
+<br><br>And maybe by the end of this course we'll have got you as far as understanding how 115
+<br><br>we've made this terminal cuz there's some fun stuff going on in there. 116
+<br><br>Including the C # reflection system, which is miles above our current station but for 117
+<br><br>now all we're trying to do is to go into. WM2000 folder, drag the blue prefab into 118
+<br><br>the hierarchy, I recommend the hierarchy rather than the game window because it'll 119
+<br><br>make sure that it's at the root, we've seen this before. 120
+<br><br>You'll get some sort of fuzzy stuff going on in the scene view if you roll the mouse 121
+<br><br>button back far enough, you'll eventually see that this kind of messy thing. 122
+<br><br>None of that matters. 123
+<br><br>What matters is the WM2000 game object in there. 124
+<br><br>And then when you click play, you just end up on a screen like this. 125
+<br><br>And if you type If your volume is on, 126
+<br><br>you'll hear a slight key click sound that aren't your keyboard. 127
+<br><br>They're the random sounds we've got it playing if we key click. 128
+<br><br>And when you hit Return, it'll just go to a new line, all right? 129
+<br><br>And you can go to the bottom of the screen, and it just keeps going forever. 130
+<br><br>So this is the dumb terminal that we've provided with, it does absolutely nothing. 131
+<br><br>At the moment your job is going to be to get it to do stuff. 132
+<br><br>The only thing it does is just like hit, play or Ctrl+P to turn me on. 133
+<br><br>Just to remind you that that's how you get the thing to wake up. 134
+<br><br>And then it's got something what we call [INAUDIBLE] text just to kind of test that 135
+<br><br>it all fits on the screen. 136
+<br><br>When you hit play, this thing does absolutely nothing. 137
+<br><br>This is our starting point for this section. 138
+<br><br>It is a simple, dumb console that is going to allow you to code from scratch, 139
+<br><br>as if you were sitting at an old school console, which is a load of fun. 140
+<br><br>So that's it for this video. 141
+<br><br>That's the sole purpose, is to get us to this point. 142
+<br><br>What I wanna do is make sure that we save our project, Ctrl+S, command S, 143
+<br><br>whichever you prefer. 144
+<br><br>Once it's saved to the disk you're gonna want to exit Unity. 145
+<br><br>Saving as you go if you haven't done it before. 146
+<br><br>Now, when you try and exit it's going to ask you to save this scene because we've 147
+<br><br>done something, we've dropped this prefab in this scene, we need to save the scene. 148
+<br><br>You can stick with the default place and 149
+<br><br>I'm just gonna call it Game, and that's it. 150
+<br><br>Okay, now let's just go and 151
+<br><br>inspect the disk and see if we succeeded in this challenge. 152
+<br><br>We have, first steps sitting there which was our previous section and 153
+<br><br>then 2_Terminal_Hacker and 154
+<br><br>then it should look something like this in terms of what you've got in your folders. 155
+<br><br>All right, slightly easier to see on. MAC here because it shows multiple 156
+<br><br>levels of higher files in one go, which is one of the reasons I'm using it here. 157
+<br><br>All right, and then as I said before, you could actually open the game by 158
+<br><br>looking in the Assets folder and by the way, 159
+<br><br>it's the assets sub folder of each project is the main thing we're interested in. 160
+<br><br>We're not interested in this all this other stuff it creates. 161
+<br><br>Library project settings.cs project, 162
+<br><br>all that stuff, not really interested in anything outside of Assets. 163
+<br><br>Inside Assets we have Game.Unity which is the scene we just created. 164
+<br><br>Double clicking that would open Unity like so and 165
+<br><br>you see that we've got both. First_Steps and 2_Terminal_Hacker. 166
+<br><br>We're gonna go into 2_Terminal_Hacker. 167
+<br><br>I've misspelled Terminal Hacker, and 168
+<br><br>that is fine because it gives us an opportunity to rename the project. 169
+<br><br>Which is something you're gonna need to do if your projects don't look like mine do. 170
+<br><br>So here I am, it's working, but the project is the wrong name. 171
+<br><br>Here's the project name up in the top here. 172
+<br><br>Let's see how we fix it. 173
+<br><br>We go out of Unity. 174
+<br><br>We simply make sure that Unity is closed, and 175
+<br><br>then we rename 2_Terminal_Hacker, like that. 176
+<br><br>Then there's two options. 177
+<br><br>If you try and open the project from the Unity's menu, 178
+<br><br>it's gonna disappear now, because it can't find something at that path. 179
+<br><br>So this is where you do need to go in via Assets and 180
+<br><br>then open the .unity file, right? 181
+<br><br>So if you ever lose track of a project like that, 182
+<br><br>you're gonna open any of the .unity scene files. 183
+<br><br>And you'll see that later. 184
+<br><br>Here you go. 185
+<br><br>Now it's reupdated. 186
+<br><br>Okay.. That's cool. 187
+<br><br>We've renamed it 2_Terminal_Hacker. 188
+<br><br>Spelt correctly. 189
+<br><br>Don't worry about all these other weird stuff it creates on the disk. 190
+<br><br>And off we go. 191
+<br><br>We are playing again. 192
+<br><br>So that's how you rename a project. 193
+<br><br>That's how you get yourself nice and tidy and 194
+<br><br>I suggest as we go through the course you keep all of your projects very neatly and 195
+<br><br>tidily organized in that single folder like this. 196
+<br><br>So congratulations on getting this far and 197
+<br><br>I will look forward to seeing you in the next video.
+	</p>
+  </BODY>
+</HTML>

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hi, guys. 3
+<br><br>In this video, we are going to refactor our code, and make it a lot clearer. 4
+<br><br>We're gonna make on user input, do what it's supposed to do, which is decide, 5
+<br><br>in general, what to do with the user's input. 6
+<br><br>But not actually get involved in the detail, so it's just gonna say, 7
+<br><br>the type menu, go to the main menu. 8
+<br><br>Otherwise, if down the menu screen from the main menu. 9
+<br><br>Very simple, code should be this easy to read this clear. 10
+<br><br>So let's dive in and see what set of tools and 11
+<br><br>techniques we can use to make this happen. 12
+<br><br>We're at a really interesting point in our game. 13
+<br><br>So the problem that we have at the moment is that we can select the level. 14
+<br><br>But then if we try and enter password, say we type 1 as the password, 15
+<br><br>it's interpreting our password entry as a level selection. 16
+<br><br>We are in the password state, but 17
+<br><br>we're not making use of the fact we're in the password state. 18
+<br><br>So we need to process input differently depending on which game state we're in or 19
+<br><br>which game screen we're on. 20
+<br><br>So if we look at our code, I've turn the font size down one by the way just 21
+<br><br>to keep this bit more in the screen. 22
+<br><br>Let's have a look, we got a thing here that says, 23
+<br><br>if input equals menu, then show main menu. 24
+<br><br>That's fine, in fact, 25
+<br><br>I am gonna put a comment that says we can always go direct to main menu. 26
+<br><br>Okay, comments that explain why you are doing something are a good thing. 27
+<br><br>Comments that explain what you're doing, 28
+<br><br>typically I would like to go a step further than that and 29
+<br><br>make the code so clear that it's obvious what you're doing now. 30
+<br><br>The code that is on the screen isn't so clear that it's obvious what we're doing, 31
+<br><br>all right? 32
+<br><br>So we need to fix that. 33
+<br><br>It's not clear what happens in general on user input, is it? 34
+<br><br>I don't think it's clear. 35
+<br><br>So, we gotta to do to handle differently depending on the screens. 36
+<br><br>I'm gonna delete the to do now, because that's what we're about to dive into. 37
+<br><br>Our sole focus is to handle the input differently depending on the screen. 38
+<br><br>Right, so this code here is about running the main menu, if you think about it. 39
+<br><br>It's only valid to say, well, if input is one, do this. 40
+<br><br>Obviously, if the password guess was one, you'd wanna be saying something like, 41
+<br><br>incorrect password, not starting the game again. 42
+<br><br>So this stuff, it isn't general use it input processing, but 43
+<br><br>it's running the main menu. 44
+<br><br>So let me show you a useful trick. 45
+<br><br>If this block of code is about running the main menu, let's just try something for 46
+<br><br>a minute, just bear with me. 47
+<br><br>Now I suggest you don't copy what I'm doing for 48
+<br><br>a second, don't copy what I'm doing. 49
+<br><br>Watch what I'm doing, hear what I have to say, and then on the challenge, 50
+<br><br>we'll see if you can get yourself to the same point. 51
+<br><br>Worst case, you rewind the video and watch what I did do. 52
+<br><br>But see if you can just watch me and then do it yourself afterwards when I challenge 53
+<br><br>you to, when the challenge slide comes up. 54
+<br><br>So I'm gonna say else if (currentScreen == Screen.MainMenu). 55
+<br><br>So I'm saying, okay, at any time go to the main menu, but 56
+<br><br>if where all the main menu, then do some stuff. 57
+<br><br>Now, I put empty curly braces there. 58
+<br><br>Watch what happened if I moved this code block, which is handling the main menu, 59
+<br><br>I can put it in here like this. 60
+<br><br>Now, this is not something, and then sort out the indentation and 61
+<br><br>get rid of the l's. 62
+<br><br>Now this code has become unwieldy, an experienced developer sure can read this, 63
+<br><br>but I don't want you ever writing code like this, 64
+<br><br>you don't need to have it this complicated. 65
+<br><br>Now I'll show you a wonderful simplification in a minute. 66
+<br><br>But, let's deal with the complexity for a second, cuz what tends to happen when 67
+<br><br>you're refactoring like this is that you push the boat out with complexity a little 68
+<br><br>bit, and then you come back again and simplify it. 69
+<br><br>So we're saying, if it's main menu, show the main menu. 70
+<br><br>Otherwise, if you're on the main menu screen, then, and this lot together 71
+<br><br>is about processing the main menu, handling the main menu. 72
+<br><br>Let's try and see how this has changed the behavior. 73
+<br><br>As I say, you don't need to copy this yet, there'll be a challenge here in a second. 74
+<br><br>So if I type 1 now, you have chose level 1. 75
+<br><br>If I now say 1 for enter password, you see it's not doing anything cuz we haven't 76
+<br><br>written any password handling code. 77
+<br><br>But the great thing is, it is no longer saying you've chosen level 1. 78
+<br><br>It is behaving differently now depending on the screen. 79
+<br><br>So, that's good news. 80
+<br><br>What's bad news is our code sucks right now, It's just, 81
+<br><br>you can't read that even if you're experienced, it's not good, right? 82
+<br><br>This function on user input already does one thing, 83
+<br><br>remember each function should do one thing. 84
+<br><br>It already decides what to do depending on what the input is. 85
+<br><br>That's all it should do, right. 86
+<br><br>If you want, temporarily, you can put yourself a comment that says, 87
+<br><br>this should only decide how to handle user input, 88
+<br><br>or input, not actually do it. 89
+<br><br>Okay, just as a temporary comment. 90
+<br><br>So on that basis, what I mean is we need to take this code out here. 91
+<br><br>This stuff here, all, is showing the main menu. 92
+<br><br>Now what you wanna do again, and try and remember it, and 93
+<br><br>we'll do this in the challenge. 94
+<br><br>In your right-click menu, you'll have something like this, 95
+<br><br>Quick Fix Extract Method. 96
+<br><br>So over on the PC, what you need to do is choose Quick Actions and 97
+<br><br>Refactorings, then you'll get this kind of slightly weird looking screen like this. 98
+<br><br>No problem, just hit the Enter key, and 99
+<br><br>the refactoring will work the same as it has on my Mac. 100
+<br><br>When we click Extract Method, what it does for us is very cool. 101
+<br><br>Look, it takes us to this. 102
+<br><br>It's taken all that code, put it into a new method, 103
+<br><br>don't worry about the word private, in fact, we can get rid of that in a minute. 104
+<br><br>And provided that you haven't typed anything or push any keys, 105
+<br><br>you can immediately give this method a name which is RunMainMenu. 106
+<br><br>Now imagine you had hit a key and you've made a mistake, you can double-click, 107
+<br><br>Run main menu, and then go Cmd or Ctrl+R on a Mac. 108
+<br><br>Ctrl+R in a PC, Cmd+R on a Mac twice, once twice, your internet rename system and 109
+<br><br>you can call it donkey if you want but 110
+<br><br>I suggest you call it something very meaningful, Like RunMainMenu. 111
+<br><br>All right,. I'm gonna get rid of the word private. 112
+<br><br>We don't need to worry about what private and public and 113
+<br><br>everything means at the moment. 114
+<br><br>Now the thing that we've done here by doing this, 115
+<br><br>the extract system is very clever. 116
+<br><br>It knew that to make this code in here work we need an input, so 117
+<br><br>it's actually provided us with a variable parameter of input. 118
+<br><br>So, this is how the program flow works now. 119
+<br><br>It says when the user type something, see if they typed input if in which case go to 120
+<br><br>the main menu, from wherever you are. 121
+<br><br>If not, well if you are in the main menu then run the main menu and 122
+<br><br>pass the input through to main menu then main menu will deal with it. 123
+<br><br>All right, that's what we've done. 124
+<br><br>Now, this method or function here is really clear and it does only decide how 125
+<br><br>to handle our input, not actually do it, and it reads in English. 126
+<br><br>So we can get rid of the comment, very self evident what this does. 127
+<br><br>Okay, so I'm gonna save the code, play the game and then I'm gonna ask you to catch 128
+<br><br>up with where I am, and explore the use of those tools. 129
+<br><br>1, you've chosen level1, and your password 1, awesome, and 130
+<br><br>it doesn't say you've chosen level 1 again, so 131
+<br><br>it's appropriately handling the input differently. 132
+<br><br>So what I want you to do is a challenge then is complete the refactor yourself. 133
+<br><br>The game should run again, this time with RunMainMenu handling the main menu. 134
+<br><br>The behavior of the game should be the same as before we extracted that function. 135
+<br><br>So I had that, all that horrible messy code in the on user input and 136
+<br><br>then I extracted it down. 137
+<br><br>In both cases, you should type 1 once. 138
+<br><br>It should say, you've chosen level one. 139
+<br><br>Type 1 again, and it should say nothing. 140
+<br><br>And that's the right behavior. 141
+<br><br>So go ahead, pause the video, just catch up with where I am., 142
+<br><br>see if you can do it without coming off this challenge slide. 143
+<br><br>And if necessary rewind the video and just follow along. 144
+<br><br>Let's see how much you can do on your own. 145
+<br><br>Right, well welcome back. 146
+<br><br>So in this challenge. 147
+<br><br>This mixed things up a bit. 148
+<br><br>I've already shown you solution. 149
+<br><br>I was asking you to try and recall what. I said and to integrate it for yourself. 150
+<br><br>All right, so we've already done this. 151
+<br><br>We've already made the behavior how we want it. 152
+<br><br>It's much much better in my mind. 153
+<br><br>All right this is much, much clearer to read. 154
+<br><br>Now I want to talk in general about refactoring. 155
+<br><br>So what you just did is something called refactoring. 156
+<br><br>Now when you're coding, 157
+<br><br>theres a few different activities you will be involved in. 158
+<br><br>One is coding, the intention is to create new behavior. 159
+<br><br>Common side effects, you're gonna get new bugs and your code is gonna get dirtier. 160
+<br><br>Remember that point where all the rubbish was up here and on user input, and 161
+<br><br>it wasn't clear to understand what that does? 162
+<br><br>That was dirty code, so we decided to refactor. 163
+<br><br>The intention is to make our code cleaner. 164
+<br><br>The side effect can be that you introduce new bugs. 165
+<br><br>Now I don't think I've introduced any new bugs, but you can never be sure. 166
+<br><br>We use the tool actually to extract this method, remember. 167
+<br><br>And that's makes it less likely that we've introduced any bugs, but 168
+<br><br>it's still not impossible and we may have changed the behavior of the game. 169
+<br><br>I don't think we have, but we may have done. 170
+<br><br>I'm hoping we haven't. 171
+<br><br>That's all you can do with refactoring is hope you haven't. 172
+<br><br>Later in the course we might discover something called test driven development 173
+<br><br>which can increase the chances that you refactors don't mess up your code. 174
+<br><br>So refactoring is changing the code for the same behavior. 175
+<br><br>So it's prettier and easier to use. 176
+<br><br>And the other thing you could be doing is bug fixing, which we'll talk about later. 177
+<br><br>Okay, refactor, when you refactor. 178
+<br><br>When you don't fully understand the code, 179
+<br><br>which was where we were at the start of the video, and 180
+<br><br>when not fully understanding the code is preventing you building on it. 181
+<br><br>Not fully understanding your code is kind of okay actually. 182
+<br><br>At the boundary of what you're creating, 183
+<br><br>you're very latest stuff might be a bit messy, but you must cement it down, 184
+<br><br>pat it down, and clear it up before you try and build on top of it. 185
+<br><br>So hopefully that makes sense. 186
+<br><br>You got a bit of a handle on refactoring. 187
+<br><br>You've found a very powerful tool which is that you highlight code and 188
+<br><br>right-click and find in your menus the ability to extract methods. 189
+<br><br>Which is really powerful. 190
+<br><br>Won't always work, but often it will. 191
+<br><br>Our code is much easier to read. 192
+<br><br>The details of RunMainMenu hidden away inside a separate function. 193
+<br><br>I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

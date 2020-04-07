@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey guys Rick and I here back with you for another exciting instructor hang out Rick.
+<br><br>How are you doing.
+<br><br>Hello Ben.
+<br><br>I'm doing quite well.
+<br><br>How are you doing.
+<br><br>I am wonderful thank you so we have got ourselves a little slide here to keep us on track.
+<br><br>First thing we're going to talk about is refactoring and extra steps on the P.C. thank you to Daniel
+<br><br>over on the forum by the way for bringing this up so Rick the man who uses the P.C..
+<br><br>So if you could hop into visual studio we'll look and see how when you want to extract a method in a
+<br><br>visual studio if you just take a few lines of code there and do an extract then we'll see what I wrote
+<br><br>in court.
+<br><br>Right click quick actions and refactoring and then there's one more step that you don't see when Ben
+<br><br>is on his inferior Mac.
+<br><br>And if you're on your superior P.C. you won't see that there's this extract method clicking there and
+<br><br>then you can see a method and then name name it what you like.
+<br><br>Okay.
+<br><br>Like thus Fantastic.
+<br><br>Thank you Rick.
+<br><br>That's cool.
+<br><br>So that is how you do refactoring or extraction of methods on a piece.
+<br><br>Now we've had several of you say why are we doing all this extraction business and this refactoring.
+<br><br>Let me just show you something that's pop into say visual studio just Sherman green.
+<br><br>QUESTION The specific question Bay it is isn't that going to make our scripts bigger and bigger and
+<br><br>bigger and bigger because we've taken one line and turned it into like four or five lines why why not
+<br><br>just leave it there.
+<br><br>Yeah absolutely.
+<br><br>So let me explain what's going on here.
+<br><br>But my video on the left hand side for the moment.
+<br><br>So if we look at start it's really nice that it tells you that it start you just show the main menu
+<br><br>and it hides away the details of show main menu on user input.
+<br><br>We've done a lot of refactoring of extracted show Main Menu run Main Menu check password.
+<br><br>What that means it's all about the impact on the on user input method in this case that on user input
+<br><br>method reads like english if the input menu show the main menu if the else if we're on the main menu
+<br><br>run the main menu.
+<br><br>Otherwise you know if we're on the password screen check for password really simple and Noddy but that
+<br><br>does mean that we end up creating a few extra lines of code because we could have just put all the run
+<br><br>Main Menu code right in.
+<br><br>We could've taken that dumped in there and saved all the bits at the top and bottom really not worth
+<br><br>it.
+<br><br>We want to keep a consistent level of abstraction.
+<br><br>We as we read down the script it wants to get more and more detailed as you get to the bottom.
+<br><br>Yes.
+<br><br>That means you end up with more lines of code but we will see in future sections probably not until
+<br><br>we get into argon assault that you can when you get to a couple two hundred lines of code maybe we can
+<br><br>strip out into separate classes separate code files.
+<br><br>So it's fine to make it bigger.
+<br><br>And when it gets too long we kind of not take the stuff off the bottom and put it elsewhere.
+<br><br>But what we do is we comb the thickness out of the out of the script and separate things out.
+<br><br>But we're not doing that just yet.
+<br><br>So there are solutions.
+<br><br>But keep refactoring it's worth.
+<br><br>Clarity is worth fighting for is what I say it's worth it to have code that reads like what I've got
+<br><br>on the screen.
+<br><br>We spent a lot of time making sure that our variables and our methods and just everything within our
+<br><br>script is named in a way where you know exactly what it is.
+<br><br>And I know there's a lot of programmers who don't do that and they've got the philosophy.
+<br><br>Well I'll just remember what it means but I promise you I guarantee you if you're learning programming
+<br><br>or even if you'd been programmed for a long time give it one or two or three days you come back to your
+<br><br>code and you like what on earth was I trying to do here.
+<br><br>So this level of of rigor really will help you in the long run.
+<br><br>Absolutely.
+<br><br>Make it easy to read your code you can spend a lot more time reading it than you are writing it for
+<br><br>every line you've to write you have to read your code and get the context make it easy to read it's
+<br><br>all about reducing that mental workload awesome.
+<br><br>So what's next on the list.
+<br><br>Take a look on the comments on switch versus if thanks to Jeep for bringing this up GMT says aunt switch
+<br><br>statements a bit cumbersome.
+<br><br>Well have a look a little look on my screen.
+<br><br>I know you can't see it Rick at the moment but that's okay.
+<br><br>Have we done switch statements yes.
+<br><br>Yes we have.
+<br><br>So here's a switch statement and it has to have a break every single statement.
+<br><br>That's the bit that's cumbersome.
+<br><br>But if you accept that and deal with it the good thing about it is it's very consistent.
+<br><br>All of these switch cases here are dealing with the same thing they're dealing with the value of the
+<br><br>level the level that we're on.
+<br><br>So reserve if so when you're doing different logic on different lines so the if statements tend to do
+<br><br>different things on each.
+<br><br>In each particular block where a switch is very much about.
+<br><br>I've got this thing and depending on its value I want to do a bunch of different things.
+<br><br>You switch for that you really want to switch switch.
+<br><br>You know kind of duck and dive between switch and F accordingly.
+<br><br>So that's that's wonderful.
+<br><br>There's a topic as well that we're going to talk about in terms of the speed of the course itself.
+<br><br>And we see a lot of people across all of our courses we've got a dozen courses and we get this over
+<br><br>and over some people saying the people in the videos talk too fast or slow.
+<br><br>And sometimes people are saying all the overall pace of the entire course is too slow.
+<br><br>And we see if there's roughly equal people saying it's too fast as saying too slow then we've got it
+<br><br>about right and it's okay if you're finding it either those two to fossil too slow.
+<br><br>There are some techniques you can do within the video player itself.
+<br><br>You can slow down the speed to say point 75.
+<br><br>If someone's speaking too fast maybe English isn't your first language.
+<br><br>You can read the closed captions that we have on all of the videos in this course you can pause the
+<br><br>video take a little bit of time you can go do some extra reading.
+<br><br>Sometimes it's because you don't quite understand the concept because it's new to you.
+<br><br>So take the time play around with it.
+<br><br>Get your hands dirty.
+<br><br>You don't have to follow this course if it's a 10 minute video.
+<br><br>It doesn't have to take 10 minutes that 10 minute video can take you an hour to go through and really
+<br><br>understand this is about learning and about knowledge.
+<br><br>And if you're finding the cause is maybe too slow for you perhaps you've got some experience already
+<br><br>in programming or you've played around with the unity a bit you've been through our first course.
+<br><br>It's OK to speed it up like turn the player up faster make sure that you take the time to do the challenges
+<br><br>and you practice and you you know you learn by practicing and by doing so it's important to do that.
+<br><br>But if you want speed up you can if you want to skip a section that's okay so long as you missing anything
+<br><br>that we've talked about in You're really sure really sure that you comfortable doing that generally
+<br><br>follow each of the lectures speed them up a little bit if you need to but try to go through each of
+<br><br>the steps as we go through them.
+<br><br>Yeah and on the topic of speeding things up let me just show you something.
+<br><br>Share my screen again.
+<br><br>I'm gonna hop in.
+<br><br>This is what you would be like.
+<br><br>Oh not you but this is what you'd be looking at when you're taken a video.
+<br><br>So Rick's mentioned changing the speeds in the car and all those controls are down here.
+<br><br>Or they were at the time of recording on udemy so you can change.
+<br><br>You can change the quality if your if your full screen and your broadband is fast enough you should
+<br><br>be to get 10 ATP on most of our videos.
+<br><br>Now your captions you speeds down here may vary your mileage may vary depending on the player you're
+<br><br>using but the better wanted to show you is if you're a fairly experienced and you want to skip a lecture
+<br><br>one of your big questions what Cody Wright in this lecture.
+<br><br>So if you go to the lecture resources every lecture has a lecture project changes link it's been painstakingly
+<br><br>linked to our version control upload it to the Internet so that you can see go looking for the dot see
+<br><br>scripts his hacker don't say yes and you can see in this integration challenge video we took out this
+<br><br>line of code in the red here and we added these green lines so you can see exactly what we did.
+<br><br>Now this is a big lecture.
+<br><br>We did a lot in this lecture.
+<br><br>So it's a little harder to follow but if we went to a simpler video like maybe creating a windscreen
+<br><br>again what did we do.
+<br><br>We just took out that line of code and we added a bunch of stuff about windscreens.
+<br><br>OK so you can see exactly what's going on.
+<br><br>The other thing that you can do here is that you can when you're on a particular lecture terminal hacker
+<br><br>creating a windscreen you can click browse files and when that comes up you're going to better download
+<br><br>the project at this stage here clone or download download as a zip or later you could learn how to clone
+<br><br>it into your own source control.
+<br><br>So this means you can download our project as it isn't have a poke around at every stage of every single
+<br><br>video.
+<br><br>So that's pretty cool.
+<br><br>And the way you can use that is you can either look to see what changed and then compare that to what
+<br><br>you've done or you can copy.
+<br><br>So if you say okay I just want to copy everything that Ben did in this lecture.
+<br><br>Copy and paste straight into my script or you can read the entire script.
+<br><br>I can grab the entire project.
+<br><br>Once you start to make your own changes to your project you won't want to grab everything completely
+<br><br>you can grab chunks of it and put it in there.
+<br><br>If you if you think you might have missed something or you want to double check that you've got it as
+<br><br>we've done it.
+<br><br>Absolutely.
+<br><br>OK.
+<br><br>Let's dive over and take a look see where we are.
+<br><br>So playback speeds close close captions and self pacing done how to use our spiffy calls repel and get
+<br><br>hub done about deleting your library folder.
+<br><br>Thank you for pointing this out.
+<br><br>Shade Wolf.
+<br><br>So if you delete your library folder and then you reopen your project you're going to find that it will
+<br><br>be on no scene when you open it.
+<br><br>So we only do as you go find the senior and open and reopen it.
+<br><br>It's as simple as that but really important point.
+<br><br>Thank you.
+<br><br>Shade Wolf on the forum for that and keep sharing keep sharing screenshots video clips are coming next
+<br><br>in the next section we'll be asking you to share video clips.
+<br><br>So at least for now start sharing screenshots.
+<br><br>I know it's a simple game but if you've done something cool.
+<br><br>Share a screen shot even if you haven't done something cool it's good to get in the habit of sharing
+<br><br>your work.
+<br><br>There's a general like funnel for getting your work out there.
+<br><br>People the lowest friction for somebody is to see a screenshot of yours and act on it.
+<br><br>Then to watch a short video and then eventually if you've enticed them with that they might watch your
+<br><br>20 cent and they might actually play your game right.
+<br><br>And we've had some people ask how do I share a screenshot.
+<br><br>There's a bunch of ways to do it that we've talked about.
+<br><br>So if you're on Windows the simplest thing to do is use the snipping tool just search for snipping tool
+<br><br>on windows and you'll see it then use highlight drag and copy and put that into paste that into the
+<br><br>forum post or q and a post on the Mac what's the best way to do that.
+<br><br>Well I personally use snags.
+<br><br>It's not free but if you guys on a Mac you're probably used to not free.
+<br><br>So snag it is a very very cool tool.
+<br><br>And I assign A.G. I.T. I would take a look at that.
+<br><br>I'll just bring it up.
+<br><br>There are plenty of other ways to do it for free just Google for free screenshot on a Mac but snag it
+<br><br>is no longer free.
+<br><br>But I think it's worth it.
+<br><br>So I would consider that as a more professional way of screen shotting editing and then even uploading
+<br><br>your screenshots to Dropbox or Google Drive or whatever.
+<br><br>So take a look at that.
+<br><br>And I think Rick that said let's have a look at the slide.
+<br><br>Are we there.
+<br><br>Yeah.
+<br><br>The final thing to say is we would love a review it's really really helpful if you leave us a review
+<br><br>if you don't mind.
+<br><br>You can adjust that review later if you think we've duped you and asked you for a review too early.
+<br><br>I apologize.
+<br><br>I'm sorry Udemy ask you for reviews so much so early on in the course we can't control that.
+<br><br>So we rarely ask you for reviews but in the on hang out we might say hey if you haven't dropped one
+<br><br>yet drop a review be great and we would.
+<br><br>You can change it later if you if you think the end of the course.
+<br><br>And your feedback.
+<br><br>We read every line of feedback every question that you guys send.
+<br><br>We don't necessarily have time to answer every single thing we do our best but we read everything I
+<br><br>say.
+<br><br>So if you've got feedback about which they did this I wish they did that we read that we listened to
+<br><br>it and we aim to make the course better for you.
+<br><br>So please do leave reviews and feedback.
+<br><br>It's super helpful.
+<br><br>Thank you guys and thank you for hanging out with us again.
+<br><br>And we will see you in the next one.
+<br><br>See you soon.
+	</p>
+  </BODY>
+</HTML>

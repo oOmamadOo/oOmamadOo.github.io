@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND] [BLANK-AUDIO] Hey guys, in this video we're gonna organize it so 2
+<br><br>that our thrusting sounds stops immediately that we hit the wall of 3
+<br><br>the success path and we get a nice cool explosion sound. 4
+<br><br>So you'll learn how to deal with multiple audio clips. 5
+<br><br>Quite excited to be doing this one with you because it's going to make the game 6
+<br><br>come alive a lot more with some more sounds. 7
+<br><br>So there are three sound effects that we have provided for 8
+<br><br>you in the downloads of this lecture if you pop them into your game, 9
+<br><br>then you're gonna have three new things to play with. 10
+<br><br>Now it's right at this point that our assets have got about as messy I want 11
+<br><br>them, so we will cover off how to organize assets very shortly. 12
+<br><br>But for now let's stay focused on the sound. 13
+<br><br>So the first thing is that the rocket had previously, against the audio source, 14
+<br><br>we had a default clip here, this 318668 thing. 15
+<br><br>A very large audio clip. 16
+<br><br>We actually don't need a default clip against the audio source in the new 17
+<br><br>way we're going to do things. 18
+<br><br>So I'm gonna disconnect this audio clip, 19
+<br><br>this default audio clip from the audio source. 20
+<br><br>And I'm actually gonna delete that audio clip because it's quite large. 21
+<br><br>It's, well before compression,. I think it was several megabytes. 22
+<br><br>It says somewhere, here you go, 12 megabytes. 23
+<br><br>So I'm gonna delete that thing because Rick has provided us with 24
+<br><br>a new rocket thrust sound. 25
+<br><br>If you click on it in Project Assets, and click Play, [NOISE] you can hear it there. 26
+<br><br>That's actually his voice, which has been recombobulated, which is a technical term, 27
+<br><br>using Audacity. 28
+<br><br>You've also got a jingle chime for when we succeed in the level. 29
+<br><br>[NOISE] Lot of fun, and we've got a death explosion. 30
+<br><br>Also, Rick's recombobulated voice. 31
+<br><br>[SOUND] So it's nice to have a bit of DIY stuff going on here. 32
+<br><br>It shows how accessible and easy it is to create some basic sound effects yourself. 33
+<br><br>So thank you very much for that, Rick. 34
+<br><br>So we have three sound effects in total now. 35
+<br><br>And we're gonna have none of them actually linked as default audio clips on 36
+<br><br>the rocket ship. 37
+<br><br>All right and we're gonna change the sounds eight different ways. 38
+<br><br>So I'll show you one and then I'll challenge you to do two. 39
+<br><br>So the way we're gonna do it now is we're actually gonna expose as a design lever or 40
+<br><br>parameter here something called an audio clip a new type for us. 41
+<br><br>And I'm just gonna call this main engine. 42
+<br><br>So if we make something of type audio clip, a member variable 43
+<br><br>called main engine, and we serialize it out to the inspector and save our work. 44
+<br><br>Then when we go back and inspect the rocket ship consciously, 45
+<br><br>bear in mind that we are dealing with the rocket ship instance here, and 46
+<br><br>everything we are doing Is gonna need to be applied back to the prefab. 47
+<br><br>If you don't like that, well, you're welcome to apply it back now, and go and 48
+<br><br>work on the rocket ship prefab down in Assets. 49
+<br><br>Either way, as long as you know what you're doing, that's the key. 50
+<br><br>I'm gonna work on the prefab. 51
+<br><br>So, the prefab wants to know about a main engine audio clip. 52
+<br><br>So now we can go and choose that, Rocket Thrust. 53
+<br><br>Okay, now that's done absolutely nothing in a way but 54
+<br><br>it's given our code a reference to that main engine audio clip. 55
+<br><br>Right now, in my current state there will be no sound, 56
+<br><br>because there's no default audio clip. 57
+<br><br>So in the code, when we say audio source and 58
+<br><br>we say audiosource.play, it's not gonna work cuz there's no default click. 59
+<br><br>So this is where things are going to change a little bit. 60
+<br><br>What we're gonna do is we're gonna use a different method called Play One Shot. 61
+<br><br>Like this and then you provide it with the clip name. 62
+<br><br>And this is how we're gonna be able to deal with multiple Audio clip. 63
+<br><br>So audioSource.PlayOneShotmainEngine. 64
+<br><br>Now before I carry on, I don't like the look of this code whatsoever now. 65
+<br><br>It's doing too much, that method is not easy to read. 66
+<br><br>So firstly,. I'm gonna check that my code works. 67
+<br><br>There you go, Rick's fantastic new sound. 68
+<br><br>Now if we just look at that in some more detail, when you look at the rocket ship 69
+<br><br>at play time it never appears to have an audio clip. 70
+<br><br>Okay we're just playing the audio clip that we've referenced from the code, 71
+<br><br>this main engine audio clip. 72
+<br><br>All right so it's perfectly all right to have a audio source with no default audio 73
+<br><br>clip is the bottom line of that. 74
+<br><br>Now, this code does too much I would argue. 75
+<br><br>What I want to do is say, okay if we hit space, then what are we doing? 76
+<br><br>We are thrusting. 77
+<br><br>And I would say something like that. 78
+<br><br>Or no that's not a good name for a method. 79
+<br><br>Why not? 80
+<br><br>Because it's a process. 81
+<br><br>What you want to do is apply thrust or just thrust. 82
+<br><br>But if we call it thrust, we will conflict with this name. 83
+<br><br>Now, this name. 84
+<br><br>Not clear anymore. 85
+<br><br>In update, with thrust and with rotate, well we don't necessarily. 86
+<br><br>What we do is we respond to thrust input and 87
+<br><br>while I'm there, or let's try and name it correctly, respond to thrust input. 88
+<br><br>When you do a rename by the way, where the other method of renaming is off-screen, 89
+<br><br>just double check, make sure it's worked right. 90
+<br><br>Make sure you're doing Command or. Ctrl+R twice and 91
+<br><br>respond to rotateInput. 92
+<br><br>So I think the update now reads more clearly. 93
+<br><br>If we're alive respond to thrust and rotation input, nice. 94
+<br><br>Then we can click on that, come down. 95
+<br><br>Respond to thrusting, but what'll we do? 96
+<br><br>Well, if we hit Space, we apply thrust. 97
+<br><br>Okay, and if we're not hitting space then stop the audio source. 98
+<br><br>This is quite important by the way, 99
+<br><br>you stop the audio source the moment you let go of the space bar, okay. 100
+<br><br>And that's so the L should be. 101
+<br><br>If you're not hitting space, you're stopping the audio. 102
+<br><br>Let's try it and just see. 103
+<br><br>It was just a simple refractor, so in renames it should work fine. 104
+<br><br>Great, okay. 105
+<br><br>So, that's very clear, and then ApplyThrust does a force. 106
+<br><br>And then it says play the audio if it's not already playing. 107
+<br><br>I think that's pretty clear now. 108
+<br><br>And don't be afraid to create extra methods like this as necessary. 109
+<br><br>Okey-dokey, so let's recap that and then put you into a challenge. 110
+<br><br>An alternative way of playing audio. 111
+<br><br>You still have an audio source but you don't need a default clip. 112
+<br><br>You specify the clips as SerializeField, design levers. 113
+<br><br>And then you use audioSource.PlayOneShot(clipName). 114
+<br><br>And as usual I've linked you to that in the resources. 115
+<br><br>So I want you to set up your sounds. 116
+<br><br>Your death should have a unique sound. 117
+<br><br>The level load should have a cool sound as well. 118
+<br><br>Thrust sound should stop playing in either case at the end of a level, 119
+<br><br>in the moment you die or the moment you hit the landing pad. 120
+<br><br>And your level should feel coherent and complete as you do this. 121
+<br><br>So spend a little bit of time just getting everything to your liking. 122
+<br><br>So go ahead pause the video, get your death and level load sounds working out. 123
+<br><br>All right, welcome back. 124
+<br><br>So what we're gonna need is a couple more design levers for a start. 125
+<br><br>But as they're so similar to this,. I'm just gonna paste a couple in, and 126
+<br><br>say success. 127
+<br><br>And death and why am I giving them such short names? 128
+<br><br>Because it's kind of clear in the inspector if we look at the rocket ship. 129
+<br><br>Again, I'm gonna work on the prefab. 130
+<br><br>Just easier for me to think about because. I want all rocket ships in all levels to 131
+<br><br>be like this. 132
+<br><br>If we succeed, you have jingle chime. 133
+<br><br>And if you die, you have death explosion. 134
+<br><br>And it tells you that it's looking for a thing of type audio clips. 135
+<br><br>So you don't really need to say anything more than just main engine success death. 136
+<br><br>Okay, I'm going to deal with the death one first. 137
+<br><br>So what do we do here? 138
+<br><br>We set the state as dying. 139
+<br><br>We have an in vote to load the first level after a second, but 140
+<br><br>we want the death sound to happen immediately. 141
+<br><br>So we're gonna put audioSource.PlayOneShot(death); 142
+<br><br>right in here before we load the level. 143
+<br><br>Now straightaway I'm thinking this is too much in one method. 144
+<br><br>Well I can help with that by, well I say this is too much in one method. 145
+<br><br>This is too much in one method. 146
+<br><br>The whole onCollisionEnter has got too complicated. 147
+<br><br>But we don't need to say hit something deadly anymore, 148
+<br><br>because you can see that in the state inside the inspector. 149
+<br><br>So let's play the death sound, when we hit something deadly. 150
+<br><br>Now let's see how this works. 151
+<br><br>[NOISE] Good, but. 152
+<br><br>[NOISE] If you listen carefully, 153
+<br><br>the thrust sound if you hold down your thrust is continuing. 154
+<br><br>So what we're gonna need to do is stop the sound. 155
+<br><br>If I can type straight. 156
+<br><br>.Stop just before we play the death sound. 157
+<br><br>We want to specifically stop the thrusting sound. 158
+<br><br>All right, and that's just a design choice there. 159
+<br><br>So by the way, if you didn't complete the challenge, 160
+<br><br>maybe you couldn't quite work out where to put your code. 161
+<br><br>I want you to stop again now, given that you've seen me how to do this for death. 162
+<br><br>And definitely go get it done. 163
+<br><br>Definitely [LAUGH] sorry. 164
+<br><br>Go and get it done for the finished state. 165
+<br><br>Okay, so when you get it finished, 166
+<br><br>I want it to load the success sound after stopping the engine thrusting. 167
+<br><br>So go ahead as the second challenge if you didn't do it the first time and 168
+<br><br>do that now. 169
+<br><br>All right, so a bit of copy and paste of code here. 170
+<br><br>It's okay in this case because we are making it a separate decision for 171
+<br><br>each condition of finish and death as to what we want to do. 172
+<br><br>We want to stop the current sound and we want to play success. 173
+<br><br>All right, that's very likely to work, isn't it? 174
+<br><br>I'm not even gonna test it at this stage. 175
+<br><br>I'm gonna confidently proceed. 176
+<br><br>And this method is too complicated. 177
+<br><br>So what we need to do is, 178
+<br><br>we need to do something like take all of this and refactor it out. 179
+<br><br>StartDeath or so 180
+<br><br>a success sequence. 181
+<br><br>Let's try again. 182
+<br><br>Start, capital S. 183
+<br><br>I think it's all the s's back to back that have confused me. 184
+<br><br>Okay, and I'm gonna refactor out this stuff here, in the default or 185
+<br><br>the death method and say Start Death sequence. 186
+<br><br>Now I wan't success in death to be in the same order as I listed above, so 187
+<br><br>I'm just gonna switch these methods around. 188
+<br><br>Of course, you could have just done them in the opposite order. 189
+<br><br>All right, fantastic, so now on collision and 190
+<br><br>to again is still easy to read, keeping your code easy to read. 191
+<br><br>If you're not alive, get out of here. 192
+<br><br>Otherwise check the tag. 193
+<br><br>If it's friendly do nothing. 194
+<br><br>If it's finished stop success sequence. 195
+<br><br>If it's otherwise, start the death sequence. 196
+<br><br>And then it goes in and says what to do. 197
+<br><br>All right, we just want to keep our code super clear all the time. 198
+<br><br>Let's just check this works, and we are done. 199
+<br><br>So firstly, success, the hardest one. 200
+<br><br>If there's a choice between doing what's hard and what's easy, 201
+<br><br>I would suggest I would suggest doing what's hard in general in life. 202
+<br><br>So if you do what's easy life will be hard and 203
+<br><br>if you do what's hard life will be easy. 204
+<br><br>So if you take the stairs instead of the elevator, it's hard at the time, but 205
+<br><br>life becomes easier when you're older cuz your fitter, for example. 206
+<br><br>[SOUND] Boom okay that one worked. 207
+<br><br>[SOUND] Now I just want to listen and make sure the rocket stops. 208
+<br><br>[NOISE] Difficult, kind of difficult to tell. 209
+<br><br>[NOISE] Because the death sounds sounds so 210
+<br><br>much like it's got the rocket in the background. 211
+<br><br>You're thrusting in the background, but 212
+<br><br>it will be because it says audioSource.stop here. 213
+<br><br>So I'm very confident it will be working. 214
+<br><br>If you want to test that by the way, 215
+<br><br>you could temporarily make the main engine say the jingle, so it just keeps playing. 216
+<br><br>And then you get, [SOUND] [SOUND] and 217
+<br><br>you hear that the jingle sound stops, right? 218
+<br><br>Even if the jingle happens just before you hit the wall. 219
+<br><br>Let's just test that. 220
+<br><br>[SOUND] You see, so. I made the jingle just before the wall, 221
+<br><br>held the thrusting button down, and it did stop the sound, all right? 222
+<br><br>So I'll just go fix that back up on the prefab. 223
+<br><br>We want success to be success, but 224
+<br><br>we want main engine to be Thruster, that's fine. 225
+<br><br>And I think what I've done there is. I changed that on the rocket ship, 226
+<br><br>instance for testing, so just change that instance back to the prefab. 227
+<br><br>So the instance is all behaving itself. 228
+<br><br>Final check and we're done. 229
+<br><br>So there's a useful little tip there for you. 230
+<br><br>Don't rely on, it should be okay. 231
+<br><br>Just go ahead and test it. 232
+<br><br>[SOUND] Okay, that sounds like the thrust is still going, but it's not. 233
+<br><br>It's just that part of the death explosion sounds very much like the thrust. 234
+<br><br>All right, fantastic, congratulations. 235
+<br><br>I'll see you in the next video.
+	</p>
+  </BODY>
+</HTML>

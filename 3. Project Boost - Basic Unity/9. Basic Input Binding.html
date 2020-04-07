@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys.. In this video, we're going to work out how 3
+<br><br>to access keyboard input, and we're going to set up virtual control, 4
+<br><br>in that we're going to have logs that show us that we're trying to rotate left, 5
+<br><br>right, or thrust, laying the foundation for actually controlling our ship. 6
+<br><br>Because we're making full use of. Unity's out of the box features, 7
+<br><br>this is gonna get surprisingly fun surprisingly quickly. 8
+<br><br>And we're about to get coding again, which is awesome news. 9
+<br><br>So let's click on the rocket ship. 10
+<br><br>In order for this rocket ship to do anything, 11
+<br><br>we're gonna need to imbue it with another component. 12
+<br><br>Now, you might already, by immersion if you like, be getting the idea that 13
+<br><br>things in Unity are comprised of multiple building blocks called components. 14
+<br><br>So a game object, all of these things in the hierarchy and 15
+<br><br>in the scene are game objects. 16
+<br><br>A camera, a rocket ship, the directional light, the launch pad, the terrain, 17
+<br><br>they're all game objects. 18
+<br><br>Every single one of them has a transform, because that tells it where it 19
+<br><br>lives in the scene, which way it's facing, and how it's scaled, how large it is. 20
+<br><br>But the camera is composed of a camera, and a graphical user interface layer, and 21
+<br><br>a flare layer. 22
+<br><br>There's also some other stuff we don't need to understand. 23
+<br><br>The rocket ship at the moment, at the top level, is just a position in the world. 24
+<br><br>And then it has a bunch of mesh, paper mache, cubes, and 25
+<br><br>a dodgily squished cone that turn it into something that looks like something. 26
+<br><br>Now in order for the ship to actually exhibit any behavior, and to demonstrate 27
+<br><br>this I'm gonna lift it off the launch pad a little bit, we need to add a component. 28
+<br><br>And that component is a rigid body. 29
+<br><br>So you click Add Components, start typing rigid body, okay? 30
+<br><br>Not the 2D version, but the 3D version, just called Rigidbody. 31
+<br><br>When we add that, if you just click play, with your rocket off the launch pad, 32
+<br><br>look what happens, very satisfying. 33
+<br><br>It just falls back to the pad. 34
+<br><br>Now my camera sucks at the moment, a little bit, so 35
+<br><br>I'm just gonna pull it back. 36
+<br><br>And I'm gonna rotate it up a little bit, and 37
+<br><br>just revisit the game view, also probably lift it up a little until, 38
+<br><br>there you go, that's a bit better, so the rocket falls to the launchpad. 39
+<br><br>Now why does it do that? 40
+<br><br>Because it has been imbued with a mass of one unit, notionally one kilo. 41
+<br><br>Doesn't really matter at the moment. 42
+<br><br>No point in changing it. 43
+<br><br>Drag is to do with how much viscosity the air has, 44
+<br><br>how syrupy the air is as it falls through. 45
+<br><br>The angular drag is the same deal but for rotation. 46
+<br><br>We don't need to change any of this stuff right now and 47
+<br><br>eventually we'll learn about all of these things. 48
+<br><br>But for now, we just add a Rigidbody. 49
+<br><br>If you mess around with these settings, no problem, you can always reset them with 50
+<br><br>the little cog at the top right of Rigidbody and go to Reset. 51
+<br><br>We're gonna use default. Rigidbody settings. 52
+<br><br>So sticking to Rigidbody allows Unity to do a lot of magic and it falls down and 53
+<br><br>it hits that launch pad. 54
+<br><br>If it falls through your launchpad for 55
+<br><br>any reason, it's because you don't have a collider on your launchpad. 56
+<br><br>Either recreate a new cube or add a component. 57
+<br><br>But the important thing is that you have this Box Collider component on 58
+<br><br>the launchpad. 59
+<br><br>If we look at the launchpad for a second and we turn off its mesh renderer, 60
+<br><br>it will disappear. 61
+<br><br>But in scene view, you're still going to see this green outlined box, 62
+<br><br>this cage that shows you the collision extent. 63
+<br><br>This is, this green box of the launchpad, which is its box collider, 64
+<br><br>is colliding with, and if we click on the rocket it's got a bunch of colliders, 65
+<br><br>and specifically it's colliding with the port and starboard booster colliders. 66
+<br><br>Now, if we select both the port and starboard game objects and 67
+<br><br>turn off their mesh renderers they'll become invisible, but 68
+<br><br>you can see they've come automatically with colliders of the same size. 69
+<br><br>It's these green boxes hitting the green box that surrounds the launchpad 70
+<br><br>that is causing the ship to stop moving, okay? 71
+<br><br>That's physics collisions being done for us, very cool. 72
+<br><br>So we play the game, it falls down, hits the pad, fine. 73
+<br><br>First thing we need to be able to do is make the rocket fly. 74
+<br><br>Let's do that. 75
+<br><br>Have we got time in this video? 76
+<br><br>Yeah, I think we have. 77
+<br><br>Let's do it. 78
+<br><br>So you go to the top level ship. 79
+<br><br>We always attach our behavior, well, 80
+<br><br>we generally attach our behavior to the top level object. 81
+<br><br>Okay, we've given it a Rigidbody, that's necessary. 82
+<br><br>We are now gonna create our first script. 83
+<br><br>So you can create a script, and we've done this lots of times, but 84
+<br><br>one way is just to type a name. 85
+<br><br>It's gonna go,. I can't find a component called rocket. 86
+<br><br>So let's create one. 87
+<br><br>New Script, rocket, there it goes, awesome. 88
+<br><br>Now let's go into the code. 89
+<br><br>I'm actually going to start coding some behavior. 90
+<br><br>So the first thing that I would want to do is to make sure that I can detect 91
+<br><br>when I'm pushing a key. 92
+<br><br>Now, as a very quick aside, and. I won't spend too long on this. 93
+<br><br>We are going to bind our keys directly. 94
+<br><br>Just gonna turn on my pen. 95
+<br><br>We're gonna bind our keys directly. 96
+<br><br>So if this is the space bar, which is gonna be our thrust, 97
+<br><br>we're gonna bind that directly to the thrusters on the rocket, okay? 98
+<br><br>There is, in Unity, the concept of a virtual input layer, 99
+<br><br>which we just don't need to get into at the moment. 100
+<br><br>It's very cool, it lets us do lots of cool stuff. 101
+<br><br>It lets the player change the keys. 102
+<br><br>It lets you deploy to mobile easily, yada yada yada. 103
+<br><br>This is called the cross platform input, or virtual input layer. 104
+<br><br>Not yet, let's just keep things simple for now. 105
+<br><br>Okay, so in the spirit of keeping things simple, how are we gonna process input? 106
+<br><br>Well, firstly we need to do it every frame. 107
+<br><br>Now, in the previous project we had these. Start bottles revving on our shore, 108
+<br><br>these Start messages. 109
+<br><br>At the start of the game, every single frame we get an Update called. 110
+<br><br>How many frames do we have per second? 111
+<br><br>Depends on the power of your computer and the complexity of your scene. 112
+<br><br>Why don't we get some idea? 113
+<br><br>Print("Update"). 114
+<br><br>If you just have a play, use these print statements. 115
+<br><br>Print("Update"), go to the game, play the game, click in the console. 116
+<br><br>And the very act of printing these updates will be slowing things down, but 117
+<br><br>you can see we've still got the best part of 100 updates, or frames per second. 118
+<br><br>You can also click on stats at the top right of game window, and 119
+<br><br>it will actually tell you, here you go, graphics 75, 80 frames a second. 120
+<br><br>The very act of printing update is probably slowing that down, so if you 121
+<br><br>remove that and play again with stats enabled you'll see the frame right here. 122
+<br><br>It's actually not much different, so there you go, that proved that wrong. 123
+<br><br>All right, anyway, the point is inside Update, 124
+<br><br>we're gonna need to ask the question, are there any keys down? 125
+<br><br>Inside Update, we're gonna want to process input. 126
+<br><br>I advocate keeping your Update method very clear and simple, so 127
+<br><br>I'm gonna write ProcessInput() wishfully as if it existed. 128
+<br><br>And as we've done before, I'm gonna. Quick Fix or Quick Fixes and Refactoring, 129
+<br><br>generate the method, delete the word private for now, or we can leave it for 130
+<br><br>this section. 131
+<br><br>Let's start leaving privates in. 132
+<br><br>That way, because it's gonna do it for us, put a private. 133
+<br><br>And yes, we could mess around in the preferences of Visual Studio and 134
+<br><br>get rid of them. 135
+<br><br>But let's leave them in. 136
+<br><br>Then messages will be really clear. 137
+<br><br>These guys are messages. 138
+<br><br>They're called from the outside. 139
+<br><br>These private methods can only be called from our own code, all right, 140
+<br><br>so ProcessInput calls here. 141
+<br><br>There's no harm in private, it's not doing any harm, let's keep it there. 142
+<br><br>This is how we do input. 143
+<br><br>What we're gonna do is we're gonna ask a question about the key that we have 144
+<br><br>pressed. 145
+<br><br>We're gonna say if input.GetKey, 146
+<br><br>now there's a difference between GetKey and GetKeyDown. 147
+<br><br>GetKey applies all the time, and GetKeyDown only, so 148
+<br><br>like I was saying, think auto-fire and 149
+<br><br>GetKeyDown only returns true when you first start pressing the key down. 150
+<br><br>So that would be for like a one-off fire or a jump or something like that. 151
+<br><br>In our case, we want GetKey. 152
+<br><br>All right, now I know that you don't really understand why we're doing 153
+<br><br>input dot and you're still gonna have to just bear with me for a little bit, okay. 154
+<br><br>We'll start to get to what this when we understand what classes as a holder. 155
+<br><br>But if you just use input.GetKey, you can now say KeyCode, now that's an enum. 156
+<br><br>We've seen enums, there's a built-in enum, KeyCode.Space. 157
+<br><br>So this is the structure we want. 158
+<br><br>If input.GetKey(KeyCode.Space), let's just check. 159
+<br><br>Space pressed. 160
+<br><br>So the big part of the battle is working out that this is what you need to do. 161
+<br><br>Specifically, this is how you go get the input. 162
+<br><br>Save that script. 163
+<br><br>Make sure the rocket script is attached to the rocket and 164
+<br><br>let's hit the space key and immediately we get very, very, very quickly, 165
+<br><br>like a hundred logs only when. I'm holding the key down. 166
+<br><br>We get a load of logs coming in, 167
+<br><br>saying the space key is bring pressed every frame, wicked. 168
+<br><br>So, to finish this video off,. I'd like you to create your rotation keys. 169
+<br><br>Pushing A should repeatedly print Rotating left. 170
+<br><br>Pushing D should do the same for right. 171
+<br><br>You should be able to thrust and 172
+<br><br>rotate at the same time as far as the console logs are concerned. 173
+<br><br>The ship won't move, of course, at this point. 174
+<br><br>And you should not be able to rotate both ways at the same time. 175
+<br><br>So it should be one or the other. 176
+<br><br>So it's all just about getting your if statements right, okay? 177
+<br><br>Pause the video. 178
+<br><br>See if you can get the right if statements or switch if you prefer. 179
+<br><br>But I'm gonna use if for this, and I'll see you in a moment. 180
+<br><br>All right guys, welcome back. 181
+<br><br>So what we're gonna do is we're gonna say, if you hit space, then, well, 182
+<br><br>instead of saying Space pressed,. I'm gonna say, Thrusting. 183
+<br><br>Okay, that's fine. 184
+<br><br>At any point now, as a separate if statement, and 185
+<br><br>I could make a note here, can thrust while rotating. 186
+<br><br>So people will say why do you do a separate if? 187
+<br><br>And now I'm just gonna take this structure, 188
+<br><br>paste it in without the comment for. KeyCode.A, enum KeyCode.A. 189
+<br><br>So this is a function of course,. GetKey, or input.GetKey is a function. 190
+<br><br>Input's just like, it's actually called a class but 191
+<br><br>it's like a library of functions, one of which is GetKey, and 192
+<br><br>if this thing evaluates to true then we're gonna print Rotating left. 193
+<br><br>And then else, this is the key here, if and 194
+<br><br>then we'll just take all of this I think, 195
+<br><br>Input.GetKey.D, then we're Rotating right, 196
+<br><br>and then we need to get all our brackets sorted. 197
+<br><br>And we're in good shape. 198
+<br><br>So you ask one question, am I pressing space, and 199
+<br><br>regardless of whether you are or not, you then ask the mutually exclusive question, 200
+<br><br>am I pushing A or D for rotating left and right? 201
+<br><br>So let's just check this carefully. 202
+<br><br>If I hold down A,. I get Rotating left repeatedly. 203
+<br><br>Logging with my collapse mode on. 204
+<br><br>If I now hold down D at the same time I get nothing, which is good. 205
+<br><br>If I let go of A I get. Rotating right only. 206
+<br><br>And now if I push A again it actually switches back to A. 207
+<br><br>So A is taking precedence if. I have both keys down, and 208
+<br><br>that's because it comes first in the if statement. 209
+<br><br>That's perfectly normal. 210
+<br><br>That's fine, at least they're not both working at the same time. 211
+<br><br>Now, let's clear the log and then try holding down A for example, whilst, 212
+<br><br>remember you need to click into the game window for this to work. 213
+<br><br>Hold down A, push thrust, 214
+<br><br>thrusting's working and rotating left is working at the same time. 215
+<br><br>And letting go of thrust works, and if I was rotating right and thrusting, yep, 216
+<br><br>I'm just watching the log entries, that works. 217
+<br><br>Final thing, if I'm thrusting can I rotate left and right? 218
+<br><br>Yes, awesome, so 219
+<br><br>I've checked my input logic without even getting the ship to move, great news. 220
+<br><br>Here is the code that we used to do that. 221
+<br><br>I hope that that makes sense to you. 222
+<br><br>The only slight weirdness is that A takes a little bit of preference over D. 223
+<br><br>But that is absolutely fine. 224
+<br><br>And I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

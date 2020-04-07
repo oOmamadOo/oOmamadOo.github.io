@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Up next we want to be able to respond to the user input so obviously if the user types one we want to
+<br><br>do something about it.
+<br><br>But how are we going to know that the user has typed one in the first place.
+<br><br>That's the subject of this video so let's have a quick look at our code.
+<br><br>We have got three different two different types of functions three functions at the moment.
+<br><br>One we're not using update and two different types actually one here we have a function that is called
+<br><br>From the outside unit he calls our code and gets us going in it.
+<br><br>So basically we write code in here but it doesn't happen.
+<br><br>This stuff doesn't happen until start gets called by the engine then this show may menu which we call
+<br><br>ourselves from within our own code and then update we're back to the type of function that's called
+<br><br>from the outside every single frame maybe 60 maybe 100 times a second.
+<br><br>We're not going to use update but you get the idea.
+<br><br>So I want to make a distinction for you.
+<br><br>Functions those messages I put the verses there because frankly they're both functions but in unity
+<br><br>parlance in unity speak that is they tend to call them messages in the documentation so that's what
+<br><br>I'm going to use.
+<br><br>So functions get called from within the island of your code for our purposes this is like show main
+<br><br>menu we write showmen menu and then we call schimming Menu whereas messages typically get sent from
+<br><br>outside your code base.
+<br><br>Like start and like update.
+<br><br>All right let's look at this a different way.
+<br><br>Imagine you're on your island now when ever you're writing code C sharp or any other language you're
+<br><br>typically interfacing with other people in two ways actually.
+<br><br>Firstly in terms of the messages you receive coming in to prompt you to do something even the most basic
+<br><br>program needs to be told to start.
+<br><br>But also in terms of the things that you're sending out like terminal right line we don't know the implementation
+<br><br>of terminal right line.
+<br><br>We're just hoping it's going to do the job for us in the same way as the unity engine is hoping we're
+<br><br>going to do the job of doing whatever needs doing start.
+<br><br>All right so you're kind of in the middle.
+<br><br>You are on an island if you like but there is a wider world out there.
+<br><br>So I want you to think of messages as both things that functions are get called from the outside.
+<br><br>One way to look at this is the messages as Bogles analogy so here is our start bottle and it doesn't
+<br><br>have any content.
+<br><br>There's actually nothing inside it.
+<br><br>The bottle itself is the message and it's just cool.
+<br><br>Oh just back up one.
+<br><br>It's just called Start.
+<br><br>And what that means is that when there's rocks up on your shore when start gets cooled it's your job
+<br><br>to say what to do.
+<br><br>You write your lines of code in our case just show.
+<br><br>Main Menu.
+<br><br>Now there's another type of message one that actually comes with a variable parameter and we've provided
+<br><br>you one that is only relevant to this section using this w m 2000 template.
+<br><br>But we provided you with another one called on user input.
+<br><br>So this is the on user input bottle is bluebottle and it's arrives on your shore and inside it you have
+<br><br>a piece of paper labelled input.
+<br><br>Which is a variable parameter of type String.
+<br><br>And when you look inside on the actual piece of paper you will have the input the actual input that
+<br><br>the customer or the client or the whatever the gamer the player in this particular case has written.
+<br><br>So let's go back and have a look.
+<br><br>If I was in here and I type one system is going to try and call on user input and it's going to pass
+<br><br>in the string one which is what we type.
+<br><br>So that is how that would work.
+<br><br>So it's very very similar to the way that we are using start and update.
+<br><br>Apart from it has something in the brackets which gets used exactly like this show main menus brackets.
+<br><br>That's the only difference is it's coming from the outside.
+<br><br>Typically messages start with on in unity on start on update.
+<br><br>Now they just didn't call them on on an update for whatever reason it would be more consistent if they
+<br><br>did so that's typically how you spot them.
+<br><br>All right so that's the difference between messages and functions.
+<br><br>The golden rule though is you should always copy and paste messages because if you spell them wrong
+<br><br>they're not going to work.
+<br><br>I.e. if we spelt start wrong didn't give exactly the right signature i.e. the right lay out.
+<br><br>Here this is a signature of the whole thing where you say what do we return what's our name and what
+<br><br>parameters are but if any if that's not exactly right.
+<br><br>Let's just get ignored.
+<br><br>Alright so these things you need to look up in documentation.
+<br><br>So in our case we've provided you with some documentation now before we look at our docs Let's look
+<br><br>at Unity's docs for start here it is it gives you an example void's star it tells you when it's called.
+<br><br>Same with a wake up put these in the resources for you.
+<br><br>And we've made some similar documentation for on user input and specifically made it look a bit like
+<br><br>Unity's stuff on user input school whenever the user hits return after having time to characters.
+<br><br>Note that the editor game we know must be focussed for the characters to register.
+<br><br>So what I'm saying there is that you need to be playing the game and click that into the game here for
+<br><br>your characters to register when you hit return.
+<br><br>It will try and call on user input no errors will come back.
+<br><br>That's one of the things about messages is it's it's just a message like sent out to the islands and
+<br><br>our code is one of the islands this hacker dotsie s is one of the islands.
+<br><br>And if it is tuned into this then it will receive that message so let's just take another look at the
+<br><br>syntax.
+<br><br>It goes something like this void on user input blah.
+<br><br>So that's your challenge but I want you to do is to print the user input to the console not to the terminals
+<br><br>screen which is what the example code would do after the user hits return what they entered should be
+<br><br>printed on the developer console.
+<br><br>Remember you have to write the message out perfectly.
+<br><br>So please copy and paste it.
+<br><br>Remember the golden rule.
+<br><br>I shall always copy and paste messages.
+<br><br>So go ahead pause the video and see if you can get it the whatever you type on the screen comes to the
+<br><br>developer console down below.
+<br><br>All right welcome said the recommended way of doing this is copy from the documentation.
+<br><br>Because this is a method that you're not calling but something else is going to call pasted in to your
+<br><br>code base wherever you like for the moment.
+<br><br>I will put it there so that stroh main menu sits right next to where it's being used.
+<br><br>It's called span.
+<br><br>We're keeping the span low.
+<br><br>And then on user inputs down below.
+<br><br>So the only difference between the what's in the docs and what we want to do is instead of terminal
+<br><br>doc right line we want to say print.
+<br><br>And then we use the variable name input like so.
+<br><br>Alright so on user input print input.
+<br><br>Let's see if this works is play the game by the way if your game is already playing you can just wait
+<br><br>for it to recompile.
+<br><br>But sometimes you'll get spurious errors so like I've got some red errors here.
+<br><br>But if I play again I suspect they'll go away.
+<br><br>So sometimes it'll not reload the code sometimes it won't.
+<br><br>If in doubt stop and play again.
+<br><br>If I say hello then hello comes on the console if I say one.
+<br><br>One comes on the console.
+<br><br>They saw our code is working.
+<br><br>In fact if I click on it we can see that this is something called a stack trace and one of things you
+<br><br>see there is assets hacker line 23 has done a print.
+<br><br>It's gone look at it as it's hack a line 23.
+<br><br>There you go it's printed out what the user has.
+<br><br>Typed.
+<br><br>Perfect.
+<br><br>I'm going to delete the update message in this script because we're never going to use update.
+<br><br>Not in this whole game.
+<br><br>Were going to respond to user input like that so just take a minute to take a look at that because a
+<br><br>lot of what you do moving forward.
+<br><br>We'll be using this type of structure.
+<br><br>Basically sometimes you write your own functions.
+<br><br>Sometimes you will be asking other things outside of your code base as black boxes outside of your code
+<br><br>base base to do things for you like writing to the screen or writing to the console and sometimes you'll
+<br><br>be responding to a message coming from the outside like the game is started or the user has typed something.
+<br><br>And in this case it includes what they typed.
+<br><br>This is why we covered Firstly variables then functions with variable parameters and now the subtle
+<br><br>difference messages which is where gets called from the outside.
+<br><br>OK hopefully that makes some sense for you.
+<br><br>Super useful.
+<br><br>You've got another really powerful string in your bow.
+<br><br>Let's move forward and make this game a lot more interesting.
+	</p>
+  </BODY>
+</HTML>

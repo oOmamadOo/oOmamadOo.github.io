@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey guys.
+<br><br>In this video we will have our platforms also lighting on their own like that.
+<br><br>Look at that how cool is it and you'll be to change the the y direction and the z direction in the x
+<br><br>direction and just have these things do all sorts of weird and wonderful motions as fast or as slow
+<br><br>as you want and be very cool.
+<br><br>So I'll see you in that so our job in this video is to set this movement factor.
+<br><br>The whole thing whole video is focused on setting this movement factor from code.
+<br><br>So we need to do something up here.
+<br><br>Set movement factor automatically.
+<br><br>And of course the end result is that we want the movement factor to vary between 0 and 1 but we want
+<br><br>it to do so automatically and mathematically in a nice kind of sign your sort of motion something like
+<br><br>this fast through the middle and slow at the edges.
+<br><br>Okay this is good as I can get by hand.
+<br><br>So that's what we're trying to do.
+<br><br>So first step.
+<br><br>There's lots and lots of resources against this lecture.
+<br><br>One of the first steps is to look at this which is what a sine wave is on wikipedia.
+<br><br>All right so a sine wave looks like this.
+<br><br>And let me just show you before I even show you that let me show you how how it's created a sine wave
+<br><br>fundamentally imagine a wooden desk with a pen stuck through it pivoted in the middle to disk was going
+<br><br>round in circles at an even speed like this.
+<br><br>And you were to pop a piece of paper underneath and pull it along again at an even speed then you would
+<br><br>get a sine wave is just the product projection of circular movement.
+<br><br>Right.
+<br><br>So unity has a math f dot sine function.
+<br><br>If you put a value in here in radians and I'll talk about what they are in just a moment then you get
+<br><br>a number between minus 1 and plus 1 out.
+<br><br>Let's look at that on wikipedia.
+<br><br>You put a number in in radians on the x axis and you get out of the function a number between minus
+<br><br>1 and plus 1.
+<br><br>Right so now we need to understand what radians are.
+<br><br>So let's just understand that I've given you a link to a Wikipedia article called turn.
+<br><br>Now watch this guy here.
+<br><br>Let's maximize this gif.
+<br><br>That is a circle of radius 1.
+<br><br>Okay is 1 radius 1.
+<br><br>If you take that radius make it vertical and then kind of bend it round the circle till your arc is
+<br><br>of length the radius then the angle you get is called 1 Radian.
+<br><br>It's the type of angle even an aid alien may agree with a very natural angle.
+<br><br>Now if you count round the circle is three point 1 4 1 5 9 radians in half the circle and there are
+<br><br>about six point to eight or Tao as we call it radians in a whole circle.
+<br><br>This Tao thing here is like a PI but with only one of its little legs.
+<br><br>Right.
+<br><br>Humanity should have used Tao instead of PI because 2 pi appears everywhere in math and physics and
+<br><br>we kind of got it wrong.
+<br><br>So we're going to use Tao as a whole Tao proposal here.
+<br><br>Going back however long 70 years or whatever that's obviously not happening but this is the point.
+<br><br>Radian is the angle set tended by an arc over the same length as the radius.
+<br><br>It's a very natural definition of an angle.
+<br><br>There are three point 1 4 1 5 9 2 6 however many in half a circle and about six point to eight of the
+<br><br>radiant angle things in an entire circle.
+<br><br>Why is it such a weird number.
+<br><br>Well because we use decimal.
+<br><br>A what.
+<br><br>You know we happen to count in decimal.
+<br><br>If we counted in base pi then we do all sorts of weird things would happen.
+<br><br>Anyway back down to earth.
+<br><br>That's what we need to do.
+<br><br>So let me give you a slide then we have here a simple depiction of the sine wave and I just wanted to
+<br><br>find a couple of properties of it for you.
+<br><br>One is the amplitude which is the total height of the wave and that can be seen there and the other
+<br><br>is the period which is the amount of time before it repeats itself.
+<br><br>So you can measure from here to here or from here to here.
+<br><br>It doesn't really matter as long as you look at the repeating unit.
+<br><br>That's the point.
+<br><br>Okay.
+<br><br>That is something called the period.
+<br><br>So the amplitude and the period and we're going to use all these facts to try and make the thing move
+<br><br>around how we want it to.
+<br><br>So let's go into the code now and see if we can work out how it works by the way just before we do that.
+<br><br>I wanted to say that if you like maths for games and you want more of an introduction go over to our
+<br><br>community forum if you haven't already joined the forum.
+<br><br>There's an idea here and a lounge course ideas and you can like this and respond to it.
+<br><br>The more activity this gets the more likely we are to do a full course on a fresh start in mathematics.
+<br><br>If you like our approach right.
+<br><br>Other resources for you in this lecture before I get carried away into the code include the fact that
+<br><br>we have an online syllabus on cello for this course and it explains what we've done what's coming up.
+<br><br>And again you can interact and co-op collaborate on that.
+<br><br>If you're signed into cello just using a free cello account.
+<br><br>So I think that's that.
+<br><br>And I've also given you a link to the other said before the Unity math f dot sign documentation and
+<br><br>you've got an example down there.
+<br><br>We're going to take our example a lot clearer than that because I don't think that's super clear.
+<br><br>So how we can set this movement fact.
+<br><br>Well let's have a think about it.
+<br><br>We we could do something like this.
+<br><br>We could say the number of floating point value between 1 0 and it's going to just grow and grow and
+<br><br>grow of the number of cycles that we've currently gone through.
+<br><br>We want to have gone through with our movement is the game time divided by the period the oscillation
+<br><br>period.
+<br><br>Right now the oscillation period.
+<br><br>This is something we'd better specify right.
+<br><br>We better put up here right.
+<br><br>A serialized field for the period so we can say serialized field now remember the period is the time
+<br><br>it takes to complete one full cycle and I'm going to default this to two seconds.
+<br><br>I want it if you slam one of these movement oscillator rather components on something that you can immediately
+<br><br>see the thing moving so in that spirit I'm also going to initialize the movement vector to say 10 float
+<br><br>10 floats 10 float like this.
+<br><br>And what this is gonna do is it's going to say if we put a new script onto a new object it's going to
+<br><br>move in 10 in x 10 y 10 in Z and it's gonna do it with a period of two seconds so it's gonna be very
+<br><br>very obvious that that script is on there.
+<br><br>It's kind of full proofing in the same way of preventing multiple components is definitely gonna notice
+<br><br>if that's on and it's all game world is really really massive.
+<br><br>But what we need to do is set this movement factor so we can work out the number if we spell period
+<br><br>correctly we can look at the number of cycles we've been through by saying well maybe the periods two
+<br><br>seconds if the game time is one second What is that half a cycle.
+<br><br>If the game time 10 seconds would have done ten divided by two which is five cycles.
+<br><br>All right.
+<br><br>So this grows continually from zero.
+<br><br>That's the number of cycles.
+<br><br>Right now we need to get into the sine orbit.
+<br><br>So firstly let me define this towel thing.
+<br><br>So we get it out the way const tack float.
+<br><br>I'm using cons because it's never going to change.
+<br><br>So we use const where we know the thing isn't gonna change at runtime.
+<br><br>Tao equals math f dot Pi which gives us just that just equates to three point 1 4 1 5 9 2 6 5 3 5 a
+<br><br>number blah blah blah blah.
+<br><br>Don't remember any more times to remember that Tao is 2 pi to get you all the way round the circle you
+<br><br>need Tao radians.
+<br><br>This is just a number Don't be scared by this.
+<br><br>This is just about six points to eight.
+<br><br>Okay.
+<br><br>We're just using a precise value here so const float Tao equals math after pi times 2.
+<br><br>Now what we're gonna do is we can get the raw value I'm going to call it raw sine wave can get a raw
+<br><br>value out the sine wave.
+<br><br>Math f dot sine and we're gonna talk about the number of cycles times Tao let's think about that.
+<br><br>If the thing if the sine wave had gone through one full cycle then we'd be putting into math if not
+<br><br>sign the value town.
+<br><br>If we go back to Wikipedia and you see towers is pi.
+<br><br>So after one full cycle you put in two pi.
+<br><br>Right.
+<br><br>If we were to look at that let me just put this on the right hand side of the screen and put Wikipedia
+<br><br>on the left hand side of the screen so we can compare this directly.
+<br><br>So the raw sign output is math I've taught sign of the cycles times Tao.
+<br><br>So if he wants one cycle we put in two pi if we want half a cycle then we're putting in PI etc. If we're
+<br><br>putting in 10 cycles well then we're putting in 20 pi and we'd still get an answer of zero out.
+<br><br>So this raw sine wave Let's print it every frame and what to expect it to do what are you expecting
+<br><br>the value of raw science to vary between 0 and 1 minus 1 and 1 minus 1 and plus 1.
+<br><br>Were you expecting that to do have a think about it before you ever print anything so that you can see
+<br><br>if things match your expectations.
+<br><br>So this is varying between 0 minus 1 and plus 1 which is pretty much exactly what we expect from a raw
+<br><br>sine wave.
+<br><br>By the way because we're using time not time directly we don't need to worry about frame rate independence
+<br><br>it his automatically frame rate independent which is more than we can say over in our rocket for the
+<br><br>thrusting by the way.
+<br><br>I think that I forgot when I did that thrusting here to multiply by time dot delta time so let's do
+<br><br>that now as a quick aside Rick you're watching this video you're going to need to change the rocket
+<br><br>main thrust it's going to completely change that value but at least thrusting is frame rate independent
+<br><br>now.
+<br><br>OK back to the oscillator.
+<br><br>So there it goes we've got the raw sine wave what we need to do to get the actual movement factor as
+<br><br>we had it before is it's the raw sine which goes between minus 1 and plus 1 divided by two per FS then
+<br><br>if you mean float otherwise it otherwise it will treat this thing as something called a double which
+<br><br>is bigger than a float.
+<br><br>Now if we divide this rule sine wave that goes between minus 1 and plus 1 by 2 then what does this new
+<br><br>number we've just created go between.
+<br><br>Well if we were going between let's say plus 1 and minus 1 and we divide these figures by 2 then we'd
+<br><br>be going between plus nought point five and minus nought point five which is okay but we want our movement
+<br><br>factor to move to go between 0 and 1.
+<br><br>So we need to add half to it don't we.
+<br><br>We need to go between 0 and 1 so we need to go up by half.
+<br><br>So hopefully that's clear what we're gonna do is we're going to halve the amplitude of the thing in
+<br><br>total because the movement factor only has an amplitude of one and then shift it all up by a half.
+<br><br>Now let's see what this does for us to watch carefully my movement factor slider which I have left in
+<br><br>for clarity for the moment outlook 0 to 1 Look at that.
+<br><br>How cool is that.
+<br><br>And look how the car's smooth and natural looking that oscillation is I'm really excited about that.
+<br><br>So now you can make it move you can make it move in Z as well like this.
+<br><br>Wow look at that movement how cool is that.
+<br><br>Give it a bit of Y and it's gonna do all sorts of funky stuff.
+<br><br>So what I want you to do is set up at least one oscillator just set up a game object to oscillate and
+<br><br>have fun making the game more tricky and more interesting through this isolation and while you're at
+<br><br>it make sure you understand how this works.
+<br><br>Welcome back.
+<br><br>Well I've already set up a game object to isolate but I do want to warn you of one thing to lead us
+<br><br>into the next video which is if you set your period to zero you're gonna get a very nasty error which
+<br><br>is something to do with transform positions having nans in them like non bread and again and again and
+<br><br>again that stands for Not a number.
+<br><br>And the reason is that in our code if we set period to zero we tried divide by zero and mathematicians
+<br><br>hate that.
+<br><br>So it's a to do we'd better say protect against divide against period equals zero let's say okay we'll
+<br><br>do that in the next video.
+<br><br>And finally I'm just going to take off this stuff here where the movement factor is all exposed to the
+<br><br>inspector I don't think it needs to be like so and I'm just going to make sure that we have annotated
+<br><br>everything new we need to so goes from minus one to plus one and then this thing here I will not not
+<br><br>annotate I don't think because if I change this code then the comment would go out of sync with that
+<br><br>with the code.
+<br><br>So I think that that's enough comments and that's it I'm done with this video I will look forward to
+<br><br>seeing you in the next one.
+	</p>
+  </BODY>
+</HTML>

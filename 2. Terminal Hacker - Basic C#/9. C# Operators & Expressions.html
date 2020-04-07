@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys, in this video, we are gonna learn about true and false. 3
+<br><br>So we can get the computer to detect whether we hit something else or 1. 4
+<br><br>And if we hit 1, it'll say true and for anything else we type, it'll say false. 5
+<br><br>Okay, let's go see how that works,. The starting point for 6
+<br><br>this is to understand a little bit about the context that we're in. 7
+<br><br>So we have already been using a lot of statements like these. 8
+<br><br>All these things that end with semicolon are all statements. 9
+<br><br>What we wanna look at now is operators and expressions. 10
+<br><br>We haven't used, I don't think, yet any operators in the course. 11
+<br><br>And we do have expressions actually, even Hello Ben is an expression. 12
+<br><br>All of these things are expressions, but let's add some flesh to that. 13
+<br><br>So, if we were to say, print plus hello world, 14
+<br><br>that would be equivalent to saying print hello world. 15
+<br><br>You're very welcome to try that. 16
+<br><br>I'm gonna just show you really quickly actually in Start, 17
+<br><br>let's just do exactly that. 18
+<br><br>Let's say print to the console Hello, with a space inside the quotes, 19
+<br><br>then a + and then World, and not two spaces. 20
+<br><br>So be really careful about your spaces. 21
+<br><br>What this is going to do is join these two strings together to make Hello World. 22
+<br><br>Let's just see that happen, very simple stuff. 23
+<br><br>Hello World should come up, there you go. 24
+<br><br>All right, now the thing about this is that this thing that I've highlighted in 25
+<br><br>blue is an expression which evaluates to the same thing as Hello World, like so. 26
+<br><br>All right, they are the same thing, this Hello World string and 27
+<br><br>this Hello World are the same once they have been evaluated. 28
+<br><br>And this thing here, this plus is something called an operator. 29
+<br><br>Now some of you, if you're really smart cookies, might say, 30
+<br><br>what's the difference between operator and a function? 31
+<br><br>Well, they're basically the same, 32
+<br><br>it's a question of syntax, which is a question of how stuff is written out. 33
+<br><br>Syntax means the way the language is written out, 34
+<br><br>the rules about the way it's written out. 35
+<br><br>So, these are helpful. 36
+<br><br>This plus in this case is not adding numbers, but 37
+<br><br>it's concatenating or joining strings together. 38
+<br><br>All right, so then it's both an operator and 39
+<br><br>then this whole thing here is an expression which evaluates to something. 40
+<br><br>So this expression evaluates to the same thing as hello world. 41
+<br><br>So let's look at the plus operator then, in some more details. 42
+<br><br>So if we were to have ourselves the case where, we will get to the right slide. 43
+<br><br>1 + 2 that evaluates to 3 and 44
+<br><br>it's arithmetic addition because these are both integers or numbers. 45
+<br><br>If we have the string 1 + the string 2, that will concatenate and 46
+<br><br>join those strings together. 47
+<br><br>So this same operator, the +, 48
+<br><br>is going to do a slightly different thing in this context. 49
+<br><br>And if we do 1 + 2, then something slightly subtle happens here, 50
+<br><br>the string 1 gets concatenated with the string 2. 51
+<br><br>So the first thing it does is it converts 2 into a string and 52
+<br><br>then it concatenate it with 1. 53
+<br><br>Now, you can't always rely on this but these are some examples of what happens. 54
+<br><br>All right, so that's the plus operator and we'll be using that, well, for 55
+<br><br>addition but we'll also be using it for joining strings later on. 56
+<br><br>Let's now talk about the thing that we need, though, to understand 57
+<br><br>if statements which we'll use in the next video, which is the == operator. 58
+<br><br>So remember that when we assign to a variable we use a single =, 59
+<br><br>its a bit weird but that's just how we do it. 60
+<br><br>But when we're comparing two things we use ==. 61
+<br><br>So the expression 1 == 1 has a value of true, it valuates to true. 62
+<br><br>Obviously 1 equals 1, 1 does not equal 2, so that's false. 63
+<br><br>The string 1 does equal the string 2, and then there's a subtlety. 64
+<br><br>In the case of plus, it was doing something called casting, i.e., 65
+<br><br>changing the type of 2 from an integer, a whole number, into a string so 66
+<br><br>that it can concatenate together to make the string 12. 67
+<br><br>I'll say that again. 68
+<br><br>In this case, 2 was being converted or cast from an integer to a string, 69
+<br><br>before then being joined together with another string here to make the string 12. 70
+<br><br>Okay, that does not happen with ==. 71
+<br><br>So if we try and say the string 1 == 1, it's not even a valid expression. 72
+<br><br>It refuses to even try and make that comparison between a string and 73
+<br><br>a whole number. 74
+<br><br>All right, the same here, if we try an assign by mistake because we've used =, 75
+<br><br>instead of == which is common error. 76
+<br><br>If we try to assign 2 into 1 it's gonna say, 77
+<br><br>the left hand side must be a variable. 78
+<br><br>1 is not a variable, it's a value, and you can't put 2 into 1, it just doesn't work. 79
+<br><br>So just be really careful, and if you're doing a comparison that you use ==. 80
+<br><br>And make sure that you're comparing two things of the same type. 81
+<br><br>That is the moral of the story. 82
+<br><br>So given that you know a little bit about that, 83
+<br><br>let me see if we can challenge you to detect 1 when the user types 1. 84
+<br><br>No if statements yet, we're not there yet. 85
+<br><br>But when the user selects level 1, True should print on the developer console. 86
+<br><br>And for any other input, False should print on the developer console. 87
+<br><br>Now note that in code it's true and false, in small letters like that, but 88
+<br><br>on the console it writes True and. False with capitals. 89
+<br><br>I'm sorry, it's just the way Unity does it. 90
+<br><br>All right, see if you can work out how to use the right print statement to print 91
+<br><br>the expression and see if you can get this to work, okay? 92
+<br><br>It's going to be a little bit of head scratching if you're 93
+<br><br>new to coding but have a go. 94
+<br><br>It's only one line of code. 95
+<br><br>All right, welcome back. 96
+<br><br>So did the challenge make any sense? 97
+<br><br>What I wanted you to do is to print when the input was == 1. 98
+<br><br>Now this expression will evaluate to true if the input is == 1 and 99
+<br><br>it will evaluate to false in all other circumstances. 100
+<br><br>So this is the operator, the ==, and this is the expression. 101
+<br><br>All right, let's see if that works. 102
+<br><br>Making sure I've saved my code into Unity. 103
+<br><br>If I type anything, false here, anything else, false, whatever I type. 104
+<br><br>And they're stacking up, because we have the console in collapse mode, 105
+<br><br>which is here on the left hand side of the console, they're stacking up. 106
+<br><br>All these falses are stacking on top of each other. 107
+<br><br>We can turn that off by turning collapse off. 108
+<br><br>But if I type 2, 3, still false, false, false. 109
+<br><br>I type 1, I get true. 110
+<br><br>So the only case in which I'll get true is when I type 1. 111
+<br><br>So this expression evaluates to something called a boolean. 112
+<br><br>It's either true or it's false, and that has the name of a boolean, 113
+<br><br>it's spelled like this. 114
+<br><br>Boolean, and we'll use it in code later as just bool, okay? 115
+<br><br>And a bool, boolean can either be true, i.e., this type of true, or false. 116
+<br><br>And they're the values that it can be, just like integers can be any number and 117
+<br><br>strings can be any string of characters, booleans can be true or false. 118
+<br><br>So what we're doing here is we're just printing out the result of the calculation 119
+<br><br>that compares 1 as a string to input as a string. 120
+<br><br>And then on the terminal it tells us what we've got. 121
+<br><br>We've got true. 122
+<br><br>And again, this is stack trace here, from somewhere inside our code this happened. 123
+<br><br>From whatever that thing means, hacker line 24 happened i.e., this thing here. 124
+<br><br>And then from there we go to a print object, and 125
+<br><br>then out of that came true, all right? 126
+<br><br>So it works backwards from the bottom to the top. 127
+<br><br>So that's it, we have managed to detect, we have managed to do something different 128
+<br><br>based on whether we type 1, true, or anything else, false. 129
+<br><br>And that is the foundation of being able to use if to encode really rich behavior, 130
+<br><br>which we'll see in the next video.
+	</p>
+  </BODY>
+</HTML>

@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey guys in this video we're going make a giant leap forward which was actually going to check for passwords
+<br><br>and the basic outline of the game.
+<br><br>It's going to be done but you'll be amazing.
+<br><br>Level 2 has a different password.
+<br><br>So big challenge for you some you'll be to do it some you won't.
+<br><br>Doesn't matter.
+<br><br>It's going to be a huge learning exercise.
+<br><br>Let's get in and do it.
+<br><br>Hello.
+<br><br>Just before we get into the challenge.
+<br><br>This video is going to be a nice meaty challenge for you.
+<br><br>Just want to fix a quick bug which is if I hit one then the game goes to a password screen or password
+<br><br>state.
+<br><br>If I eat the entire menu I can type straight.
+<br><br>Then it goes back to what looks like the main menu but it still thinks we're on the password's greens
+<br><br>so if I was to type one again it doesn't work because it doesn't know how to process input on the password's
+<br><br>green yet so we need to fix that.
+<br><br>If you want to try and fix it yourself you've seen the problem go ahead.
+<br><br>Pause the video and try and fix it yourself.
+<br><br>Otherwise I will show you the fix in just two seconds.
+<br><br>All right so the fix is here.
+<br><br>What happens is if you look at current screen by double clicking on it it gets initialise.
+<br><br>When we first start the game but it's never getting reset to screenshot main menu when we enter the
+<br><br>show main menu function so what we should do is take this line of code it into here so that we have
+<br><br>current screening call screened up Main Menu at the top of show main menu.
+<br><br>It's a sensible time to set the state.
+<br><br>Soon as you get into that function and then I'm actually going to stop initialising this because it
+<br><br>gives me a false sense of security.
+<br><br>I'm going to leave this uninitialised saying well I'm not quite sure what current screen would be.
+<br><br>Well good.
+<br><br>It's good that you're not quite sure we want to be setting it explicitly when we need it so we set it
+<br><br>here and when we get in to the start game we said it's a password.
+<br><br>Again that bit may change later.
+<br><br>So let's get into the meat and potatoes of this video I want to give you a good integration challenge
+<br><br>if you were learning to fly.
+<br><br>This would be like your first solo but it's much safer than that.
+<br><br>I want you to get basic passwords working quite a big step up.
+<br><br>But I think you may be able to do it.
+<br><br>And if you can't it doesn't matter.
+<br><br>It's a learning exercise.
+<br><br>First thing is to close unity and zip up your project folder or use version control if you know how.
+<br><br>Let me just show you how to do that.
+<br><br>So my project folder in my particular case is sitting right here.
+<br><br>And when you're in this folder with Unity closed please just delete the library subfolder don't worry
+<br><br>you won't lose information.
+<br><br>This is temporary cache information that unity will rebuild when it needs it but what it will do is
+<br><br>it will half the size of your zip roughly which means that it'll save you space but also if you share
+<br><br>it with another member of the community to get them to help you out then you won't be giving them a
+<br><br>massive bloated zip so please delete the library folder before you zip it up.
+<br><br>And thanks to young pols one of our amazing community members for pointing this out.
+<br><br>And once you've deleted that library folder when you reopen unity you'll find that it rebuild some things
+<br><br>that basically recreate that library folder and also it might catch you out that you may end up it what
+<br><br>you will end up in an untitled scene.
+<br><br>Even if you've opened your game scene straight off your disks do go and find the game scene again and
+<br><br>open that and you'll be right as rain and I got this terminal hacker what I would want to be doing is
+<br><br>closing unity or at least making sure everything is saved in unity and in Visual Studio.
+<br><br>Going to the folder right click and compress or send to a compressed folder in windows and make yourself
+<br><br>as it.
+<br><br>This is backing up your project.
+<br><br>This allows you to have a good experimentation to chop and change your code but without risking that
+<br><br>you can't get back to where you want to be.
+<br><br>Alright so that's the first aspect.
+<br><br>Zip it up and that's one way of backing things up.
+<br><br>By the way give us Zip's a meaningful name if your going to do it this way.
+<br><br>Now you want to give it something like.
+<br><br>Before big challenge.
+<br><br>Okay awesome now.
+<br><br>Next thing to say this should be to fix passwords one for each difficulty level.
+<br><br>That's it.
+<br><br>So just set a password based on the difficulty level.
+<br><br>Don't bother with Mormon more than two passwords one for each of the two.
+<br><br>Difficulty levels.
+<br><br>And they're going to check the password and ask the user to try again.
+<br><br>If the password run will congratulate the user.
+<br><br>If the password is correct.
+<br><br>Now overall relax take some notes about what's easy and hard.
+<br><br>Share with us what you find easy and hard.
+<br><br>If you succeed great you're doing amazingly well.
+<br><br>I actually want about 50 percent of people not to be to do this but to learn about themselves by doing
+<br><br>it and to work out where your strengths and weaknesses are.
+<br><br>Go to the Q and A Tell us what's difficult what's easy where you're getting stuck.
+<br><br>Use it as a learning exercise.
+<br><br>The idea is to push yourself a little bit and run like a first solo in flying where it's quite important
+<br><br>you actually land safely in this particular case.
+<br><br>It doesn't really matter whether you succeed or fail on the challenge.
+<br><br>The key is that you introspect and learn a little bit about how far you've got and get a good challenge
+<br><br>to get your teeth into.
+<br><br>So go ahead give this a good go.
+<br><br>Give it an hour or two.
+<br><br>I wouldn't spend more than a couple of hours if you can't do it by then don't worry.
+<br><br>Don't beat yourself up.
+<br><br>It's just a question of what where you are in the course and and this I know is a steep challenge for
+<br><br>some people but I want to give some of you a meaty challenge.
+<br><br>I'm going to give the rest of you an opportunity to find out the holes in your knowledge.
+<br><br>Okay so I'm going to try and do this on the site as well that is without without any notes or rehearsal.
+<br><br>It's only fair because that's what I've asked you to do.
+<br><br>So I'm going to recap my code a little bit.
+<br><br>We show the main menu.
+<br><br>I'm going to collapse that down because that works fine with mind of a collapse if you don't have that
+<br><br>on Visual Studio preferences somewhere in there.
+<br><br>You should have something called code folding maybe under text editor general enable code folding.
+<br><br>Alright you don't have to collapse I'm just doing that to kind of close my mind down and focus on the
+<br><br>things that matter.
+<br><br>So I'm going to need to have a new state on site when the user inputs as another possible state which
+<br><br>is currence Green screen password.
+<br><br>That's another possible state.
+<br><br>In that case what I want to do is check that password.
+<br><br>Given the input.
+<br><br>Right now I don't have a check password input method so I'm going to go ahead and write it.
+<br><br>Why do I write it down the bottom because I want to kind of do things in order.
+<br><br>So checking the password would happen after the game has started so I'm going to go string input.
+<br><br>And then I've got myself the outline of this check password method.
+<br><br>So what do we do when the password comes in.
+<br><br>How do we go ahead and check a password.
+<br><br>Well it's an if statement isn't it.
+<br><br>We're going to say if the input equals the password but we don't have a password it's quite common to
+<br><br>kind of write code like this is how I wish I had a password.
+<br><br>So what are we going to do about that.
+<br><br>Well let's make a password exist.
+<br><br>I think I would delete this back that you want to keep your code ready to go.
+<br><br>I'm ready to compile so it's like I don't have a password.
+<br><br>I have learned you know that's happening.
+<br><br>What do I do a better password.
+<br><br>Well for the moment the most logical place in my mind to set a password is if the level is 1 then we
+<br><br>want to set the password to something easy like.
+<br><br>Mm I dont know.
+<br><br>Donkey I used donkey a lot.
+<br><br>Dont know why now.
+<br><br>Okay password doesnt exist and where should the password be stored.
+<br><br>Well it's going to be needed in this method but it's also going to be needed down in check passwords
+<br><br>so it seems to me that password is another piece of game state three pieces of game state.
+<br><br>The level that you're playing at.
+<br><br>The screen you're currently on and the password.
+<br><br>So we put another piece of State in a member variable string password.
+<br><br>We come down.
+<br><br>We can then set the password to one thing for Level 1.
+<br><br>We can do all this code very differently later.
+<br><br>But let's just do it like this for now.
+<br><br>I don't know Bob.
+<br><br>You're late.
+<br><br>Okay.
+<br><br>Very hard for somebody to guess donkey for ever one can Bobby late for level two don't even know if
+<br><br>that's a problem word.
+<br><br>I think ekom bob is.
+<br><br>But hey that's a bit of fun.
+<br><br>So this is running the main menu you're setting the passwords all a little bit messy but we just need
+<br><br>to get the solution working here soon.
+<br><br>Okay okay so now in check password we've been given the password we need to say if the password equals
+<br><br>equals remember the password.
+<br><br>Sorry if the input.
+<br><br>Equals.
+<br><br>Equals that password.
+<br><br>Then what do we want to do.
+<br><br>Well I'm you going to congratulate the user for now.
+<br><br>Well done that's all.
+<br><br>And if not then we use else.
+<br><br>Remember that cattrell condition.
+<br><br>If the password wrong we're going to need to say something like.
+<br><br>Wrong password.
+<br><br>Try it again.
+<br><br>So I'm just going to copy the terminal right line wrong.
+<br><br>Well just sorry.
+<br><br>Long password.
+<br><br>And do we need to do anything else.
+<br><br>If they get the password wrong.
+<br><br>I think we need to ask for the password again.
+<br><br>Now how are we going to ask for the past.
+<br><br>Let's just see how this runs.
+<br><br>We you know we're going too far away from from the game actually running now.
+<br><br>So we've done a bunch of stuff.
+<br><br>Let's recap what we've actually done or what I've actually done.
+<br><br>I've said we're going to need to have a piece of State called Password ignore these two changes here.
+<br><br>This was just a change.
+<br><br>This has nothing to do with it this was a fix that we fixed at the beginning including this current
+<br><br>screening calls made me.
+<br><br>So the pertinent things are that we've made a member variable.
+<br><br>We've in the on user input handle the case where we're on the passwords screen and then we started we
+<br><br>set some passwords in start to start getting it unstuck game that's how we look.
+<br><br>In one main menu we've set some passwords and the next thing we've done is we started to try and write
+<br><br>this check password function we've got to a point where we need to be if they get the password wrong
+<br><br>we need to ask the user again for the password so let's go ahead and try and see if we can work out
+<br><br>how to use that but before we do it's good to keep running your code and making sure that it works.
+<br><br>So I play the game type of password you've chosen level one into your password another other system
+<br><br>knows the passwords donkey.
+<br><br>I just typed something that isn't donkey.
+<br><br>Sorry wrong password sorry wrong password that's working okay.
+<br><br>Actually if I typed on key it says well done.
+<br><br>It actually seems we don't have any further work to do at the moment which is good news.
+<br><br>It doesn't mean that our codes are ideal for everything we want to do in the future but it looks like
+<br><br>it's doing what we need now.
+<br><br>Level two passwords been internally set cambodge Pilate.
+<br><br>If I type something else it just keeps saying sorry wrong password.
+<br><br>Why does it keep going around saying sorry wrong password.
+<br><br>Well if you think about it it's because we are in the password screen.
+<br><br>And that is the state we were in and it's it's this thing that continually calls check.
+<br><br>Password Okay so check password keeps getting called and it just keeps saying either well done or sorry
+<br><br>wrong password.
+<br><br>So we've actually with this simple code the behaviour we're looking for.
+<br><br>If I was to type kabob late What are the chances.
+<br><br>Well done now.
+<br><br>From here you could get a menu.
+<br><br>And when we actually back at the main menu.
+<br><br>Cool ones if we go one here sorry all wrong passwords.
+<br><br>This is good because one and two when we're in the passwords green are behaving like password guess
+<br><br>is the only thing we can type here is menu to go back to the main menu or the correct password.
+<br><br>Nice.
+<br><br>Okay.
+<br><br>So that has been my solution to the challenge.
+<br><br>Now if your solution to the challenge is different that's okay.
+<br><br>You're welcome to stick with your solution to the challenge but if you find that you cant catch up with
+<br><br>my code in the next couple of videos then just converge yourself towards my code or just take a moment
+<br><br>to go to the lecture code changes associated with this video and get your code exactly like mine is
+<br><br>maybe you can cut cut and paste it from get out.
+<br><br>Now whether you diverge from my code or not depends on your confidence levels I'm giving you a little
+<br><br>bit of choice here now that we're more than two thirds of the way through this section.
+<br><br>Choose your own adventure to some extent.
+<br><br>If you really are confident then make things very different to my code.
+<br><br>Make the game very different.
+<br><br>If you're not so confident keep the code exactly like mine but at least mix up what's in these orange
+<br><br>strings here so that the code you know the content of your game if this is different even if the engine
+<br><br>is exactly the same.
+<br><br>So great news.
+<br><br>What have you learnt.
+<br><br>Come to the Q and A.
+<br><br>Tell us what you've learned.
+<br><br>What was difficult.
+<br><br>What was hard.
+<br><br>What could you do that you surprised yourself with and what were you disappointed you weren't able to
+<br><br>do even though you thought you'd grasp the condes concept because that was real coding.
+<br><br>You just try to do that.
+<br><br>So one more thing I'd like to show you at this stage showing you the code changes in get up it's fine
+<br><br>but sometimes you want to see the whole change so if you come to lecture.
+<br><br>Project changes this takes you as I've told you before too the eco changes but you can't really see
+<br><br>the whole file very easy like this.
+<br><br>Let me just show you again how to see this state of hacker doxies at the end of the video that you're
+<br><br>on.
+<br><br>So you've followed the link to the electrico changes.
+<br><br>But then you go to browse files up here you see at the top right there of browse fast button you click
+<br><br>on that on the web.
+<br><br>And this is now showing you my project as it was at the end of this particular video.
+<br><br>How do you know it's the end of this video says here 15.
+<br><br>Your first solo assets go to hacker and there's the whole script.
+<br><br>All right and if you've struggled with this challenge then do let us know in the Q and A where and it
+<br><br>could be with things like capitalization.
+<br><br>Remember to be really careful that small and large cap letters are not the same in programming.
+	</p>
+  </BODY>
+</HTML>

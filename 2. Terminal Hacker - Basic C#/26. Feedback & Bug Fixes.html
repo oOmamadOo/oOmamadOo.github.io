@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>All righty then, that was interesting, getting some actual feedback from players. 3
+<br><br>And there's really no substitute for it. 4
+<br><br>We get too close to our project, and we really can't see the sort of things that 5
+<br><br>other people who are fresh to it will see, so very, very important. 6
+<br><br>I wanna talk to you a little bit about taking feedback. 7
+<br><br>So remember, it's your product, not you. 8
+<br><br>If they tell you everything's great, well, that's good for your ego. 9
+<br><br>But it doesn't really help you improve the product. 10
+<br><br>So remember, it's the product they're criticizing, not you they're criticizing. 11
+<br><br>Try not to take it personally. 12
+<br><br>Criticism is fantastic if you take action on it and 13
+<br><br>use that criticism to improve the product. 14
+<br><br>And actions speak louder than words when it comes to responding to feedback. 15
+<br><br>What I mean by that is, certainly, in these courses, our ideal response when you 16
+<br><br>suggest something's up with the course is, thank you very much. 17
+<br><br>We have already fixed it. 18
+<br><br>So actually fixing stuff and changing stuff and 19
+<br><br>doing your bug fixes, really important. 20
+<br><br>So let's just give you a quick sandwich feedback analogy. 21
+<br><br>There's a sandwich, not particularly attractive. 22
+<br><br>But hey, it's the image that Sam used over in the Unity Certification course, so 23
+<br><br>I thought I'd borrow it. 24
+<br><br>The idea is, you start with some positive feedback. 25
+<br><br>You give your critical feedback in the middle. 26
+<br><br>And then you give more positive feedback. 27
+<br><br>So for example, here's an example of something I may give as 28
+<br><br>a response to a review or some feedback on a course. 29
+<br><br>Thank you for your honest feedback. 30
+<br><br>That's the positive feedback number 1. 31
+<br><br>We don't fully agree with all your suggested changes. 32
+<br><br>That's in red because I'm not agreeing with him. 33
+<br><br>But at least you side with people first. 34
+<br><br>So number 1, the green, number 2 in red. 35
+<br><br>We don't fully agree necessarily. 36
+<br><br>Then I've put it in amber, the middle bit. 37
+<br><br>However, we've incorporated some of the ideas that are in line with our design 38
+<br><br>philosophy in the latest build. 39
+<br><br>You're kinda standing your ground. 40
+<br><br>That's why I've put that in amber. 41
+<br><br>And then, back to the green, leave it on a positive. 42
+<br><br>We hope this helps you to enjoy the game even more, and thank you once again. 43
+<br><br>All right, so that's an example of sandwich feedback. 44
+<br><br>So when you've put your game out there, and somebody's given you some feedback, 45
+<br><br>and they say, hey, dude, the way this feels sucks, you might wanna say, 46
+<br><br>thank you for giving me honest feedback. 47
+<br><br>That's always a really good thing to do. 48
+<br><br>And you're siding with them then. 49
+<br><br>And then you go something like, what specifically about it? 50
+<br><br>How about if I was to maybe change something about the controls or 51
+<br><br>change the wording or change this or change that? 52
+<br><br>And then, thank you once again. 53
+<br><br>So really useful recipe for giving feedback, taking feedback, rather, 54
+<br><br>taking feedback and giving feedback, actually. 55
+<br><br>So let's make the couple of changes that Lizzy noticed. 56
+<br><br>So one of the things was that, remember when we give the reward for 57
+<br><br>the library, sorry, for the prison? 58
+<br><br>We said, you've got a prison key. 59
+<br><br>We drew a picture, and then, underneath it, we said, Play again for 60
+<br><br>a greater challenge. 61
+<br><br>And I think what was going on there is that Lizzy had got used to the idea. 62
+<br><br>Let's just try it for the police station. 63
+<br><br>That's gonna be uniform. 64
+<br><br>I think she got used to the idea that the instructions are at the bottom, 65
+<br><br>under the image. 66
+<br><br>And so she was looking at it and seeing the words Play and again. 67
+<br><br>So when it comes to menus and. UI, give people what they expect. 68
+<br><br>Leave the surprises for the narrative and the story and the game itself. 69
+<br><br>So I'm just gonna move this line,. Play again for a greater challenge, 70
+<br><br>up above, okay, so that it's where people would expect it to be. 71
+<br><br>So you've got the prison key. 72
+<br><br>Play again for a greater challenge. 73
+<br><br>Okay, so that's one of the changes. 74
+<br><br>Now, what I'm gonna do with these videos,. I'm gonna leave it open ended so that, 75
+<br><br>as more students come through the course,. I can add more bug fixes. 76
+<br><br>So I'm gonna fade down and then fade back into the next bug fix. 77
+<br><br>And that pattern is gonna repeat until they're all done. 78
+<br><br>All right, so the next thing I want to fix in this game is, I want to allow people to 79
+<br><br>type the things that Lizzy tried typing, exit, close, and quit. 80
+<br><br>So I'm gonna do that inside the onUserInput method. 81
+<br><br>I'm gonna say, if they type menu, go to the main menu, else if. 82
+<br><br>And then I'm gonna say, if input is quit, and 83
+<br><br>I'm gonna use the or, or input is close. 84
+<br><br>Should I have one more? 85
+<br><br>Yeah, exit, I think. 86
+<br><br>And you could always copy this block [SOUND] like so and paste it in. 87
+<br><br>Boom, exit. 88
+<br><br>If those things happen, then I'm gonna introduce you to one new thing, 89
+<br><br>which is Application.Quit. 90
+<br><br>Now, I warn you, it doesn't work inside the editor. 91
+<br><br>So if we try and do it here, inside the Unity Editor, and we try and say exit, 92
+<br><br>oops, if you type it right, it's got it because it hasn't responded to us. 93
+<br><br>But it doesn't do anything. 94
+<br><br>It also doesn't do anything on the web build. 95
+<br><br>So we'd better give them some feedback about that. 96
+<br><br>You're gonna ask me what it does do in a minute. 97
+<br><br>I'll tell you in a sec. 98
+<br><br>Terminal.WriteLine, if on the web, close the tab, okay? 99
+<br><br>So that's gonna tell them, 100
+<br><br>if they're on the web version, they need to close the tab. 101
+<br><br>If they're in the editor, well, your player won't be in the editor. 102
+<br><br>So you just need to know that 103
+<br><br>Application.Quit doesn't do anything in the editor. 104
+<br><br>Where it does do something is if you build for a Mac or a PC, okay? 105
+<br><br>If you were to target Mac or. PC standalone build, 106
+<br><br>which you're welcome to have a play with, then Application.Quit would close the app. 107
+<br><br>But it can't close the app in the web. 108
+<br><br>And it can't close the app in the editor, 109
+<br><br>because you wouldn't want it to exit the whole of Unity. 110
+<br><br>All right, so I've just added that in, and that's the end of that bug fix.
+	</p>
+  </BODY>
+</HTML>

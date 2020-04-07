@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys, in this video, which will be conducted on PC, as the majority of you 3
+<br><br>are on PC, we will be setting up our first version control repository. 4
+<br><br>We'll have made a new folder ready for this project, 5
+<br><br>it'll look just like the other folders, actually, precisely like the others. 6
+<br><br>But in there, there will be a hidden folder called .git, 7
+<br><br>which will be the foundation of your version control. 8
+<br><br>And we will be downloading SourceTree, which is a graphical user interface. 9
+<br><br>And we won't be using. SourceTree in this video, but 10
+<br><br>we will just get us to the point where SourceTree is working, 11
+<br><br>your project folder is set up, and we are ready to go. 12
+<br><br>Plus, you'll understand why version control's so important, and 13
+<br><br>the decisions that we've made about which version control system to teach you. 14
+<br><br>Version control how we love you, it's a bugger to teach, 15
+<br><br>it's a bugger to learn but it's absolutely worth it. 16
+<br><br>Like most hard things, it is completely worth it, so let's try and teach you this. 17
+<br><br>Really hard for me to teach so please bear with me. 18
+<br><br>What is it? 19
+<br><br>Firstly it is something that records your history. 20
+<br><br>By the way, the order of asking questions, what, why, who, how, 21
+<br><br>just remember that and try to delay the how. 22
+<br><br>Don't suffer from mad how disease. 23
+<br><br>So, I'll do this more and more through the course and it's really powerful. 24
+<br><br>And, if one day you want to know how this may or may not 25
+<br><br>relate to a two thousand plus year old. Chinese text then tell me in the comments. 26
+<br><br>Anyway, what is it, first? 27
+<br><br>It's a version control system we're talking about, 28
+<br><br>it records the history of your project. 29
+<br><br>Why do we care? 30
+<br><br>Because it provides you with a backup of your project, 31
+<br><br>it allows you to version your project, it creeps your project integrity together. 32
+<br><br>This means you can make very risky 33
+<br><br>experiments within your project without any risk to the project as a whole. 34
+<br><br>So normally if you go and try let's make a radical change to my project, 35
+<br><br>there's a good risk you'll break it in a way that you can't fix. 36
+<br><br>Now you could do what we did in the last section, which is create zip folders and 37
+<br><br>store them, but that very quickly becomes unmanageable. 38
+<br><br>And version control does a lot more for you besides just keeping 39
+<br><br>previous versions, and we'll see that as we go through. 40
+<br><br>So next question with anything, who can help you get into this? 41
+<br><br>Well obviously there's us and it's primarily gonna be us. 42
+<br><br>But there's a bunch of companies that provide you a layer 43
+<br><br>over the outside of your version control system. 44
+<br><br>So let me just show you that and then I'll go back to the previous slide. 45
+<br><br>The version control system that we're gonna use is Git. 46
+<br><br>There are others called Mercurial and there's a whole bunch actually, 47
+<br><br>Perforce, etc. 48
+<br><br>We just gonna use Git cause it's very, very industry standard. 49
+<br><br>It's picking up in popularity, if you check on Google Trends compared to 50
+<br><br>everything else, and it works for projects of these size beautifully. 51
+<br><br>So you have a version control system, now if you just use Git, 52
+<br><br>which we're gonna suggest, you have to use the command line. 53
+<br><br>That is a bit of a pain for beginners. 54
+<br><br>So the who is a bunch of people have written graphical user interfaces, 55
+<br><br>GUIs, to help you to use Git. 56
+<br><br>and we're going to be using one of those both on Windows and on Mac. 57
+<br><br>Now, that does not preclude you from using the command line, 58
+<br><br>you can use the terminal or the command line if you like the old school feeling or 59
+<br><br>if you want more control. 60
+<br><br>But we're gonna primarily use a graphical user interface. 61
+<br><br>And just for completeness, the final layer of this, and 62
+<br><br>we won't deal with it in this section, is that there can be an online host 63
+<br><br>to allow you to backup and share your repositories with others. 64
+<br><br>Okay, so all that said, let's just back up one. 65
+<br><br>Who can help us to get into this? 66
+<br><br>Well, Atlassian have made something called SourceTree, 67
+<br><br>GitHub have made something called Desktop. 68
+<br><br>By the way,. GitHub are not the same as Git. 69
+<br><br>Git is a project and a version control system, 70
+<br><br>GitHub is an online host that hosts Git repositories, all right. 71
+<br><br>So anyway, GitHub have made something called Desktop, the GitHub Desktop, and 72
+<br><br>there's GitKracken, and there are a whole bunch of others. 73
+<br><br>So OR, and that's not an exclusive OR, that's one or the other or both. 74
+<br><br>You can go commando, as it were, with the terminal in which case 75
+<br><br>It's gonna be between you and. Stack Overflow to work out how to use it. 76
+<br><br>All right, so the version control system, we'll use a GUI on top of that, and 77
+<br><br>then we have a host on the Internet later in the course, not right now. 78
+<br><br>So let's start covering some jargon and we'll get it installed. 79
+<br><br>Git is a version control system, a VCS. 80
+<br><br>Your project folder will contain a repository, which is the thing, 81
+<br><br>it's actually a hidden folder, that contains all the changes and 82
+<br><br>the history of your project, all right, so we'll see that in a moment. 83
+<br><br>You will be committing your changes to your repository. 84
+<br><br>As I said, SourceTree is a graphical user interface, and GitHub or 85
+<br><br>BitBucket host your repositories remotely online. 86
+<br><br>So there's your jargon slide, and you can refer back to that when you want, but 87
+<br><br>I think I've talked conceptually about this enough now. 88
+<br><br>Let's dive over and actually do something concrete. 89
+<br><br>It's up to you who to use, you could use sourcetreeapp.com, 90
+<br><br>that's what I'm gonna be using. 91
+<br><br>If you're new to version control,. I strongly recommend that, so 92
+<br><br>I'm gonna get it downloading. 93
+<br><br>Let me show you a couple of other options, one is GitHub. 94
+<br><br>Desktop, now GitHub Desktop is pretty good and 95
+<br><br>it's slightly easier when you get to connecting it to online repositories. 96
+<br><br>But it's got a lot of disadvantages and 97
+<br><br>a lot of things missing as far as I'm concerned. 98
+<br><br>So GitHub's Desktop is an option for you, if you don't wanna use SourceTree for 99
+<br><br>any reason, and the other is GitKraken. 100
+<br><br>Now why don't we just talk about the incentives of these people, very, 101
+<br><br>very briefly. 102
+<br><br>Sourcetree are giving you a free thing because they have Bitbucket and 103
+<br><br>Bitbucket at some stage, if you use it a lot for 104
+<br><br>business, with more than five users, it's not free. 105
+<br><br>So that's why they're doing Sourcetree,. GitHub are doing GitHub Desktop, 106
+<br><br>same kind of reason. 107
+<br><br>GitHub let you host your code online, but not privately. 108
+<br><br>You have to pay them if you want it to be private. 109
+<br><br>So again, they've got an online monetization model. 110
+<br><br>GitKraken completely different, 111
+<br><br>they just charge you for. GitKraken itself as a system. 112
+<br><br>I love GitKraken but it's been quite unstable for 113
+<br><br>me recently, and SourceTree has been the thing we always come back to. 114
+<br><br>Double clicking on SourceTree setup should bring you to something 115
+<br><br>a little bit like this. 116
+<br><br>Yes, the interface might have changed when you're watching this video, yes, 117
+<br><br>it'll look a bit different on the Mac. 118
+<br><br>And it may skip all of this altogether if you've either already got SourceTree 119
+<br><br>installed or have installed and removed it in the past, it might skip this. 120
+<br><br>But, let's show you what happens if your fresh to it, so we agree to the license. 121
+<br><br>I'm just going to close this background window. 122
+<br><br>I am going to need to use an existing Atlassian account, so 123
+<br><br>mine is, I'm just gonna type my password. 124
+<br><br>My username and password, bear with me one second. 125
+<br><br>You're gonna need to go and 126
+<br><br>get yourself an Atlassian account if you don't already have one. 127
+<br><br>It's free, I've never had them spam me, 128
+<br><br>I don't have any problems with recommending them whatsoever. 129
+<br><br>This is just saying I want to connect you to a host, 130
+<br><br>you know we talked about the online host, you can skip it. 131
+<br><br>You don't need to connect to a host yet. 132
+<br><br>The whole section we're not gonna be dealing with online, 133
+<br><br>anything to do with pushing your code online or anything. 134
+<br><br>Just we're gonna be doing the local version control, all right. 135
+<br><br>So that's it, you get it installing like that, 136
+<br><br>now it might go a little bit quiet during the install process. 137
+<br><br>It certainly is for me at this point. 138
+<br><br>And it may well pop up and 139
+<br><br>ask you a couple of other questions before the interface arrives. 140
+<br><br>One might be like this, we're not able to locate a Git installed on your system. 141
+<br><br>Remember in the slides, we said that there's like an, I love Rick's analogy, 142
+<br><br>like an onion here. 143
+<br><br>Let me see if I can find it, there. 144
+<br><br>So what SourceTree, the GUI, graphical user interface, 145
+<br><br>is saying is I can't find a version control system to build on top of. 146
+<br><br>We are going to let it download an embedded version of Git for 147
+<br><br>SourceTree alone to use. 148
+<br><br>I'm just going to do that because it's very clear and 149
+<br><br>simple and I know which version of Git. 150
+<br><br>Your system could have multiple centers, multiple kernels, 151
+<br><br>multiple versions of Git on it. 152
+<br><br>By the way look, if you're new to coding and you're new to game development, 153
+<br><br>and you're like what is this boring stuff? 154
+<br><br>Trust me it's worth it, we get this set up now, we'll use it for 155
+<br><br>the rest of our career as programmers and as game developers and 156
+<br><br>our life is a lot better, trust me. 157
+<br><br>Mercurial, as it might ask about, is a different version control system, 158
+<br><br>we don't want that or need it. 159
+<br><br>No harm if you install it, whatsoever, but we just don't want or need it. 160
+<br><br>Okay, we're finally into something like this. 161
+<br><br>Now you're interface might not look exactly the same, particularly on the Mac. 162
+<br><br>I want you to listen listen for the key, important things, 163
+<br><br>is that we're trying to create a repository. 164
+<br><br>I want you to get yourself to the point where SourceTree is installed, and 165
+<br><br>you've found the bit where you create a repository. 166
+<br><br>It could be there, it could be in file, clone stroke new, something like that. 167
+<br><br>Find the bit where you create a repository and then come back to me. 168
+<br><br>All right, so 169
+<br><br>after a brief pause for breath, where have we got to in terms of my slide deck? 170
+<br><br>So, we've talked about some version control jargon, 171
+<br><br>let me go through it once more. 172
+<br><br>Git is a version control system. 173
+<br><br>Your project folder will contain a repository. 174
+<br><br>This is the stage that we are at now, okay. 175
+<br><br>We need to have a project folder, so you've done this before. 176
+<br><br>I want you to go to your course folder that contains Section 1 and Section 2, and 177
+<br><br>I want you to set up a Unity project inside here, the same as we did before. 178
+<br><br>I'm not even going to challenge you to do it because we've done it now twice. 179
+<br><br>I'm going to go ahead and make the Unity project. 180
+<br><br>We're going to make a new Unity project, 181
+<br><br>in my case inside my course folder which I call Unity2. 182
+<br><br>I don't already want a folder there called Project Base. 183
+<br><br>You want to start like this with just a blank first section, second section. 184
+<br><br>And that's fine. 185
+<br><br>So the folder that we're pointing it to is Unity2, like this. 186
+<br><br>Your course folder, and 187
+<br><br>then remember the project name is the folder name, 3_Project_Boost. 188
+<br><br>Okay, 3_Project_Boost. 189
+<br><br>It's gonna be 3D, and we don't need any asset packages at the moment. 190
+<br><br>You can turn Unity analytics off, on, or not, it doesn't matter, 191
+<br><br>I'm gonna leave mine off. 192
+<br><br>All right now the proof for the pudding will be that these folders look the same. 193
+<br><br>1_First_Step contains your Assets, your ProjectSettings, Library, 194
+<br><br>we're going to 2_Terminal_Hacker,. Assets, ProjectSettings, Library. 195
+<br><br>3_Project_Boost, Assets,. Library, ProjectSettings, okay. 196
+<br><br>It's the same consistent directory structure, awesome. 197
+<br><br>So this is actually all we need to do in terms of Unity right now. 198
+<br><br>Unity 2017, luckily, comes with. Project Settings that are fine for 199
+<br><br>version control. 200
+<br><br>You used to have to go in here and 201
+<br><br>make some changes, you don't need to, you can just close Unity down. 202
+<br><br>And we're finally at the stage where we can 203
+<br><br>actually create a repository inside here. 204
+<br><br>Now, it's gonna be a hidden thing that get added to your folder, but that's fine. 205
+<br><br>So let's just talk about the steps, 206
+<br><br>step one of this plan is, create a repository using a SourceTree. 207
+<br><br>Okay, we're in the SourceTree, or GitHub Desktop, or GitKraken, 208
+<br><br>we're gonna create a repository, great, it's gonna ask us where. 209
+<br><br>Well, the repository, the thing that tracks all the changes will be 210
+<br><br>in the project folder, so you just select the 3_Project_Boost, okay. 211
+<br><br>I'm gonna call it 3_Project_Boost, it's of type Git, you do have a choice but 212
+<br><br>keep it type Git. 213
+<br><br>Don't bother creating an account, or doing anything remote, or 214
+<br><br>anything to do with remotes, leave all that out. 215
+<br><br>The destination paths already exist, 216
+<br><br>you wanna continue and create your repository in this folder. 217
+<br><br>Yes, that's fine. 218
+<br><br>And you'll get to something like this. 219
+<br><br>So that is more than enough progress for this video. 220
+<br><br>If you've got this far that you have a project folder, and 221
+<br><br>it looks the same, but as far as SourceTree is concerned, or 222
+<br><br>whatever version control system you're using, something's happening. 223
+<br><br>The lights are on and this weird stuff about Library and 224
+<br><br>all this stuff is there, it's great. 225
+<br><br>Don't do anything else for the moment, just close SourceTree, and we will, 226
+<br><br>in the next video, progress to the next step, of my RICK acronym. 227
+<br><br>So step one, as a recap, was create a repository using SourceTree. 228
+<br><br>So in future, it's gonna be so simple. 229
+<br><br>So, I look forward to seeing you in the next video when we move on to Stage Two, 230
+<br><br>ignoring the files we wanna ignore
+	</p>
+  </BODY>
+</HTML>

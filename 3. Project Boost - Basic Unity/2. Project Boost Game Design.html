@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Okay in this video, we are talking about the game design for Project Boost. 2
+<br><br>That is the game we are working on for this section of the course. 3
+<br><br>Now you can see my wonderfully beautiful art that I've got here. 4
+<br><br>It's showing a game screen. 5
+<br><br>I love to start with a game screen wherever possible, make it visual. 6
+<br><br>Put things on the screen that you wanna see in your game. 7
+<br><br>So you can see here is our hero of the story. 8
+<br><br>It's a rocket with a little bit of lightning, 9
+<br><br>that's supposed to be a jet coming out the back of it. 10
+<br><br>For now, don't worry if it looks ugly. 11
+<br><br>It's just about getting the point across, as I've done here. 12
+<br><br>On the screen we've gotta left and a right. 13
+<br><br>We're creating this for mobile, so I wanna have things, for now, 14
+<br><br>to say we need some buttons on the screen to rotate left. 15
+<br><br>That will be anti-clockwise or counter-clockwise or 16
+<br><br>to the right which would be clockwise rotation. 17
+<br><br>And then the boost is to obviously thrust the vehicle forward, 18
+<br><br>thrust the spaceship forward. 19
+<br><br>So it's gonna be a spaceship theme. 20
+<br><br>We're going from A to B in the level. 21
+<br><br>So the idea is basically to get from. A to B without bumping into anything. 22
+<br><br>As soon as you touch the walls or collide with something, you will explode. 23
+<br><br>We're gonna have a fuel mechanic in there that each time you boost 24
+<br><br>you use up some fuel. 25
+<br><br>And if it gets to 0 then you crash. 26
+<br><br>And as well, I think some moving obstacles in there would be relatively straight 27
+<br><br>forward, but super interesting and super cool things to avoid. 28
+<br><br>We might add some more features on later, but for now, this is the core game. 29
+<br><br>This is our MVP, the Minimum Viable Product. 30
+<br><br>So the minimum thing that we wanna create in order to make this game interesting and 31
+<br><br>compelling. 32
+<br><br>So as we did in the previous section, let's go through our game design, 33
+<br><br>specifically. 34
+<br><br>What is the player experience? 35
+<br><br>The player to feel like a skilled rocket pilot. 36
+<br><br>This is about precision and 37
+<br><br>about mastering the controls of the rocket or the spaceship. 38
+<br><br>The core mechanic, as I've explained, is to skillfully fly the spaceship and 39
+<br><br>avoid the environment without running out of fuel. 40
+<br><br>The core game loop is to get from. A to B to complete the level, and 41
+<br><br>then progress to the next level. 42
+<br><br>And then A to B in that level to go to the next as well. 43
+<br><br>So the loop is to go through each level A to B, 44
+<br><br>then the next, then the next, then the next. 45
+<br><br>In terms of tech specs we're building at a 16:9 aspect ratio. 46
+<br><br>So it works on most mobile devices, and obviously on PCs and 47
+<br><br>Macs as well 1920x1080 resolution. 48
+<br><br>We're going to build to web, to iOS or iOS, however you want to say it, and 49
+<br><br>to Android. 50
+<br><br>I think that's super exciting, we're making this as a mobile ready game. 51
+<br><br>And in terms of other tech aspects we're going to be having some sound effects and 52
+<br><br>possible some background music in there as well, if it works for us. 53
+<br><br>The game flow, now this is the ideal wish list, 54
+<br><br>a perfect scenario which we may or may not hit. 55
+<br><br>We would start off with a game screen with some sort of nice title 56
+<br><br>showing the name of the game, push any key to start. 57
+<br><br>We would go into level 1, then level 2, then 3, 4, 5, 6, 7, 58
+<br><br>all the way down to level X, whatever that might be for our game. 59
+<br><br>If you complete it then you hit the win screen, which takes you back to the start 60
+<br><br>game screen and then you can go through the process again. 61
+<br><br>If at any point you die and lose, 62
+<br><br>it should have another arrow here that takes you back to the start screen. 63
+<br><br>Or you can pause the game and 64
+<br><br>that could also take you back to the to the start screen. 65
+<br><br>Now the reason I don't have those arrows in there is cuz 66
+<br><br>part way through this I realized is that this is the ideal. 67
+<br><br>But most likely what we're going to aim for is this, 68
+<br><br>which is, we start off in level 1. 69
+<br><br>And then if you complete level 1, you get to level 2. 70
+<br><br>And if you complete that, 71
+<br><br>you get to the next levels, all the way down to the final level that we create. 72
+<br><br>If at any point you die, then you just restart on level 1. 73
+<br><br>In terms of where we're at with the course, 74
+<br><br>what we wanna get out of this project, our minimum viable product. 75
+<br><br>We don't wanna spend too much time wrestling with screens and user interface. 76
+<br><br>For now, we just wanna get in there and 77
+<br><br>make the game and if we get to this point that's great. 78
+<br><br>But we're not gonna promise that in terms of what our design's trying to hit. 79
+<br><br>For a game theme we wanna have something that's very simple for our game. 80
+<br><br>You're an experimental early generation spacecraft, 81
+<br><br>maybe something a little bit Cold War is feeling where the space ship isn't 82
+<br><br>necessarily properly built to modern standards. 83
+<br><br>Little bit like a lunar lander type thing. 84
+<br><br>You can't do, you can rotate left and right and thrust forward. 85
+<br><br>You're on unknown planet trying to escape, that's it. 86
+<br><br>Some games don't need a huge amount of backstory. 87
+<br><br>The player just wants to know I'm a space ship, and 88
+<br><br>I am trying to get from somewhere to somewhere. 89
+<br><br>But the challenge I've got for you guys is what's the theme for 90
+<br><br>your game, we can have it as simple or as complex as your heart desires. 91
+<br><br>Think of a central theme. 92
+<br><br>Try to make sure it makes sense in terms of the mechanic that we're doing, so 93
+<br><br>the mechanic is we're gonna be flying around a space ship. 94
+<br><br>Or it can be flying around something else, you could be flying around a hot dog or 95
+<br><br>flying around a flying pig, whatever it is. 96
+<br><br>You'll be able to put any sort of graphic in there but 97
+<br><br>we'll be using the same mechanics as we're using in our game, thrust and rotation. 98
+<br><br>And then to decide on a starting name for your game as well. 99
+<br><br>Now don't take too much time for the name but it's good to have something in there. 100
+<br><br>We're calling our game Project Boost to give a little bit of that kind 101
+<br><br>of experimental project feel to it that I was talking about before. 102
+<br><br>And please share what you've come up with in the community so that we can see what 103
+<br><br>exciting, interesting, weird, fantastic themes and games you've come up with. 104
+<br><br>And even if you're not sure exactly how it is that you're going to bring your 105
+<br><br>theme to life, that's cool. 106
+<br><br>For now we're flexing our design muscles and having a think about what would be 107
+<br><br>a good thematic match to our mechanics and starting to think about how can I make 108
+<br><br>this into a full, compelling, interesting game experience. 109
+<br><br>So have a shot at that and. I'll see you guys in the next video.
+	</p>
+  </BODY>
+</HTML>

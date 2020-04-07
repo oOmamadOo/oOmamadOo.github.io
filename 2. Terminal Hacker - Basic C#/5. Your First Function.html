@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, welcome back. 3
+<br><br>In this video, we're gonna understand a lot more about how statements group 4
+<br><br>into functions, group into classes, etc. 5
+<br><br>We're basically gonna find out ways of keeping track of our project as the code 6
+<br><br>gets more complicated, and we're gonna write our first function. 7
+<br><br>Or some people call it a method. 8
+<br><br>All right, so we've written ourselves a bunch of statements like this. 9
+<br><br>And there's almost self-contained behavior in here. 10
+<br><br>In fact, if we were to do one more thing before this, which is terminal., 11
+<br><br>and then, remember, you can use this to explore, it's possible, clear screen. 12
+<br><br>If we did that first, it would have no immediate effect on the game, of course, 13
+<br><br>because the screen was clear at the start already. 14
+<br><br>But the difference is what we've done by doing that, if you've made all 15
+<br><br>of these statements together into a recipe or what we call a function. 16
+<br><br>So the way that this code is organized is these statements which are these action 17
+<br><br>items are grouped together into things called functions or methods. 18
+<br><br>We'll talk about that in a minute. 19
+<br><br>We're just gonna call them functions for now, okay? 20
+<br><br>And then these functions like starting up, they are grouped together into classes. 21
+<br><br>And then the classes are grouped together into something called name spaces. 22
+<br><br>And that would kind of effectively wrap the whole lot like this. 23
+<br><br>So this is an organizational even hierarchy, 24
+<br><br>which is incredibly useful as our code grows. 25
+<br><br>So let's take a look at that diagrammatically. 26
+<br><br>Statement A and statement B, they've grouped together to form functions. 27
+<br><br>Functions group together to form classes,. I was strictly speaking, 28
+<br><br>function inside a class are called methods. 29
+<br><br>But we don't know what a class is yet, so worrying about the difference between 30
+<br><br>function and methods just a little bit early, we'll loop back to this later. 31
+<br><br>So for now I'm just gonna call them functions and 32
+<br><br>then classes grouped together to form name spaces. 33
+<br><br>Now the only reason I'm showing you this is just to help you orientate yourself 34
+<br><br>in this code. 35
+<br><br>We're gonna be focusing, well, 36
+<br><br>so far we focused inside a given function, ie inside the start function. 37
+<br><br>We're now gonna zoom out just one level and 38
+<br><br>start looking at the level of the functions. 39
+<br><br>So we're gonna be focusing here. 40
+<br><br>In fact the whole section is only gonna be interested in functions and statements. 41
+<br><br>So, what is a function, what is the anatomy of it? 42
+<br><br>A function is like a contract as it says at the top of this slide. 43
+<br><br>A function allows you to define a way of wrapping up behavior. 44
+<br><br>So if we were to identify that these lines, these statements or 45
+<br><br>lines of code do something like ShowMainMenu. 46
+<br><br>Then we can wrap it up like this. 47
+<br><br>We give the thing a name. 48
+<br><br>It's what it does. 49
+<br><br>You should name it based on what it does. 50
+<br><br>So it should be a verb, 51
+<br><br>and it should be precisely what it does, as far as possible, no more, no less. 52
+<br><br>Now, of course, it can't be exactly what it does, 53
+<br><br>because the only definition of what this actually does is the lines of code. 54
+<br><br>So we need to be very careful when naming, that we get a very good proxy or 55
+<br><br>a very good representation of what the lines of code within do. 56
+<br><br>This is really important. 57
+<br><br>One of the two biggest problems in computer science. 58
+<br><br>And this problem is the naming problem. 59
+<br><br>And the other one is the cache invalidation. 60
+<br><br>And we'll meet that later. 61
+<br><br>But this is naming and naming's super important, okay? 62
+<br><br>Now the other part of this contract when we write are the parameter over here. 63
+<br><br>This at the moment we're not using them. 64
+<br><br>This varies the way the function does its job and 65
+<br><br>we'll see how that works in a bit but now we're not using parameters. 66
+<br><br>And void is the information coming back from the function. 67
+<br><br>Now what does that mean? 68
+<br><br>Well, to understand this a bit better, what we really need to do is just do it. 69
+<br><br>So let's go in and make a function. 70
+<br><br>What I'm gonna do is I'm gonna take these lines of code here and 71
+<br><br>we're gonna move them into a separate function. 72
+<br><br>I'm just gonna do one, then I'm gonna ask you to do the rest. 73
+<br><br>So we write our new function, void ShowMainMenu, like that, brackets. 74
+<br><br>Now where we put these curly braces is some bone of contingence. 75
+<br><br>Sometimes they're going to end up down here, 76
+<br><br>sometimes they're going to end up on the end. 77
+<br><br>We ought to stick to a consistent style as unity has started with the precedent that 78
+<br><br>this opening curly braces here rather than here, we'll stick with that for 79
+<br><br>the moment. 80
+<br><br>But it actually doesn't change the way your code writes at all. 81
+<br><br>All right, so what I would like you to do, given that I've shown you how to write 82
+<br><br>the function, is I want you to move the lines of code from Start( ) into MainMenu. 83
+<br><br>It's incredibly simple, but. I want you to do it yourself. 84
+<br><br>So your Start( ) function should end up looking like that on the screen. 85
+<br><br>And then the menu should display as before and then you should celebrate 86
+<br><br>the fact that you're doing some good encapsulating which we'll discuss after. 87
+<br><br>Anyway, just get the main menu showing but with Start( ) looking like that. 88
+<br><br>All righty then, so literally it's a cut and paste of the lines of code, and 89
+<br><br>this is very common. 90
+<br><br>There are other ways of doing it and we'll see those other tools later. 91
+<br><br>Let's do it manually for now. 92
+<br><br>It's very common to move code around like this. 93
+<br><br>So we cut and paste the code from Start to Main Menu. 94
+<br><br>Right now this won't work. 95
+<br><br>The Main Menu will not display because nothing is telling this code here, 96
+<br><br>to execute. 97
+<br><br>We'll understand in a bit when we look at something called Messages why the Start 98
+<br><br>code gets executed but nothing is telling ShowMainMenu to execute. 99
+<br><br>Let's just see that, if we just play the game now, 100
+<br><br>we expect nothing on the screen, that's correct. 101
+<br><br>Because as I say nothing is cooling as we call it, ShowMainMenu. 102
+<br><br>So the general process of moving code around is you move it into a new method 103
+<br><br>and roughly the same time you call that method like this. 104
+<br><br>ShowMainMenu, and that's the way you call it. 105
+<br><br>Now sometimes there is a space between the start and the bracket, 106
+<br><br>sometimes there isn't. 107
+<br><br>I'm just going to roll with whatever happens as default. 108
+<br><br>It doesn't matter. 109
+<br><br>These spaces here are all about white space stuff I was talking about. 110
+<br><br>Doesn't matter,. I'm just going to leave it by default. 111
+<br><br>The way that it does it. 112
+<br><br>Okay, so show main menu. 113
+<br><br>If we call ShowMainMenu here. 114
+<br><br>Then what is happening and we will define calling and things a little bit later on, 115
+<br><br>but what I am doing here is saying is, hey Mr. 116
+<br><br>Start refer to this thing to find out what you need to do. 117
+<br><br>And then it just executes the statements as per before. 118
+<br><br>All right and then if we look at how that works, it works like so. 119
+<br><br>Boom, okay, cool. 120
+<br><br>And I added that clear screen line in, 121
+<br><br>because whenever I show main menu I want to clear screen to start with. 122
+<br><br>So it's really a self-contained bit of functionality. 123
+<br><br>Okay, it's like a recipe. 124
+<br><br>Let's just talk a little bit more about what we're doing here. 125
+<br><br>Refactoring and encapsulation. 126
+<br><br>So moving code into a function is called encapsulating it. 127
+<br><br>Remember, encapsulating, it's like putting it in a capsule. 128
+<br><br>We sometimes call this a black box as well, 129
+<br><br>it basically lets us let go of the how. 130
+<br><br>We, at this point, as long as we name this properly and 131
+<br><br>it does what it says on the tin, it's much simpler to reason about what happens at 132
+<br><br>the start of the game, we just show the main menu. 133
+<br><br>The details can actually be rolled up. 134
+<br><br>If you don't have code folding on, by the way, 135
+<br><br>it's in your Visual Studio preferences. 136
+<br><br>You have under text editor general, enable code folding, or 137
+<br><br>somewhere very similar on the PC. 138
+<br><br>But on Visual Studio on the PC, it comes on by default. 139
+<br><br>So you can fold down ShowMainMenu and you can just hide the details. 140
+<br><br>A lot of making complicated programs without hiding the details, 141
+<br><br>letting go of the details of the how. 142
+<br><br>And the general process is called refactoring. 143
+<br><br>We are changing our code without, well, hopefully without changing 144
+<br><br>the way it behaves, but we're changing the way the code looks so that it's easier for 145
+<br><br>us to reason about, and we'll be doing a lot of this. 146
+<br><br>So congratulations, you made a huge step forward and you can use functions now and 147
+<br><br>I'll see you in the next video.
+	</p>
+  </BODY>
+</HTML>

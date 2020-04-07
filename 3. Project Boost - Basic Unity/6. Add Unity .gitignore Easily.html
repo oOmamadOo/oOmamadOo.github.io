@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey guys, by the end of this video, 2
+<br><br>we will have basically finished setting up version control. 3
+<br><br>And we will have started playing with it, and doing a few things to the scene and 4
+<br><br>committing our work. 5
+<br><br>And having the safety net that we need in order to progress with the game. 6
+<br><br>Okay, so let's take the next step with this version control. 7
+<br><br>We are working towards making our first commit, and 8
+<br><br>from there, you're gonna be able to save your work like crazy. 9
+<br><br>So one of the things is that we talked about in the previous section that 10
+<br><br>the library folder can be quite big. 11
+<br><br>It's probably not massive right now, it's already 11 meg, though. 12
+<br><br>Given that, if we look at our assets, 13
+<br><br>there's nothing in there, we already got 11 megs of library folders. 14
+<br><br>And this is a cache, it even says there in the tags against the folder, 15
+<br><br>this is a cache. 16
+<br><br>Now, remember, the two hardest problems in computer science are naming and 17
+<br><br>caching validation. 18
+<br><br>And we're gonna solve the second one here, we don't want to store derived or 19
+<br><br>cachable data. 20
+<br><br>Let me show you something before we even do any more with version control 21
+<br><br>about this library folder, and there are others like it. 22
+<br><br>The library's just a kind of proxy for a whole bunch of cache data. 23
+<br><br>So here's our Unity project, right, our new project, 24
+<br><br>if I just open it quickly before we start, open up project boost. 25
+<br><br>And just notice that even though there's nothing in it, it opens pretty quick. 26
+<br><br>In fact, you know what I'm gonna do, and you can do this as well, 27
+<br><br>I'm just gonna save a game scene, so 28
+<br><br>that there's a game scene to be used, all right. 29
+<br><br>So I've just created a scene, or just hit. Ctrl + S to save a scene called Game. 30
+<br><br>So in essence, we have a game scene, you've made scenes before. 31
+<br><br>But anyway, the point is that when you open the project either 32
+<br><br>from Unity's menu here, or now you could open it from the assets folder. 33
+<br><br>You'll see that sometimes new things appear in here, temp, 34
+<br><br>and stuff like that, but it also opens very quickly. 35
+<br><br>Now, if I was to delete the library folder altogether, and you can do that, and 36
+<br><br>you should do that before you zip up your folder and share it with people. 37
+<br><br>And by the way, by the next section or two, 38
+<br><br>you'll be able to share your project with people a much better way than zipping, 39
+<br><br>building on what we learned from version control. 40
+<br><br>But if you delete the library folder, you can still open the project, 41
+<br><br>you haven't destroyed anything. 42
+<br><br>Nothing in the library folder is important, but look, it stubbornly 43
+<br><br>recreates it every single time, and it says, hold on, I've got some work to do. 44
+<br><br>And what is it doing, it's rebuilding its library, so it's rebuilding a cache, and 45
+<br><br>the cache is something that's local storage. 46
+<br><br>It basically does some calculations which take time, 47
+<br><br>and then stores the results of those calculations in the library folder, so 48
+<br><br>that next time you open Unity, it's quicker. 49
+<br><br>The bottom line of this is that we can delete the library folder. 50
+<br><br>But we don't wanna keep deleting our library folder when we're 51
+<br><br>using our project. 52
+<br><br>We wanna just let Unity do its thing, right, who wants to sit and 53
+<br><br>delete a folder every five minutes? 54
+<br><br>So what this brings us to is that in source tree, 55
+<br><br>you'll see we have a few different panes. 56
+<br><br>Staged files, unstaged files, 57
+<br><br>the bit we care about at the moment is the unstaged files we listed. 58
+<br><br>If you look at that, it's got tons of stuff, 59
+<br><br>most of the stuff that it will have is within the library folder. 60
+<br><br>So what we're gonna do is, 61
+<br><br>we're gonna tell the version control system to ignore it. 62
+<br><br>The way you do it is right click on any of the files that start with library or 63
+<br><br>in the library folder, and click Ignore. 64
+<br><br>This is the same on the Mac, so right click on any of the files that say 65
+<br><br>library, click Ignore, and you'll get a list like this. 66
+<br><br>Now what we want to do is ignore everything beneath library, and 67
+<br><br>leave it set to this repository only, right? 68
+<br><br>Ignore everything beneath the library, okay, boom. 69
+<br><br>Now what that's actually done, if you look at your list of unstaged files, and 70
+<br><br>these are things that the system has seen were different to, well, 71
+<br><br>to nothing in this case. 72
+<br><br>So we started with nothing, and these are all the files, right? 73
+<br><br>So compared to nothing, it did have a list of all the files, 74
+<br><br>it's now created a file called .gitignore, put this syntax in it, it says library/, 75
+<br><br>which tells git to ignore everything in the library folder and below it. 76
+<br><br>And therefore, nothing in this list is from the library anymore, 77
+<br><br>that's really cool, right? 78
+<br><br>That means that we can save our work without saving the cache, 79
+<br><br>it means that saving will be quicker. 80
+<br><br>It means that saving will take up a lot less space, and 81
+<br><br>it means saving is even more reliable. 82
+<br><br>Cuz we're only saving the core, root information about the way our game's 83
+<br><br>set up, and none of this derived, cached data. 84
+<br><br>By the way, when I say cache, 85
+<br><br>if you keep hearing me say that,. C-A-C-H-E as in a storage. 86
+<br><br>All right, so that's how you add the first thing, the library, 87
+<br><br>to the gitignore, but there's a lot of other stuff we want to ignore. 88
+<br><br>And these gitignore files are a pain in the bottom because they are hidden files. 89
+<br><br>And on both Mac and PC, it's a pain to deal with hidden files, 90
+<br><br>so this is my method for showing you how to add things to gitignore. 91
+<br><br>What we want to do is as follows, we want to, number one, as I said, 92
+<br><br>it can be a pain because it's hidden. 93
+<br><br>Number one, ignore the library folder from within in the GUI, we just did that. 94
+<br><br>Number two, open the gitignore file it creates, so you can double click on this 95
+<br><br>gitignore on Mac or PC, it'll open up in a text editor like this. 96
+<br><br>So we open up that file, and then what I want you to do is to go and 97
+<br><br>get a gitignore from a trusted source like GitHub, all right? 98
+<br><br>And then we'll talk about the next step, so let me show you how to do that. 99
+<br><br>I've put a link in the resources to make it a lot easier for you. 100
+<br><br>You could just Google for Unity gitignore, but then you've gotta say, well, 101
+<br><br>who knows what folders we should exclude and 102
+<br><br>which we shouldn't, when we're tracking our changes. 103
+<br><br>Well, I would say that the top answer at the moment on Google is a good one, and 104
+<br><br>it's in your resources. 105
+<br><br>It's on GitHub, and lots of people are contributing to this, so 106
+<br><br>I'm gonna go with this one. 107
+<br><br>And what I'm going to do, is I'm going to copy all of the syntax in there. 108
+<br><br>Copy the text carefully,. Ctrl + C or Cmd + C on a Mac, and 109
+<br><br>just replace what's currently in the gitignore file with all this stuff. 110
+<br><br>Now, we don't need to worry too much about how exactly this is working, 111
+<br><br>it's doing clever stuff like saying, well, ignore things in library, 112
+<br><br>whether we use a capital L or a lowercase l, and stuff like that. 113
+<br><br>It's kinda Mac, fairly Mac and. PC complaint, it's not perfect, 114
+<br><br>but it's a very good bet. 115
+<br><br>So if you then save that gitignore file, then what we've done is, 116
+<br><br>we've got a new gitignore file, and it's got loads of stuff in it. 117
+<br><br>We've still not got nothing from the library, but 118
+<br><br>anything that matches all of these other patterns here. 119
+<br><br>By the way, hashes are comments in here, 120
+<br><br>you don't need to know anything about this syntax. 121
+<br><br>But anything that matches these patterns will not be included in 122
+<br><br>the version control. 123
+<br><br>All right, so deep breath, 124
+<br><br>that was a long way of saying, look, you make a Unity project, number one. 125
+<br><br>You create a repo inside it, number two, and then when you get in the repo, 126
+<br><br>you better set up the ignore. 127
+<br><br>One way of doing that is you right click something, 128
+<br><br>ignore something from the library folder, and then go and cut and paste in. 129
+<br><br>There's lots of other ways you could get set up, 130
+<br><br>but this allows you to do it without using the terminal. 131
+<br><br>And it allows you to do it without touching or 132
+<br><br>messing around with hidden files, which is quite nice. 133
+<br><br>All right, then the final thing we want to do here in 134
+<br><br>terms of the stages is to make our initial commit. 135
+<br><br>So commit the .gitignore file, and. I'll show you how to do that, so 136
+<br><br>let's do that now. 137
+<br><br>You stage all, what this means is everything has changed, 138
+<br><br>I want to keep track of. 139
+<br><br>We don't always stage all but we, for the moment, are gonna stage all. 140
+<br><br>And you should be staging gitignore, couple of things in assets, 141
+<br><br>and a bunch of things in projects settings, okay? 142
+<br><br>And then what you do is, you find the Commit button in your interface, and 143
+<br><br>then you can type a message. 144
+<br><br>And a good message for 145
+<br><br>this initial one is called initial commit, just by convention, and then you commit. 146
+<br><br>So you stage from things that the system has noticed has changed, 147
+<br><br>over to what we call the staging area, you then commit to save those changes. 148
+<br><br>Now, you may end up with a blank screen, but 149
+<br><br>some way you'll have the working copy or the master branch that you can click on. 150
+<br><br>And you should have a history that looks something like this, it shows the history, 151
+<br><br>no history, just initial commit. 152
+<br><br>And then it shows you what changed in that commit down below. 153
+<br><br>So we are set up, we have a backup of our project, which is cool. 154
+<br><br>So what we can do now is, we can dive into Unity, and we can take some risks. 155
+<br><br>We can open up project boost knowing that it's safely backed up, okay, 156
+<br><br>only on your local machine for the moment. 157
+<br><br>A crash of your machine, etc, will lose your work, so 158
+<br><br>you need your machine backed up in the normal ways. 159
+<br><br>And by the way, I recommend Backblaze, it's $5 a month or something, 160
+<br><br>and unlimited storage for local drives. 161
+<br><br>But anyway, who cares,. I'm not affiliated with them, but 162
+<br><br>I'm just saying,. I use Backblaze, one word. 163
+<br><br>So cube, if I've added a cube to the scene, and 164
+<br><br>I just save, making sure that we actually have a scene open. 165
+<br><br>So you're probably better off just actually opening a scene first like game, 166
+<br><br>it doesn't really matter, just do something in Unity is what I'm saying. 167
+<br><br>You did some stuff in the first section, there you go, you've added a cube, 168
+<br><br>saved the game. 169
+<br><br>Go back to version control, look what happens, we have uncommitted changes, and 170
+<br><br>it's the game.Unity file that's changed. 171
+<br><br>So I can state that change, commit, say added cube, and commit. 172
+<br><br>Now the history under branches master is initial commit, and then added cube. 173
+<br><br>And you get these stages, it's like a time backup, but 174
+<br><br>the problem with time backup is, it's the progress you make on a project is uneven. 175
+<br><br>And what we wanna do when we commit is, we wanna make a commit when we've made 176
+<br><br>a significant improvement, or when we're scared that we might mess something up. 177
+<br><br>We'll get this art of making commits as we go through the course. 178
+<br><br>So often, the best way to learn anything is to play with it, kids know that, and 179
+<br><br>I'd like you to play with version control. 180
+<br><br>Do something else really simple in Unity, 181
+<br><br>we added a cube, do something else really simple, don't spend much time on it. 182
+<br><br>Save or close the editor, important thing is you save. 183
+<br><br>See what's changed in version control, in that unstaged changes area. 184
+<br><br>Make a commit, or remember that you need to stage your changes, number one. 185
+<br><br>Then make a commit with a useful name, and then share a screenshot of your early 186
+<br><br>history with us, and make a mess and have fun. 187
+<br><br>Go ahead, pause the video, have a quick play with version control. 188
+<br><br>Make a few commits, make a mess, don't worry about it, just play. 189
+<br><br>All right, welcome back, so. I'm just gonna do what I asked you to do, 190
+<br><br>which is just have a bit of a play. 191
+<br><br>So I'm just gonna add another game object here, 192
+<br><br>it could be another cube, very boring, how unimaginative is that? 193
+<br><br>It doesn't matter, because the concept is, maybe I'll scale this cube, 194
+<br><br>maybe I'll even start building our game. 195
+<br><br>There you go, gonna save that stuff, go to version control. 196
+<br><br>It's noticed our uncommitted changes, they're all in the game.Unity file, 197
+<br><br>which is the scene file. 198
+<br><br>We don't care about the details of them, but what we do is a two stage process. 199
+<br><br>We stage the changes, saying yes,. I want to include those changes. 200
+<br><br>We will normally stage everything, 201
+<br><br>but it's good to be aware of what you're staging. 202
+<br><br>And then you commit with a name that will help you identify what you did later, 203
+<br><br>added second cube, okay? 204
+<br><br>Commit that, find your history branch, and 205
+<br><br>this is where I'd like you hit print screen. 206
+<br><br>Take a screenshot like so, and say, hey guys, something like this, I use Snagit. 207
+<br><br>Hey guys, this is my early history, 208
+<br><br>and it's cool to be getting into version control. 209
+<br><br>Even if you don't think it's cool to be getting into version control, 210
+<br><br>trust me, it's one of those foundational skills. 211
+<br><br>It's like, you go to learn to rock climb, and someone bores you for the first ten 212
+<br><br>minutes with how to tie a figure-eight knot and loop it back round itself. 213
+<br><br>But the first time you fall off, 50 foot off the deck, 214
+<br><br>you're very glad you got that knot right. 215
+<br><br>So this is one of these foundational skills, okay, 216
+<br><br>awesome, see you in the next video.
+	</p>
+  </BODY>
+</HTML>

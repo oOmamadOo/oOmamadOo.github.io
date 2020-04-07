@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, welcome back. 3
+<br><br>In this video, we're gonna provide to leave us for 4
+<br><br>the design it to pull reaction control system thrust and Main Thrust. 5
+<br><br>And by the end of it, 6
+<br><br>we will have a different feeling game because we can rotate faster. 7
+<br><br>And right here in the inspector, 8
+<br><br>even when we're playing, we're gonna be tweaking values and see what feels best. 9
+<br><br>So I'll see you in there. 10
+<br><br>I don't know about you, but I am loving how this project is coming along. 11
+<br><br>Now the biggest thing that is griping me about it at the moment is that my ship 12
+<br><br>does not rotate fast enough. 13
+<br><br>And also I think I might want to look at a different thrust and 14
+<br><br>just playing around with the mass of the ship is now no longer enough. 15
+<br><br>This mass is ridiculous anyways, it's notionally kilograms so my ship is ten 16
+<br><br>grams, doesn't kind of matter but it does matter that I can't rotate, so 17
+<br><br>I'm gonna show you a completely different way of doing things. 18
+<br><br>So inside our Rocket script, what we want to do when we thrust, 19
+<br><br>we want to be able to choose a value with which we thrust. 20
+<br><br>Both for thrusting upwards and also for our rotation, okay? 21
+<br><br>Cuz at the moment we're using what we call unit vectors or vectors of length one. 22
+<br><br>It's Vector3.up and Vector3.forward have a total length in 3D space of one unit. 23
+<br><br>Like one way of visualizing that would be these arrows on 24
+<br><br>the screen now have a length of one unit, okay? 25
+<br><br>So we need to make these things bigger. 26
+<br><br>So let's just talk a little bit about multiplying vectors. 27
+<br><br>If you multiply a vector by a float, then you end up with a new vector. 28
+<br><br>That new vector is parallel to the original vector. 29
+<br><br>It's so long the same line as the original vector, but it's a different length and 30
+<br><br>it works in rotation and translation. 31
+<br><br>So let's take a look, for example Vector3.up has a length of one and 32
+<br><br>it just turns out that we've tweaked our mass and 33
+<br><br>that our rotation happened to be such that it's kind of acceptable having 34
+<br><br>a vector length 1 for the thrust, and a vector length 1 for the rotation. 35
+<br><br>But we want more, and to get more, 36
+<br><br>we multiply that Vector3.up by 2, for example, just gets twice as long. 37
+<br><br>So the way that I'm gonna do that, and. I'm gonna make myself a floating point to 38
+<br><br>multiply my, and I'm gonna call it rotationSpeed, for example. 39
+<br><br>And then what that's going to be is, it's going to be something that 40
+<br><br>should be frame rate independent, remember we saw Time.deltaTime before. 41
+<br><br>And then times sum value,. I'll do the times in front. 42
+<br><br>So, I'm gonna call this rcsThrust Time.deltaTime. 43
+<br><br>So rcsThrust becomes a parameter that I can use and 44
+<br><br>now I can multiply all of this by rotation speed. 45
+<br><br>So look I need to slow down and go through this with you again. 46
+<br><br>But first, let's make a variable for rcsThrust. 47
+<br><br>I'll just make it up here just for a moment var or 48
+<br><br>float rcsThrust = I don't know, 10f for float. 49
+<br><br>When you initialize a floating point value, 50
+<br><br>you need to put and f after the number so that it turns this thing into a float. 51
+<br><br>If you just say 10, you may get an error that says I'm not sure what this number is 52
+<br><br>or it may treat it as a double. 53
+<br><br>By default, but you're better off just, and the double is a longer floating point, 54
+<br><br>remember, you're just better off saying f, and 55
+<br><br>that will get you out of trouble in a lot of cases, right? 56
+<br><br>So if you mean to put a float in there, put f. 57
+<br><br>So if we have rcsThrust is 10, and we get a rotationSpeed that's based on 58
+<br><br>the thrust, which is a lever that we're gonna pull on, and eventually, 59
+<br><br>we'll be able to pull that in the inspector. 60
+<br><br>And you multiply it by the frame time, then you get a rotationSpeed. 61
+<br><br>So if its a longer frame time then you need to rotate further. 62
+<br><br>Now rotationSpeed is probably a bad name so 63
+<br><br>that's immediately rename it rotationThisFrame is clearer. 64
+<br><br>So the moment you spot a clearer name, go for that. 65
+<br><br>Then, we're just gonna scale up this forward vector into the screen, 66
+<br><br>remember rotations are weird there. 67
+<br><br>The vector goes into the screen but you rotate clockwise or 68
+<br><br>anti-clockwise depending on whether you're left or right handed. 69
+<br><br>In this case, we are a left handed coordinate system, so 70
+<br><br>a vector3.forward into the screen, you put your thumb into the screen, 71
+<br><br>your fingers coil around anticlockwise, and 72
+<br><br>this is where you get your a key, doing anticlockwise rotation. 73
+<br><br>But if you make that, what we call, talk vector longer, a vector that is about 74
+<br><br>twisting, by multiplying it, then it goes faster, all right? 75
+<br><br>So that would allow us to rotate left at a different speed. 76
+<br><br>Now we don't know if this speed is appropriate, let's try it. 77
+<br><br>So only left is gonna be affected, so right goes like that, left is too slow. 78
+<br><br>So it looks like we need an rcsThrust of more like 100 to be reasonable. 79
+<br><br>And let's try we should now be able to rotate left faster than right based on 80
+<br><br>what I've just done. 81
+<br><br>Now that's better, so right's very slow, and left is faster. 82
+<br><br>Awesome, so I keep going to the repo. 83
+<br><br>So what I'm gonna do is exactly the same treatment now for 84
+<br><br>the other part of the if statement here. 85
+<br><br>Oops, there we go grab that, pop it in there. 86
+<br><br>And now notice that this code is duplicate. 87
+<br><br>By the way, we need to do the multiplication, so there you go. 88
+<br><br>So the only difference between these two clauses is this minus sign. 89
+<br><br>So because of that, we can take this calculation about the rotationThisFrame, 90
+<br><br>and instead of repeating ourselves, remember, don't repeat yourself, 91
+<br><br>you could put it just above here. 92
+<br><br>So you're just moving it out of the if statement, and 93
+<br><br>now it is available to the entire method, or function, because 94
+<br><br>it's this level of indentation, it's available to the entire function, okay? 95
+<br><br>So we're nearly there. 96
+<br><br>We now have a variable that we can change the thrust on, and if we come in here and 97
+<br><br>play the game, we can turn right and left. 98
+<br><br>We're nearly there but we have a challenge, 99
+<br><br>I would like to be able to change this value on the rocket ship script here. 100
+<br><br>You see how all these other components have these things you can adjust? 101
+<br><br>Numbers you can adjust. 102
+<br><br>That's what I call an Inspector lever. 103
+<br><br>It's something, as in a lever you can pull. 104
+<br><br>It's something we want the designer to be able to tweak. 105
+<br><br>In general when you think about your relationship between you and the designer, 106
+<br><br>or you and you with your designer hat on, you should literally not 107
+<br><br>be going into Visual Studio at all, when you have your designer hat on. 108
+<br><br>You wanna be making the best of what you've got, and Rick will be mirroring 109
+<br><br>that by generally not coming in to Visual. Studio at all, and that keeps us honest. 110
+<br><br>Giving the designer the levers that they need to pull, or 111
+<br><br>when it's you on your own, you wanna be saying I'm not coding right now I'm 112
+<br><br>focusing on making the game more fun. 113
+<br><br>So to make it available in the inspector what we need to do is first we 114
+<br><br>make it a member variable. 115
+<br><br>So our thrust now can, let's just space it out like this. 116
+<br><br>Our thrust variable can come to the top of the code like so somewhere like that. 117
+<br><br>Now, it is not yet 118
+<br><br>available in the Inspector just like these things aren't available in the Inspector. 119
+<br><br>And there are two ways of making it available in the Inspector and 120
+<br><br>I want to talk you through them. 121
+<br><br>So, there's SerializeField, which we can put in front of it. 122
+<br><br>And that would allow you to change it in the Inspector, but it would not allow you 123
+<br><br>to change it this thrust from other. Scripts when we write other Scripts, 124
+<br><br>which is a good thing by the way. 125
+<br><br>Because we want the script to be self-contained, 126
+<br><br>the other option is that you make it public. 127
+<br><br>It has a side effect of allowing you to change it in the inspector, but 128
+<br><br>the real purpose of public and say shop is to make that value changeable 129
+<br><br>from other scripts which is a bad thing because we don't if we have some bugs or 130
+<br><br>concerns about what's going on with our rocket thrust we want to. 131
+<br><br>Restrict the number of places it could have possibly changed. 132
+<br><br>Okay, and in the inspector is the only place it could change if we use 133
+<br><br>serialized field like this, so that's we're gonna get in the habit of using. 134
+<br><br>Now this value put in is a default value, what it means is the first time that you 135
+<br><br>create a script you add a component rather with the rockets, 136
+<br><br>add the rocket component to a game object, it's going to start with a value of 100. 137
+<br><br>So, if I take a new game object, an empty game object like this, and 138
+<br><br>I add a rocket component then that rcsThrust default value is 100. 139
+<br><br>RCS stands for reaction control system, as I said before. 140
+<br><br>So, we've got a lever in the inspector. 141
+<br><br>Now let's try it. 142
+<br><br>So you play the game same as before. 143
+<br><br>If you change this at run time, you are just experimenting. 144
+<br><br>So, if I changed it to 1,000, whoa, madness, okay? 145
+<br><br>And note when I stop playing, it goes back to 100, which lets me safely explore 146
+<br><br>values inside play mode without affecting the values when you get out of play mode. 147
+<br><br>So I reckon it needs to be more like 250. 148
+<br><br>It's now bold, because it's different to what? 149
+<br><br>Because it's different to the prefab, right? 150
+<br><br>If I click Apply, it's gonna set 250 back to the prefab which means that 151
+<br><br>the first place it looks is here, for 100 when it first adds the component. 152
+<br><br>Once you've added the component, the next place that it gets it from is the prefab, 153
+<br><br>here 250. 154
+<br><br>It's set on the prefab and then that can be overwritten again in the case of 155
+<br><br>the actual instance of the rocket ship right here if you change the value here, 156
+<br><br>it's now different. 157
+<br><br>So we've now got 300 here. 158
+<br><br>A bit confusing, maybe but not too bad. 159
+<br><br>The valuing encode tells the component more valued to take when you 160
+<br><br>first add the component. 161
+<br><br>The value on the prefab tells the prefab what value to take when you first drag 162
+<br><br>that prefab into the world. 163
+<br><br>So let's make a new rocket ship prefab here okay? 164
+<br><br>That's the prefab value and then the value on the actual. 165
+<br><br>Instance of the rocket may be different to that, it may not. 166
+<br><br>So I'm gonna go with 300 and see how that looks. 167
+<br><br>Okay, it's good but it's only fast one way, 168
+<br><br>it's only fast to the left at the moment. 169
+<br><br>So let's go look and see why, rcsThrust, 170
+<br><br>let's follow it though, That's because 171
+<br><br>I have inadvertently not multiplied by rotation this frame in there, okay. 172
+<br><br>So here's the final code in here. 173
+<br><br>You just calculate a rotation this frame, multiply up you rotate vectors by it and 174
+<br><br>you off you go. 175
+<br><br>And you'll be exposed to it in the Inspector. 176
+<br><br>Now, I have got a challenge for you, which is to do the same thing for mainThrust. 177
+<br><br>Make a mainThrust variable so you realize it and 178
+<br><br>it should be adjustable in the inspector. 179
+<br><br>The ship's rigid body component should be reset. 180
+<br><br>So I want the mass of the ship's rigid body to go back to one. 181
+<br><br>And then the ship should handle similar to before. 182
+<br><br>So I want you to find a mainThrust value that works. 183
+<br><br>And enjoy fooling around with your ships, have a go. 184
+<br><br>See if you can do the same sort of treatment with mainThrust. 185
+<br><br>It's simpler than what we just did. 186
+<br><br>All right, so briefly this is it. 187
+<br><br>I'm gonna copy what we had and. I'm just gonna paste it in. 188
+<br><br>I'm gonna change this to mainThrust, 189
+<br><br>leave it as a 100 as an initiate guess as to the sensible default. 190
+<br><br>The values you choose here should just be sensible default. 191
+<br><br>Beyond that, the design that can set this in the prefab and 192
+<br><br>then the instances in the game world. 193
+<br><br>Then what we want if we have a mainThrust here, 194
+<br><br>is we just want to multiply when we thrust Vector3.up times mainThrust. 195
+<br><br>Should be as simple as that. 196
+<br><br>Back into the game world, I'm gonna reset as I said the rocket ship's 197
+<br><br>component all together, so that the mass of the rocket ship becomes 1. 198
+<br><br>Note that will change my drag, so if you lost your drag value there's a couple of 199
+<br><br>options you have you can go look at the prefab, that will still have the point to. 200
+<br><br>Well, that's the easiest way so i'm going to put the point two back, 201
+<br><br>the main thing is that I got the mass to one to prove that I 202
+<br><br>now have a different set of levers, let's see. 203
+<br><br>That's too much thrust right? 204
+<br><br>The rotation is probably good let's just check the rotation. 205
+<br><br>Yeah, the other rotation is nice and snappy, but the thrust is too much. 206
+<br><br>So you'll come in here and we reduce the mainThrust down to say 50. 207
+<br><br>And the RCS, actually it's rotating a bit fast. 208
+<br><br>250 for the RCS, 209
+<br><br>the reaction control thrusters, 50 for the mainThrust, that's good. 210
+<br><br>I like that and because I like that, 211
+<br><br>I'm gonna apply it back yo the prefab and that's good. 212
+<br><br>You see how you've got lots of different opportunities to play at play time or 213
+<br><br>on the instance in the hierarchy or on the prefab and its all good. 214
+<br><br>So that's it, congratulations you now know how to use serialized field. 215
+<br><br>You can now trade levers for your designer or 216
+<br><br>the designer part of your self to pull and we're in good shape.
+	</p>
+  </BODY>
+</HTML>

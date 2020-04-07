@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND]. Hey guys, 2
+<br><br>by the end of this video, we will have our delays working. 3
+<br><br>So we'll hit something. 4
+<br><br>And it'll say hit something deadly. 5
+<br><br>But it'll wait before reloading the level. 6
+<br><br>Well you see that, it wasn't an immediate reload. 7
+<br><br>It'll also do the same when we hit the goal. 8
+<br><br>There's a delay, awesome. 9
+<br><br>See you in there. 10
+<br><br>So first a couple of quick fixes. 11
+<br><br>I've noticed that my platform over here has been moved to a silly position 12
+<br><br>where the player wouldn't actually be able to land on it, cuz it's too far back in Z. 13
+<br><br>So I'll reset that to zero in Z, if I can just do that. 14
+<br><br>There you go. 15
+<br><br>So now we can actually land on it. 16
+<br><br>The other thing is that when a level loads, 17
+<br><br>of course the pain here is that it loads instantly. 18
+<br><br>But another pain is that that it goes dark. 19
+<br><br>And the reason it goes dark is there is a bug with the lighting, and 20
+<br><br>I think it's just a bug in this version of Unity. 21
+<br><br>Let me show you regardless how to solve it. 22
+<br><br>You go to window, lighting and settings. 23
+<br><br>You'll get a lighting tab. 24
+<br><br>Now this tab may not be docked, so it may be out, it could be anywhere, 25
+<br><br>but it could be out in free space like this. 26
+<br><br>What you can do is grab the lighting tab, drop it down somewhere if you want to. 27
+<br><br>But the important thing is really, that you select a level, 28
+<br><br>doesn't matter which one. 29
+<br><br>We can only do it the same for each level. 30
+<br><br>Go to the Lighting tab, the Scene tab of that. 31
+<br><br>And at the bottom of the Scene tab, it's actually at the bottom all the time, 32
+<br><br>regardless of how you're scrolled, you have Auto generate. 33
+<br><br>If you untick that and click Generate. Lighting, what it's gonna do is it's gonna 34
+<br><br>make the folder, in this case for level two, full of lighting information, so 35
+<br><br>it doesn't have to recalculate it and get it wrong. 36
+<br><br>Ok, and then we can go to level one saving our changes. 37
+<br><br>Turn off auto generate, click generate lighting, and off we go. 38
+<br><br>We're almost to the point we need to start organizing our assets, 39
+<br><br>but not quite not quite got a screen full yet, so we're okay. 40
+<br><br>So that'll solve the problem. 41
+<br><br>Now if you play the game, boing, hit the roof, and the lighting problem is solved. 42
+<br><br>So now we're just left with this issue. 43
+<br><br>It loads the level so quickly that there's no time for any fanfare or sparks or 44
+<br><br>sounds or fireworks, or anything, and that's what we're gonna solve. 45
+<br><br>So what we want is to better go from a live state as a player to some sort or 46
+<br><br>transcending state. 47
+<br><br>So I'm gonna use dying when they hit the wall, and they're dying. 48
+<br><br>And I'm gonna use transcending when they are waiting for their next level to load, 49
+<br><br>so they're kinda transcending to the next level. 50
+<br><br>Just for a bit of fun. 51
+<br><br>And then what we need is some sort of continuous question that says, 52
+<br><br>has the timer expired? 53
+<br><br>And if it hasn't, then we stay in the dying or transcending state. 54
+<br><br>But if it has, we carry on with our lives and we whatever, we load the next level, 55
+<br><br>or we finish the game, or whatever. 56
+<br><br>But remember that if we're gonna use a timer in here, 57
+<br><br>then other messages are still gonna arrive while we're waiting for the timer. 58
+<br><br>This is a bit like addressing a letter to yourself. 59
+<br><br>In fact, quick bit of self development, if you really want to get something done, 60
+<br><br>write yourself a letter, say dear Ben,. I hope you're reading this. 61
+<br><br>When you're reading this, you've managed to achieve the goal you've set yourself 62
+<br><br>blahty blahty blah, and you can stick it in the post and 63
+<br><br>it will come back to you and you're writing a letter to your future self. 64
+<br><br>But in the meanwhile your life goes on, right? 65
+<br><br>And other things happen, but 66
+<br><br>the purpose of doing an exercise like that is to change your behavior in the interim. 67
+<br><br>And what's going to happen in our code is that while our timer is running, 68
+<br><br>the code is going to keep going, because we can't stop execution. 69
+<br><br>And if we stopped execution, everything would freeze, the movement of the ship, 70
+<br><br>any sounds, any fireworks. 71
+<br><br>So we need execution to carry on, 72
+<br><br>and this is actually something called a co-routine like a co-pilot. 73
+<br><br>And it means that something else can be going on alongside what we're doing. 74
+<br><br>This timer can be going around and waiting, but 75
+<br><br>we can also be doing other stuff. 76
+<br><br>And the way that we're gonna introduce this is using a method called invoke. 77
+<br><br>Now I've put a link in the resources for you. 78
+<br><br>But you can read all about that. 79
+<br><br>It's a gentle introduction to something called co routines, all right? 80
+<br><br>it's not my favorite, but it's a good place to start. 81
+<br><br>So what we wanna do is rather than just immediately loading scene one, 82
+<br><br>what I actually want to do is encapsulate this behavior into something else. 83
+<br><br>So I'm gonna start with an enum for the three states. 84
+<br><br>So enum State, now if you want a micro challenge, finish this off. 85
+<br><br>Create the states alive, dying, and transcending, and 86
+<br><br>make a member variable for them. 87
+<br><br>Let's see if you can do that as a micro-challenge. 88
+<br><br>Just so you remember the format. 89
+<br><br>All right, so the three states we're gonna give are alive, dying, and 90
+<br><br>transcending like so, and 91
+<br><br>then I'm going to go state with a capital S because it's the type now. 92
+<br><br>And I'm going to make a variable called state a small S without an apology. 93
+<br><br>And I'm going to make it default to a live. 94
+<br><br>Now I can just type a live and it should find it. 95
+<br><br>Awesome, so we have this state thing that we can use. 96
+<br><br>Now what we want to do is go ahead and use it. 97
+<br><br>What I wanna do is introduce a new method. 98
+<br><br>Instead of just loading the scene, 99
+<br><br>let's put that into a function called, what is it, what are we doing on finish? 100
+<br><br>We are load,. We're gonna load the next scene. 101
+<br><br>Yeah, that's what we're gonna do, we're gonna load the next scene. 102
+<br><br>And in the future, so to do, allow for more than two levels. 103
+<br><br>All right? 104
+<br><br>But at the moment, we're just going to load the next scene and 105
+<br><br>keep it really simple. 106
+<br><br>Now, we can't just load the next scene. 107
+<br><br>Can we?. Because it's going to load the next scene, 108
+<br><br>and it's going load immediately. 109
+<br><br>We've done nothing at this stage. 110
+<br><br>All right?. We can probably 111
+<br><br>get rid of this finish comment. 112
+<br><br>What we wanna do is delay the call to this load next scene. 113
+<br><br>Now, the way we can do that, 114
+<br><br>excuse me clicking in the thing there, is we can use invoke. 115
+<br><br>And unfortunately, when invoke works, 116
+<br><br>you cannot provide, you have to use a string is what I'm saying. 117
+<br><br>It's gonna want the method name as a string, 118
+<br><br>and that sucks a little bit, but you can always wrap it around like this, 119
+<br><br>and use a bit of common sense to turn it into a string or copy and paste. 120
+<br><br>But just get the string name right. 121
+<br><br>i.e. get the method name right. 122
+<br><br>That's kinda super critical. 123
+<br><br>So you invoke-load next scene and you do load next scene, after, I don't know, 124
+<br><br>let's just say one second for the moment, 1F. 125
+<br><br>Remember, floats, you have to specify that they are one second. 126
+<br><br>So it's loading these two parameters here. 127
+<br><br>Load the next scene, which points down to the LoadNextScene method. 128
+<br><br>So this guy here is looking for a string here. 129
+<br><br>And after how long? 130
+<br><br>After one second. 131
+<br><br>All right, and there's a couple of things we ought to be doing here. 132
+<br><br>One, is we ought to be saying, okay, let's parameterize this time. 133
+<br><br>So, let's not do it now, but it's one second as a design parameter. 134
+<br><br>The other thing, is that the way the ordering which I created load next scene, 135
+<br><br>I used the refactoring tool, and it made my method static. 136
+<br><br>We don't want that, we don't need to know what static is right now, but 137
+<br><br>we just don't want it. 138
+<br><br>So if your refactor tool makes a method static, get rid of it. 139
+<br><br>You can leave private, but 140
+<br><br>get rid of statics until we understand what static is. 141
+<br><br>We won't use static much anyway. 142
+<br><br>So this says call this method by name, unfortunately if I rename this method now 143
+<br><br>this will break, and that is the problem with this. 144
+<br><br>But otherwise it's nice and simple, load the scene after one second. 145
+<br><br>All right, let's see what happens. 146
+<br><br>Also, we ought to set this enum shouldn't we? 147
+<br><br>So we come in here so that we can keep an eye on the state the machine is in, or 148
+<br><br>the rocket is in. 149
+<br><br>So we can say state equals what happens with finish we're transcending aren't we. 150
+<br><br>And a semicolon, oops, in the right place. 151
+<br><br>Try and get it in the right place, we got it in the right place, okay. 152
+<br><br>So when you finish, you set the state to Transcending, and 153
+<br><br>load the next scene in a second. 154
+<br><br>Let's just look at it and see what happens. 155
+<br><br>So let's try getting to the finish, 156
+<br><br>I'm going to inspect the rocket ship in debug mode. 157
+<br><br>[SOUND] See if I can actually get there. 158
+<br><br>By the way, the reason it collapses down when you die is because that's not 159
+<br><br>the same rocket ship anymore. 160
+<br><br>So if we die accidentally when we're trying to get to the level end, 161
+<br><br>then the reason the hierarchy goes away is cuz the rocket ship is a whole new 162
+<br><br>set of everything. 163
+<br><br>All of the game objects in this scene are new. 164
+<br><br>Boom, and it goes to transcending. 165
+<br><br>And then there's a little delay, and it reloads. 166
+<br><br>So that system seems to be working, which is great news. 167
+<br><br>All right, fantastic. 168
+<br><br>So what I want you to do then, is I want you to delay the level load on death. 169
+<br><br>We've just delayed it on success, but let's delay it on death. 170
+<br><br>The first level should still load when you die, the same float. 171
+<br><br>There should be a delay before it does so. 172
+<br><br>And the player controls should be disabled while you're dying. 173
+<br><br>Mm, that's a little extra challenge, using that enum. 174
+<br><br>And we suggest you create a new method for this, a new method, 175
+<br><br>something like load first level. 176
+<br><br>Okay, go ahead.. Pause the video. 177
+<br><br>And I'll see you when you've got that challenge done. 178
+<br><br>All right, stay with the first bit of it then. 179
+<br><br>Welcome back, by the way. 180
+<br><br>What we want to do is we've, we're dead, so we want to immediately set the state. 181
+<br><br>We want to say state is state dot dead, or dying rather. 182
+<br><br>We are dying. 183
+<br><br>We're not dead.. We're dying. 184
+<br><br>Okay, so we're in state dying. 185
+<br><br>Now, we're going to make a new method. 186
+<br><br>It's going to be very similar to LoadNextScene, but 187
+<br><br>it's going to be called LoadFirstLevel, and FirstLevel has index 0, 188
+<br><br>and it will always have index 0, so there's no funny to do's. 189
+<br><br>Now I don't like the inconsistency between the use of the word Scene and Level, 190
+<br><br>strictly here we're asking to reload the next Level, so load next level. 191
+<br><br>But the refactor tool hasn't helped us. 192
+<br><br>Okay, that's the problem it invoke, so we need to paste it in there. 193
+<br><br>You didn't need to do that in your challenge, 194
+<br><br>I'm just making these guys consistent. 195
+<br><br>So if we hit the finish, we transcend and load the next level after a second. 196
+<br><br>And if we die, then we're gonna do a very similar thing. 197
+<br><br>We're gonna load First level after a second, 198
+<br><br>and again, we should parameterize this time either as two parameters or one. 199
+<br><br>Doesn't matter for now. 200
+<br><br>All right, so we're nearly there. 201
+<br><br>Let's try this, see how we get on. 202
+<br><br>I'm not sure we've completely completed the challenge. 203
+<br><br>But let's see what happens. 204
+<br><br>If I go hit the wall, and watch the rocket ship's parameters, or state. 205
+<br><br>Boom, goes to dying. 206
+<br><br>Okay, now can I control the ship when it hits the wall? 207
+<br><br>Yes, I can still control it. 208
+<br><br>So the final bit was, and this is the benefit, of course, 209
+<br><br>of having this enum, is to come up here. 210
+<br><br>Now, before I do it, let me just explain what's going on. 211
+<br><br>I'm going to zoom out from the code a little bit, so 212
+<br><br>you can see in a little bit more detail what's going on here. 213
+<br><br>We have in here called an invoke for the first time. 214
+<br><br>All right, now what happens is this means that some time later, or 215
+<br><br>specifically after one second, 216
+<br><br>that this function down here, the load next level, will get called. 217
+<br><br>But in the meanwhile, in that intervening second, The other messages like Update and 218
+<br><br>OnCollisionEnter can both be called. 219
+<br><br>All right, so life carries on between the time you sent a letter to yourself, and 220
+<br><br>when you actually receive it. 221
+<br><br>So, of course we can keep controlling because update is still being code every 222
+<br><br>second, the game is still running while we wait for load next level to be called. 223
+<br><br>Now you may wonder, and how is that working? 224
+<br><br>You can kind of think of it like when we do the invoke there's a separate kind of 225
+<br><br>time based queue over here, and it just sticks our invoke on the queue and 226
+<br><br>says okay, I want you to load next level in one second's time. 227
+<br><br>So, this is like this bit of the queue here is like T plus one. 228
+<br><br>And this is time equals zero. 229
+<br><br>You know, T equals zero, like a rocket countdown. 230
+<br><br>So, in a second from now, whatever else you've got to do on your plate, Mr. 231
+<br><br>Unity Engine, please remember to load the next level. 232
+<br><br>And then it does so. 233
+<br><br>But meanwhile, these guys keep getting called. 234
+<br><br>All right, not start, but update and on collision enter. 235
+<br><br>All right, hopefully that's clear. 236
+<br><br>So, what we want to say on update is quite simply, 237
+<br><br>if we, if we state, if our state is equals equals, 238
+<br><br>remember, alive, if we're alive, then process the input. 239
+<br><br>Both rotation and thrust, you could leave one out, you could say that you're allowed 240
+<br><br>to thrust but not rotate when you're dead, but I'm gonna say no. 241
+<br><br>If you're alive, do that, otherwise, do nothing. 242
+<br><br>So let's see what happens there. 243
+<br><br>Should be roughly the same, but if we hit the wall, I suddenly can't control and 244
+<br><br>it's free forming. 245
+<br><br>Now I heard that the sound carried on there, so 246
+<br><br>somewhere in this scheme we'd better be stopping the sound. 247
+<br><br>I don't know where, I don't want to think about it at the moment, so cuz I'm here. 248
+<br><br>I'm just going to go to do somewhere stop sound on death, 249
+<br><br>okay, and I'm just going to leave that as a to do for the moment, awesome. 250
+<br><br>There's just one more little trick up my sleeve. 251
+<br><br>If we were to put a print statement back in here. 252
+<br><br>Hit something deadly. 253
+<br><br>Okay. 254
+<br><br>In the collision entry. 255
+<br><br>Remember I said that this could be called as well, 256
+<br><br>in the intervening time while we're waiting for the lever to load. 257
+<br><br>Well, let's see what happens to that print statement. 258
+<br><br>If I just boost, boom. 259
+<br><br>Look.. Hit something deadly has been called four 260
+<br><br>times before the level got a chance to reload. 261
+<br><br>So what we need to do is we need to say to on collision enter something very similar 262
+<br><br>to this, but kind of the opposite, and this is how I like to do it. 263
+<br><br>I would like to say that if state not equals to alive, 264
+<br><br>I don't wanna go through all the other possible states, but 265
+<br><br>if we're dead, then return, we could lay it out like this, right? 266
+<br><br>And then let me explain what it does. 267
+<br><br>This says that if we're not alive, return. 268
+<br><br>And it means leave the method, 269
+<br><br>stop execution at this point, and it will not get any further than this. 270
+<br><br>This stuff will not get executed. 271
+<br><br>So every time the OnCollisionEnter message gets gets called, it will just leave. 272
+<br><br>Okay, so like a guard condition at the top of on collision enter. 273
+<br><br>Let's see it in operation quickly. 274
+<br><br>It should mean that we only get one hit something deadly. 275
+<br><br>Why do we care? 276
+<br><br>Because we only want one. 277
+<br><br>Boom, hit something deadly just once, all right, that's good, that's much tidier. 278
+<br><br>Now I am tempted with this to lay it out differently. 279
+<br><br>I'm tempted to break my rules about my formatting. 280
+<br><br>There's two things I could say here. 281
+<br><br>Firstly, you could say else and then put all of this stuff in an else block, but 282
+<br><br>that's horrible, right, because if you put all of this in an else block, and 283
+<br><br>look how indented we are. 284
+<br><br>We are too indented, too far and yuck, yuck, yuck, don't like it, 285
+<br><br>not easy to follow. 286
+<br><br>You also don't need and else, 287
+<br><br>because return leaves the function, just quits it straight away. 288
+<br><br>So it's the same things saying else is not saying else. 289
+<br><br>And this thing is a very self contained thing, so 290
+<br><br>what I wanna do is just put it on a one line. 291
+<br><br>I just like that for just a guard condition that says, 292
+<br><br>hey If we're not alive, return. 293
+<br><br>Just ignore collisions. 294
+<br><br>And if you want to put that in if you'd like. 295
+<br><br>[INAUDIBLE] dead. 296
+<br><br>Simple. 297
+<br><br>All right, so there's a little idea for you, and 298
+<br><br>now I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

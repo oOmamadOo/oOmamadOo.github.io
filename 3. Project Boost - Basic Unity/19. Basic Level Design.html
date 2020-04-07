@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND] In this video we're going to create our first level moment and 2
+<br><br>put a little bit of set dressing in there, but not much, and 3
+<br><br>have our player have to do something tricky, bang died. 4
+<br><br>Have to do something tricky that represents an actual challenge in 5
+<br><br>our game. 6
+<br><br>So let's jump in and get started. 7
+<br><br>Now the first thing in terms of tweaking the mechanics I'm gonna do here is 8
+<br><br>looking at the camera. 9
+<br><br>So generally I wanna have my camera a little bit higher than we've 10
+<br><br>got at the moment, maybe something like that. 11
+<br><br>I think maybe zoom out a little bit as well so I can fit more level on my screen. 12
+<br><br>Ben's already showed you a few ways, 13
+<br><br>a few tricks in terms of how to set up your camera. 14
+<br><br>Not sure if you guys have seen this one, which is to go click on your main camera, 15
+<br><br>make sure you're selected on that. 16
+<br><br>And you know you can move that around in this view. 17
+<br><br>You can also go to game object, align with view, and that will change your 18
+<br><br>camera to look exactly like you've got it set up in the scene here. 19
+<br><br>So it's just a quick way to do an extra level of fiddling with the camera. 20
+<br><br>See how this looks? 21
+<br><br>Not too bad, 22
+<br><br>I get more of a view of what's going on in the ground which I quite like. 23
+<br><br>Okay, so now we've got our camera set up, pretty happy with that. 24
+<br><br>We're going to go in and create some obstacles to avoid. 25
+<br><br>That's the first part of creating our levels. 26
+<br><br>Ben has created some great obstacles here, it's pretty neat, I like it in there. 27
+<br><br>What I don't like is that it's blue and our rocket is kind of blue, so 28
+<br><br>a launch pad or a landing pad or something that's marked friendly 29
+<br><br>should probably be blue, because the player is blue. 30
+<br><br>And so what I'm going to do is just drag the blue nose cone material. 31
+<br><br>I'm even gonna rename this from nose cone to blue. 32
+<br><br>Cuz that way, if it's on the rocket or 33
+<br><br>if it's on the launch pad, it's still blue and it's still relevant as a material. 34
+<br><br>If we call it nose cone, it gets a little bit wacky if we go and 35
+<br><br>put in other places. 36
+<br><br>So I like to have things named a little bit more, he's just the color and 37
+<br><br>then we can put it where we wanna put it. 38
+<br><br>Okay so now we've got this guy here as an obstacle. 39
+<br><br>Ive just dragged this into the scene as an instance of an obstacle. 40
+<br><br>I'm going to do a bunch of stuff like play around with it and 41
+<br><br>stretch it and push it around the scene. 42
+<br><br>For now I wanna make it look more obstacle-ish. 43
+<br><br>So I will find one of my materials, 44
+<br><br>you guys have already learned I think two ways of creating a material. 45
+<br><br>I'm gonna do it a quick and dirty design away, which is click on a material, 46
+<br><br>hit CTL + d or CMD + d to duplicate that. 47
+<br><br>Jump in here, rename this to red, and then drag my red onto this. 48
+<br><br>It's still blue, but. I like to drag it into the scene so 49
+<br><br>I can see what's going on, and then create something that's a little more menacing, 50
+<br><br>don't bump into me, red. 51
+<br><br>Make it a bit darker. 52
+<br><br>I'm just gonna play around a little bit with the metallic and 53
+<br><br>the smoothness to get it a bit darker looking. 54
+<br><br>I don't like that it's all a little bit too bright, and standard material. 55
+<br><br>I want it a little bit more subdued, there we go. 56
+<br><br>So you can play around with those if you want. 57
+<br><br>So I've got an obstacle here and we've got a red material on, great. 58
+<br><br>I'm gonna just drag that on these other two guys here. 59
+<br><br>Okay, so we're looking at our level and we're saying, 60
+<br><br>whoa, what are we gonna do on our level? 61
+<br><br>Good question. 62
+<br><br>I think the starting point, speaking of starting points, 63
+<br><br>is we want our rocket to go from A to B, that was part of our core design. 64
+<br><br>So I'm gonna move the launch pad off our origin point. 65
+<br><br>I know we had it on the origin point for a reason, but 66
+<br><br>I'm gonna move it down here just to say we're gonna start on the left. 67
+<br><br>Just for now, and then what I'm gonna do is duplicate the launch pad. 68
+<br><br>Rename it to landing pad, hows that, landing pad. 69
+<br><br>And then move the landing pad down to the right. 70
+<br><br>There we go. 71
+<br><br>So I've created a launch pad landing pad. 72
+<br><br>I'll grab the rocket ship. 73
+<br><br>Move the rocket ship over to the launch pad. 74
+<br><br>I'll see if it all fist on the screen. 75
+<br><br>That's an important thing to check out. 76
+<br><br>Okay, mostly does. 77
+<br><br>And then flying over here and land on the thing there. 78
+<br><br>Great.. There we go. 79
+<br><br>There's our little maid. 80
+<br><br>Not quite. 81
+<br><br>Although you know what? 82
+<br><br>We do have a goal and we have a starting point and an end point. 83
+<br><br>So technically we've made a level. 84
+<br><br>I'm just going to exit my maximize on play so that I can see when 85
+<br><br>we bump into something through our console down here that you guys are gonna set up. 86
+<br><br>Let me just show you a little bit of theory about creating the levels. 87
+<br><br>Levels inherently are a series of interesting moments, that's all they are. 88
+<br><br>You need to create something interesting in this split second, 89
+<br><br>in these five seconds or ten seconds that the player's gonna be engaged in it. 90
+<br><br>That is what a level is, just an interesting moment, 91
+<br><br>joined with another interesting moment, joined with another interesting moment. 92
+<br><br>And the important thing is that you always refer back to your game design 93
+<br><br>intention for what you want the player experience to be. 94
+<br><br>And if you remember, for 95
+<br><br>us, our player experience intention is, skilled rocket pilot. 96
+<br><br>So when I go back to my leveling here, and I think, what would make for 97
+<br><br>a skilled rocket pilot? 98
+<br><br>I need to have tricky things in there for the player to avoid. 99
+<br><br>So if I put up a, for example, something that's up in the sky, like this. 100
+<br><br>I put another thing, just scaling these at the moment. 101
+<br><br>You guys have been through this a bunch already, scaling, moving it around. 102
+<br><br>And if I put something here where. I have the classic old go over, 103
+<br><br>go under, go over again set up, using these, this is great. 104
+<br><br>We've got three in here already, I'm just gonna use these guys, remembering, 105
+<br><br>just quick note to remember that. 106
+<br><br>Because our rocket is confined along the zed-axis, along zero, 107
+<br><br>or z-axis if you're in North America, we just need to make sure that these guys 108
+<br><br>are not accidentally pushing them way out there or way in here. 109
+<br><br>That they're over in the middle. 110
+<br><br>So we can actually glide with them. 111
+<br><br>Something we can do at some point is probably make them a little bit wider just 112
+<br><br>in case as well. 113
+<br><br>But what we're doing is creating an over, under, 114
+<br><br>over situation where we can play that, see how that goes. 115
+<br><br>Where I have to get my rocket over, okay. 116
+<br><br>[NOISE] &gt;&gt; [LAUGH] 117
+<br><br>&gt;&gt; Sorry for 118
+<br><br>you guys looking at me grunt and groan, this is actually a bit tricky. 119
+<br><br>Okay, that was pretty cool,. I like that as a moment. 120
+<br><br>And of course, it looks crazy ugly at the moment. 121
+<br><br>No problem. 122
+<br><br>The goal here is just to create a moment that we think is 123
+<br><br>interesting for the player. 124
+<br><br>What I'd like you to do is create your own interesting moment. 125
+<br><br>Now, if you wanna do the over, under, 126
+<br><br>over as I've just done, that would be fantastic. 127
+<br><br>Make sure you refine your camera first if you need to, 128
+<br><br>and I think we're gonna be around with the camera on an ongoing basis. 129
+<br><br>And its okay, but. I'm not quite there yet I think. 130
+<br><br>Place a start and 131
+<br><br>a finish and obstacles to create an interesting moment of your choosing. 132
+<br><br>And then make sure you playtest and refine. 133
+<br><br>And of course, please share a screen shot in the community 134
+<br><br>when you come up with something that you think is pretty excellent. 135
+<br><br>So, take a moment. 136
+<br><br>Pause the video and then we'll loop back in. 137
+<br><br>And i'm just gonna show you one or 138
+<br><br>two more tweaks to make sure our level is set up correctly. 139
+<br><br>So, create your own level moment. 140
+<br><br>Have some fun doing it. 141
+<br><br>This is the awesome part of making games. 142
+<br><br>Right, welcome back. 143
+<br><br>So I want to make sure that. I've done a couple of things. 144
+<br><br>One is to make sure that this is set to friendly, yes that's set to friendly. 145
+<br><br>I think these aren't quite big enough. 146
+<br><br>Let me make sure I can actually land on them without it being too tricky. 147
+<br><br>So that we can in essence start and finish the level, and I just wanna do one last 148
+<br><br>thing which is create a new cube. 149
+<br><br>I'm gonna do [INAUDIBLE] cube for now to create a background. 150
+<br><br>So, it might this cube quite huge, going to hit R to scale it up. 151
+<br><br>And scale it up this way as well. 152
+<br><br>So you can see, I'm making a little bit of a background, and I'll call this backdrop. 153
+<br><br>So, a bit of backdrop in there. 154
+<br><br>I'm gonna create a new material by duplicating my Earth, 155
+<br><br>and then renaming the Earth to black. 156
+<br><br>There we go, dropping that on the back there. 157
+<br><br>Jumping in and making a fairly, should we go 100%, okay that's pretty good. 158
+<br><br>Play around with the smoothness, 159
+<br><br>see if we can get something that looks just 100% black. 160
+<br><br>If I put metallic to one and smoothness to zero, 161
+<br><br>it gives me 100%-ish black,. I think, and then, there we go. 162
+<br><br>Now it looks a little bit more bunk. 163
+<br><br>Okay, so I might change this black background but for 164
+<br><br>now I just wanted to give a little bit of set dressing so that it looks okay. 165
+<br><br>So fantastic you guys. 166
+<br><br>Great work, I look forward to seeing all your levels, and 167
+<br><br>I'll you in the next video.
+	</p>
+  </BODY>
+</HTML>

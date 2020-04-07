@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys, in this video, we are going to add some sound to the game. 3
+<br><br>[SOUND] When we are thrusting with our rocket, we get a nice, 4
+<br><br>throaty rocket-thrusting sound. 5
+<br><br>And it really adds to the sensation because it's not immediately obvious 6
+<br><br>when the rocket is under thrust. 7
+<br><br>But when you can hear it, it is obvious. 8
+<br><br>We also notice some weird movement bugs, but we won't fix them in this video. 9
+<br><br>We're really gonna bring the game alive now. 10
+<br><br>Let's talk about Audio Sources. 11
+<br><br>[COUGH] Before I even add an Audio Source,. I'm gonna show you something. 12
+<br><br>On the Main Camera, by default, there is an Audio Listener. 13
+<br><br>It's just a very simple component, doesn't have any kind of options or 14
+<br><br>anything in the Inspector here. 15
+<br><br>But you need an Audio Listener somewhere in the game. 16
+<br><br>In fact, you really want just one. Audio Listener at a time in your game. 17
+<br><br>So if you just wonder what's listening to the sound, it is the camera. 18
+<br><br>All right, so on our Rocket Ship, we're gonna add a component. 19
+<br><br>And we're gonna go Audio Source, okay? 20
+<br><br>So there it is, Audio Source. 21
+<br><br>Now, I like to have my behavior scripts at the bottom of my set of components. 22
+<br><br>You can drag these components around by dragging in the right place. 23
+<br><br>If I click on the word Audio Source, the little down arrow goes black. 24
+<br><br>And I can come up and just move it above the rocket. 25
+<br><br>Now, it's moaning about the prefab connection. 26
+<br><br>That is because I'm changing the instance of the Rocket Ship, not the prefab, okay? 27
+<br><br>And it's about time I updated this Rocket Ship prefab anyway. 28
+<br><br>So I'm just gonna click on the Rocket Ship in the hierarchy and then click Apply. 29
+<br><br>Now, if you look at the prefab, it's also got an Audio Source. 30
+<br><br>I can do the same, by the way, for the Main Camera. 31
+<br><br>Although, I think, before I do anything to the Main Camera, 32
+<br><br>I'm just gonna pull it back a little bit. 33
+<br><br>It feels a little bit too close. 34
+<br><br>Okay, so I'm a bit happier with that Main Camera view. 35
+<br><br>I'm gonna apply that prefab and the. Directional Light, and while I'm at it, 36
+<br><br>for good measure, the Launch Pad and the Terrain. 37
+<br><br>I'm just gonna apply all my prefabs, all right? 38
+<br><br>When you're happy with your defaults, then apply them back. 39
+<br><br>And that means, if you start a new level with these things, 40
+<br><br>that they will have the same defaults. 41
+<br><br>Anyway, we sidetracked from the Rocket Ship's Audio Source. 42
+<br><br>This thing makes sound. 43
+<br><br>By default, that sound is 3D, is 2D, rather. 44
+<br><br>The default spatial blend is 2D, which means it doesn't matter 45
+<br><br>where the sound source in the scene is compared to the listener at this stage. 46
+<br><br>Now, we could maybe change that later, but 47
+<br><br>I'm just gonna leave all these settings default. 48
+<br><br>We just wanna get very the basics down, of finding or 49
+<br><br>making a sound and getting it playing and then controlling when it plays, all right? 50
+<br><br>So by default, it'll come like this. 51
+<br><br>If you've messed around with the settings, remember, you can always click the cog and 52
+<br><br>click Reset. 53
+<br><br>And it'll just set that back to the component's defaults. 54
+<br><br>So if we just play now, 55
+<br><br>nothing will happen whatsoever because there's no settings on that Audio Source. 56
+<br><br>And the Audio Source is not connected to an AudioClip. 57
+<br><br>So let me show you what that means. 58
+<br><br>Here in the Inspector, we have a field here that is asking for an AudioClip, and 59
+<br><br>we don't have one. 60
+<br><br>What we want to do, in general, when linking components to assets, is, 61
+<br><br>you've got a component like the Audio Source component. 62
+<br><br>It's on a game object like the rocket. 63
+<br><br>And over on your Assets on disk, in your actual Project tab, we're gonna need 64
+<br><br>a .ogg file or a .wav file or a .mp3 file that we link in here. 65
+<br><br>So this .ogg becomes a sound clip when Unity conditions the asset. 66
+<br><br>We'll see that in a minute, and then you link the sound clip into the Audio Source. 67
+<br><br>So when it says AudioClip, and you can click this little button on the right, 68
+<br><br>there's nothing to choose from cuz we don't have any AudioClips in our game. 69
+<br><br>So let's start off by fixing that problem. 70
+<br><br>How could we do that? 71
+<br><br>Well, I've provided you with a link in the resources to, 72
+<br><br>let's go find it for you, freesound.org. 73
+<br><br>And this is a great place to go and get free audio. 74
+<br><br>But you do need to watch the license terms a little bit. 75
+<br><br>So the link I've given you does a search for the word rocket. 76
+<br><br>And it also looks and searches for. Creative Commons Zero license, 77
+<br><br>which you can see somewhere in here. 78
+<br><br>I've already searched for it. 79
+<br><br>But if you were to go back to the homepage of Freesound, then 80
+<br><br>you'll see on the right-hand side a filter for Creative Commons Zero license, okay? 81
+<br><br>My search term already has that built in. 82
+<br><br>And the sound that I like the look of is. Rocket Thrust effect.wav, this one here. 83
+<br><br>Now, you can either go and sign up for. Freesound and download this yourself. 84
+<br><br>I'm signed in, so I can download it. 85
+<br><br>If you're not signed up and signed in, then you would have to do that. 86
+<br><br>Or against this video,. I've provided that sound. 87
+<br><br>So let's go get the sound from data against this video, and here it is. 88
+<br><br>There is a WAV file. 89
+<br><br>WAV is fine. 90
+<br><br>OGG is fine. 91
+<br><br>MP3 is fine. 92
+<br><br>I've also retrospectively added another tiny version of this file, 93
+<br><br>called main engine tiny. 94
+<br><br>You're welcome to use that, too. 95
+<br><br>It'll work in exactly the same way but just take up less space. 96
+<br><br>If we drag a WAV into our. Project Assets tab, look what happens. 97
+<br><br>It comes in, and Unity conditions it and turns it into a sound clip. 98
+<br><br>This thing is now a sound clip. 99
+<br><br>We can preview it down the bottom right here. 100
+<br><br>[SOUND] It's actually much, much longer than we need it to be. 101
+<br><br>It's like 12 seconds long. 102
+<br><br>It's more than that, isn't it? 103
+<br><br>It's really quite long. 104
+<br><br>How long is it? 105
+<br><br>It's two minutes long. 106
+<br><br>That's kind of unnecessarily long. 107
+<br><br>But it's okay. 108
+<br><br>It's fast and loose. 109
+<br><br>It's not huge. 110
+<br><br>It's 12 megabytes, you can see in the Inspector here. 111
+<br><br>That's fine. 112
+<br><br>We wanna make sure our assets are much, much smaller than 100 megabytes. 113
+<br><br>We'll have problems with version control with Git if they're bigger than that. 114
+<br><br>But 12 megabytes,. I'm perfectly happy with that. 115
+<br><br>So I'm just gonna leave all the settings as default and 116
+<br><br>just drag it into Assets, right, and that's done. 117
+<br><br>That has made an AudioClip. 118
+<br><br>To make this work, you just either drag from Assets onto AudioClip 119
+<br><br>on the Audio Source, or you use the little selection box to the right 120
+<br><br>of the word None (Audio Clip), and you go and choose it. 121
+<br><br>I'm gonna leave the name at default because this is the name that came from 122
+<br><br>Freesound. 123
+<br><br>So it helps you guys reference it, if you want to. 124
+<br><br>So now, a way to tune up this AudioClip is to turn on Play On Awake, or 125
+<br><br>it will probably already be on, and just play your game. 126
+<br><br>[SOUND] Now you're gonna continuously hear this rocket sound. 127
+<br><br>Now, I'm gonna turn off maximize on play. 128
+<br><br>I don't want my game window to maximize like this. 129
+<br><br>And on the top-right of the game window, if you find yourself maximized and 130
+<br><br>you're currently playing, but you want to not be maximized, you can click 131
+<br><br>the hamburger at the top right here and then untick Maximize, all right? 132
+<br><br>Now, what you can do is, you can play with the Volume. 133
+<br><br>So adjust your Volume how you want it. 134
+<br><br>You can also play with the Pitch. 135
+<br><br>[SOUND] I'm gonna make my Pitch 0.8. 136
+<br><br>It's clear that it's a rocket, but it's got plenty of bass in it. 137
+<br><br>And it'll work okay on headphones,. I think, so that's cool. 138
+<br><br>I've adjusted the Pitch. 139
+<br><br>I've adjusted the Volume. 140
+<br><br>And when you stop the game, remember, 141
+<br><br>some things stay when you're in play mode, and some things don't. 142
+<br><br>In the case of an Audio Source and 143
+<br><br>adjusting these things, those changes are not staying. 144
+<br><br>So remember, you are exploring the value in play mode. 145
+<br><br>You now need to set the value, say 0.8 here, and Volume. 146
+<br><br>And you see it's gone blank. 147
+<br><br>That means the value is different to the default, all right? 148
+<br><br>And this is stored as part of the Rocket Ship prefab. 149
+<br><br>So you can apply these changes back to the Rocket Ship prefab. 150
+<br><br>Then the bold, things that you've changed, like the Pitch, go away. 151
+<br><br>They're no longer bold because they're no longer different to the prefab. 152
+<br><br>If I move the Pitch again, it's now bold because it's different to 153
+<br><br>the Rocket Ship's prefab that has a Pitch of 0.8, okay? 154
+<br><br>So, well, I can right-click on the Pitch here and Revert Value to Prefab. 155
+<br><br>Or I could, if I've changed something, click the cog on the Audio Source and 156
+<br><br>revert the entire set of settings to the prefab. 157
+<br><br>So you change things on the instance. 158
+<br><br>Have a listen to how it's behaving cuz the game has to be running, and 159
+<br><br>there has to be Rocket Ship in the scene, to be able to hear it. 160
+<br><br>And then, once you get the values how you want them, 161
+<br><br>you send them back to the prefab so 162
+<br><br>that future Rocket Ships come with the right sound, okay? 163
+<br><br>All right, wicked, so 164
+<br><br>that is the basics of getting the sound working on the rocket. 165
+<br><br>Now, you can, of course, make sounds yourself if you wish. 166
+<br><br>I can suggest a program called Audacity, which is free. 167
+<br><br>Little bit of a, well, no, it's not. 168
+<br><br>It's actually very good. 169
+<br><br>So [LAUGH] I was gonna say it's a bit of a pain to use. 170
+<br><br>It's not really a pain to use. 171
+<br><br>It's very good, audacityteam.org. 172
+<br><br>It's not quite as polished-looking as some other things you might wanna use. 173
+<br><br>But it really is very, very good for the money, especially given it's free. 174
+<br><br>All right,. I'm not gonna go into Audacity in depth. 175
+<br><br>That's a whole nother course, how to make your own sound effects. 176
+<br><br>But just remember, you can always get your own voice out and 177
+<br><br>make a placeholder sound effect. 178
+<br><br>You can make placeholder 3D assets using Unity's primitives. 179
+<br><br>And you can make placeholder sound effects using your own voice. 180
+<br><br>And it can be a lot of fun, all right? 181
+<br><br>But the basic point is, the Rocket Ship is there. 182
+<br><br>It has an Audio Source on it. 183
+<br><br>We wanna turn off Play On Awake now on the Audio Source so that, 184
+<br><br>when the game starts, it's nice and silent. 185
+<br><br>Okay, awesome. 186
+<br><br>So the foundations there are laid for doing audio. 187
+<br><br>Now, let's go into the script and see if we can organize this audio to start and 188
+<br><br>stop at the right times, when we are thrusting in our game, 189
+<br><br>as the final part in this video. 190
+<br><br>So in the resources in this video, 191
+<br><br>I've linked you to the AudioSource documentation. 192
+<br><br>Here it is. 193
+<br><br>And you may better work out how to start it and stop it playing yourself. 194
+<br><br>Here, you go under the Public Methods. 195
+<br><br>You could go and have a look at one of these things. 196
+<br><br>And you could have a look at the example usage and 197
+<br><br>see if you can work out how to get this working yourself, all right? 198
+<br><br>Now, the reason I think you're able to do this challenge is because we've already 199
+<br><br>found a rigidBody component. 200
+<br><br>And then we've done something to the rigidBody component. 201
+<br><br>What we could do now is, almost in the exactly same way, go and 202
+<br><br>find an Audio Source component and then ask it to play when we hit the Space key. 203
+<br><br>How can I get rid of this extra space in here, talking about spaces? 204
+<br><br>Even if it doesn't stop playing when you let go of the Space key, 205
+<br><br>if you can just get it starting playing when you hit the Space key, 206
+<br><br>then that is an awesome triumph. 207
+<br><br>So your full challenge would be to start and stop the audio. 208
+<br><br>The audio should start when you thrust. 209
+<br><br>It should stop immediately when you stop thrusting. 210
+<br><br>There should be no weird audio artifacts. 211
+<br><br>And why not make a little video of your ship flying around and making cool sounds, 212
+<br><br>especially if you've used your voice to make the thrust sound, and 213
+<br><br>share it in the community? 214
+<br><br>And I will see you for my solution to that in a moment. 215
+<br><br>All right, the video's getting on, so let's do this quickly. 216
+<br><br>Okay, what I'm gonna do is,. I'm gonna do this kind of by analogy. 217
+<br><br>I'm gonna make myself a member variable of type AudioSource, remember, 218
+<br><br>with a capital A. 219
+<br><br>And I'm gonna call it, not cryptically at all, audioSource, but with a small a. 220
+<br><br>That's the difference between the variable itself and the type, all right? 221
+<br><br>I'm then gonna go and find that audioSource when the game starts. 222
+<br><br>Now, you could, by the way, find it when you need it down inside the thrusting. 223
+<br><br>And we'll talk about that type of technique later. 224
+<br><br>And it does work fine. 225
+<br><br>It can make your code simpler. 226
+<br><br>But for the moment, I want to just do things the same way as we did 227
+<br><br>the rigidBody, just to reinforce the information. 228
+<br><br>So we got a new variable. 229
+<br><br>We go find it in exactly the same way. 230
+<br><br>All you need to do when you thrust is say audio, 231
+<br><br>Source.play, whoops, just .play, not playOnAwake. 232
+<br><br>You may have found that from the documentation. 233
+<br><br>Congratulations, if you did. 234
+<br><br>If you didn't, then let's just catch you up to this point and 235
+<br><br>see how it behaves, okay? 236
+<br><br>So pause the video and catch up to where I am. 237
+<br><br>All right, let's see how this behaves. 238
+<br><br>[SOUND] Hm, I get the thrust sound. 239
+<br><br>But when I'm holding the Space key down,. I get a horrible [SOUND] sound. 240
+<br><br>What's that about? 241
+<br><br>What that's about is that the audioSource is already playing that frame. 242
+<br><br>And then you ask it to play again and play again and play again. 243
+<br><br>So what we need to do is ask the question, 244
+<br><br>if audioSource.isPlaying, okay? 245
+<br><br>If the audioSource is not playing, now, this exclamation mark is a not sign. 246
+<br><br>It says, if this thing is not playing, you can do it like this, or 247
+<br><br>you can do it like this, okay? 248
+<br><br>== false looks a bit weird to an experienced programmer. 249
+<br><br>But the problem with the exclamation mark is that it can be hard to miss, but 250
+<br><br>they say the same thing. 251
+<br><br>If the audioSource is not playing, always use your curly braces, 252
+<br><br>even though, for a single liner, we don't need them, then play the audioSource. 253
+<br><br>And the reason for this, so it doesn't layer basically on top of each other. 254
+<br><br>All right, so that is playing the audioSource without playing it and 255
+<br><br>playing it and playing it. 256
+<br><br>So let's just see what happens. 257
+<br><br>[SOUND] That's cool. 258
+<br><br>So the final thing is, it's just not stopping. 259
+<br><br>So how would it stop? 260
+<br><br>Well, it's an else condition here, isn't it, on the input, on the thrusting. 261
+<br><br>Now, this is getting too complicated, this thing, by the way. 262
+<br><br>So we will extract the method in a minute, but 263
+<br><br>let's just get it working, audioSource.Stop. 264
+<br><br>So if you hit the thrust key, you add the force. 265
+<br><br>And if the audio's not already playing, start it playing. 266
+<br><br>Otherwise, stop the audio playing. 267
+<br><br>Let's see if this works. 268
+<br><br>[SOUND] A lot of fun. 269
+<br><br>Look at that, great news. 270
+<br><br>Now, we'll tidy that code up in the next video. 271
+<br><br>So back over in version control, you are committing your work, aren't you? 272
+<br><br>Please make sure you're committing your work. 273
+<br><br>There's a note in this video. 274
+<br><br>When you go to commit this information, 275
+<br><br>if you've included the same audio WAV that we give you, 276
+<br><br>because it's bigger than 10 meg, you're gonna get this type of thing come up. 277
+<br><br>Large files detected, is it okay for us to deal with files bigger than 10 meg? 278
+<br><br>Yes, that's fine. 279
+<br><br>Just beware that it's making your whole repository a little bit bigger. 280
+<br><br>But 10 meg is fine, so. I'm just gonna say add. 281
+<br><br>Okay, fantastic, see you in the next video.
+	</p>
+  </BODY>
+</HTML>

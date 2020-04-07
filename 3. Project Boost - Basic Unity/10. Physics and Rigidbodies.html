@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND]. Hey guys, welcome back. 2
+<br><br>By the end of this video, you will actually be able to thrust your rocket 3
+<br><br>like this, and have it go up in the air. 4
+<br><br>And if you let go, boom, it'll fall down and either crash or 5
+<br><br>land back on the launchpad. 6
+<br><br>Loads of fun. 7
+<br><br>Hey, that dude looks a bit like the Android robot. 8
+<br><br>Anyway, let's get in and see how it's done. 9
+<br><br>Now with all the building blocks in place, it's time to make the ship fly. 10
+<br><br>So, let's go into the rocket script, 11
+<br><br>assuming you have the rocket script at the top level of your rocket script. 12
+<br><br>And that you have a rigid body at the top level of your rocket ship, And 13
+<br><br>all of the appearance items or the sub-objects should not have rigid bodies. 14
+<br><br>And should not have rocket scripts, all right, just to be clear. 15
+<br><br>Then we want to go into the rocket script and Instead of just 16
+<br><br>printing that we're thrusting or rotating, we'll leave the rotating left and right. 17
+<br><br>For the purposes of this video let's actually get the rocket flying. 18
+<br><br>Now how do we do that? 19
+<br><br>We need to access the rigid body component. 20
+<br><br>Remember these components are building blocks. 21
+<br><br>So we need to think about context. 22
+<br><br>Context becomes very important as we start to move forward with the coding right now. 23
+<br><br>All right? 24
+<br><br>So when we are, remember it's like the island analogy, 25
+<br><br>this rocket script is just one island of code but it's surrounded, 26
+<br><br>it's an archipelago of islands, if you like, and it's surrounded by others. 27
+<br><br>So if we are sitting here on our rocket Island rocket.cs script island. 28
+<br><br>We need to think about the context. 29
+<br><br>While the wider context that we're in is that we're on a game object 30
+<br><br>called Rocket, or Rocket Ship in our case. 31
+<br><br>Let's just take a quick look at that. 32
+<br><br>I'm gonna dive back over to unity and there is the rocket ship. 33
+<br><br>One of the components is rocket script. 34
+<br><br>So there's another script over here, which is the rigid body, I'll just call it RB. 35
+<br><br>All right, so they're both on the rocket ship. 36
+<br><br>So the context we're in in this rocket script, 37
+<br><br>is that there is another component on the same game object called, rigid body. 38
+<br><br>Right?. And 39
+<br><br>we're going to take advantage of that fact. 40
+<br><br>To make it possible for us to reference that rigid body. 41
+<br><br>Now, the way that we find the rigid body is like this. 42
+<br><br>At the start of the game, we want to get ourselves, a reference to the rigid body. 43
+<br><br>All right because we can then need it through out the use of the rocket shape. 44
+<br><br>We know that it's gonna be a member variable from the word go. 45
+<br><br>So what we know is that we're gonna need 46
+<br><br>something of type rigid body with a capital log. 47
+<br><br>And variable of time rigid body and we mess we call it rigidBody. 48
+<br><br>Now that can be very confusing to some people, writing rigidBody rigidBody. 49
+<br><br>In the first unity course I got flamed for saying text text. 50
+<br><br>But I think I just need to explain it. 51
+<br><br>Why would I call it anything else? 52
+<br><br>It is a rigid body. 53
+<br><br>It is the rigid body of the rocket. 54
+<br><br>It is the simplest name to give it. 55
+<br><br>The thing that most people are missing when they see me write RigidBody rigidBody 56
+<br><br>to begin a code, is that this one is an R, 57
+<br><br>a capital R, which tells you that the variable is a type RigidBody, and 58
+<br><br>this is the variable itself, the member variable, and it starts with a small r. 59
+<br><br>So this is where you need to tune your eye, 60
+<br><br>the difference between the big R and the small r. 61
+<br><br>So I am going to write rigidBody, rigidBody. 62
+<br><br>I'm not gonna fluff this up with some other words like my rigidBody or 63
+<br><br>anything like that. 64
+<br><br>Because, in the long-term, this is a very simple naming convention. 65
+<br><br>So we need to get hold of that rigidBody, okay? 66
+<br><br>It's all very well having a variable of type rigidBody, but 67
+<br><br>we need to somehow find it. 68
+<br><br>And this is how you find it, you say rigidBody = and then the thing on 69
+<br><br>the right hand side is gonna need to be the rigid body, this is how we find it. 70
+<br><br>We use something called get component, okay, get component, 71
+<br><br>it's a function provided by unity for us. 72
+<br><br>Now when you hit return it's gonna put normal circular brackets, 73
+<br><br>just standard parentheses here. 74
+<br><br>Which is a function, but there's a difference with this type of Method, 75
+<br><br>this particular get component functional method. 76
+<br><br>Whether or not they put the semi colon,. I'm not going to fix this. 77
+<br><br>It's giving me an error. 78
+<br><br>The type arguments blah, blah, blah. 79
+<br><br>Gives you some totally indecipherable error. 80
+<br><br>What you need to do with get component is you need to put angle braces before 81
+<br><br>your normal parenthesis because this method or 82
+<br><br>this function is a very clever type of function that can go and get a component. 83
+<br><br>But it can work on multiple different types of component. 84
+<br><br>And what you do is you just type rigid body in there. 85
+<br><br>All right so what you're saying is get component. 86
+<br><br>I don't need to tell you how to get the component. 87
+<br><br>There's no parameters, but I want you to only act on components of type rigid body. 88
+<br><br>Quite heavy for you at this point in the course, but 89
+<br><br>this is super basic unity stuff. 90
+<br><br>Quite advanced C# stuff, these are called generics. 91
+<br><br>And we will get into how this works and why it works 92
+<br><br>in more detail later in the course, but for the moment, it's not that important. 93
+<br><br>The point is that this is the syntax you need to use. 94
+<br><br>By doing this, you will have over in rigidBody a reference to or 95
+<br><br>the ability to access this rigidBody here. 96
+<br><br>We're in rocket ship, we're getting component rigidBody. 97
+<br><br>And this gives us access into the rigidBody, all right? 98
+<br><br>Tricky, I know, but very standard, we'll be doing this kind of thing a lot. 99
+<br><br>All right, so given that we've got that, we can come in here. 100
+<br><br>Instead of just printing thrusting, we can say rigidBody, the variable So 101
+<br><br>when we hit dot after typing rigidBody this allows us to explore all 102
+<br><br>the things we can do with a rigid body. 103
+<br><br>If you type force you can constrain that list to just things that are about forces. 104
+<br><br>A very easy way to discover new possibilities. 105
+<br><br>Abilities. 106
+<br><br>The thing we want is add relative force. 107
+<br><br>Because we want to add a force that's always in the direction that the ship 108
+<br><br>is facing. 109
+<br><br>So we want to add a force to the rigid body relative to its coordinate system. 110
+<br><br>If we tilt it right, we want to thrust, right. 111
+<br><br>All right, so that's the function we need. 112
+<br><br>And if you hit return you'll notice at this point 113
+<br><br>that you've got four different possibilities, 114
+<br><br>you should click through with your mouse or you can use the up and down allows. 115
+<br><br>And we're gonna use the simplest possible version of this function, 116
+<br><br>this function can take two parameters. 117
+<br><br>One parameter, three parameters, or four parameters. 118
+<br><br>They're different versions of the same function. 119
+<br><br>We' gonna go with the simplest one which is just the fours. 120
+<br><br>Okay.. So it's version two. 121
+<br><br>And it wants a vector three now. 122
+<br><br>What on earth is a vector three? 123
+<br><br>A vector tree you actually seen that these things 124
+<br><br>It's his guy is a vector three for example. 125
+<br><br>The position of the ship is a vector three. 126
+<br><br>It is three floating point numbers 127
+<br><br>bundled together to make a single item, okay? 128
+<br><br>And you have an xyz all together. 129
+<br><br>So the way we use this is we can say vector three, 130
+<br><br>and its something called a struct for structure. 131
+<br><br>You'll understand more about those later. 132
+<br><br>We can just say vector three, dot up. 133
+<br><br>And that remember when we looked at our coordinate system remember we said 134
+<br><br>Y is up. 135
+<br><br>Now if we rotate this ship. 136
+<br><br>And we're in local coordinates, see its y is this way. 137
+<br><br>So we thrust [SOUND] off that way. 138
+<br><br>That's why we're using relative force. 139
+<br><br>Okay, so vector3.up is the right direction. 140
+<br><br>Let's see if that works. 141
+<br><br>If we just add an up force let's see what happens. 142
+<br><br>Play the game, falls to the ground if we hit the space key. 143
+<br><br>Well, is it thrusting is it doing anything? 144
+<br><br>We don't know. 145
+<br><br>It probably is, it's just probably not enough force. 146
+<br><br>Try turning your mass down to 0.001 of a unit. 147
+<br><br>Look at that, boom. 148
+<br><br>Okay so how about if we turn the mast down to 0.1. 149
+<br><br>There is goes awesome. 150
+<br><br>I can even almost land back on the pad. 151
+<br><br>All right.. So I've got a little challenge for you. 152
+<br><br>I want you to adjust the mast of your ship so it's just right so 153
+<br><br>that this default thrust allows us to hover. 154
+<br><br>It should be enough to lift the ship up but not so 155
+<br><br>much that it goes flying off into the distance. 156
+<br><br>So, find a sensible math value that feels good. 157
+<br><br>If you get it right, you should let it go up about a ship's height and 158
+<br><br>then land back on the pad, sometimes without falling over. 159
+<br><br>And if that works for you, share your joy with us. 160
+<br><br>So go ahead, pause the video and tweak that mass value down. 161
+<br><br>All right, welcome back. 162
+<br><br>So that's that documentation. I talked about. 163
+<br><br>Now force, I'm going to try point five. 164
+<br><br>Let's just see. 165
+<br><br>Now what you can do by the way is in play mode, you can hold down the space key, 166
+<br><br>keep thrusting, and then you can adjust this mask. 167
+<br><br>Well, you have to keep clicking back into the game window So you can go left and 168
+<br><br>right on the mouse here on the mass value. 169
+<br><br>And you can say 0.44 is just too heavy. 170
+<br><br>Or 0.28 and make sure you click into game before you try to do is too heavy. 171
+<br><br>0.15 is too heavy 0.12 there you go. 172
+<br><br>That'll do.. That satisfies this brief that looked very 173
+<br><br>much like a rocket taking off look at that here we go a real rocket 174
+<br><br>would pick up acceleration faster than this because its mass would be dropping, 175
+<br><br>because it'd be losing fuel. 176
+<br><br>We're not going to worry about that. 177
+<br><br>So that's it. 178
+<br><br>I can now hover this ship, just about. 179
+<br><br>Maybe I need a bit less mass. 180
+<br><br>I'm going to go for 0.1. 181
+<br><br>Now, you might be asking, 182
+<br><br>wouldn't you want to change the thrust, rather than changing the mass? 183
+<br><br>Yeah, absolutely, you would, but to do that, 184
+<br><br>you'd need to know how to manipulate vectors a bit more than you do right now. 185
+<br><br>And we'll worry about that as soon as we next need it. 186
+<br><br>We'll kill two birds with one stone. 187
+<br><br>But for the moment, manipulating the mass is fine. 188
+<br><br>Obviously if you stay in the air too long, you end up in a strange place. 189
+<br><br>But look at the fun we can already have. 190
+<br><br>So congratulations on this bit. 191
+<br><br>I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

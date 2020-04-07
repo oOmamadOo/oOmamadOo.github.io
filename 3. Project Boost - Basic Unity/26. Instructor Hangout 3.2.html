@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Okay guys.
+<br><br>Another instructor hang out.
+<br><br>Lots to cover in this one.
+<br><br>Let's dive straight into it Hey Rick how you doing.
+<br><br>Hello again.
+<br><br>How are you doing.
+<br><br>I'm wicked.
+<br><br>Okay so abrupt sounds stopping issue thanks to Gregory for this one.
+<br><br>So the sound has been making a nasty click sound.
+<br><br>When we stop it it gets solved in a couple of videos by using a different way of playing the sound you're
+<br><br>up against quite an important thought.
+<br><br>Here though is that when you stop a sound suddenly you are going to create a crunch sound.
+<br><br>If you really want to know why then ask me on the side channel and I'll bore you stiff about how it
+<br><br>actually relates to quantum mechanics because if you are uncertain if you're certain about time you
+<br><br>have to be uncertain about energy and frequency.
+<br><br>But that's too deep for this course right now.
+<br><br>The point is that if you stop a sound abruptly it's quite normal to get a sound.
+<br><br>So does that sound something like that.
+<br><br>So it turns out that by doing the stopping and starting it a different way we get around that.
+<br><br>But you're going to want to think about any longer term and in future sections about tapering our sound
+<br><br>on and off appropriately.
+<br><br>So just as just a note on that.
+<br><br>And I think Rick did some improvements that you make to the sound files as well to try and make it.
+<br><br>We do have a lot of improvements by the end of this section.
+<br><br>We'll have a nice explainer audio.
+<br><br>So we start off inside there by the end of it's pretty good.
+<br><br>Yeah exactly.
+<br><br>But the fundamental problem is if you stop away from dead you're going to get a crunch sound so in future
+<br><br>months we've got more programming skills we're going to have to not stop things quite so did so a lot
+<br><br>of people have had an issue with not being in debug mode so I am diving between debug no mode and not
+<br><br>debug mode in my inspector let me just show you on my screen what I mean by that.
+<br><br>I'm sure you know but at the top there's a little hamburger near the inspector normal debug if you debug
+<br><br>certain things disappear certain new things arrive.
+<br><br>So if you can't find what you see me using in your inspector then it's probably a common error is the
+<br><br>debug mode thing right.
+<br><br>So that one is there now and there's three for me and then I think we're going to be on two.
+<br><br>Rick so the third one is our freeze rotation feed business so we win the physics engine impart some
+<br><br>rotation onto the rocket.
+<br><br>We currently at this stage in the section we.
+<br><br>When we hit a key we say hey freeze the rotation let us do our stuff and then unfreeze the rotation
+<br><br>that has the unfortunate side effect of messing up our physics and strains at the end of the section
+<br><br>in the video of spit and polish.
+<br><br>We're going to do this a different way.
+<br><br>I did a code review with Sam and this is the importance of sharing your code with somebody else and
+<br><br>it turned out that the intention behind freezing and unfreezing the rotation was to take away any residual
+<br><br>spin that the physics engine had given the ship so that when we come to spin the ship it's been how
+<br><br>we won it not had a physics engine.
+<br><br>There's a much easier way you can say something like rigid body of angular velocity equals zero.
+<br><br>And we'll see that at the end of the section.
+<br><br>So just plough through and we get to that we can't retrospectively change this in the course because
+<br><br>it's buried in a code history.
+<br><br>So Rick morgaine she was first for the first time in her life she did a screen recording How cool is
+<br><br>that.
+<br><br>Very cool.
+<br><br>Excellent.
+<br><br>And you know it's really cool seeing guys doing screen shots and screen recordings and showing us what's
+<br><br>going on.
+<br><br>There's dozens of variations of project boost.
+<br><br>I'm stunned Missy Floyd around now whether it's on our Facebook page or in the forum or in the Q and
+<br><br>A section here.
+<br><br>It's really cool to see it even if youre doing something exactly the same as what we're doing.
+<br><br>Sheryl because it's not going to be exactly the same right.
+<br><br>You have your own flavour on it your own tuning on it your own rocket et cetera.
+<br><br>So we love to see it figure out how to share your screen and to do us great cast and screen recording
+<br><br>and we go through that a couple of times in terms of explaining how to do that not just yet.
+<br><br>I'm sure you guys had to do that.
+<br><br>Yeah we'd love to see it.
+<br><br>Absolutely.
+<br><br>Thank you Rick.
+<br><br>So there's not point I think we've made this a couple of times in our instructer hang out and then is
+<br><br>there's some ways to do things at the moment that we're doing in a very specific ways that you guys
+<br><br>can learn and not be overwhelmed because this is you know I think I said last time there's a thousand
+<br><br>ways to skin a cat so Curtis and Robert were making the point about being too slick for the neo neophytes
+<br><br>I think now we're talking about which basically if you're new to programming the way that we're doing
+<br><br>things in these sections isn't necessarily the absolute perfect best most philosophically amazing way
+<br><br>to do it but we're doing it the right way at this point in time.
+<br><br>So don't stress if someone else is out there's a better way to do it or if you're a more experienced
+<br><br>program or you are more experienced with you in any N you see a better way to do it.
+<br><br>Go ahead and do it that way.
+<br><br>But there's a reason that we're following the journey we're on.
+<br><br>Absolutely.
+<br><br>That was the point know Curtis and Robert were talking about this and I think Curtis said maybe maybe
+<br><br>that doing things a clever way is too sick for neophytes and sometimes it's better to just break it
+<br><br>down and do things in a way that's easy for you guys to read and follow.
+<br><br>So we're purposely being conscious about and not doing things the cleverest way but doing things the
+<br><br>clearest way and it's really cool when you guys are saying hey but couldn't we use the such and such.
+<br><br>Because you've got a piece of knowledge we have in introducing the course.
+<br><br>That's great that you're thinking about it and applying your own knowledge and looking at other ways
+<br><br>to do it that's what it's all about problem solving and figuring out how to be these things.
+<br><br>Sorry I think the specific examples with the controls.
+<br><br>Couldn't we just let the something to do with a negative sign.
+<br><br>Make us move the other way so we didn't have to look at two separate keys.
+<br><br>Yeah.
+<br><br>Yeah.
+<br><br>Lots of lots and lots of ways of doing things but we're trying to do it the clearest way without introducing
+<br><br>too many cons and cause next on our list here.
+<br><br>Default values and serialise field Mitchell brought this up so serialise feels quite a chunky thing
+<br><br>to be using it's quite consensually hard and richel I think was saying that he if you use that you can
+<br><br>maybe forget to set default values and what's this whole default values in the code thing anyway.
+<br><br>So integers floats a set to zero by default strings are set to the empty string by default.
+<br><br>What I tend to set default values in the inspector as not when there's zero or an empty string that's
+<br><br>a waste of time that's already what they're going to be.
+<br><br>But when there are sensible defoe's was a starting point for the designer so if the design an actual
+<br><br>script to a new game object that script and if it's got a speed or a rate or some parameter on there's
+<br><br>some design lever you want the design lever to start in a position that kinda works and then the.
+<br><br>Then the designer can move the lever from there.
+<br><br>Right.
+<br><br>Yeah.
+<br><br>And you guys might hear.
+<br><br>I'm sure you've heard Lloyd being We'll talk about when the designer comes along or he might say we'll
+<br><br>leave that one for Rick or it will put something in then we call Fix it up.
+<br><br>Basically if you're just one person working through this or if you're on Sol or indeed team.
+<br><br>Quite likely that you are is that's a way of listening for at the moment I need to have my programmer
+<br><br>hat on.
+<br><br>I need to get this done I've got some functionality that's important.
+<br><br>I don't want to get sidetracked by trying to.
+<br><br>Is it a fiver a 5.2 or a five point eight.
+<br><br>I'll come back to that.
+<br><br>So doesn't this work.
+<br><br>Ben's not saying you should go and hire a designer who's going to come along and show you the perfect
+<br><br>number of putting here.
+<br><br>Just a way of saying don't worry about it just yet.
+<br><br>We will tune at later.
+<br><br>M We are following a very specific flow with he we're doing a feature here we're doing some tuning and
+<br><br>through the rest of the Course you'll see that well will say explicitly OK we're going to do this fast
+<br><br>and loose rough and ready just getting in there.
+<br><br>If you take too long trying to find the perfect number then you're going to get stuck.
+<br><br>And then when you go and add an extra feature these numbers won't make sense anyway.
+<br><br>So a lot of that's my role talking you guys is now is the time for us to try and get.
+<br><br>No.
+<br><br>Perfect.
+<br><br>And now is it time for us to not worry about it.
+<br><br>Yeah absolutely.
+<br><br>You hear me say things like your designer hat on or the designer part of you it's making the mental
+<br><br>separation.
+<br><br>And that sets you up very well by the way if you ever do want to get a designer because you really practiced
+<br><br>with yourself working with be the designer alter ego in you.
+<br><br>So awesome stuff frame rate and fixed update stress so stray so something like that I'm not quite sure
+<br><br>how to pronounce it.
+<br><br>Yes.
+<br><br>Strayer's so brought up some issues there.
+<br><br>We're being a bit loose with regards to whether we use update or something that unity has called fixed
+<br><br>update for physics loose that loops doesn't matter right now.
+<br><br>Again you're just trying to get your head around the very beginners are trying to get their head around
+<br><br>the simple basics of you know start gets called it a start up date.
+<br><br>It's called every frame on collision indic It's called Well whenever there's a collision how does all
+<br><br>this happen if we start introducing other update loops to confusing the process works like we are right
+<br><br>now.
+<br><br>That's fine.
+<br><br>I think at this very stage in the course the rocket thrust is probably not frame rate independent and
+<br><br>we fixed that towards the end of the section there'll be certain things that aren't perfect as we go
+<br><br>along.
+<br><br>We could of course prototype to the nth degree and make everything perfect then we teach it to you know
+<br><br>what that makes for a worse course because when we do that what we find is it's not the realistic journey
+<br><br>that you guys are going to go through.
+<br><br>So when you get to actually making your own game you expect everything to kind of pan out perfectly
+<br><br>because everything you've watched has been perfectly rehearsed.
+<br><br>It's not how it works.
+<br><br>We prefer to be honest about it and say no we make little mistakes as we go along we buried them in
+<br><br>our version control history and we dont try and fix them or patch over them until the end of the section
+<br><br>or sometimes not at all.
+<br><br>And there's a real skill to discovering.
+<br><br>To put something in.
+<br><br>Try it and not at work out.
+<br><br>And that's part of what we're trying to air.
+<br><br>This is magic education were implying knowledge to you guys in giving your skills step process is a
+<br><br>real skill in that do that doesn't quite work do that change that plug that in.
+<br><br>There's a mechanism that really helps you guys out.
+<br><br>Absolutely.
+<br><br>OK.
+<br><br>Awesome.
+<br><br>So let's move on what do we got continue just just on that.
+<br><br>Ben there was.
+<br><br>Just to wrap up on the update.
+<br><br>So what is the.
+<br><br>Just a couple of terminology is there.
+<br><br>What is it that you call out or just before the update to the regular update we're working through at
+<br><br>the moment.
+<br><br>What's the one just before that happens always before the update.
+<br><br>I'm not sure.
+<br><br>I'm more than maybe such a thing let's take a look.
+<br><br>So what you're talking about here is the unity execution order let's have a quick look at that now because
+<br><br>I'm sorry I don't have the terminology in my head but I already warned you about me for why don't we
+<br><br>put that in the right pre update update.
+<br><br>Yeah.
+<br><br>So yeah I mean there's a lot of stuff here with regards to execution order what matters for us at the
+<br><br>moment is that START happens at the beginning of the game.
+<br><br>You have got fixed update.
+<br><br>That kinda looks like it happens before update but it's not as simple as that.
+<br><br>The fixed update loop goes around a different speed it goes round at a fixed speed so people often are
+<br><br>talking about four physics things using the fixed update message.
+<br><br>But really I think that while we're trying to get our head around basic execution order it doesn't make
+<br><br>any sense to do anything but just think about start up date and we've already got to think about collisions
+<br><br>which were a separate thing coming in from the like side channels so we're avoiding fixed update on
+<br><br>purpose just because it's confusing as you can probably see from that diagram Exactly.
+<br><br>So we just need to know if something's happening.
+<br><br>Every frame and that's update yet.
+<br><br>For now that's it.
+<br><br>There's more to it.
+<br><br>There's always more to it just like in chemistry.
+<br><br>You're Orbital's work like this.
+<br><br>No they don't they won't work.
+<br><br>There's no that.
+<br><br>Just we have to learn this way unfortunately.
+<br><br>OK.
+<br><br>So what do we got.
+<br><br>We got a solid background so yeah.
+<br><br>Mike Mike sorry Rick if you had been talking to Mike too much if you want to talk to that Manwell was
+<br><br>saying that we don't actually need a game object for the background of a level.
+<br><br>We could do it a different way.
+<br><br>Yes so the way that we set up our levels at the moment I've showed you guys here's a here's just a cube
+<br><br>let's flatten out stretch it out make a black.
+<br><br>There we go.
+<br><br>Bob I like having something with depth so you can put it back there and perhaps you can add a little
+<br><br>bit of light shining offered or shadows or we can put some more detail there put a texture on it so
+<br><br>there's a lot we can do.
+<br><br>For now we're saying just have a black background and do you say I'm not sure someone was saying in
+<br><br>the Q and A Man what are you saying there's a different way of doing it you can play with the camera
+<br><br>settings and the clear flags and you can set a blank background that's fine as well.
+<br><br>But Rick saying that you can get a more interesting more textured feeling if you actually have a real
+<br><br>game object.
+<br><br>So thank you minerals.
+<br><br>Good point.
+<br><br>And for now we're just doing a big solid block.
+<br><br>But you guys might want to have a whole bunch of stuff there to show some texture and some patterns
+<br><br>and detail more giving you in that case the more flexible option more rather than the kind of hone down
+<br><br>option.
+<br><br>Same thing again you know the thing that gives you more tools.
+<br><br>I mean having the levels on the forum in the resources there's two links for you for all the levels
+<br><br>and stuff you're creating Take a look through the resource links in this specific forum post that we
+<br><br>picked out for the things that people are sharing I love the creativity to see what you guys are doing.
+<br><br>So thanks for that.
+<br><br>And basically the other thing the final thing to say here is just keep it in the last few lectures.
+<br><br>There's been less engagement and that probably because everything's nice and clear to you but remember
+<br><br>keep yourself engaging and the proxy for this is that when you're making your game you want to keep
+<br><br>talking to your players and your target audience so even if everything seems to be going well in your
+<br><br>heads in developing developing developing member to surface your head and talk to the world especially
+<br><br>kind of when it's going well just have a fixed time of day or a fixed part You're video we say I'm just
+<br><br>going to go to the forum.
+<br><br>I'm just going to share or ask or answer somebody else's question on the Q and A.
+<br><br>That's all from me as they're all from him.
+<br><br>That's all very here.
+<br><br>So here guys.
+	</p>
+  </BODY>
+</HTML>

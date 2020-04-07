@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys, in this video, we're gonna build a little street scene, and 3
+<br><br>we're gonna have our cars and 4
+<br><br>our lamps all nicely grouped together into separate game objects. 5
+<br><br>And we're gonna make sure that each of these things has something called 6
+<br><br>a prefab, which is just like a template. 7
+<br><br>Which means that at any point, we'll be able to drag in a brand new car, 8
+<br><br>without doing all the work of building it, and 9
+<br><br>we can be sure that all these things are the same. 10
+<br><br>They can be made different if we want, and they can be all changed in one place. 11
+<br><br>So, huge progress once we understand prefab, you'll really start to be building 12
+<br><br>game scenes, and. I'm excited to be walking you through it. 13
+<br><br>Let's talk about parent and child relationships. 14
+<br><br>Don't worry this course is not about to turn into some sort 15
+<br><br>of happy families course. 16
+<br><br>We're talking about parent and child game objects of course. 17
+<br><br>Now, I have a car comprised of a bunch of game objects and 18
+<br><br>I can multi-select them by holding down the Shift key. 19
+<br><br>So you select one game object, say the top, hold down Shift, 20
+<br><br>select the bottom one, or you can use. Ctrl very standard selection keys. 21
+<br><br>And if you multi select all of the cars game objects you can move it 22
+<br><br>all in one go. 23
+<br><br>But if you miss one, like the base where. I've just missed it with the base. 24
+<br><br>[LAUGH] Then you've got problems, right, the car rips in pieces. 25
+<br><br>That's one reason we wanna group these things together. 26
+<br><br>Now, if you made a mistake like this, you can go Ctrl + Z or Edit and 27
+<br><br>Undo to go back. 28
+<br><br>So how do we group these together? 29
+<br><br>Well what we're gonna do is we're gonna make a go to the Game Object menu, 30
+<br><br>and make an empty game object,. Game Object&gt; Create Empty. 31
+<br><br>Now an empty game object has nothing to it basically. 32
+<br><br>It is just an empty shell, which helps with positioning. 33
+<br><br>Now its default position when you do that is at the root of their game at (0, 34
+<br><br>0, 0) the root of the coordinates. 35
+<br><br>So we'll talk a lot more about coordinates later, but for 36
+<br><br>now make an Empty game object, call it car. 37
+<br><br>And then what I want you to do is use a selection technique I just showed you to 38
+<br><br>copy, not copy but select all the game objects that comprise the car. 39
+<br><br>Click the mouse wheel, drag and drop them onto the car, not below the car or 40
+<br><br>above the car but onto the car. 41
+<br><br>You see the difference, that's below, that's above. 42
+<br><br>Below we'll just do this, above we'll just do that, but on the car looks like that, 43
+<br><br>and it will look very similar on a Mac. 44
+<br><br>And now these things are under the car very simple stuff. 45
+<br><br>The car is now a collapsible game object. 46
+<br><br>If we select the car and move, the car moves as a whole awesome. 47
+<br><br>So therefore these things, these game objects are children of the car and 48
+<br><br>the car is the parent of those children. 49
+<br><br>All right, relatively simple concept, but really useful and important. 50
+<br><br>Now, once you've made a car like this,. I wanna show you something else. 51
+<br><br>We can do something quite cool with it. 52
+<br><br>We can make something called a prefab, a prefab is like a template. 53
+<br><br>Now there's a slide waiting for you, and. I wanna introduce you briefly to slides. 54
+<br><br>So, if you go to the lecture resources, there'll be a link to the slide deck. 55
+<br><br>Not every lecture will necessarily be linked to the slide deck. 56
+<br><br>So once you get over to this Google slide deck, 57
+<br><br>I suggest you keep yourself a bookmark to it, so that you can come back to it. 58
+<br><br>It's pretty easy to navigate around, you can see the title of the slide. 59
+<br><br>And you can see diagrams from most lectures and 60
+<br><br>the challenge slide from most lectures. 61
+<br><br>It's also an open google slide so you're welcome to comment on there. 62
+<br><br>You can't change things, hopefully, if you can tell me, but you should be able to 63
+<br><br>comment and we'll respond to your comments and change things. 64
+<br><br>So this is a slide from the previous video you're seeing here. 65
+<br><br>And this was, you may have discovered this, it's like 66
+<br><br>a Easter egg if you've already discovered and well done for exploring if you have. 67
+<br><br>If you haven't, then the previous lecture link to this slide which shows you how for 68
+<br><br>instance the scene is composed and the scene asset is down here. 69
+<br><br>And how these game objects relate from the hierarchy to the scene view. 70
+<br><br>There'll be a similar slide for this lecture, a mini-challenge for you is to go 71
+<br><br>find the slide for this lecture, which I haven't created yet, frankly. 72
+<br><br>And I will at the end of our lecture, 73
+<br><br>using something relevant from this lecture. 74
+<br><br>And it's gonna show you how prefabs work, so what's a prefab? 75
+<br><br>A prefab is like a template. 76
+<br><br>It's a prefabricated object like a flat pack if you like, like an Ikea flat pack. 77
+<br><br>If you grab your car either in it's expanded or unexpanded mode and drag it 78
+<br><br>down into the Assets tab under the assets sub window of the project tab like this. 79
+<br><br>It'll do this, it'll make something called car. 80
+<br><br>So let's take a look at this prefab. 81
+<br><br>This is an actually asset, it's something that we've built, 82
+<br><br>we've put a car together and we said yeah we wanna keep that. 83
+<br><br>Notice that the car in the hierarchy has gone blue and 84
+<br><br>all of its sub objects are blue. 85
+<br><br>Blue things are prefabs, 86
+<br><br>they are linked to something stored on the disc, they're outside of just the scene. 87
+<br><br>This is a scene where we can have one car, or we could drag another car in and 88
+<br><br>move it around. 89
+<br><br>And we could drag another car either to the scene view in which case it'll go 90
+<br><br>wherever you put it, can be a bit hard to position it on the ground then. 91
+<br><br>Or you could drag the car from the project tab to the hierarchy, and 92
+<br><br>that will also create a new car. 93
+<br><br>Notice it's doing the same type of naming thing. 94
+<br><br>And remember that you can drag using the green or yellow, 95
+<br><br>it's green isn't it, the green square to keep it in the ground play, all right? 96
+<br><br>So now, if we were to look at our hierarchy, you're welcome to drag things 97
+<br><br>around and move your hierarchy, you can see that we've now got four cars. 98
+<br><br>Car0, which is not named 0, 1, 2, 3, all right? 99
+<br><br>Now, the cool thing here, is if we were to change this car we won't go into 100
+<br><br>the details of how you do that right now. 101
+<br><br>But if we were to change this one car, it will change all of the cars in the scene. 102
+<br><br>And there's a lot of flexibility about whether you change a particular what we 103
+<br><br>call instance. 104
+<br><br>These things here instances of the car prefab 105
+<br><br>which is a prefabricated car, and these are instances of it. 106
+<br><br>So these are like a mold or a template, and 107
+<br><br>these are things that have come out of a mold. 108
+<br><br>Now, they can be changed after they come out the mold. 109
+<br><br>For instance, you could go to one of these cars and 110
+<br><br>scale the whole thing, there's a long kind of big car. 111
+<br><br>So that particular car is different to all the others. 112
+<br><br>If you pop a new prefab in the scene, then that one is not any different okay? 113
+<br><br>So we won't get into modifying prefabs right now, this asset down here, but 114
+<br><br>what I want to explain to you is that you can use his as like a templating system. 115
+<br><br>So I'm gonna get rid of this funky car I think, and I'm gonna give you a challenge. 116
+<br><br>What the challenge is gonna be, is to create a bit of a street seat. 117
+<br><br>So let's go and have a look at the challenge slide. 118
+<br><br>So if we go through here, the wonder of prefabs, create and share a scene. 119
+<br><br>So if you succeeded in this challenge you should have at least two 120
+<br><br>grouped game objects. 121
+<br><br>So I want you to create a whole new grouped game object. 122
+<br><br>Something like a motorbike, or a person, or a street lamp, 123
+<br><br>whatever you like something from a street scene. 124
+<br><br>These game objects should have prefabs, so you should have at least two prefabs. 125
+<br><br>One for a car, one for something else, go nuts if you want. 126
+<br><br>And each of those prefabs should have at least two instances. 127
+<br><br>That is, if you're gonna do a car and a motorbike, 128
+<br><br>there should be at least two cars and two motorbikes. 129
+<br><br>They should all be blue in the hierarchy. 130
+<br><br>And what I want you to do is share, screenshot and share your creation. 131
+<br><br>All right, and as a bonus play around with what I did, 132
+<br><br>which is changing a particular instance and seeing how that works. 133
+<br><br>But if you're not, 134
+<br><br>if this is really new to you don't bother with that bonus bit that's just an extra. 135
+<br><br>And, by the way, look, just play, relax you can't break anything. 136
+<br><br>This is a silly sandbox toy project we're doing here it's not even a project. 137
+<br><br>We're gonna finish with these particular scene pretty much after this video. 138
+<br><br>So just relax, play with it get used to it, make a mess and 139
+<br><br>learn by making a mess. 140
+<br><br>Most importantly, try and create a little street scene for us, and 141
+<br><br>share it on whichever of the community sites you prefer, but 142
+<br><br>I suggest the GameDev community site. 143
+<br><br>Awesome, welcome back. 144
+<br><br>All right, so what I'm gonna do then is I'm going to kinda start out fresh, 145
+<br><br>delete these car instances. 146
+<br><br>I'm gonna make myself, perhaps, a little bit of a traffic jam. 147
+<br><br>Now I'm doing this by selecting a car and going, Ctrl + D to duplicate, and 148
+<br><br>then I'm gonna stack just a few game objects like that in a row. 149
+<br><br>And then I think that for my case I'm gonna make a street lamps. 150
+<br><br>So as a whole fresh thing I'm gonna create a 3D object cylinder, 151
+<br><br>I'm gonna use the keys that we've learnt about to scale a cylinder I think 152
+<br><br>I'll scale down like so and then I'll scale up vertically. 153
+<br><br>Then I'll move the thing up a little bit. I'm not gonna worry that it's exactly on 154
+<br><br>the ground. 155
+<br><br>And then I think I'll put on the other side of the cars it doesn't really matter 156
+<br><br>where the first one goes. 157
+<br><br>We'll worry about positioning and all the details of prefabs. 158
+<br><br>Now, there I had my hand in the wrong place. 159
+<br><br>Make sure that your WSAD is in the right place. 160
+<br><br>Now, I'm gonna duplicate that cylinder, flop one of them on its side like this, 161
+<br><br>maybe scale it down and you get the idea. 162
+<br><br>I'm just gonna make something that crudely represents a street lamp, very crudely. 163
+<br><br>I am gonna use these tools to make sure that I move it fair accurately but 164
+<br><br>very very, 165
+<br><br>very crudely represent a street lamp, there you go, that couldn't be simpler. 166
+<br><br>Now, remember once you've put things together to make an object, 167
+<br><br>did you remember to create an empty? 168
+<br><br>And to create a container for the them all? 169
+<br><br>So I'm gonna rename over here as we haven't seen the inspector yet, 170
+<br><br>Street lamp, okay. 171
+<br><br>I'm not gonna bother renaming these sub-objects necessarily now, but 172
+<br><br>if you want to, then you are welcome to rename these, the post, 173
+<br><br>sorry, I say I'm not gonna bother. 174
+<br><br>Sometimes I'll say I'm not gonna do something and then I'll do it. 175
+<br><br>That's me deciding in the moment that actually it's a better 176
+<br><br>idea to do it for you. 177
+<br><br>So you could call it the post and the crossbar I don't know. 178
+<br><br>I'm not a street lamp expert who knows what these things are called. 179
+<br><br>But I'm gonna call it the post and cross bar that compromises a street lamp. 180
+<br><br>Now, next stage, remember we need to prefab that street lamp. 181
+<br><br>Drag it from the hierarchy into the project view and now we have an asset for 182
+<br><br>street lamp. 183
+<br><br>Now I can come along and place down multiple street lamps, 184
+<br><br>I can have one there. 185
+<br><br>And notice how it's trying its best to snap it to the ground which is 186
+<br><br>pretty cool. 187
+<br><br>And just a few more little street lamps, now there are ways, 188
+<br><br>there are grid systems and all sorts of ways. 189
+<br><br>That didn't work, 190
+<br><br>in terms of it didn't work in terms of it snapping to the ground. 191
+<br><br>So, whether it snaps to the ground or 192
+<br><br>not kind of depends on exactly where in the seam you put it. 193
+<br><br>Sometimes it does, sometimes it doesn't snap into the ground. 194
+<br><br>If you're having problems with that other ways remember, are to just duplicate 195
+<br><br>street lamps that you have, and you can just kind of duplicate like that. 196
+<br><br>Now they ought to really be in order in the hierarchy compared to where they 197
+<br><br>are in the scene, just for neatness but it's not the end of the world. 198
+<br><br>All right, this is very rough and ready. 199
+<br><br>The idea is just to show you the basic concept. 200
+<br><br>Now you've got a messy hierarchy again, and if you really wanna bonus you can 201
+<br><br>create a new empty and you can start grouping things like this. 202
+<br><br>You could say Cars and you could take all your cars and pop it in there. 203
+<br><br>You could literally use this like a folder structure, and then you could say Lamps. 204
+<br><br>Making sure you get everything at the correct level this is bonus material here. 205
+<br><br>Lamps, now notice lamps may be at the wrong level, is it under cars? 206
+<br><br>No it isn't, it's okay. 207
+<br><br>As in under, I mean was it a child. 208
+<br><br>If it was a child, when I collapsed cars, lamps would disappear, okay. 209
+<br><br>Lamps needs to be at the top level. 210
+<br><br>Then you can take all the lamps with the combination of Shift and Ctrl and 211
+<br><br>poop them in there. 212
+<br><br>That all extra stuff for you, but now you can just take all the lamps and 213
+<br><br>move them and you can take all the cars and move them. 214
+<br><br>Pretty cool yeah, you're building at your games scenes here. 215
+<br><br>Again not all my lamps line up, whatever we'll get to that later. 216
+<br><br>Fast and loose as Rick would say I'm sure you'll hear from him say that 217
+<br><br>later in the course. 218
+<br><br>So at this point you'd screen shot this and go ahead and 219
+<br><br>share it with the community so. I will use Snagit in this case. 220
+<br><br>As I've mentioned Snagit which I have now installed since it was linked against 221
+<br><br>the last video. 222
+<br><br>You click it like that, you say give me a screen shot, and 223
+<br><br>then once the Snagit editor opens, you can go Ctrl + A and Ctrl + C for Copy or Edit. 224
+<br><br>Copy standard kind of stuff and 225
+<br><br>then you can go paste that straight into our community forum site. 226
+<br><br>If you just go to community.gamedev.tv or better than that actually. 227
+<br><br>Better than that follow the link from the resources of this lecture, 228
+<br><br>which will take you to just the right place in the community. 229
+<br><br>And start a new topic saying MY Street scene or 230
+<br><br>better than My Street scene something like I don't know. 231
+<br><br>Parisian riverside scene or something that's interesting enough for 232
+<br><br>people to bother clicking on your topic and then they'll respond to it, all right? 233
+<br><br>So have a go with that bit more practice with the forum paste in your image get 234
+<br><br>some community feedback, and basically well done. 235
+<br><br>Now just before we leave, 236
+<br><br>I want to talk about making sure everything is properly saved. 237
+<br><br>Really the safest way to make sure everything is saved, 238
+<br><br>is to go Ctrl + S which will save the scenes. 239
+<br><br>And you don't need to save the project necessarily because as you exist Unity 240
+<br><br>it will save. 241
+<br><br>But I would rather you also said save project. 242
+<br><br>Because, if you were to exit Unity and 243
+<br><br>you missed it coming up saying do you want to save? 244
+<br><br>And you said no, you could lose a load of a lot of work, 245
+<br><br>which you don't really wanna do. 246
+<br><br>All right, on your desk, you're now in the assets folder, 247
+<br><br>which is the only one we care about. 248
+<br><br>We're left with a car prefab, a street lamp prefab, and a scene, 249
+<br><br>which tells you how all those things are arranged. 250
+<br><br>So the information about how a car is put together is in there. 251
+<br><br>How a street lamp is put together is in there, and 252
+<br><br>then how the whole scene is put together in terms of how the cars and 253
+<br><br>street lamps relate to each other, that's in that file. 254
+<br><br>All right the rest of the stuff in this folder, all the libraries and 255
+<br><br>stuff you don't need to worry about. 256
+<br><br>So that's it you're out of Unity, 257
+<br><br>Unity is closed and everything is saved, you're in good shape. 258
+<br><br>I look forward to seeing you in the next video.
+	</p>
+  </BODY>
+</HTML>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+All right then we're onto the second step of our three step journey towards handling the user input.
+<br><br>In this case we're talking about parameters and we're going to modify our show main menu method so that
+<br><br>we can take a greeting and modify the way show me many works based on a greeting.
+<br><br>It's an evolution of variables it's using variables to vary how functions work.
+<br><br>So let's just start with a bit of an analogy.
+<br><br>Imagine you had three recipes for a particular Curry and the only way that they differ is in the meat.
+<br><br>So one of the steps of this recipe may be this step here.
+<br><br>In that case you insert ram in this case chicken.
+<br><br>And in this case beef and I'm sorry if you're vegetarian in this particular case you are out of luck
+<br><br>which is no fun when you are a vegetarian which I was for years.
+<br><br>We don't want to repeat ourselves.
+<br><br>We want all of the rest of these steps to be the same in all of these recipes so that if we want to
+<br><br>modify the general recipe for a particular Curry we only change it in one place.
+<br><br>Changing this changes.
+<br><br>This changes this.
+<br><br>Okay you get the idea.
+<br><br>We want to make all of this code common we want to not repeat ourselves in fact in programming there's
+<br><br>a general principle called d-r why or don't repeat yourself This allows you to make more robust code
+<br><br>shorter code clearer code etc..
+<br><br>So we're going to aim to not repeat our selves.
+<br><br>So what's the process for doing this.
+<br><br>Well the first thing that we need to do highlighted in blue is to declare that this new function exists.
+<br><br>I'm going to use the example of cooking the khari we would declare a function void because it is using
+<br><br>void for now until we understand or need it to use anything else.
+<br><br>Cook curry name of our function.
+<br><br>And instead of empty brackets this time we have a parameter called Meat to use it's just the same as
+<br><br>a variable definition in those brackets.
+<br><br>String meat so use your just defining a variable called meter use of type String.
+<br><br>You do have to say the type here we can't use vare in the case of parameters we have to tell the system
+<br><br>what type of thing to use.
+<br><br>Okay then you have that meat to use level so we declare that our function exists inside the function
+<br><br>you give it its steps i.e. you define what the function does.
+<br><br>So the common steps go there and then I am adding to the space meats use.
+<br><br>So if you you could reuse this cook curry recipe now and you could print out different meats in then
+<br><br>without the function itself knowing anything about what meat is in question.
+<br><br>Right.
+<br><br>And then finally the third step is to call the function so you call the function like this you provide
+<br><br>the thing over the type that specified when you declared it in brackets so cook curry lamb and then
+<br><br>it's going to say print I'm adding.
+<br><br>Sorry I'm adding these space or lamb.
+<br><br>All right so given that recipe I've got a bit of a challenge for you.
+<br><br>By the way before we do that do we want to track relam through so lamb gets passed in as a parameter
+<br><br>here.
+<br><br>People also talk about arguments will see that and a little bit when we hit an error message.
+<br><br>There's two types of parameters basically forming an actual parameters.
+<br><br>We're just going to use the word parameters arguments is really confusing but the compiler will give
+<br><br>you an error with the word arguments.
+<br><br>So when we see that you'll be ready for it.
+<br><br>So lamb comes in as a parameter here gets put in a box labelled meat to use and then throughout the
+<br><br>course of the cook curry function.
+<br><br>You use the term meat to use instead of the actual word eelam and therefore it can be varied at runtime
+<br><br>in each subsequent use of the cooked Curry recipe you can use a different meat also.
+<br><br>So that's the syntax i.e. the language the way that it's written.
+<br><br>So what I want you to do is add a parameter to show main menu.
+<br><br>It should be a string and it goes in the brackets pass in the greeting from the start function.
+<br><br>And check the greetings still prints as expected.
+<br><br>You're going to need to delete a line of code inside your show main menu so to prove that you understood
+<br><br>what I just said I want you to try and use this function parameter passing methodology with your functions.
+<br><br>And I'm just going to go back a couple of viddy slides to this one here.
+<br><br>I think this is how you are going to modify your function but obviously it's going to be different because
+<br><br>it's a different function with different to different things but have a pause the video see if you can
+<br><br>use a variable parameter like.
+<br><br>It's very analogous to what we've got on the screen.
+<br><br>All right.
+<br><br>Welcome back.
+<br><br>So what we do to get this to work is the in place of string greeting equals.
+<br><br>We're going to take that and just pop it in the brackets.
+<br><br>So we're now saying okay well we're not going to declare the variable down here we're going to declare
+<br><br>that the variable is a parameter like this that's going to cause an error on show may menu this is the
+<br><br>error which talks about arguments there is no argument given that corresponds to the required formal
+<br><br>parameter greeting of hacker show main menu.
+<br><br>What does that mean.
+<br><br>Well this is something called a formal parameter.
+<br><br>It's saying that formally the contract is that when you use show main menu you need to provide a parameter
+<br><br>of type String and call it what you like.
+<br><br>But in this case we're going to call it greeting.
+<br><br>That's the label on the box.
+<br><br>The argument is this side of it.
+<br><br>Okay.
+<br><br>Or the actual parameter.
+<br><br>And this is where we need to take our Hello Ben.
+<br><br>And put it in there.
+<br><br>That will stop it complaining about no argument or actual parameter it just calls it an argument.
+<br><br>Alright then we can delete that line.
+<br><br>So what happens now is hello Ben comes in goes into the greeting box and gets used there.
+<br><br>Let's try it.
+<br><br>Boom.
+<br><br>Hello Ben.
+<br><br>What would you like to hack into.
+<br><br>Etc etc etc..
+<br><br>That is awesome.
+<br><br>That's very very powerful we've now learned to use his same function in different ways modifying the
+<br><br>behaviour of the function in Auburn naming is quite simple.
+<br><br>You show a main menu and you provide a greeting.
+<br><br>That's pretty cool.
+<br><br>Alright so congratulations on that bit.
+<br><br>We're now ready to start talking about how were going to process the user input in the next video.
+	</p>
+  </BODY>
+</HTML>

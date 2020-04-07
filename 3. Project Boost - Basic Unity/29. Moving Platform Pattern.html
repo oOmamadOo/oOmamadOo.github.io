@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys in this video we're gonna have a simple scheme where 3
+<br><br>we have a cool range in our inspector here where we can drag left and right, and 4
+<br><br>specify hey I want this thing to move 20 units, and 5
+<br><br>at the moment it's moving zero of that, or 100% of it, or 50% of it. 6
+<br><br>It sets us up for automated oscillations, so it's gonna be manual oscillation 7
+<br><br>in this video, and automated oscillation in the next. 8
+<br><br>I'm gonna break the process of getting these things to oscillate on 9
+<br><br>their own into two videos. 10
+<br><br>This first one is, as I've just said, 11
+<br><br>focused on just doing it from the inspector manually. 12
+<br><br>So let's create a self menu script to start. 13
+<br><br>By the way, if you're finding the number of assets offensive, 14
+<br><br>don't worry Rick will tidy them up with you shortly, 15
+<br><br>or I will, but we can meanwhile just use this little dude down the bottom right of 16
+<br><br>the project tab just to make things a little bit smaller. 17
+<br><br>So let's create a C# script. 18
+<br><br>I'm gonna call it oscillator. 19
+<br><br>Try and name your scripts as a thing, rocket, oscillator, car, whatever, and 20
+<br><br>let's go ahead and open up this oscillator script. 21
+<br><br>There you go. 22
+<br><br>Right, so what do we wanna do? 23
+<br><br>Let's tell a bit of a story about how we're gonna get these platforms moving. 24
+<br><br>So, the first thing we're gonna need to do, if we're gonna have these platforms 25
+<br><br>moving, is to be able to specify the direction in which we want them to move. 26
+<br><br>So, I'm gonna serialize a vector three, which, just to recap, is these things that 27
+<br><br>you're used to seeing in the transform, these triplets of floating point values. 28
+<br><br>So a position is a vector three. 29
+<br><br>It's a three-dimensional vector, and a vector is just something where more than 30
+<br><br>one thing is grouped together of the same type. 31
+<br><br>So floating point values for instance, three floating points to make 32
+<br><br>a three-dimensional floating point vector, okay. 33
+<br><br>So Vector3, and we're gonna call it movementVector, and 34
+<br><br>I'm gonna default this to something that we're gonna be able to see, 35
+<br><br>actually, I'm not even gonna default it. 36
+<br><br>Let's just have a Vector3 movementVector. 37
+<br><br>So, let's look at this. 38
+<br><br>It's not, of course, 39
+<br><br>gonna do anything until we put this oscillator script on something. 40
+<br><br>So this dude in the middle here is a prime candidate. 41
+<br><br>Now, you can set the x, y, zed movement and it's gonna tell where is it gonna go. 42
+<br><br>So if we wanted it to go, some say here, at x = 4.4, 43
+<br><br>to say here at x = 14.4, then we'd need an x movement of 10 units. 44
+<br><br>You can also move it in y and zed. 45
+<br><br>It's perfectly all right to have these obstacles coming in and out the scene. 46
+<br><br>Although, be careful of them kind of passing through each other like at 47
+<br><br>the top there. 48
+<br><br>It might just look a bit weird. 49
+<br><br>All right, so once we've got the oscillator script on this thing, now, 50
+<br><br>by the way, it's quite possible to put two oscillator scripts on the same object, and 51
+<br><br>that would be very confusing, so there's a way that we can get around that, 52
+<br><br>useful tip for you, is if above the public class bit you do this, 53
+<br><br>{ DisallowMultipleComponent. 54
+<br><br>This is something called an attribute, and it tells this whole script that we 55
+<br><br>only allowed one of them on the game object in question. 56
+<br><br>Disallow multiple component, kind of does what it says on the tin. 57
+<br><br>If I now try and stick a second oscillator script on this component, boom, 58
+<br><br>can't add it, because an oscillator is already added, and that's pretty helpful. 59
+<br><br>It just prevents you getting in a situation where you accidentally put two 60
+<br><br>of them, and you're not quite sure why the movement is strange. 61
+<br><br>So we start with a vector, and let's say that we do wanna move this guy, 62
+<br><br>from here to, let's say here, which is about a movement of 20 units. 63
+<br><br>So that's the start, that's so we're specifying the vector in 3D space, 64
+<br><br>all right, that we want to move. 65
+<br><br>Then what we're gonna do is temporarily, so as soon as you said to yourself 66
+<br><br>temporarily, make yourself a note, remove from inspector. 67
+<br><br>Later we're gonna temporarily have a movement percent, so 68
+<br><br>float movementPercent, or movementFactor, 69
+<br><br>let's say, rather than percent, and this is gonna be something between 0 and 1. 70
+<br><br>So 0 for not moved, 1 for fully moved, and what I'm gonna do is show 71
+<br><br>you another one of these attribute things, which is called range. 72
+<br><br>So this is pretty cool, look at this. 73
+<br><br>If we go [Range(0,1)] for example, let's see what this does in the inspector, 74
+<br><br>but it won't be in the inspector yet will it, cuz look, 75
+<br><br>let's have a look, save the script, nothing here, because what are we missing? 76
+<br><br>What do we use to throw things in the inspector, SerializeField. 77
+<br><br>All right, so it's okay to stack up these things that modify 78
+<br><br>the item that's below them, so in this case these two, Range and SerializeField, 79
+<br><br>are modifying movementFactor just like DisallowMultipleComponent 80
+<br><br>is modifying the class below it. 81
+<br><br>And I'm very aware you're not even sure what a class is yet, but 82
+<br><br>this is quite a simple concept that you just have one script. 83
+<br><br>Here we have two attributes next to each other. 84
+<br><br>Let's see the effect first. 85
+<br><br>Here you go, movement factor between zero and one. 86
+<br><br>All right, so what I want to organize is that when the movementFactor is zero, 87
+<br><br>this dude is where it started, and when the movementFactor is one, 88
+<br><br>it's 20 units to the right. 89
+<br><br>It's fully moved, it's fully completed the movementFactor. 90
+<br><br>All right, so let's see how to do that. 91
+<br><br>By the way, with these attributes you can just put them all up on one line, and 92
+<br><br>I generally, unless they get really long and 93
+<br><br>ugly, I generally prefer to have them on a single line. 94
+<br><br>All right, so this is a temporary thing that in this case it's a sign wave which 95
+<br><br>we're moving towards, this will be oscillated for us by the code, 96
+<br><br>but we need to break it down into two steps I think. 97
+<br><br>All right so the general pattern then for getting things to oscillate, 98
+<br><br>here's a pattern for you. 99
+<br><br>We need to store a movementVector, we've done that. 100
+<br><br>We're gonna have a movementFactor, well we've got that. 101
+<br><br>We're gonna store a starting position of the game object. 102
+<br><br>We need to store that, if we're gonna do absolute movement 103
+<br><br>from a starting position, rather than accumulating movements, adding bits and 104
+<br><br>adding bits that could lead to rounding errors, 105
+<br><br>if we want just absolute movement we need to store the starting position. 106
+<br><br>So we store the starting position like that. 107
+<br><br>So in update we're gonna say something like offset that we 108
+<br><br>wanna apply to the object is the movementVector * movementFactor. 109
+<br><br>So if the movementFactor is one you apply the entire movement factor, 110
+<br><br>otherwise you apply it down to nothing. 111
+<br><br>So the movementFactor is just how far along, what percentage if you like, and 112
+<br><br>then you set the position of the thing that you're attached to, 113
+<br><br>to the starting position plus the offset directly. 114
+<br><br>We don't mess around with trying to do anything, 115
+<br><br>you can get yourself in trouble basically if you try an add on an increment. 116
+<br><br>So we wanna just specifically every frame set the position, 117
+<br><br>which is why we store the starting position. 118
+<br><br>Okay, and there you go that's the pattern that we are going to use. 119
+<br><br>So let's go ahead and implement that pattern back into Unity, or 120
+<br><br>Visual Studio in this case. 121
+<br><br>So we're gonna have ourself a private member here, which is going to be Vector3 122
+<br><br>startingPos, and then we're gonna store that starting pause in start. 123
+<br><br>Now what I'd like you to do here is I'd like you to see 124
+<br><br>if you can finish this off without me. 125
+<br><br>Now I showed you the pattern in the slide. 126
+<br><br>You're welcome to refer back to that slide if you want, and 127
+<br><br>if you don't need to then that would be great as well. 128
+<br><br>So you can kind of choose your own challenge. 129
+<br><br>So let's go straight into the challenge. 130
+<br><br>I want you to make it shake. 131
+<br><br>I want one obstacle should oscillate manually. 132
+<br><br>If you feel comfortable with how it works, and 133
+<br><br>then I want you to enjoy your new creative tool. 134
+<br><br>So by the end of it you'll be able to go into this inspector, 135
+<br><br>click on this obstacle, move this movement factor around. 136
+<br><br>It'll move from from here to the destination that we chose, 20 units away 137
+<br><br>in my particular case, because the reason. I'm doing this, I'm suddenly just like why 138
+<br><br>am I halfway through writing up a line of code, and then asking you to do it? 139
+<br><br>Because you can get into a routine in this course. 140
+<br><br>So you can kind of just watch me and copy along, 141
+<br><br>but we need to interrupt you at times like this, and 142
+<br><br>say, no you're not just gonna follow me here, you need to think for yourself. 143
+<br><br>I've kind of already shown you the solution, so 144
+<br><br>you're choice is to go back to the slide of yellow code, if you want to, or 145
+<br><br>if you can do it without, try doing it without, and give it a good ten minutes or 146
+<br><br>so, and then come back to me, when you've had a go at getting this bit finished off. 147
+<br><br>Remember it's manual movement. 148
+<br><br>It won't move unless you slide everything in the inspector. 149
+<br><br>All right, so let me finish this off now. 150
+<br><br>So we're gonna get the transform.position from the current transform. 151
+<br><br>That's the thing we're on. 152
+<br><br>Let's be clear what that is. 153
+<br><br>We are, oscillator script, on an obstacle, so we're getting the Obstacle's Transform, 154
+<br><br>that's what this transform.position means. 155
+<br><br>So we stored the starting position. 156
+<br><br>So then what we need to do, is we need to think about firstly calculating an offset. 157
+<br><br>So it's gonna be a Vector3, it's gonna be some sort of offset or displacement. 158
+<br><br>You could call it displacement if you want, and that is the movementVector, or 159
+<br><br>the movementFactor, it doesn't matter which way, matter of fact, 160
+<br><br>I'm gonna do it around the other way just to keep you on your toes. 161
+<br><br>The movementFactor * movementVector. 162
+<br><br>All right, so if the movementFactor was 1, then it's just saying the offset is 163
+<br><br>the movementFactor, it's just passing it through, otherwise it scales it down. 164
+<br><br>Remember, back in serializeField versus public, the lecture earlier in the course, 165
+<br><br>we talked about how you scale vectors by multiplying them together? 166
+<br><br>So, if we multiply movement vectors by say, 0.5, 167
+<br><br>it just becomes the same direction, but half as long. 168
+<br><br>Now, we can directly set the transform.position 169
+<br><br>== startingPos + offset;. 170
+<br><br>Let's try this and see how it works. 171
+<br><br>So take a look at that code. 172
+<br><br>Make sure it makes sense to you, and 173
+<br><br>now let's go ahead and look at this block here. 174
+<br><br>Once the code has compiled, we have to have the game playing, 175
+<br><br>by the way, otherwise, update won't be running, right? 176
+<br><br>The update method won't be running. 177
+<br><br>So, you need to, of course, select on the obstacle in question. 178
+<br><br>You can do this in game or scene view. 179
+<br><br>I'm gonna do scene. 180
+<br><br>If the movement factor is 0, it's where you planted it in the first place, 181
+<br><br>same as having your selected script off, but if you move it up to a factor of 1, 182
+<br><br>it moves to where we want it, 24.4. 183
+<br><br>Of course, if you turn the oscillator script off, 184
+<br><br>it'll stay where it is at the moment, cuz nothing's told it to go back. 185
+<br><br>Just to be clear. 186
+<br><br>So that's it. 187
+<br><br>We're now moving in the range that we have asked to move. 188
+<br><br>So we've done a lot here really in a relatively short time. 189
+<br><br>We've learned about the. DisallowMultipleComponent attribute that 190
+<br><br>stops you from getting to oscillator scripts on. 191
+<br><br>We've learned about the range attribute, 192
+<br><br>which gives you this fantastic slider in the inspector here. 193
+<br><br>And then we have learned a simple pattern here for 194
+<br><br>storing the starting position, at start, for working out an offset, 195
+<br><br>scaled by some factor, and then directly setting the position of the thing we're on 196
+<br><br>based on the starting position plus the current offset, 197
+<br><br>leading to this type of behavior, which sets us up perfectly for 198
+<br><br>having some code oscillate this platform for us, which we'll do in the next video.
+	</p>
+  </BODY>
+</HTML>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, in this video we are gonna improve our movement, 3
+<br><br>we are going to get better control of the rotation. 4
+<br><br>We're gonna get rid of a bug that would have prevented us from doing this type of 5
+<br><br>fine maneuvering on the end of things. 6
+<br><br>We're gonna improve the look of our code, we're gonna improve the look of 7
+<br><br>our rocket, and we're generally gonna make things better. 8
+<br><br>And more ready to share as a kind of absolute minimum viable product, 9
+<br><br>which is what we're getting towards here. 10
+<br><br>The moral of this video is gonna be don't patch over problems, 11
+<br><br>let's get in there and Improve the things that we're not happy with. 12
+<br><br>So, let's start with this code that's on the screen, 13
+<br><br>not happy with that at all, very, very messy. 14
+<br><br>So we have ProcessInput and it has all this kinda stuff going on, 15
+<br><br>this block here is actually more about thrusting. 16
+<br><br>So we could extract this as a method and just call it Thrust, like so. 17
+<br><br>And further more we can just call thrust directly from inside update. 18
+<br><br>So, that's the thrust thing and then the process input we could rename to rotate. 19
+<br><br>Okay, so now we call thrust and it does this, and we call rotate and 20
+<br><br>it does that, all right. 21
+<br><br>Now I'd like these to be in the order that they're listed in the method above just 22
+<br><br>because this is how I wanna see it, that's all it doesn't really matter beyond that. 23
+<br><br>So, now it's clear what happens on updates and thrusting is are we happy with this? 24
+<br><br>If you hit space, you add a false, if the audio source isn't playing, 25
+<br><br>you play a sound, yeah kinda happy with it. 26
+<br><br>The fact that audio is being dealt with in exactly the same place 27
+<br><br>as the input upsets me a little bit I'm okay with it at this stage because, 28
+<br><br>we're not trying to build on this right now. 29
+<br><br>So don't refractor any further than this unless you're trying to build on it, but 30
+<br><br>how it was before was sufficiently risky that we'd lose track. 31
+<br><br>So that I might prefer this, we thrust and then we rotate and we're good, all right, 32
+<br><br>so that's the code. 33
+<br><br>Now the other thing I'm not too happy with and that's actually the look of my rocket. 34
+<br><br>I just don't like this silly blue dome,. I mean, 35
+<br><br>I'm not gonna get into designing this rocket now. 36
+<br><br>But I am just gonna take off the nose cone altogether, 37
+<br><br>just by deleting the game object. 38
+<br><br>I'm gonna yup, let the prefab instance break, but 39
+<br><br>remember that we're going to need to fix the prefab later. 40
+<br><br>I'm gonna duplicate the main body,. I'm gonna move it up, scale it. 41
+<br><br>So I'm just gonna grab this, align it to the top of the rocket, which is 0x and 0z. 42
+<br><br>It doesn't really matter if it overlaps a little bit with the other part, but 43
+<br><br>it'd be better if it didn't, a tiny gap is okay for this stage. 44
+<br><br>And then I think I'll put the nose cone color back on, 45
+<br><br>rename this thing nose cone. 46
+<br><br>And I've changed the appearance of my rocket, 47
+<br><br>the point is I've done something about it, you know what? 48
+<br><br>I also want some flame at the bottom, just give Rick a third material to work with. 49
+<br><br>So if we have a flame red material and we get some redness going, or 50
+<br><br>something like that, that'll do fine. 51
+<br><br>And we can put it on these guys, all right, so I've made an improvement. 52
+<br><br>If you don't like something change it up, because if you don't like it, 53
+<br><br>you're gonna end up not liking your entire project, okay cool. 54
+<br><br>Now, we have other issues in the game and 55
+<br><br>let' s give ourselves something to actually do, let's duplicate by the way. 56
+<br><br>Before I do that, I didn't apply, 57
+<br><br>you see the color the rocket ship in the hierarchy, it is black now. 58
+<br><br>It's no longer blue which means it's no longer linked to the prefab, so 59
+<br><br>I'm gonna click Apply to send that back to the prefab. 60
+<br><br>I'm also gonna rename nose cone again because it's quite easy to rename 61
+<br><br>these things without hitting Return and without it taking. 62
+<br><br>So you can check your prefab and make sure it looks right, 63
+<br><br>make sure that it's got the right named subparts. 64
+<br><br>Like for instance, I've just renamed. Rocket Body (1) to Nose Cone in the world, 65
+<br><br>but I haven't applied it back to the prefab, all right? 66
+<br><br>So this gives you a two-stage process, you get to experiment with the changes you 67
+<br><br>want in the world and then apply them back to the prefab. 68
+<br><br>Anyway, the rockets there, new rockets come in looking right and named right, 69
+<br><br>so I'm feeling okay about my rocket, better about my rocket. 70
+<br><br>So, let's now duplicate this launch pad, okay, and move it. 71
+<br><br>And I'm just gonna scale and give myself another launch pad to land on somewhere, 72
+<br><br>it might even give ourself 3, but 2 is enough for now. 73
+<br><br>Let's check the camera view, yep,. I can see that pad there, and 74
+<br><br>now I've actually got two things to fly between. 75
+<br><br>So, we can start looking for any potential movement issues, so 76
+<br><br>one issue is that the rocket can actually rotate. 77
+<br><br>Let's just fly around without hitting the platform for a minute, and 78
+<br><br>if you fly around enough, there you go look, it's coming, no it's not. 79
+<br><br>It's constrained in z, but I think you'll find it'll also rotate at times. 80
+<br><br>Let's see, there you go, look, the rocket has now taken on a rotation and 81
+<br><br>it's all over the place, all right? 82
+<br><br>So what we need to do on the rocket ships rigid body, is to freeze the position in 83
+<br><br>Z and freeze the rotation if you think about it along the x and the y-axis. 84
+<br><br>We only want it to rotate in z, so, we want to do this to the rocket ship, 85
+<br><br>freeze position in z freeze rotation in x and y. 86
+<br><br>If you do that, then it should be a lot more stable, now let's keep looking for 87
+<br><br>other potential movement bugs. 88
+<br><br>If I give the rocket some spin, 89
+<br><br>let's actually make myself another platform here. 90
+<br><br>And I'm gonna rename these things, rather than Launch Pad, 91
+<br><br>they're both gonna be, Obstacle, so how you spell obstacle, it'll do. 92
+<br><br>So I'm just gonna re scale these obstacles a little bit, just so they look different. 93
+<br><br>That's fine, and I'm gonna use the one on the left to try and 94
+<br><br>induce a bit of a spin on the rocket. 95
+<br><br>So if you get your rocket, these obstacle colors are ridiculous, 96
+<br><br>let's just change them to Earth color. 97
+<br><br>Or even nose cone color, 98
+<br><br>it doesn't matter, okay, that's cool, they just were very hard to see. 99
+<br><br>So if I go over here and induce a little bit of spin look, I can't get rid of it, 100
+<br><br>that was a lot of spin. 101
+<br><br>But if there was just a little bit of that spin on this guy, or 102
+<br><br>one way to do it is to kinda put, there you go. 103
+<br><br>Now I can't get rid of that spin it just keeps spinning off into the ground, so 104
+<br><br>what's going on there? 105
+<br><br>We have a movement bunk that we need to resolve, so 106
+<br><br>what we're gonna wanna do is to go into the rocket. 107
+<br><br>And I provided you a link in the resources, as usual, to this API or 108
+<br><br>this application programming interface or this command. 109
+<br><br>But what we can use is rigidBody.fr, we start to see that there is p, 110
+<br><br>a property of the rigidBody and is a Boolean property. 111
+<br><br>So that mean we can set it to true or false, what we gonna do is, 112
+<br><br>before we take manual control of the rotation and this will be good comment, 113
+<br><br>take manual control of rotation. 114
+<br><br>We freeze its rotation as far as the physics is concerned, do our own rotation, 115
+<br><br>and then when we are finished we're going to not freeze the rotation. 116
+<br><br>In other word resume physics control of rotation, okay? 117
+<br><br>And that is a useful comment there because it explains what's going on, so 118
+<br><br>let's try this. 119
+<br><br>Let's maximize our game, in fact I'll show you a different way to maximize. 120
+<br><br>You can play the game, 121
+<br><br>then you can choose the hamburger then you can choose Maximize up here, all right. 122
+<br><br>It's playing, now, if I hit this cube,. I get a little bit of rotation, but 123
+<br><br>I can still control the rocket. 124
+<br><br>I could put it on top,. I could put one leg on the edge, 125
+<br><br>you see how it starts to slowly fall over? 126
+<br><br>And I can now slowly thrust away and. I've got control of the rotation again, 127
+<br><br>much better. 128
+<br><br>Now, I've played-tested this game with my wife and 129
+<br><br>she found it very strange the way that there was no linear drag, ie, the way that 130
+<br><br>this thing just flies around and keeps moving as if there's a very strong wind. 131
+<br><br>So the solution to that, is that you come in and you set a drag value, 132
+<br><br>I'm gonna set a drag value of say,. I don't know, 0.2 I'll try here. 133
+<br><br>And I'm also gonna apply the differences to my prefab back, and 134
+<br><br>what this drag means is linear drag. 135
+<br><br>What it means is that if we start picking up speed in a direction like this, and 136
+<br><br>then we stop thrusting, and maybe thrust vertically the speed in that direction. 137
+<br><br>So let's just thrust that way, then just go vertical, our horizontal speed will 138
+<br><br>bleed off, which is much more natural, so I much prefer that. 139
+<br><br>All right, but a lot of it just a question of taste, so I have a challenge for you, 140
+<br><br>which is that I want your movement to be bug free. 141
+<br><br>I want you be able to move from one platform to another, 142
+<br><br>the platform can induce spin but it should stop when you thrust. 143
+<br><br>That bug we had before should stop by freezing and unfreezing the rotation, 144
+<br><br>you should have a drag value on the rigid body that you're happy with, 145
+<br><br>your code should be beautiful. 146
+<br><br>And you should strongly consider sharing a 20 second or 147
+<br><br>less video or GIF of your gameplay. 148
+<br><br>So, I've already done all that in mine, 149
+<br><br>what I want you to do is get your game feeling how you want it to feel, 150
+<br><br>everybody's game should look unique, and everybody's game should feel unique. 151
+<br><br>So go ahead, pause the video, get it how you want it, and 152
+<br><br>I will see you in the next one.
+	</p>
+  </BODY>
+</HTML>

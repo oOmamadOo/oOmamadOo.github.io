@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, in this video we are going to build a rocket. 3
+<br><br>And learn all about how to set up compound game objects in Unity. 4
+<br><br>Hokey-cokey, now I have a confession to make. 5
+<br><br>At the end of the last video. I forgot to save my work. 6
+<br><br>If you see a little star against your level 1 like this 7
+<br><br>then that means your work isn't saved. 8
+<br><br>Please save before you commit to the version control. 9
+<br><br>So I've had to recreate the terrain. 10
+<br><br>All right, let's make a rocket. 11
+<br><br>Over on a slide here, I've got some set-up guidelines for compound objects. 12
+<br><br>We'll go through those one at a time as we need to. 13
+<br><br>Let's start off by creating an empty game object for our rocket. 14
+<br><br>I'm gonna call it Rocket Ship. 15
+<br><br>Now, the first thing you do when you create an empty game object for 16
+<br><br>a compound thing like this. 17
+<br><br>Something that's made up of many parts is reset the transform. 18
+<br><br>Okay, so this thing if I hit the W key, remember W, E, R keys for 19
+<br><br>switching between these different modes. 20
+<br><br>The first thing we do is notice that that is at the origin. 21
+<br><br>It's actually inside this launch pad right on the ground there, all right. 22
+<br><br>Now, what I'm gonna do is. I'm gonna create a cube. 23
+<br><br>Making sure that the rocket ship first has got a reset transform, 24
+<br><br>looking like it does over on my Inspector. 25
+<br><br>I'm gonna create myself a cube. 26
+<br><br>And then I'm gonna reset the transform of the cube. 27
+<br><br>Everything we build here is going to be in this kind of scale, kind of natural scale. 28
+<br><br>There's the cube and then looking at that cube if it's going to form the main rocket 29
+<br><br>body, Then it wants to be childed to the ship, like this. 30
+<br><br>So you have rocket ship with nothing on it, 31
+<br><br>apart from the default transform then rocket body. 32
+<br><br>Now, I am going to scale up the y-axis to, about 3 units, notionally meters. 33
+<br><br>So it's a kind of toy world. 34
+<br><br>We're not using full sized units. 35
+<br><br>Our decision about scale in this game is just use default units. 36
+<br><br>Keep everything as simple as possible. 37
+<br><br>So there you go, there is a rocket body. 38
+<br><br>Now, I can't really tell that from the launch pad so 39
+<br><br>one of the first things I'm gonna do is create a new material. 40
+<br><br>So right-click inside Assets,. Create Material. 41
+<br><br>Another way to do that, by the way, 42
+<br><br>is you can go to Assets, Create, and Material from the assets menu. 43
+<br><br>Either way, we make a material. 44
+<br><br>I'm gonna call it ship metal. 45
+<br><br>I'm going to look at the albedo, 46
+<br><br>make it a kind of gun metal grey and apply it to the ship body by dragging. 47
+<br><br>Okay, that's better. 48
+<br><br>Now, my first guideline is that you want to keep mesh away from the top-level so 49
+<br><br>it's easy to swap out later. 50
+<br><br>So here's the top level object the rocket ship, should have no mesh against it. 51
+<br><br>The rocket body contains the mesh, 52
+<br><br>just take a quick look at how our default cube comes. 53
+<br><br>It has a transform, everything has a transform, it has a cube mesh, 54
+<br><br>a mesh filter, and the meshes of type cube, there are other meshes. 55
+<br><br>Mesh is just like paper maches, 56
+<br><br>the way that 3D objects get their shape in a game engine. 57
+<br><br>We'll go into more detail later when we need to. 58
+<br><br>And then we have a box collider. 59
+<br><br>That is this cage around the outside which is exactly the same size in this case but 60
+<br><br>could be larger or smaller. 61
+<br><br>As the cube, to help the physics engine work out what's hitting what and 62
+<br><br>then the mesh renderer actually makes the thing visible. 63
+<br><br>Without the mesh renderer, if we turn that component off then it is invisible and 64
+<br><br>just able to collide but not able to be seen. 65
+<br><br>Anyway, we don't care really about these components in detail. 66
+<br><br>We're focused on putting these things together. 67
+<br><br>But when I say keep mesh away from the top level object, 68
+<br><br>I mean the top level object should be a default empty transform. 69
+<br><br>And then you start building up your meshes at the level below. 70
+<br><br>This means if we ever want to change the appearance of the ship 71
+<br><br>without changing its behavior, we can do so easily. 72
+<br><br>All right, next guideline. 73
+<br><br>Keep top-level object scale close to 1, 1, 1. 74
+<br><br>I say close to 1, 1, 1, when we finish putting our rocket together, 75
+<br><br>we can tweak the scale here a little bit but 76
+<br><br>the top level rocket ship scale should be close to 1, 1, 1 from the beginning. 77
+<br><br>Rotations and scales and stuff tend to have a horrible influence on one another. 78
+<br><br>We'll try and stay clear of those problems for now but 79
+<br><br>just follow these guidelines for now. 80
+<br><br>Now, the other thing we gonna need to be really aware of in this building 81
+<br><br>of the ship is the difference between the Pivot and 82
+<br><br>the Center mode which you access on the Z-key. 83
+<br><br>So right next to global local, you have center stroke pivot. 84
+<br><br>So if we look at the rocket ship at the moment, whether you're on center or 85
+<br><br>pivot changes dramatically what the thing rotates around. 86
+<br><br>If we rotate around pivot, it looks a bit weird. 87
+<br><br>And if we rotate around center, you're rotating around what Unity is calculating 88
+<br><br>as its current center of gravity, assuming that it has a uniform density. 89
+<br><br>So let's keep building the rocket out and 90
+<br><br>understand a bit more about what that does. 91
+<br><br>I'm gonna call this thing a starboard from the nautical term for right booster. 92
+<br><br>By the way, if you ever want to know port from starboard, port left and red for 93
+<br><br>the red light on the left hand side of an aeroplane. 94
+<br><br>All shorter words than right, starboard and green, all the longer words. 95
+<br><br>That helps you group those together. 96
+<br><br>So if I'm gonna make the starboard booster and there it is on the side there. 97
+<br><br>And I want to scale it down a little bit so I switch into the scale mode and 98
+<br><br>just like [NOISE] scale it down. 99
+<br><br>It's already in the right place from a Z point of view. 100
+<br><br>Here's a special tip for you. 101
+<br><br>If I want to attach it to the side of the rocket, 102
+<br><br>what I do is I get into translate mode. 103
+<br><br>I hold down Command, or. Control on a PC, and Shift, like so. 104
+<br><br>So I get it into this mode here, so that you've got the kind of the translation 105
+<br><br>mode on, and these three green, red and blue planes ready to go. 106
+<br><br>But then you hold down Shift and Command or Shift and Control with your left hand. 107
+<br><br>And then when this changes to a square, you grab and drag carefully and 108
+<br><br>it'll snap to the side of the rocket. 109
+<br><br>Now, you can just fix any mess up in Z and manually position in Y. 110
+<br><br>And, you've got a little booster, okay? 111
+<br><br>So that starboard booster is attached to the right side of the rocket. 112
+<br><br>If I was to move the starboard booster right out here for 113
+<br><br>a second, click on rocket ship, and then click on Center mode. 114
+<br><br>Look where the central gravity is now, it's between the rocket and 115
+<br><br>the booster but the pivot is still down there. 116
+<br><br>Okay, so this is crucial to understand the difference. 117
+<br><br>We're gonna learn how to take control over that pivot point, 118
+<br><br>the main point of this video. 119
+<br><br>All right, so meanwhile I'm just going to scale my booster up a little bit. 120
+<br><br>I'm not going to spend a huge amount of time at all on these things, by the way. 121
+<br><br>I'm gonna leave most of that to Rick, 122
+<br><br>I'm gonna leave him to do the artistic bit here. 123
+<br><br>So I'm just gonna bring that down a little, 124
+<br><br>bring it out, use my trick I just showed you to snap it to the side. 125
+<br><br>Fix its Z-value to exactly 0, and then I'm just gonna zoom in, 126
+<br><br>have a little look, see what needs fixing. 127
+<br><br>Maybe I will leave it sticking down a bit at the bottom, maybe lift up that, 128
+<br><br>whatever. 129
+<br><br>Okay, not a great artist here, so I'm just gonna leave it at something like that. 130
+<br><br>And then I'm gonna duplicate the starboard booster with control or 131
+<br><br>command and. D while selected on it in the hierarchy. 132
+<br><br>It has made another one, starboard booster one, I can drag it over to the left, and 133
+<br><br>then you're in good shape. 134
+<br><br>Now, you can either set these things by using the snapping I showed you or 135
+<br><br>just by eye for now which is I'm gonna do, rough and ready. 136
+<br><br>Or you can use precise values for all your sizes and 137
+<br><br>work out where they should be, that's entirely up to you. 138
+<br><br>I'm gonna call this thing Port Booster. 139
+<br><br>All right, and there you go. 140
+<br><br>Right, now, we have a rocket of sorts. 141
+<br><br>We can move the whole rocket up and down which is quite cool. 142
+<br><br>It's obvious which way is up which is one of the challenges. 143
+<br><br>Remember, as you build out your object, you can do other things. 144
+<br><br>You can put a sphere in here, for example. 145
+<br><br>You could reset its transform, you could slant it up to the top of the rocket. 146
+<br><br>And then you could even scale it in Y like this and 147
+<br><br>make a pretty interesting looking nose cone, for example. 148
+<br><br>And you could even put other objects inside there, or 149
+<br><br>you could make really flat things and use them as fins, whatever you like, go nuts. 150
+<br><br>I am just going to stick with something really basic for 151
+<br><br>now, like this, all right. 152
+<br><br>Okay, cool, so beware of which you're in,. Pivot or Centre mode. 153
+<br><br>And I want you to keep checking that your object rotates, scales, and 154
+<br><br>instantiates okay. 155
+<br><br>What does that mean? 156
+<br><br>Firstly, does the rocket rotate okay? 157
+<br><br>Well, in Pivot mode is what I mean by does it rotate okay? 158
+<br><br>Because that's what the code is gonna do, it's gonna do this to it. 159
+<br><br>And no, it doesn't. 160
+<br><br>Also everything needs to be childed properly. 161
+<br><br>This sphere needs to be childed to the rocket ship, right? 162
+<br><br>And it needs to be given a proper name, like Nose Cone. 163
+<br><br>I'll leave it white. 164
+<br><br>So let's try again, click on the rocket, make sure you're in Pivot mode. 165
+<br><br>Okay, cool, so the rotation's kind of okay but it is about the wrong point. 166
+<br><br>What do we do about that? 167
+<br><br>Well, you grab all the constituent subobjects, move them. 168
+<br><br>Now, you can try down and then move the ship up. 169
+<br><br>And then if you click on the location in. Pivot mode, look where the pivot is now. 170
+<br><br>Aah, much better, okay, and that's pretty much where we want to be. 171
+<br><br>You might want to tweak it a bit more, maybe move it down a little bit more, 172
+<br><br>move the ship up a little bit. 173
+<br><br>It was desirable if it's pretty much on the landing pad. 174
+<br><br>Check your pivot point, check the rotation. 175
+<br><br>Aah, that looks a bit more natural, awesome. 176
+<br><br>So that is the point about checking that the object rotates properly. 177
+<br><br>We can now briefly check that the ship scales properly. 178
+<br><br>Seems to scale okay that way. 179
+<br><br>And that way and in general. 180
+<br><br>Okay, that's fine. 181
+<br><br>It rotates and scales properly. 182
+<br><br>Now, how does it instantiate. 183
+<br><br>The way that it instantiates, first we need to make sure you prefab your rocket. 184
+<br><br>Drag it down, prefab it, get yourself a rocket ship prefab. 185
+<br><br>Now, you can say if you deflate, deflate. 186
+<br><br>Delete your rocket from the scene with delete. 187
+<br><br>Or Command Backspace on the Mac. 188
+<br><br>By instantiate, I mean be aware of whether you're in Pivot or Center. 189
+<br><br>If you're in Pivot and 190
+<br><br>you drag the rocket in, it will meet the ground level at its pivot point. 191
+<br><br>Fair enough, it's a bit weird, but it works. 192
+<br><br>Or if you're in Center and you drag your rocket in. 193
+<br><br>Its feet will be on the ground and 194
+<br><br>the useful thing about that is that, look, it jumps up onto its landing platform. 195
+<br><br>At which point you can just quickly correct the X and the Z position, and 196
+<br><br>now it's sitting perfectly on the landing pad. 197
+<br><br>That's pretty cool. 198
+<br><br>So there you go, I have myself a rocket. 199
+<br><br>I know it's gonna work cuz if I click on it, I can translate it, and 200
+<br><br>I can rotate it and it all kind of looks okay. 201
+<br><br>It's mainly the rotation in Pivot mode. 202
+<br><br>So it's all very well that it rotates in Center mode, 203
+<br><br>I want you to make sure that it also rotates properly in Pivot mode. 204
+<br><br>By, as I say, expanding out, moving all the sub-objects, and 205
+<br><br>then moving the rocket ship back, all right. 206
+<br><br>Everything in my scene is prefabbed which is good news. 207
+<br><br>Because all the prefabs down here, 208
+<br><br>is getting a bit disorganized in the assets but we don't worry for now. 209
+<br><br>And now, it's time for you to get really creative, remember, 210
+<br><br>you can stretch things, remember you've got a few 3D objects to deal with. 211
+<br><br>Remember you can tilt things on different angles, make a wicked ship for 212
+<br><br>us and put a splash of color on it. 213
+<br><br>In that vein,. I'd better put a splash of color on mine. 214
+<br><br>And then I'm actually not gonna do the challenge because I've done it. 215
+<br><br>I'm just gonna show you the challenge and leave it to you. 216
+<br><br>I'm gonna make a dark blue nose cone, 217
+<br><br>and I'm gonna say Nose Cone and just slap it on there. 218
+<br><br>Very clear which way is up,. I'm perfectly happy with that. 219
+<br><br>Do have a slight problem with it actually which is that it looks at bit dodgy. 220
+<br><br>So I'm going to just scale this nose cone down a little bit like perhaps that. 221
+<br><br>That's maybe better. 222
+<br><br>Okay, cool, fantastic, so that is my rocket ship done. 223
+<br><br>Make sure you have a prefab. 224
+<br><br>Make sure your prefab is applied and 225
+<br><br>that when you drag in your rocket ships in. Center mode that they land on the ground. 226
+<br><br>And we are in good shape, let me throw you into your challenge. 227
+<br><br>Your version 1 ship is well, shipped by the end of the challenge. 228
+<br><br>You'll have an initial ship you're happy with. 229
+<br><br>Initial, because, of course, you can tweak it later. 230
+<br><br>It should be obvious which way is up for the ship. 231
+<br><br>It should have a splash of color on it. 232
+<br><br>It should rotate around what looks like its center when in Pivot mode. 233
+<br><br>It should have a prefab and. Z should be into the background. 234
+<br><br>What I'm saying is that you see how my blue arrow is towards the background, 235
+<br><br>we wanna be able to rotate around that Z-axis. 236
+<br><br>And that should give us the rotation that we need for our game. 237
+<br><br>Dragging the prefab into the hierarchy should put the rocket on the launchpad. 238
+<br><br>Let's just show you that, so if I delete my rocket and drag it into the hierarchy. 239
+<br><br>There it goes, lands on the launchpad, because its default position is set right. 240
+<br><br>The way you do that is, of course, 241
+<br><br>another way is what I did is I dragged it onto the launchpad in Center mode. 242
+<br><br>Fixed up its position a little bit in X and Z as a recap, and 243
+<br><br>then I would've prefabbed the rocket or applied the changes back to the prefab. 244
+<br><br>That's how you achieve that. 245
+<br><br>And share a close-up on our community forum. 246
+<br><br>Let's see your creativity with your rockets. 247
+<br><br>Of course, I've done mine so. I'm just gonna leave mine on the screen. 248
+<br><br>In Pivot mode, showing it rotates properly, and 249
+<br><br>I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

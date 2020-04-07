@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys. 3
+<br><br>In this video, we're gonna tag a few things in our world, so that the code can 4
+<br><br>tell the difference between things that are okay to hit by saying, okay, 5
+<br><br>in the console, and things that would kill you by saying, dead. 6
+<br><br>Let's start getting this done, then. 7
+<br><br>I'm going to click on the landing pad. 8
+<br><br>Up in the top right of the inspector, you have a tag option. 9
+<br><br>So you can click that. 10
+<br><br>You've got a bunch of pre-chosen tags by Unity, 11
+<br><br>including player and yada, yada, yada. 12
+<br><br>Finish is an interesting tag, we could use that tag actually. 13
+<br><br>We could say that maybe this guy over on the right here is the finishing point for 14
+<br><br>the level, but for the moment we're focused on Friendly. 15
+<br><br>Now we don't have anything called. Friendly, so we're going to add a new tag. 16
+<br><br>It says the list is empty, kind of not true. 17
+<br><br>It does have a bunch of other default tags, but 18
+<br><br>we're going to make one called Friendly. 19
+<br><br>Like so, so you click the little plus icon, so let's just recap how I did that. 20
+<br><br>I clicked on the game object the launch pad, went to the tag drop down, went to 21
+<br><br>Add Tag, clicked the plus, and then added a Tag called Friendly, okay? 22
+<br><br>Forget the layers and the sorting layers. 23
+<br><br>Once you've done that, you can then click on the object and choose Friendly. 24
+<br><br>Now, on it's on that does absolutely nothing. 25
+<br><br>You may want to apply it back to the prefabs or 26
+<br><br>the old launch pads you put down Friendly in future. 27
+<br><br>On its own, that does absolutely nothing. 28
+<br><br>But it sets the foundation. 29
+<br><br>So i'm going to talk about the pros and cons of using these tag things. 30
+<br><br>Pros are that just one tag per game object, that is if this game object is 31
+<br><br>friendly then he's not player and if he's player then he's not editor only or 32
+<br><br>is not, forget editor only, but he's not finish, okay? 33
+<br><br>Or he's not a respawn point etcetera, so it automatically means it keeps you honest 34
+<br><br>in this respect to each game object having a maximum of one of these tags. 35
+<br><br>Another pro is it's very simple to use in the inspector. 36
+<br><br>You've just seen that. 37
+<br><br>And it makes a very clear code. 38
+<br><br>There are some cons, it's based on a string. 39
+<br><br>Now why is that a con? 40
+<br><br>Because a general rule in programming is we only use strings 41
+<br><br>to represent things that are gonna be immediately output on the screen and 42
+<br><br>we're breaking that rule here. 43
+<br><br>The reason it's a problem is that you have to rename it in two places. 44
+<br><br>In code, when we define what the tag is, 45
+<br><br>we're gonna refer to it as a string in quotes and it'll in code. 46
+<br><br>If we wanted to change the name of the tag friendly to something else, 47
+<br><br>we'd not only have to change it here, but we'd have to change it in code. 48
+<br><br>Now there are ways to make sure that there's any one place to 49
+<br><br>change it in code so that's pretty good, but ultimately, 50
+<br><br>there was still two places you have to change it in the tag and in the code. 51
+<br><br>And the final thing is nothing keeps you honest to whether or 52
+<br><br>not you've set the tag on your game object properly. 53
+<br><br>Nothing else, apart from the behavior of the game, 54
+<br><br>which I suppose is keeping you honest. 55
+<br><br>But nothing apart from the way game behaves is keeping you honest to the fact 56
+<br><br>this is on here. 57
+<br><br>If you were to use component to tag things, it's kinda stronger, it's more 58
+<br><br>adjustable, but it's more heavyweight, more complex, we don't need that. 59
+<br><br>So we're gonna use tags for things like this friendly thing. 60
+<br><br>And what I want to do is, I want to set up a situation, where if you, 61
+<br><br>generally if you collide with anything, you die, unless that thing is friendly. 62
+<br><br>Okay. 63
+<br><br>We're not going to deal with death in this video, 64
+<br><br>we're just going to deal with the detection of tags. 65
+<br><br>So here's our code at the moment. 66
+<br><br>It currently does update where we thrust and rotate, 67
+<br><br>we contemporarily clamp down thrust and rotate. 68
+<br><br>And we could now focus on intercepting another message which you've 69
+<br><br>never seen before. 70
+<br><br>And I'm not going to type it. 71
+<br><br>Remember, thou shalt copy and paste messages. 72
+<br><br>So, in the resources,. I will link you to this. 73
+<br><br>Unity on collision, enter. 74
+<br><br>And if I've typed that right, there you go. 75
+<br><br>So I'll give you a link to that in the resources, and 76
+<br><br>what this message does, is it reports to you when there's been a collision. 77
+<br><br>So a bottle rocks up on your shore, labeled on collision, enter. 78
+<br><br>And when you open it, the contents of the bottle contain a variable called collision 79
+<br><br>of type collision. 80
+<br><br>Now you see you need to be doing what. I'm doing which is name things collision 81
+<br><br>collision like this. 82
+<br><br>The point is you need to be very aware this is the variable and 83
+<br><br>then this thing that the big C is the type. 84
+<br><br>And then you can go to that collision and you can ask it questions or 85
+<br><br>get information about it. 86
+<br><br>So this is pretty cool. 87
+<br><br>Let's go ahead and just start to look at how that works. 88
+<br><br>We say, so tempted. 89
+<br><br>Watch me trying to type it. 90
+<br><br>Don't type messages. 91
+<br><br>Copy and paste them please. 92
+<br><br>So, at least that bit of it. 93
+<br><br>So go to the docs, copy that bit. 94
+<br><br>If you get it wrong, it ain't gonna work. 95
+<br><br>Okay?. Forward on collision and to and 96
+<br><br>we put our braces in. 97
+<br><br>So this is going to get called whenever there's a collision. 98
+<br><br>Collision, let's test it. 99
+<br><br>Just say, print{"Collided"}. 100
+<br><br>We're not using this collision. 101
+<br><br>In fact, is E even optional? 102
+<br><br>But don't worry about that. 103
+<br><br>We're not using it at the moment, but 104
+<br><br>let's leave it there because we'll use it later. 105
+<br><br>What's happening is that on the rocket ship, as long as it has colliders on it, 106
+<br><br>and it does have colliders on its sub-objects, 107
+<br><br>then we get this log, collided, whenever we hit anything. 108
+<br><br>Look, if we hit the launchpad, it's gonna say collided a couple of times maybe. 109
+<br><br>Maybe one for each leg, if we hit the ground, collided. 110
+<br><br>That wasn't very clear but you get the idea. 111
+<br><br>If we hit the ground there we go a couple of times, probably one for each leg. 112
+<br><br>If we hit this launchpad or landing pad, collided. 113
+<br><br>So we are already detecting generic collisions. 114
+<br><br>Congratulations. 115
+<br><br>We're gonna use this a lot. 116
+<br><br>The other thing I'm gonna link you to is the following, 117
+<br><br>this page of the unity manual because it's going to be a useful page to come back to 118
+<br><br>as we start to understand collisions more. 119
+<br><br>You're going to want to know with these matrices when collisions occur and 120
+<br><br>when they don't occur, but it's well beyond us right now. 121
+<br><br>I'm just going to link you to it so 122
+<br><br>that the keen among you can have a little look through. 123
+<br><br>But we're getting a physics collision here that's happening between the rigid body of 124
+<br><br>this ship and these other things here, which don't have to have rigid bodies but 125
+<br><br>do have colliders on them. 126
+<br><br>And it's saying the word collided. 127
+<br><br>So we can now do the following. 128
+<br><br>What we can say is we can switch, based on 129
+<br><br>collision.gameobject, which is the thing we're colliding with. 130
+<br><br>.tag, okay, we can switch based on that tag, and 131
+<br><br>then we can come and hit and we can start to write some cases. 132
+<br><br>So for example, 133
+<br><br>we can say case friendly, now be careful. I would probably not type back again. 134
+<br><br>I would probably copy and paste it from the tag over here. 135
+<br><br>Friendly, maybe not copy and paste it, 136
+<br><br>but be very careful because the problem with copy and pasting it is that 137
+<br><br>going in here and messing around you might change it which would be worse. 138
+<br><br>So probably don't copy and paste it, but 139
+<br><br>really do spell it carefully because if you get that wrong, it won't work. 140
+<br><br>And that's one of these nasty string references. 141
+<br><br>So case friendly, and then some people are saying, 142
+<br><br>couldn't I use curly braces in here? 143
+<br><br>Yes, you could use curly braces in here. 144
+<br><br>But I wouldn't, personally, because it just adds more lines of code. 145
+<br><br>So case friendly and then we're gonna do some stuff. 146
+<br><br>Now in a minute, it's gonna be your turn. 147
+<br><br>I'm gonna challenge you to do this. 148
+<br><br>I'm just gonna get control of my brackets. 149
+<br><br>Why have I got a complaint here? 150
+<br><br>The red complaint is because I don't yet have my break clause. 151
+<br><br>So why don't we just pseudo-code out what we wanna do. 152
+<br><br>Friendly, do nothing, and then we're gonna want a default for 153
+<br><br>the rest of the time you want to die. 154
+<br><br>And this is your challenge, to get this working and to log to the console. 155
+<br><br>I say do nothing, temporarily, we will look to the console. 156
+<br><br>Look, let's look at the challenge spec. 157
+<br><br>Not your collision logic. 158
+<br><br>Your collisions should log to develop a console either "dead" if you've hit 159
+<br><br>something that would kill you or "OK" if you've hit something that wouldn't. 160
+<br><br>The landing pad in my case is the only friendly object that won't kill you. 161
+<br><br>Allow for future tags, (i.e.Fuel) in your logics, and 162
+<br><br>make sure that the structure you're using could allow for that. 163
+<br><br>Or that you maybe even tag something as Fuel and see if it works. 164
+<br><br>We suggest an opt-in friendly tag structure. 165
+<br><br>That is, that if most things in the world are gonna kill you, 166
+<br><br>then give yourself the least work to do by making it. 167
+<br><br>That you have to opt-in to the few things that don't kill you. 168
+<br><br>Hey, that's what I mean by an opt-in. 169
+<br><br>So go ahead, pause the video. 170
+<br><br>See if you can finish off this collision logic now. 171
+<br><br>I'll leave my code on the screen for you. 172
+<br><br>All right, welcome back. 173
+<br><br>Let's do this.. So friendly do nothing, but 174
+<br><br>temporarily we're going to print okay as we said and 175
+<br><br>then I'm going to go to do remove this line. 176
+<br><br>And then we're gonna go in the case. 177
+<br><br>Now I don't like the way these indent until you hit the colon. 178
+<br><br>Or don't intend until you hit the colon. 179
+<br><br>But whatever. 180
+<br><br>So we don't need another case unless we want to test Fuel. 181
+<br><br>I'm gonna test Fuel just for fun. 182
+<br><br>I'm gonna go beyond the challenge. 183
+<br><br>And this is something I really suggest you do. 184
+<br><br>So we're gonna test Fuel like that. 185
+<br><br>Put something called Fuel in the world. 186
+<br><br>I will make, just imagine this demo, my left is fuel for the moment. 187
+<br><br>So [SOUND] make a new tag called fuel, this is gonna be on the Call of Duty, but 188
+<br><br>its a good idea to test it, so that's tagged as fuel. 189
+<br><br>I just tagged this friendly, and that it shouldn't be tagged as anything, actually. 190
+<br><br>Untagged, and the ground is untagged, awesome. 191
+<br><br>All right, these obstacle blocks, we do have a prefab for them, I think. 192
+<br><br>No, we don't. 193
+<br><br>We have terrain blocks. 194
+<br><br>So we should probably prefab the obstacles, so 195
+<br><br>that when obstacles are created they come untagged. 196
+<br><br>When launch pads are created they're tagged as friendly. 197
+<br><br>And this guy on the left I'm temporarily calling fuel. 198
+<br><br>Okay, so in the case of fuel, we're gonna just print fuel. 199
+<br><br>And then this is the key one, default, we're going to print, dead. 200
+<br><br>And then we'll also need to break. 201
+<br><br>So if it doesn't contain a special tag, okay, or 202
+<br><br>friendly, then we are going to print, dead. 203
+<br><br>Okay, and then something we're going to need to do here is to kill the player. 204
+<br><br>And reload the level or whatever we do. 205
+<br><br>So that's the solution I've come up with. 206
+<br><br>Let's take a look and see if it works. 207
+<br><br>Going to have to do that soon after I come up with it before I start boasting 208
+<br><br>about how good it is. 209
+<br><br>Because sometimes my solutions just don't work. 210
+<br><br>So look if i hit the ground, what does it say? 211
+<br><br>It says, dead, okay. 212
+<br><br>So we've got two dead logs. 213
+<br><br>If I hit the fuel, what does it say? 214
+<br><br>Its a case statement so it should just work, it says fuel and 215
+<br><br>if I hit the landing pad, if I have the piloting skills, there you go it says OK. 216
+<br><br>And if I hit this blue pad, it has relogged dead. 217
+<br><br>I think I ended up in the foreground there, what's happened? 218
+<br><br>I'm going to hit that pad or. I move that pad. 219
+<br><br>No, there you go. 220
+<br><br>Dead. 221
+<br><br>All right, so that's it. 222
+<br><br>That's working. 223
+<br><br>I'm just going to take the fuel off this left obstacle and put it back to untagged. 224
+<br><br>So that both of the obstacles are untagged, the launch pad is friendly, and 225
+<br><br>the ground is untagged as well. 226
+<br><br>So most things in the scene become untagged. 227
+<br><br>And that is it, and this is nice, simple, self-contained behavior. 228
+<br><br>I think this is quite clear. 229
+<br><br>What happens when you collide with something? 230
+<br><br>Well, you switch based on the collision that comes in. 231
+<br><br>So this is the information about me hitting the other thing. 232
+<br><br>You look at the game object that you're you are colliding with, 233
+<br><br>that's what collision.gameobject means, and then you are reading its tag. 234
+<br><br>Then you are switching based on a string on that, and we're good to go. 235
+<br><br>So, I'll see you in the next lecture.
+	</p>
+  </BODY>
+</HTML>

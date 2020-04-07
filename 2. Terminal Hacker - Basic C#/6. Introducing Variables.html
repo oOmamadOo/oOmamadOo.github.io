@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hi there, in this video, we are gonna learn to use something called 3
+<br><br>a variable as a stepping stone towards being a process user input. 4
+<br><br>And we're just gonna use it as a level toy project and it's gonna say, 5
+<br><br>Hello Ben at the top of the screen. 6
+<br><br>So I look forward to seeing you in there and 7
+<br><br>learning all about this powerful concept of variables. 8
+<br><br>So here's a question you hear me ask, quite a few times in this course. 9
+<br><br>What is least interesting? 10
+<br><br>What is least exciting? 11
+<br><br>What is least fun about this game? 12
+<br><br>Right now, if it doesn't respond to our input, right, very boring. 13
+<br><br>So that's the thing we wanna fix, but sometimes to make the next lip in 14
+<br><br>your game, you have to get over a few hurdles just to do that thing, 15
+<br><br>just to work out how to process user input. 16
+<br><br>So here's the road ahead. 17
+<br><br>The road ahead is we need to get you into something called messages, 18
+<br><br>which at the bottom of the screen, we just got, here you go. 19
+<br><br>And that is how I use input is gonna be coming, but to understand messages, 20
+<br><br>you're gonna need to understand parameters. 21
+<br><br>And to understand parameters, you're gonna need to understand variables. 22
+<br><br>So let's just walk you forward through that journey, and 23
+<br><br>this video is purely about variables. 24
+<br><br>So variable is something that can change when the game is running. 25
+<br><br>So for instance, if I say string greeting. 26
+<br><br>I'm defining a variable called greeting, it's a box with a label on it called 27
+<br><br>greeting, there'll be a slide for that in a minute. 28
+<br><br>You just got a glimpse of a second to go. 29
+<br><br>I'm defining a box, which can only holds strings. 30
+<br><br>Which has got a label on it called greeting and 31
+<br><br>I'm putting in that box this string Welcome Ben. 32
+<br><br>All right, so we'll see that in a second. 33
+<br><br>Once you understand variables, you can understand parameters, 34
+<br><br>we can basically use that greeting and. ShowMainMenu. 35
+<br><br>For example, 36
+<br><br>we could make sure MainMenu display a greeting as the first thing that it does. 37
+<br><br>And then once you understand parameters on functions, 38
+<br><br>the thing in the brackets like this. 39
+<br><br>Then we'll be in a position to understand what messages are, 40
+<br><br>which are very similar, very, very similar indeed. 41
+<br><br>They're just called from somewhere else, which will be clear in two or 42
+<br><br>three lectures' time. 43
+<br><br>Okay, let's focus on variables. 44
+<br><br>What is a variable? 45
+<br><br>Variables are like boxes. 46
+<br><br>So typically in games, you'd have a box for lives, maybe holding three lives left, 47
+<br><br>or a greeting like Hello, or some userInput like 1 or a speed like 3.2. 48
+<br><br>All right, the way that you define these variables is var lives = 3 or 49
+<br><br>int lives = 3 if you want to be specific that it's an integer, 50
+<br><br>i.e., a whole number. 51
+<br><br>I'm just gonna use var for this slide for simplicity. 52
+<br><br>You could say var greeting is Hello. 53
+<br><br>The system will automatically know that the thing, 54
+<br><br>the type you're trying to create is of a string. 55
+<br><br>It'll do it for you. 56
+<br><br>Var input = 1, same deal as before, or var speed = 3.2f. 57
+<br><br>Let's not obsess about what the f is for now. 58
+<br><br>It tells us that it's a floating point value. 59
+<br><br>So this is how we create variables, like this. 60
+<br><br>Or we replace var with the explicit type of the thing in question and 61
+<br><br>we're gonna do that just to be clear. 62
+<br><br>We're gonna use string where it's a string, which is all that matters for now. 63
+<br><br>So what I want you to do is go ahead and use a variable. 64
+<br><br>I want you to write the code, this code var greeting = "Hello Ben" or string 65
+<br><br>greeting = "Hello Ben", you can try both and then Terminal.WriteLine(greeting). 66
+<br><br>So we are using this variable, 67
+<br><br>this Hello Ben could actually change when the game is running. 68
+<br><br>It's not going to in our case. 69
+<br><br>And we're doing this to get you through those hurdles, so 70
+<br><br>that we can get to processing input, so we can get to making our game fun. 71
+<br><br>But I want you to write exactly these two lines of code in the right place 72
+<br><br>in the hacker.cs script. 73
+<br><br>So that when you run the game, you get this off center. 74
+<br><br>Of course, you can greet yourself with your own name, but 75
+<br><br>it needs to say that at the start. 76
+<br><br>So there is a potential [INAUDIBLE] in here and 77
+<br><br>it will help you understand how your code runs. 78
+<br><br>And you'll be using variables for the first time. 79
+<br><br>So go ahead, pause the video, see if you can do that now. 80
+<br><br>All right, so let's just take a look at our code base. 81
+<br><br>Now if you were to write it here, then well let's try it. 82
+<br><br>We can always move code around. 83
+<br><br>Var or string, I'm gonna write var because that's what was in the challenge slide but 84
+<br><br>string would work as well. 85
+<br><br>Greeting = "Hello Ben" like so, okay? 86
+<br><br>Var greeting = "Hello Ben", and then what I wanted 87
+<br><br>to do is say Terminal.WriteLine if we look at the challenge line, greeting. 88
+<br><br>So this is where we use a variable and you see here, 89
+<br><br>the system is telling us that we have this variable called greeting available. 90
+<br><br>It also knows that it's a type string because there's a string 91
+<br><br>here in Hello Ben. 92
+<br><br>So therefore, the box that it has created with a label on it called greeting 93
+<br><br>is four things that are of type string only. 94
+<br><br>So when you first make it, it has that type. 95
+<br><br>So alternatively to var, you could have string, okay. 96
+<br><br>And that explicitly says, I'm gonna make a box that can only hold strings. 97
+<br><br>And their label the box greeting, gonna fill it with the string "Hello Ben" and 98
+<br><br>then I'm going to use that box there. 99
+<br><br>Notice if you double-click on the word greeting, 100
+<br><br>that it shows you that these two things are exactly the same that they are linked. 101
+<br><br>This is called defining the variable and then this is using the variable. 102
+<br><br>All right, let's try it. 103
+<br><br>If we did it there, there's a purposeful mistake. 104
+<br><br>This won't work and hopefully you can work out why. 105
+<br><br>Why do I not see my greeting? 106
+<br><br>Well, it's because of this clear screen. 107
+<br><br>Let's think about very briefly the execution order of the way that things 108
+<br><br>are actually gonna happen. 109
+<br><br>The first thing that it's gonna do is it's gonna use these two lines here to write, 110
+<br><br>between them they're gonna write the greeting. 111
+<br><br>But then it's gonna go to ShowMainMenu. 112
+<br><br>It's gonna jump in here and clear the screen. 113
+<br><br>So the only place to put this that would work is not there, but here, okay. 114
+<br><br>That's the only place in a current code we have. 115
+<br><br>They're at the top of ShowMainMenu but under ClearScreen. 116
+<br><br>How do you clear the screen? 117
+<br><br>Show our greeting and carry on. 118
+<br><br>Now why are we doing this? 119
+<br><br>Only to show you how to use variables, only to show you how they're defined. 120
+<br><br>Obviously you could just write. Hello Ben in place of greeting, 121
+<br><br>like so, and get rid of this line. 122
+<br><br>Obviously you could do that, but then you would be using variables, and 123
+<br><br>variables are gonna turn out to be super useful, let's just test this and 124
+<br><br>make sure it works,. There you go, [INAUDIBLE]. 125
+<br><br>Hello Ben, what would you like to hack into? 126
+<br><br>Awesome. 127
+<br><br>Now the final thing I wanna show you in this video, 128
+<br><br>every video has a resource link called lecture, what does it say? 129
+<br><br>Lecture project changes I believe. 130
+<br><br>And what that does is it takes you to our GitHub repo, 131
+<br><br>which we'll understand more about those much, much later in the course. 132
+<br><br>But this is a way of tracking the changes in the code. 133
+<br><br>And for the last video, you had had a link to this thing here, 134
+<br><br>5 TH TH CU2 to that unique code, your first function. 135
+<br><br>And the resource link in the resources will take you to this exact page for 136
+<br><br>[INAUDIBLE] video automatically linked for you. 137
+<br><br>And you will see exactly what we did. 138
+<br><br>So we added all these green lines and 139
+<br><br>then we also made some changes to our README files. 140
+<br><br>You can ignore the README files. 141
+<br><br>The purpose of this is it helps you to know what we did in the lecture. 142
+<br><br>So I will try in the lectures and show you here's the ending code. 143
+<br><br>But your code doesn't have to be exactly the same as ours, and 144
+<br><br>you may be interested in what lines of code we added and removed. 145
+<br><br>And the way you find that is you go to GitHub and you look at the lecture 146
+<br><br>project changes and it shows you for this particular lecture what did we change. 147
+<br><br>While we are here, I can show one of the thing, which is viewer here, 148
+<br><br>you can go up a level to terminal hacker. 149
+<br><br>And you can click on 3 commits, there, so that is here, 3 commits, 150
+<br><br>next to the little clock and that'll show you a list of all the different videos. 151
+<br><br>And for any given video, let's take this one, 4_TH, 152
+<br><br>you can browse the repository at this point in history using the square bracket. 153
+<br><br>What that allows you to do is to get, to go in and 154
+<br><br>look at exactly what our project was like at that time. 155
+<br><br>Assets, hacker.cs and you can see how it was at the end of that video. 156
+<br><br>So that's a bit more advanced, 157
+<br><br>the thing that really matters is that you can see lecture project changes. 158
+<br><br>And you can see what we added or removed in the lecture, in case you get confused. 159
+<br><br>Now, if you find any other useful resources like this one, 160
+<br><br>not in our slides of course. 161
+<br><br>Don't tell us that you found a resource in our slides because we put them there. 162
+<br><br>But if you find other external user resources, 163
+<br><br>maybe in this case something may help you to understand variables better. 164
+<br><br>Then please share the link with us in the Q &amp; A and with your fellow students. 165
+<br><br>And if you have really good results, 166
+<br><br>we will include them in the resources in future. 167
+<br><br>Okay, thanks for watching the video and. I will see you soon.
+	</p>
+  </BODY>
+</HTML>

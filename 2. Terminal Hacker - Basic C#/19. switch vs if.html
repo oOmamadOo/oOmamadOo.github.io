@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey guys, welcome. 2
+<br><br>In this video we are going to learn a new code structure. 3
+<br><br>The game is going to behave roughly the same. 4
+<br><br>But we are going to learn about something called a SWITCH statement which is 5
+<br><br>an alternative to an IF statement. 6
+<br><br>Some people prefer it. 7
+<br><br>Some people don't. 8
+<br><br>I really must introduce you to it and 9
+<br><br>we will learn a few of the little tricks as we go along. 10
+<br><br>So just before we start. I wanna remind you, 11
+<br><br>you've got a very very powerful free and optional resource available to you. 12
+<br><br>It's linked from every single lecture, and it is the community site. 13
+<br><br>We have at the time of recording over 20,000 page views a day over here. 14
+<br><br>Please, please use it. 15
+<br><br>Looking very spartan on my screen right now. 16
+<br><br>Because the course hasn't even been released, but against every single video, 17
+<br><br>you've got a opportunity to raise a new discussion, right? 18
+<br><br>It's organized into course and then into section, and 19
+<br><br>then into individual lectures. 20
+<br><br>And then against the particular lecture tag like this one, the messages one, 21
+<br><br>there's always a seed post, which just starts the conversation going. 22
+<br><br>And you're welcome to create a whole new discussion thread. 23
+<br><br>Please use it. 24
+<br><br>It's huge, it's amazing. 25
+<br><br>So looking at RunMainMenu. 26
+<br><br>Doesn't read very nicely. 27
+<br><br>It's just too complicated. 28
+<br><br>You don't need to be clever enough to read this sort of stuff. 29
+<br><br>There's no point. 30
+<br><br>Save that cleverness for really difficult problems later. 31
+<br><br>So let's make this read more clearly. 32
+<br><br>I wanna show you a little trick here. 33
+<br><br>What we can do in RunMainMenu is we can define a boolean 34
+<br><br>which is a new type which takes a value of true or false. 35
+<br><br>And we could say something like, isValidLevelNumber. 36
+<br><br>All right now, that boolean, whether or not it's a valuable, valid level number, 37
+<br><br>it's gonna be true or false and we can give it a value like this. 38
+<br><br>I'm gonna give some brackets just to separate things out. 39
+<br><br>Remember, things in brackets are grouped together. 40
+<br><br>It's a valid level number if the input == 1, or 41
+<br><br>remember we saw that double pipe for logical or, or input == 2. 42
+<br><br>They're the only conditions at the moment under which we have a valid level number. 43
+<br><br>Then we could do something,. I'm gonna leave the code below, 44
+<br><br>most of it is gonna disappear. 45
+<br><br>But then we could do something like this, 46
+<br><br>we can say if isValidLevelNumber, if I spelt that right, yeah. 47
+<br><br>If isValidLevelNumber, now this type of structure where you say, bool, and 48
+<br><br>then say what you mean, write the condition. 49
+<br><br>You don't absolutely have to have these brackets. 50
+<br><br>But without the brackets, that's terribly confusing, because you have to have 51
+<br><br>a really sharp eye to see this equals from this equals equals. 52
+<br><br>So what the bracket does is it turns this whole thing into an expression, 53
+<br><br>the whole thing in brackets here. 54
+<br><br>And it's if the input is 1 or 2 or both but 55
+<br><br>it can't be both, then we have a valid level number. 56
+<br><br>So if we have a valid level number, how about we don't set level 1 and 57
+<br><br>level 2 like this. 58
+<br><br>How about we actually use the level number? 59
+<br><br>Gonna show you a little trick, we can say level =, remember level isn't an integer, 60
+<br><br>it's a number. 61
+<br><br>We need to turn this string that comes in as an input into a number. 62
+<br><br>We can do that, and we go int.Parse. 63
+<br><br>Right now the reason that works is because, 64
+<br><br>well you will understand this later in the course. 65
+<br><br>But this is just a useful trick you right now. 66
+<br><br>You see if you say int.Parse and you provide that with a string, 67
+<br><br>in this case input, and what comes out of this is the level number as an integer. 68
+<br><br>So this is a string here, input. 69
+<br><br>And out of int.Parse comes an integer, a whole number. 70
+<br><br>And then of course it puts it into the variable level. 71
+<br><br>So what we've done here is we no longer to say level = 1, level = 2. 72
+<br><br>In fact, we can have as many levels we want as long as we define what 73
+<br><br>all the valid levels are here. 74
+<br><br>We can have as many levels as we want, all right, so 75
+<br><br>that's pretty cool simplification. 76
+<br><br>And then what we could do we could do this password setting somewhere else. 77
+<br><br>We don't have to set the password here. 78
+<br><br>So we could go straight in and start again. 79
+<br><br>So, I'm gonna boldly take all this stuff out and just leave us with that. 80
+<br><br>So, the RunMainMenu is a lot clearer, it says if it's a valid level number and 81
+<br><br>then defines what valid level numbers are. 82
+<br><br>Then go ahead and convert the level number as a string and enter an integer and 83
+<br><br>start the game. 84
+<br><br>Otherwise, if the input was 007, that's your special case, 85
+<br><br>this is where we have easter egg as a comment to explain why we are doing this. 86
+<br><br>We do something a bit special, otherwise we just say choose a valid level. 87
+<br><br>All right, now the only problem here is that we've lost a bit of code where we 88
+<br><br>generate a random password. 89
+<br><br>So let's put that back in again, even though we are not yet doing randomness, 90
+<br><br>let's put that back in. 91
+<br><br>So StartGame, let's think about the StartGame menu. 92
+<br><br>What I actually wanna do when we start the game, I wanna clear the screen. 93
+<br><br>Let's see how we're running so far. 94
+<br><br>Let's catch up. 95
+<br><br>So I hit 1, you've chosen number 1, enter your password. 96
+<br><br>I would prefer this was on a fresh screen and 97
+<br><br>that we didn't say that you've chosen level 1, I think that's not necessary. 98
+<br><br>And also, note the password's not being set. 99
+<br><br>So, I've just created a few problems but it will mop them up as we go. 100
+<br><br>So let's turn our attention to the StartGame method. 101
+<br><br>I just wanna embellish this a little bit. 102
+<br><br>First thing you do when you get in here is want to set 103
+<br><br>the screen as the Password Screen, that's fine, so we know the state we're in. 104
+<br><br>I actually don't want to say, you have chosen level, whatever. 105
+<br><br>I'm gonna get rid of that. 106
+<br><br>And I'm going to Terminal.ClearScreen. 107
+<br><br>All that's going to do for us is just, means when we've chosen a level, 108
+<br><br>we get a nice clear screen to put our password into. 109
+<br><br>That is fine. 110
+<br><br>All right, now what we want to do is at this stage inside the StartGame for 111
+<br><br>the moment at least, we're going to choose which password to set, 112
+<br><br>a different way to how we have done it before. 113
+<br><br>Previously we've used if statements to make choices. 114
+<br><br>We made our RunMainMenu simpler and 115
+<br><br>it's really focused on what happens on various different inputs. 116
+<br><br>You either input a valid level, 007 or something else. 117
+<br><br>So it's really nice, it's three simple buckets. 118
+<br><br>I really, really like that. 119
+<br><br>Now, what I wanna do is I want to make a choice based on the different type of 120
+<br><br>statement and this is called a switch statement. 121
+<br><br>So, let me give you an example. 122
+<br><br>If we had a string variable called 007 then we can do this instead of if, 123
+<br><br>it's entirely equivalent to if, but 124
+<br><br>I'll explain to you when you use this versus if. 125
+<br><br>If you say switch on names, switch on the value of name, open your braces, 126
+<br><br>in the case that name is 007, 127
+<br><br>print "Welcome Double Agent", and break, you always have to put these breaks in. 128
+<br><br>In the case that it's The Queen, if the name is The Queen, then you 129
+<br><br>print "Good Afternoon Your Majesty!" for example, then you put break it. 130
+<br><br>You have to put these breaks in, I'm sorry it's just noisy but it's how it is. 131
+<br><br>And then you have this option called default which is like your else case in 132
+<br><br>if Debug.LogError for example a new thing which allows 133
+<br><br>you to put a red error on the console,. I don't know you!, and again break. 134
+<br><br>So that's the general structure. 135
+<br><br>It's quite a clean and simple structure. 136
+<br><br>And we would use this when every single one of these conditions is 137
+<br><br>about comparing a value. 138
+<br><br>Say in this case, the value of what's in the string. 139
+<br><br>So you use if when you're asking logical questions, 140
+<br><br>when the order that you ask the questions matter. 141
+<br><br>So let's just take a look back at our code here. 142
+<br><br>We say if that isValidLevelNuber then we do a string comparison, 143
+<br><br>then we do an else. 144
+<br><br>This is inhomogeneous. 145
+<br><br>These things are not the same. 146
+<br><br>That is not the same type of thing. 147
+<br><br>We're not just looking at input, okay? 148
+<br><br>So we use if here. 149
+<br><br>Here we're asking about a single question not worth the overhead of a switch 150
+<br><br>statement. 151
+<br><br>But you consider switch when you're comparing only on values like this 152
+<br><br>level number. 153
+<br><br>Switch will prevent you repeating yourself which is quite nice. 154
+<br><br>Switch can make life a little bit easier when it comes to not 155
+<br><br>repeating things like if input equals, etc. 156
+<br><br>You don't have to keep saying that. 157
+<br><br>Order of comparison doesn't matter in switch. 158
+<br><br>Be careful not to miss out your breaks. 159
+<br><br>And if you want, just use if everywhere. 160
+<br><br>I rarely use switches, but it would be amiss of me not to introduce switch here. 161
+<br><br>So let's just introduce switch and then see if you can finish it off. 162
+<br><br>So what we want to do when we start the game, 163
+<br><br>we still need to set that level number. 164
+<br><br>So what we'll do is we'd switch based on the level, like so. 165
+<br><br>Right, and then you put some curly braces in. 166
+<br><br>Now we're into the case statement, and you go case 1, 167
+<br><br>and it'll complain until you've written your break, I'm afraid. 168
+<br><br>Yeah, there you go. 169
+<br><br>And it'll continue to complain until you've written break. 170
+<br><br>Now it's a really weird layout, isn't it? 171
+<br><br>The way this lays this thing out, but it does the job. 172
+<br><br>So in the case that you're level 1 then you say the password = level1Passwords, 173
+<br><br>and lets just pick, I don't know the first one from that list, index 0. 174
+<br><br>All right now we'll carry on for the other case and a default case. 175
+<br><br>So, with reference to, what I showed you about how a switch statement works, 176
+<br><br>is exactly the same concept as an if. 177
+<br><br>I want to see if you can make one work. 178
+<br><br>So I'd like you to finish off your first switch statement that we've just started. 179
+<br><br>The switch statement should choose a random password as before. 180
+<br><br>Again just one password, we're focusing on learn switch here. 181
+<br><br>And also, get other students' ideas about whether they prefer switch or 182
+<br><br>if in the communities or the Q&amp;A. 183
+<br><br>I say communities cuz we've got the community site and the discord server. 184
+<br><br>Now just before you start that challenge. I'm gonna put the code back up on 185
+<br><br>the screen because otherwise it's a bit of a hard act to follow. 186
+<br><br>So this is the switch statement in blue that I've written so far. 187
+<br><br>Go ahead, pause the video and see if you can finish that off and 188
+<br><br>get the behavior that we had before. 189
+<br><br>Awesome, so I'm gonna copy case 1, and just use case 2. 190
+<br><br>In the case that the level is 2, we picked from level2Passwords and 191
+<br><br>then really we ought to have a default. 192
+<br><br>So default and it will indent automatically for you. 193
+<br><br>Default we ought to do something like. 194
+<br><br>Well, this is an error. 195
+<br><br>So I'm gonna say Debug.LogError. 196
+<br><br>Here's a new thing for you. 197
+<br><br>This will log an error to the console and we can say Invalid level number, okay? 198
+<br><br>And it's gonna log that error, we should never actually get here. 199
+<br><br>Remember we need a break on the end of everything. 200
+<br><br>We should never actually get here but if we did, then we're mopping up the problem. 201
+<br><br>We shouldn't really be possible to end up in the case where the level is not one or 202
+<br><br>two cuz we've protected against it up here. 203
+<br><br>We wouldn't get this far. 204
+<br><br>It would not be a valid level number, 205
+<br><br>therefore we wouldn't be calling StartGame if it wasn't 1 or 2, but it's still. 206
+<br><br>If you change this code up here later, this protects you and 207
+<br><br>you'll get a log a red error log on your console if you ever get there. 208
+<br><br>So that's a really useful thing to do, the catch all case. 209
+<br><br>So that is a switch statement. 210
+<br><br>In both cases, we're picking the first element in the list, 211
+<br><br>which will be books or prisoner respectively. 212
+<br><br>Let's just see if it works. 213
+<br><br>Hence your selection one, books. 214
+<br><br>If I type nothing, wrong password, books, well done. 215
+<br><br>Awesome, menu to go back. 216
+<br><br>At some point, we're probably better for 217
+<br><br>some text to tell them they can use menu to go back. 218
+<br><br>Number two, prisoner, some text, nothing, prisoner, well done, great. 219
+<br><br>All right, so what we've done here, just as a recap, 220
+<br><br>is we've made RunMainMenu a lot clearer. 221
+<br><br>It's single purpose now. 222
+<br><br>It just processes the input in the main menu and 223
+<br><br>decides what to do in general about it, right? 224
+<br><br>Then StartGame now has become a bit of a mess. 225
+<br><br>[LAUGH] It sets the state, clears the screen, but 226
+<br><br>then it's got this ugly switch function in the middle of it, 227
+<br><br>which makes the whole thing not at what I call a consistent level of abstraction. 228
+<br><br>It's doing some nitty gritty things like this and 229
+<br><br>then suddenly it's doing this big lump of switch and I don't like that, right? 230
+<br><br>It's not nice to read, so we'll sort that out in the next video. 231
+<br><br>The process of making your code neat to the end is a bit like 232
+<br><br>combing knots out of hair. 233
+<br><br>You wanna start on the tips and then work your way back. 234
+<br><br>It's a bit like rolling lumps out of dough. 235
+<br><br>You move the neatness around or the mess around and 236
+<br><br>you just have to keep rolling until it's all rolled out. 237
+<br><br>So this is very normal. 238
+<br><br>Right, next up, we better start actually choosing a random password. 239
+<br><br>See you in the next video.
+	</p>
+  </BODY>
+</HTML>

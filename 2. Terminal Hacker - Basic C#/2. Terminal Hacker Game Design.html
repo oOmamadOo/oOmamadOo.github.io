@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+In this video we're gonna have a brief conversation about game design, 2
+<br><br>specifically, what is it that we are trying to build for 3
+<br><br>the Terminal Hacker game? 4
+<br><br>We're gonna give you guys the design for this one. 5
+<br><br>Mostly give it to you, with a few bits of your own flavor in there so 6
+<br><br>that you can follow along with the way we are creating it. 7
+<br><br>As we go throughout this course I'm gonna be asking you more and more to give your 8
+<br><br>own design thoughts and design imports and customize what it is that we're creating. 9
+<br><br>But for now let's have a look at what it is we're trying to create for 10
+<br><br>Terminal Hacker. 11
+<br><br>And the best place for us to start when it comes to game design is thinking about 12
+<br><br>what is our intention and then trying to execute on that. 13
+<br><br>So intention and execution. 14
+<br><br>What I mean by intention is, what is it that we're trying to do? 15
+<br><br>And I wanna make the point here is to expect to iterate. 16
+<br><br>We don't get anything perfect in game development right from the start. 17
+<br><br>It's not like writing a perfect spec and then we do that exactly. 18
+<br><br>We need to leave a lot of room to explore, and improve, and expand. 19
+<br><br>That's generally what we call iteration, so we iterate. 20
+<br><br>And then when it comes to execution, 21
+<br><br>we're just trying to match our intention as best we can. 22
+<br><br>So let me show you my intention for this game that we're working on. 23
+<br><br>We start with a player experience, I'm gonna talk about that a lot later on in 24
+<br><br>the course but for now, player experience. 25
+<br><br>We want the player to feel like an old school hacker, 26
+<br><br>sitting down at an old school terminal, trying to break the password. 27
+<br><br>That's what we're trying to go for in this game. 28
+<br><br>The core mechanic is an anagram guessing game. 29
+<br><br>If you're not sure what an anagram is, 30
+<br><br>it's taking letters that have been jumbled and then un-jumbling it. 31
+<br><br>So L B A E T, what can we make that into? 32
+<br><br>We can make that into the word table. 33
+<br><br>That's an anagram and that's our anagram guessing game which is the core of this. 34
+<br><br>As the core game loop, that is, what is the player doing? 35
+<br><br>The player is shown scrambled words and asked to guess what the answer is. 36
+<br><br>What is the password? 37
+<br><br>They have as many guesses as they need and when they guess accurately they win. 38
+<br><br>That's our game, that's our core game loop that we're going for here. 39
+<br><br>When it comes to the flow of the game, we start off with a main menu. 40
+<br><br>It's really good to map this out so you know what it is you're trying create. 41
+<br><br>If you're just creating blind it's very difficult to know 42
+<br><br>how to go about creating a game. 43
+<br><br>Start with the main menu, and we ask the player to select the difficulty, easy, 44
+<br><br>medium, hard. 45
+<br><br>Now you could have one level of difficulty, 46
+<br><br>you could have 20 levels of difficulty, that's up to you. 47
+<br><br>That's an area that you guys can customize 48
+<br><br>what it is you're creating in this section. 49
+<br><br>And then we ask the player to guess the password. 50
+<br><br>We're gonna give them a clue which is the anagram, 51
+<br><br>we'll give them the jumbled up words. 52
+<br><br>If they get it correct they go to the win screen, well done. 53
+<br><br>If they get it incorrect they have another guess at it until they get it complete. 54
+<br><br>One of the things we're thinking we will do is, 55
+<br><br>each time someone gets it incorrect, we're gonna re-jumble that same word so 56
+<br><br>they've got a slightly different bit of input in terms of what that word could be. 57
+<br><br>After the win screen they can return back to the main menu and complete that loop. 58
+<br><br>So this is a loop, 59
+<br><br>when we talk about a core game loop, this is the loop the player goes around. 60
+<br><br>They start at the main menu, they guess it, 61
+<br><br>they get it correct, and then they can return back to the main menu. 62
+<br><br>They can also go back to the main menu by typing in menu at any point, so 63
+<br><br>that would take them back in to here. 64
+<br><br>And when looking at our design intention it's also good to look at the layout. 65
+<br><br>What's the screen going to look like. 66
+<br><br>And we're gonna have this old school terminal. 67
+<br><br>We're gonna have green font on there. 68
+<br><br>Information up at the top to the player. 69
+<br><br>And then place for the player to give the input. 70
+<br><br>So this could be, here are the options for where you're going to hack into. 71
+<br><br>It could be, hey, give us your answer. 72
+<br><br>It could be, he's the anagram. 73
+<br><br>And then a spot to put in your input. 74
+<br><br>So the challenge that I have for you guys, the exercise I would like you to go 75
+<br><br>through now is to select a theme for your easy, medium and hard difficulty levels. 76
+<br><br>If I jump back here you can see for us we're going for local library, 77
+<br><br>police station and NASA. 78
+<br><br>NASA being the super difficult hacker place to hack into. 79
+<br><br>Feel free to come up with whatever you'd like for those themes. 80
+<br><br>And then to write down five words for the easy difficulty, five words for 81
+<br><br>medium and five words for the hard difficulty. 82
+<br><br>And after you've done that, just share your theme and 83
+<br><br>your words with the community, and you know what I'm gonna do? 84
+<br><br>I'm gonna ask you to post the video right now and then when you come back 85
+<br><br>I'll show you which words we've selected for our easy, medium, difficult. 86
+<br><br>So that if you're super stuck you'll be like that's what these guys are doing. 87
+<br><br>Gonna have that as a point of reference. 88
+<br><br>So pause the video, write down your words and I'll see you in a moment. 89
+<br><br>Okay, welcome back. 90
+<br><br>These are the words that we've selected for the library, books, aisle, shelf, 91
+<br><br>password, font, borrow. 92
+<br><br>They should be pretty easy words to un-jumble. 93
+<br><br>Medium, prisoner, handcuffs, holster, uniform, arrest. 94
+<br><br>And then for the hard level, the NASA level, starfield, telescope, environment, 95
+<br><br>exploration, astronauts. 96
+<br><br>As you can see, we've tried to thematically create words 97
+<br><br>that fit the location so for library book, aisle, shelf, et cetera, 98
+<br><br>these words kind of match library type words, we wanted to give more of 99
+<br><br>a connection there so it made a little bit more sense to the player, 100
+<br><br>gave them a little bit more of a clue in terms of what they're trying to guess. 101
+<br><br>Okay great work you guys I look forward to seeing your words in the comments and 102
+<br><br>in the discussion section and. I'll be seeing you in an upcoming video
+	</p>
+  </BODY>
+</HTML>

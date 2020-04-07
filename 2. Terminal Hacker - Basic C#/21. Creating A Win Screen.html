@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, welcome back by the end of this video we'll have done 3
+<br><br>some ASCII art got really creative. 4
+<br><br>So for each of the levels that we assign, we will actually be able to print a rewrd 5
+<br><br>screen that has something somewhat graphical on it. 6
+<br><br>So let's go and see how that works. 7
+<br><br>We're gonna do some ASCII art, that's where use simple ASCII characters which 8
+<br><br>American Standard whatever it is, whatever it stands for characters. 9
+<br><br>To actually draw something and it can range from very simple like this bunny, 10
+<br><br>which is still beautiful, but it is simple, to incredibly elaborate and 11
+<br><br>elegant, so we're gonna be able to do that in our game now. 12
+<br><br>Let's see how we do it. 13
+<br><br>So when we check password, instead of just saying Terminal.WriteLine, well done, 14
+<br><br>I'm going to extract that method down here. 15
+<br><br>And I'm gonna call it DisplayWinScreen. 16
+<br><br>So the CheckPassword just does one thing, it just very clearly says what happens. 17
+<br><br>You either Display the WinScreen or you saved wrong password, right? 18
+<br><br>Now, this has made a mess of this definition. 19
+<br><br>It's put the words private and static in front of it. 20
+<br><br>These tools do things for you. 21
+<br><br>But we don't understand what private and static mean, get rid of them. 22
+<br><br>Just take them away, the tool is supposed to help you write code but don't make it, 23
+<br><br>don't let it decide what code to write for you is the moral of that story. 24
+<br><br>So when we display the WIN screen, 25
+<br><br>the first thing we should do is set the current screen to screen.win, right? 26
+<br><br>We've got to state variable, we've moved into the WIN screen, we should use it. 27
+<br><br>Even if we're not using that anywhere else yet, good habit to just set it. 28
+<br><br>Next thing we might wanna do is terminal.clearscreen, 29
+<br><br>because it's a WIN screen and it's a fresh new screen. 30
+<br><br>Then what we gonna wanna do is going to show the level award. 31
+<br><br>Now that's gonna depend on which level we're at. 32
+<br><br>So again, I think that it's worth extracting this guy out, 33
+<br><br>push it down again, and say ShowLevelReward. 34
+<br><br>And then display WIN screen is very clear, it sets the screen state, 35
+<br><br>in case we need it later, it clears the screen and shows the reward. 36
+<br><br>Again, get rid of private static, 37
+<br><br>don't know what that means don't try to look at it. 38
+<br><br>I know what that mean but you don't know the stage and let's get rid of it, 39
+<br><br>take control of your code. 40
+<br><br>Okay, so now we're going to show the level reward. 41
+<br><br>Now as we're switching just based on the level, 42
+<br><br>we should use a switch statement here really. 43
+<br><br>So we're going to switch on the level as a member variable, 44
+<br><br>which is available everywhere. 45
+<br><br>Put some curly braces in and then I think. I'll get rid of this terminal write line, 46
+<br><br>actually I'll leave the terminal write line because we're about to need it and 47
+<br><br>then we go case 1, now these things don't really come together until you start 48
+<br><br>getting your syntax just right, so you have to be. 49
+<br><br>Properly indented with everything just right. 50
+<br><br>And it's not until you get that break statement, 51
+<br><br>the first break statement in, that it actually works. 52
+<br><br>So now you've got the outline structure, all right? 53
+<br><br>Now, instead of saying well done, if we're on level one, 54
+<br><br>I'm gonna say, what should I say? 55
+<br><br>Something like, Have a book. 56
+<br><br>[LAUGH] Very boring. 57
+<br><br>Have a book...okay? 58
+<br><br>And that is my initial reward. 59
+<br><br>And let's just try that. 60
+<br><br>Let's make sure that if we win level one that we get a book after 61
+<br><br>all of that refactoring. 62
+<br><br>Why are we doing this? 63
+<br><br>We're pushing the complexity where which as I said it's like kneading dough. 64
+<br><br>All the lumps are getting small. 65
+<br><br>We are making sure that no particular method is too long and 66
+<br><br>indigestible, everything is fitting on the screen. 67
+<br><br>They are all digestible lumps, right. 68
+<br><br>And it all tells a story, you check the password if it's the right one, 69
+<br><br>you display the win screen where you do these things. 70
+<br><br>And then you show the levelReward and then we focus on the details. 71
+<br><br>I keep rubbing this home but it's really important Nothing is home, whatever. 72
+<br><br>Okay, so lets dive in and see how the game plays right now. 73
+<br><br>I'm gonna try and win on level one, its not hard when it tells me 74
+<br><br>what the password is on right here, we'll have to create a hint soon, have a book. 75
+<br><br>Also, that wouldn't it be cool if we could have a book graphically, engage the other 76
+<br><br>side of the player's brain, we've been saddled here with a very One dimensional 77
+<br><br>kind of if you like left brain if you subscribe to that theory environment. 78
+<br><br>And we really wanna get something a little bit more visual going on in the way that 79
+<br><br>we can do this is a little bit of a hack. 80
+<br><br>But we can go Terminal.WriteLine and if you to go (@""), if you 81
+<br><br>do this then you can split your code out like this and we can put ASCII art here. 82
+<br><br>Okay, I'll draw something that looks more like a book for you in a moment. 83
+<br><br>But that particular syntax, 84
+<br><br>like I've done it there, will allow you to write ASCII out. 85
+<br><br>Now I'm gonna take control of this closing curly. 86
+<br><br>And bracket here, so it's a little bit hard to get things where you want it. 87
+<br><br>But how I would like it to look is like this. 88
+<br><br>Now this is a complete mess up of the white space in here, but 89
+<br><br>it does allow us in this block here to draw something like a book. 90
+<br><br>So I could come in and go, Maybe I should draw the book from the bottom something 91
+<br><br>like open brackets underscore, underscore, underscore, underscore, 92
+<br><br>underscore I don't know open bracket that can be one side of the book, maybe we do 93
+<br><br>a bit of a spine, what do we on this it's like an old line printer here. 94
+<br><br>We can do another open bracket or maybe a pipe or 95
+<br><br>forward slash for the side of the book a pipe or forward slash for 96
+<br><br>the side of the book underscore for the side of the book, and maybe 97
+<br><br>a couple of forward slashes is this coming together to look anything like a Book. 98
+<br><br>Near.. Vaguely. 99
+<br><br>So, you get the idea, line by line. 100
+<br><br>And this is where you can get creative. 101
+<br><br>You can build up something that may or may not look like a book. 102
+<br><br>And, that's the idea. 103
+<br><br>So, if I go for another double forward slash. 104
+<br><br>Yeah.. I think I'm drawing a book. 105
+<br><br>You see how you can draw in ASCII. 106
+<br><br>That's fun, isn't it? 107
+<br><br>I think we'll go one more then we'll close the book off and I'm doing it from 108
+<br><br>the bottom to the top because it gives me a reference on the left hand side. 109
+<br><br>Of course I've gotta you know. I've drawn this before so 110
+<br><br>I've got some idea of what I'm doing. 111
+<br><br>In reality, it would take you a lot longer to do ASCII than this, but look at that. 112
+<br><br>Have a book. 113
+<br><br>Now, let's see. 114
+<br><br>If it works, then I'll label the point a little bit about the syntax and 115
+<br><br>then challenge you to draw your own. 116
+<br><br>So one, the password is aisle, have a book. 117
+<br><br>That's pretty fun. 118
+<br><br>We get something graphic, just that little change. 119
+<br><br>You see how it changes, how the game feels having something 120
+<br><br>just a little bit more interesting than just the plain text. 121
+<br><br>All right.. So, this syntax is really wierd. 122
+<br><br>If you need to copy and paste this as a template then I've showed you in a couple 123
+<br><br>of videos ago how to go to get hub, 124
+<br><br>let your code changes browse files at the top right and copy my code if necessary. 125
+<br><br>But otherwise, play with it and see if you can get the syntax right. 126
+<br><br>We have to do this at an open quote in order to make the system 127
+<br><br>treat this properly and we have to start at the left-hand side. 128
+<br><br>You normally wouldn't do this but you know sometimes learning rule is also about 129
+<br><br>Breaking them if this gets the job done and 130
+<br><br>unless you put your SQLIte right here it's fine. 131
+<br><br>As we get better as game developers we would install 132
+<br><br>fame assets like SQLIte here he wouldn't even install it at the top of the file 133
+<br><br>with the rest our our assets which they are out in a completely separate file but 134
+<br><br>one step at a time let's just learn to get the basics done So get creative. 135
+<br><br>You should have a level 2 win screen by the end of this. 136
+<br><br>Please consider taking the time to theme your game now, 137
+<br><br>think about every that's said in the game, think about the passwords you set, 138
+<br><br>think about how they relate together and think about you are gonna draw. 139
+<br><br>It's the polish and the final 2% effort that really counts. 140
+<br><br>So please, please if you haven't done any sharing yet, and 141
+<br><br>even if you are established community member, 142
+<br><br>you've been with us for years, please start filling up 143
+<br><br>the complete Unity developer 2.0 community forum with your beautiful creations. 144
+<br><br>So pause the video, get your win screen working for 145
+<br><br>level 2 and also level 1 and also you in there. 146
+<br><br>Okay, when I say in there,. I mean back here. 147
+<br><br>And we, I was just gonna put a second case in place, case in place that rhymes. 148
+<br><br>And for the next level we're going to, 149
+<br><br>you got the prison key is what I"ve decided to say. 150
+<br><br>That's my kind of theme, and. I need to try and draw a prison key now, 151
+<br><br>I might just fade down and fade up cuz I think you're gonna get bored with that. 152
+<br><br>So I'll draw a key and. I'll be back with you in a moment. 153
+<br><br>I'm drawing a key. 154
+<br><br>Okay, so I'm back making sure that you have case one and case two. 155
+<br><br>That's my attempted a key, that's my attempted a book. 156
+<br><br>That's just textbook that look like any actual game cuz the formatting could be 157
+<br><br>different over there. 158
+<br><br>I've already seen the book, so let's go win level two. 159
+<br><br>Please enter your password, holster. 160
+<br><br>And we've got the prison key. 161
+<br><br>Pretty fun. 162
+<br><br>Now, we need to know that we can go back to the main menu at this stage and 163
+<br><br>we currently don't know that. 164
+<br><br>And there's a few more enhancements we could make to the game but 165
+<br><br>we are really making awesome progress. 166
+<br><br>So congratulations on that. 167
+<br><br>Excuse this width syntax just accept that this little hack of at 168
+<br><br>quote is just something that we found that makes this work and makes the machine 169
+<br><br>treat this properly as a string and print it out to the terminal properly. 170
+<br><br>Don't really about really what this means or why it works. 171
+<br><br>It's just one of those cases where if we've got it going. 172
+<br><br>And that's what we need to do, and we are in good shape. 173
+<br><br>You might ask what do we need a default statement here, 174
+<br><br>you could put the default in here and its good practice to put a default that says, 175
+<br><br>well if we get to this point,then we're trying to process an invalid state and 176
+<br><br>you could go something like debug.logerror which you've seen once before, not log but 177
+<br><br>logerror and you could log an error that says invalid 178
+<br><br>level reached and then you would also do a break. 179
+<br><br>So you're welcome to do that if you want and that just means that if you ever got 180
+<br><br>there, which you shouldn't, you would get an error. 181
+<br><br>But it shouldn't really be possible because all the way up the top of the file 182
+<br><br>we check that the level number is valid before we 183
+<br><br>even kind of continue the story down the file. 184
+<br><br>So, congratulations on getting that file. In fact, I will look forward to seeing you 185
+<br><br>in the final, what may even be one of the final videos of this section.
+	</p>
+  </BODY>
+</HTML>

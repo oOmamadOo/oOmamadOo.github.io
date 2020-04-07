@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys, by the end of this video, we'll have a very basic world set up. 3
+<br><br>We'll have a Terrain. 4
+<br><br>We'll have a Launch Pad. 5
+<br><br>And we'll have a very good idea as to where they are in the world, 6
+<br><br>where the world origin is. 7
+<br><br>And we'll have learned a few other very useful things along the way. 8
+<br><br>Welcome back. 9
+<br><br>I am literally not exaggerating when I say that one of you has 10
+<br><br>the potential to make this game into something as successful as Crossy Road. 11
+<br><br>There's gonna be 1 or 200,000 students of this course by the time we're finished. 12
+<br><br>And you may be the one who has the tenacity and the attention to detail and 13
+<br><br>whatever it takes to turn this into something that good, 14
+<br><br>because the core mechanic is fantastic in this game. 15
+<br><br>But no pressure. 16
+<br><br>You can also just have a laugh and build out this game and 17
+<br><br>learn a bit about Unity and learn a bit about how to code. 18
+<br><br>So let's get in and do it. 19
+<br><br>Let's set up our world as a starting point. 20
+<br><br>So you've been in the Unity Editor before, but we had a very cursory glance at it. 21
+<br><br>We had a little play-around. 22
+<br><br>You learned how to move around the scene, etc. 23
+<br><br>We didn't pay a huge amount of attention to some of the things that really quite 24
+<br><br>matter, like this little gizmo up here and the fact that we have z. 25
+<br><br>Now, z is, by convention, forward. 26
+<br><br>And in the code, we will be using forward for z. 27
+<br><br>We'll be using up for y. 28
+<br><br>Well, I say we will. 29
+<br><br>Unity does. 30
+<br><br>And x is to the right. 31
+<br><br>So the way that I have that gizmo set up right now, this is what we want. 32
+<br><br>We want z going off away from us. 33
+<br><br>We want y up and x to the right, okay? 34
+<br><br>Now, I'm gonna start setting up my world. 35
+<br><br>If you don't already have a couple of cubes, don't worry. 36
+<br><br>You may not have added them in previous videos. 37
+<br><br>I'm just gonna start afresh. 38
+<br><br>You may not even have a scene. 39
+<br><br>So the scene that I've got,. I'm gonna call it Level 1 instead. 40
+<br><br>You can rename it by clicking on it, 41
+<br><br>all right, because what we're building here is Level 1. 42
+<br><br>So what do we have in the scene? 43
+<br><br>We have a Main Camera. 44
+<br><br>It's there. 45
+<br><br>Now, a bit hard to visualize where it is. 46
+<br><br>So you can look in the Inspector and see that the Main Camera is at x equals 0. 47
+<br><br>So it's neither left nor right of the scene. 48
+<br><br>It's at y equals 1. 49
+<br><br>Now, by convention, that's 1 meter. 50
+<br><br>But we're just gonna call these 1 unit. 51
+<br><br>We're not gonna worry about the physical sizes. 52
+<br><br>So it's at y equals 1, which is 1 unit off the ground. 53
+<br><br>And it says z equals -10. 54
+<br><br>It's 10 units back from the origin. 55
+<br><br>So the first thing I'm gonna do is slam down a cube at the origin. 56
+<br><br>And it's quite a good idea to do this. 57
+<br><br>Now, when you GameObject &gt; create Object &gt; Cube, 58
+<br><br>it by default doesn't go to the origin necessarily, okay? 59
+<br><br>You need to make sure that you reset its position. 60
+<br><br>So you go to the cog and Reset. 61
+<br><br>So now we have, at the origin, a cube. 62
+<br><br>Now, I'm gonna call this thing the Launch Pad. 63
+<br><br>And it's gonna serve two purposes. 64
+<br><br>Firstly, it's gonna be a launchpad. 65
+<br><br>And secondly, it's gonna remind us where the origin is. 66
+<br><br>I'm gonna leave the color as it is for the moment. 67
+<br><br>But I'm gonna double its width in x and in z. 68
+<br><br>So now it's 2 units wide, 2 units left and right, forward and backward. 69
+<br><br>And it's 1 unit high. 70
+<br><br>But if you look really carefully, half of that's sticking out of the ground, and 71
+<br><br>half of that isn't. 72
+<br><br>Now, that's hard to see right now. 73
+<br><br>So let's do the next thing, which is make the initial terrain, okay? 74
+<br><br>Now, before we even do that, there's a habit I want us to get into, 75
+<br><br>and that's prefabbing everything, all right? 76
+<br><br>We'll see why later. 77
+<br><br>But basically, start dragging and prefabbing everything. 78
+<br><br>So there's your Launch Pad. 79
+<br><br>You can reuse it in another level. 80
+<br><br>There's your Directional Light. 81
+<br><br>There's your Main Camera, all right? 82
+<br><br>I'm just dragging them and prefabbing them. 83
+<br><br>Okay, cool, so. I want you to catch up with where I am. 84
+<br><br>You've just prefabbed by dragging the Main. Light, Directional Camera, and Launch Pad. 85
+<br><br>You have a scene called Level 1 that's all nice and saved. 86
+<br><br>The Launch Pad is of these dimensions, 2 by 1 by 2 dimensions. 87
+<br><br>And it's sitting at the origin position 000 and no rotation. 88
+<br><br>So there it is. 89
+<br><br>Wicked, all right, let's carry on. 90
+<br><br>Let's keep building this thing. 91
+<br><br>We're gonna create a ground plane. 92
+<br><br>Now, let me just take a step back and explain why I'm doing this. 93
+<br><br>I want to have an origin and a ground. 94
+<br><br>And we wanna know where the ground level is. 95
+<br><br>We wanna agree on that. 96
+<br><br>And we wanna agree on where the world center is so we can build from that. 97
+<br><br>It's as simple as that, okay? 98
+<br><br>So I'm gonna add this second cube in. 99
+<br><br>I'm gonna immediately set my intention in the Inspector by naming it, 100
+<br><br>clicking up in the Inspector and saying that this is the Terrain. 101
+<br><br>And obviously, our Terrain will get a lot more exciting in the future. 102
+<br><br>Now, how wide do we want the Terrain? 103
+<br><br>Maybe 100 units wide, something like that. 104
+<br><br>Let's zoom out. 105
+<br><br>Seems reasonable compared to the Launch Pad, okay? 106
+<br><br>So let's keep going. 107
+<br><br>Let's make the Terrain how high? 108
+<br><br>50, ooh, it's a bit high. 109
+<br><br>30 units high, maybe. 110
+<br><br>Now, here's a little challenge here. 111
+<br><br>If the Terrain is 30 units high, but. I want the top of it to be at y equals 0, 112
+<br><br>how much down do we need to move it? 113
+<br><br>Fairly trivial, I think -15, right? 114
+<br><br>So we move it down 15. 115
+<br><br>Now, immediately, it's very hard to see one thing from the other. 116
+<br><br>So I'm gonna show you a new trick. 117
+<br><br>It's a paint-by-numbers trick. 118
+<br><br>And it allows us to put materials on things so 119
+<br><br>that we can just put some colors. 120
+<br><br>Rick will come in and refine these colors with you. 121
+<br><br>But what I want you to do is right-click into your Assets and 122
+<br><br>say Create &gt; Material. 123
+<br><br>Now, we operate, in this course, a spiral syllabus. 124
+<br><br>So we've already just taken a whole load of Unity's power for granted. 125
+<br><br>And we're gonna continue to do that throughout the section because we want you 126
+<br><br>to get an effective, fun game really quickly, all right? 127
+<br><br>But we will loop back and look into these things in more detail. 128
+<br><br>So for now, just create a material by right-clicking in Assets, 129
+<br><br>Create &gt; Material. 130
+<br><br>And then let's just call it ground or something like that, or Earth, 131
+<br><br>probably name it by kind of what it is. 132
+<br><br>That's your material in the Inspector. 133
+<br><br>The only bit we need to worry about is albedo. 134
+<br><br>If you click on that swatch, 135
+<br><br>you'll have a slightly different-looking thing on Windows, but very, very similar. 136
+<br><br>Using a combination of brightness, saturation, and hue, 137
+<br><br>find yourself a nice kind of groundy, earthy color. 138
+<br><br>And when you're happy with that color, 139
+<br><br>you can drag it straight on either in the scene or in the hierarchy. 140
+<br><br>So that assigns the Earth. 141
+<br><br>So we can see what's going on here. 142
+<br><br>We have the Launch Pad, which is pretty much a default cube, but 143
+<br><br>it's slightly bigger in x and z. 144
+<br><br>And then we have a Terrain. 145
+<br><br>It's 100 units wide, 30 units high, reduced down by 15. 146
+<br><br>And by the way, here's another tip for you. 147
+<br><br>Stick your mouse over y, hold it down. 148
+<br><br>And you can do this on any of the values. 149
+<br><br>And you can move the mouse left and right, pretty handy. 150
+<br><br>Okay, and then this thing is at z equals 0. 151
+<br><br>So it is just in the z equals 0 plane, 10 units away from the camera. 152
+<br><br>So the final thing I'm gonna do is give the ground some depth. 153
+<br><br>I don't know how much depth to give it. 154
+<br><br>Frankly, again,. Rick will advise on this later. 155
+<br><br>I'm gonna give it 30 units of depth. 156
+<br><br>Then I'm gonna go to the Game scene and see how it looks. 157
+<br><br>Pretty cool. 158
+<br><br>Right, now, I said to prefab everything. 159
+<br><br>Let's prefab the Terrain. 160
+<br><br>Wicked, now let's grab the camera. 161
+<br><br>Click on the camera, pull it back a little bit. 162
+<br><br>I don't know whether you wanna see the front in the Terrain. 163
+<br><br>That's up to you. 164
+<br><br>That's a game design decision. 165
+<br><br>We'll get to that as we go. 166
+<br><br>I'm gonna lift the camera up. 167
+<br><br>And then I'm gonna rotate the camera down, okay, so something like this. 168
+<br><br>The camera's probably too high. 169
+<br><br>It doesn't really matter. 170
+<br><br>Why don't we fix the camera at 0 to -20 for the moment and 171
+<br><br>just see how that looks? 172
+<br><br>Well, we have a Launch Pad and a ground. 173
+<br><br>I'm happy enough with that. 174
+<br><br>Okay, so that is the basis of our world. 175
+<br><br>We're gonna start the spaceship just above this Launch Pad. 176
+<br><br>We're gonna end up tagging the Launch Pad as a friendly thing or 177
+<br><br>something the spaceship can touch. 178
+<br><br>But we're gonna end up making anything else in the world something that 179
+<br><br>destroys the spaceship. 180
+<br><br>We will start without a follow camera. 181
+<br><br>We're just gonna have a fixed camera perspective until the gameplay 182
+<br><br>demands that we have a follow camera. 183
+<br><br>Until it does, we won't bother. 184
+<br><br>I'm just gonna pan this camera up a little bit. 185
+<br><br>Let's see how that looks. 186
+<br><br>That's a bit better. 187
+<br><br>Okay, then notice, in the Game scene, you've already got a sky effect. 188
+<br><br>That comes as default with Unity. 189
+<br><br>We may wanna modify it, but let's roll with it for now. 190
+<br><br>We've already got some lighting in the scene as well. 191
+<br><br>That's the other thing to say. 192
+<br><br>If you click on your Directional Light, 193
+<br><br>this thing casts light from a particular direction across the entire scene. 194
+<br><br>You're welcome to rotate that light. 195
+<br><br>And as you do so, you'll see that you get very different lighting effects and 196
+<br><br>shadows and things. 197
+<br><br>But the other thing to say about it is, 198
+<br><br>it doesn't matter where it lives in the scene. 199
+<br><br>They're very strange, those Directional Lights. 200
+<br><br>With it selected, you can go to Local or. Global coordinates. 201
+<br><br>Let's switch over to Global. 202
+<br><br>You can use an X key on the keyboard to switch to that. 203
+<br><br>And I would just move your light out the way somewhere, the Directional Light, 204
+<br><br>just kinda up and out, because actually it doesn't matter where it is. 205
+<br><br>It's not like a light source. 206
+<br><br>It's just a thing in the world that determines where light is coming from. 207
+<br><br>It casts parallel light beams across the entire world, 208
+<br><br>like the shadow you're getting on the Launch Pad here. 209
+<br><br>So I've got a pretty fast challenge for you. 210
+<br><br>I went through all that very quickly. 211
+<br><br>I totally understand if you couldn't follow me as we go, so 212
+<br><br>now you've got a chance to catch up. 213
+<br><br>You should set up your world, right? 214
+<br><br>Your ground level is at y = 0. 215
+<br><br>The launchpad is centered on x = 0, z = 0. 216
+<br><br>You have an initial camera view you like. 217
+<br><br>Everything in the hierarchy is prefabbed as a good habit. 218
+<br><br>You've assigned a terrain color of your choosing. 219
+<br><br>You've modified the directional light rotation so 220
+<br><br>you get a lighting effect that you like. 221
+<br><br>And you've shared a screenshot with us. 222
+<br><br>So that's the definition of a successful end to the challenge. 223
+<br><br>So go ahead, pause the video, and do your challenge right now. 224
+<br><br>Wicked, guys, welcome back. 225
+<br><br>So to share this screenshot, you can do it how you like, probably from Game view. 226
+<br><br>I'm going, in my case, Cmd+Shift+1. 227
+<br><br>But whatever keyboard shortcut you have set up for your screen capture, 228
+<br><br>capturing that, of course. 229
+<br><br>And then gonna go and paste it, in my case, 230
+<br><br>over on community.gamedev.tv, using the link from the resources. 231
+<br><br>Best place to do sharing of media is over there. 232
+<br><br>Keep the Q&amp;A for questions that need instructor response. 233
+<br><br>So we have a world set up. 234
+<br><br>We have the starting blocks set up. 235
+<br><br>We're in good shape. 236
+<br><br>I hope that all made sense. 237
+<br><br>We've learned quite a few things here. 238
+<br><br>We've learned that it's a good idea to prefab everything. 239
+<br><br>And we'll understand a bit more why later. 240
+<br><br>We have learned how to create a material, 241
+<br><br>just to slap a bit of color on some things. 242
+<br><br>And we've learned the importance of thinking about 243
+<br><br>where your world origins and starting points are. 244
+<br><br>So congratulations, and. I'll see you in the next video. 245
+<br><br>But just before I go, we're using version control now. 246
+<br><br>So here are all my uncommitted changes, loads of stuff. 247
+<br><br>I'm gonna commit these, and I commit things using the name of the lecture. 248
+<br><br>So it's 6_PB for Project Booster and 249
+<br><br>then CU_2 for Complete Unity 2. 250
+<br><br>I will also append to the end of this, after the video, the name of the lecture 251
+<br><br>and send it off to the web so that you can see my code changes or my lecture changes. 252
+<br><br>See you soon.
+	</p>
+  </BODY>
+</HTML>

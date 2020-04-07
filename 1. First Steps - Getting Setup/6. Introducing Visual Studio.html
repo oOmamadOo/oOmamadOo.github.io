@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, by the end of this video, 3
+<br><br>we will have a significant triumph in terms of our coding. 4
+<br><br>Not a very exciting looking game window, but 5
+<br><br>we will be having something actually printing out on Unity's error console. 6
+<br><br>And that will be coming from some code that we have written. 7
+<br><br>Which proves that everything is properly connected together, and 8
+<br><br>we've made a massive stride towards being able to write our own code and 9
+<br><br>make our game actually do something. 10
+<br><br>So I'll see you in there. 11
+<br><br>It's time to roll our sleeves up and get into some coding. 12
+<br><br>Just before we do,. I want to show you something. 13
+<br><br>You can choose the environment you use to do your coding in like this in Unity. 14
+<br><br>So on the PC you go to Edit &gt; Preferences. 15
+<br><br>Most of you won't need to do this, but if you do want to use something different for 16
+<br><br>writing code you go to Edit &gt;. Preferences &gt; External tools. 17
+<br><br>And then in the external script editor, if you have other things included or 18
+<br><br>built in, you can chose them. 19
+<br><br>So we're gonna be using Visual Studio 2017 Community on the PC, 20
+<br><br>but any Visual Studio will do if you're familiar with Visual Studio, and 21
+<br><br>on the Mac we're gonna be using Visual Studio Mac. 22
+<br><br>So that's how you do it on the PC. 23
+<br><br>And over here on the Mac. 24
+<br><br>PC people, don't worry, this won't take long at all. 25
+<br><br>One of the slight differences in menus, we go to Unity &gt; Preferences, 26
+<br><br>otherwise it's pretty much exactly the same. 27
+<br><br>Once you get into the Preferences, you just go to External Tools. 28
+<br><br>And External Script Editor, you should have the option now for Visual Studio. 29
+<br><br>If you haven't please just make sure that. Visual Studio is fully installed and 30
+<br><br>up to date on the Mac, maybe try a restart if it still doesn't work, but 31
+<br><br>this should be absolutely fine. 32
+<br><br>And there you go,. I've switched to Visual Studio. 33
+<br><br>Great, I'm gonna dive back to the PC now as most people are on PC, but 34
+<br><br>you Mac people should be to follow through just fine. 35
+<br><br>I'm constantly diving between the two to check for compatibility. 36
+<br><br>So let's go and make our first C# script. 37
+<br><br>You right-click inside the project tab, next to some of your assets in the free 38
+<br><br>space, somewhere around where my cursor is right now. 39
+<br><br>Anywhere in this free space. 40
+<br><br>Right-click, say create C# script. 41
+<br><br>Now, it's gonna come up with a default name, new behavior script. 42
+<br><br>If you've already hit rRturn, then what I suggest you do for 43
+<br><br>now is actually just right-click and delete that script and 44
+<br><br>start again, okay, cuz we wanna give it a name. 45
+<br><br>And the reason for that will become clear later in the course, but 46
+<br><br>basically in case you're wondering, it's important that the name of the script and 47
+<br><br>the name of something that's written inside it, 48
+<br><br>which we can see over on the right where it says new behavior script. 49
+<br><br>It's important those two things match, and 50
+<br><br>I'm not gonna bore you with those details just yet. 51
+<br><br>So if you've already made a script, just delete it and start again. 52
+<br><br>Create C# script. 53
+<br><br>Now it's called new behavior script. 54
+<br><br>And that's because C# scripts are typically used for 55
+<br><br>giving game objects behavior. 56
+<br><br>So what are we gonna call this one? 57
+<br><br>Well, I'm just gonna call it an, mm, let's call it an introducer. 58
+<br><br>We tend to name scripts by a noun, it's a thing, it's an introducer. 59
+<br><br>Okay, and what I'm gonna do is I'm gonna drag this introducer onto one of the cars. 60
+<br><br>Now you can either drag it from the project tab into the scene tab and 61
+<br><br>drop on the game object, or you can drop it on the game object in the hierarchy. 62
+<br><br>Remember the scene and 63
+<br><br>the hierarchy are just two different representation of the same thing. 64
+<br><br>In my case I've dragged it on this left hand car and for 65
+<br><br>now we are gonna have a quick look at the inspector just to check it's there. 66
+<br><br>Don't worry about the rest of the stuff in the inspector right now, 67
+<br><br>we'll get to all of that in a lot of detail. 68
+<br><br>But you can see that there is a script attached. 69
+<br><br>You may accidentally have dragged it on twice. 70
+<br><br>You can remove the duplicate copy, by looking in the inspector, 71
+<br><br>on the right-hand side, this little cog, and you click on that little cog and 72
+<br><br>you say Remove Component. 73
+<br><br>Right, so let's not worry ourselves about what components are too much at 74
+<br><br>the moment. 75
+<br><br>But basically a game object like a car has a bunch of components that make it work. 76
+<br><br>One is a transform which tells it where it is in the world. 77
+<br><br>The other is this new behavior script, introducer, 78
+<br><br>which is gonna introduce itself to us in a minute, and we've put that on there. 79
+<br><br>So that's how you do. 80
+<br><br>You basically drag it on, is the bottom line. 81
+<br><br>This is just a ways of checking it got on there. 82
+<br><br>Right, now what I want you to do is go ahead and open that script. 83
+<br><br>Clicking on it doesn't open it, it just gets you a preview. 84
+<br><br>You need to double-click on it to open it. 85
+<br><br>Now, you may have a few teething problems when you try and open this for 86
+<br><br>the first time. 87
+<br><br>If it's the first time you've used an IDE. 88
+<br><br>It's at this point I should say if you're already a fairly experienced developer, 89
+<br><br>you know about Visual Studio, 90
+<br><br>you know how to write basic code even if you have no C# experience. 91
+<br><br>If you can do prints and you understand brackets and white space and 92
+<br><br>just generally how to write code. 93
+<br><br>Please just skip to the last video of this section 94
+<br><br>where we'll just wrap up the section for you and 95
+<br><br>we'll dive straight in in the next section with some proper Unity-specific stuff. 96
+<br><br>From this point in this section on we're not gonna really learn anything else 97
+<br><br>about Unity. 98
+<br><br>We're gonna be focused on learning about Visual Studio and 99
+<br><br>learning about the very basics of coding. 100
+<br><br>All right, so, here are the things that may trip you up. 101
+<br><br>Visual Studio may be popping up and saying you need to sign in, well you can 102
+<br><br>say later, but it would be a good idea to sign into Visual Studio at some stage. 103
+<br><br>It might ask you about themes, what themes do you wanna use? 104
+<br><br>I'm just gonna use the default. 105
+<br><br>Other things, while this opens, you might see popping up. 106
+<br><br>Windows Firewall might be asking about. MonoDevelop, if Mono tries to open. 107
+<br><br>You can allow access to that, you can allow access for Video Studio. 108
+<br><br>All those things may happen, there's a slight possibility that when you open your 109
+<br><br>script it opens in this mono develop thing over here. 110
+<br><br>Well, if that's the case, then close MonoDevelop, go back to Unity. 111
+<br><br>Go to your Edit &gt; Preferences, which is in the Unity menu on a Mac, &gt; External tools, 112
+<br><br>and just make sure we've got Visual Studio selected as the script editor. 113
+<br><br>So we definitely want our scripts to be opening in Visual Studio. 114
+<br><br>All right, when Visual Studio opens, welcome, 115
+<br><br>this is an integrated development environment. 116
+<br><br>Really excited to have you in here. 117
+<br><br>This is learning to code for the very first time for some people. 118
+<br><br>So I know how exciting that is and how daunting it is. 119
+<br><br>Now, we don't need to worry about the windows on the right. 120
+<br><br>This solution explorer, we can close any of these windows. 121
+<br><br>We only really need the introducer.cs tab. 122
+<br><br>What are we looking at here? 123
+<br><br>Well firstly, I'm gonna hold down the control key and roll the mouse wheel up. 124
+<br><br>And that's gonna change my font size, just so that it's very clear what's going on. 125
+<br><br>There are other ways you can do that, you can look around the menus for yourself and 126
+<br><br>have a play. 127
+<br><br>Again you're very welcome to play in here, you're not likely to do too much harm. 128
+<br><br>Although I wouldn't get too much into the Configurations and 129
+<br><br>Settings menus if you don't know what you're doing just at this moment. 130
+<br><br>So there is basically a load of stuff in here. 131
+<br><br>Now, I wanna help train your eye before we do anything. 132
+<br><br>Let's skip forward to the current slide. 133
+<br><br>What I want to bring your attention to is there's gonna be a load of stuff written. 134
+<br><br>// means comment, it means the computer ignores it. 135
+<br><br>It's gonna be some stuff, then you're gonna see this void Start () { and 136
+<br><br>then you're gonna put your code just here. 137
+<br><br>And there's gonna be other stuff. 138
+<br><br>So what I want you to focus on is only inside the Start method for now. 139
+<br><br>So let's go back and look at that concretely, in here. 140
+<br><br>This is what I'm calling the other stuff, here. 141
+<br><br>And this stuff down at the bottom is other stuff. 142
+<br><br>Anything that has a //, and is green in this program, is ignored by the computer. 143
+<br><br>But everything else is not ignored by it at all, 144
+<br><br>and is really important exactly how it's written. 145
+<br><br>Now, for some people this is gonna be a significant mental shift of perspective 146
+<br><br>to try and get to the level of detail and 147
+<br><br>attention to detail that we need to make this stuff work. 148
+<br><br>So, some of the things that are gonna trip you up, this must say introducer, 149
+<br><br>if it doesn't say introducer you need to go back to Unity, delete the class, and 150
+<br><br>make a new one. 151
+<br><br>All right, must say introducer there. 152
+<br><br>Otherwise you don't need to worry about all this other stuff. 153
+<br><br>Of course by the end of the course you will understand what all of these lines of 154
+<br><br>code mean in some detail, but for 155
+<br><br>now we're just focused on writing code right here where my cursor is flashing. 156
+<br><br>Not back here, not any further forward, 157
+<br><br>specifically one tab in from directly below the word void. 158
+<br><br>That's where, if you just click, it will go by default anyway. 159
+<br><br>And what we're gonna do is we're gonna discover what Start even means by doing 160
+<br><br>something. 161
+<br><br>We're gonna say print. 162
+<br><br>Now, as you start to type the word P-R-I in print, 163
+<br><br>you will see it's offering lots of stuff for you. 164
+<br><br>This is the integrated development environment trying to help you. 165
+<br><br>As soon as you see it say the word, print, 166
+<br><br>it's good practice to actually hit return and let it type it for you. 167
+<br><br>Saves typing errors, speeds things up. 168
+<br><br>Open bracket. 169
+<br><br>Notice that the moment you open the bracket it will start closing the bracket 170
+<br><br>for you, and it wants you to put something in between the brackets. 171
+<br><br>And notice, there is red, there's a problem here. 172
+<br><br>Okay, let's sort the problem out first. 173
+<br><br>The problem is that in C# to finish the line of code, 174
+<br><br>you need to put a semicolon on the end. 175
+<br><br>That will get rid of part of the problem. 176
+<br><br>So if the semicolon wasn't there, and 177
+<br><br>you hover over that right-hand red twidle, it's saying semicolon expected. 178
+<br><br>Okay, that's a very helpful error. 179
+<br><br>Not all errors are helpful, I'm afraid. 180
+<br><br>Now, what we're gonna do, is we're just gonna put some quotes which tells it 181
+<br><br>that we want it to literally print what's inside the quote marks. 182
+<br><br>Then go back to the left with your cursor, and then just say hello Ben, or 183
+<br><br>in your case, put your name in. 184
+<br><br>Now if you've got it precisely like this and 185
+<br><br>there's no red underline and there are no errors. 186
+<br><br>Print("Hello YourName"); then you're good to go. 187
+<br><br>Now notice introducer.cs has a star next to it. 188
+<br><br>That means the file is unsaved. 189
+<br><br>Remember our pattern, if we go back several slides. 190
+<br><br>Remember that what we need to do is this. 191
+<br><br>We need to create the script in Unity, done. 192
+<br><br>Makes a C# file great, open it in Visual Studio, we've done that. 193
+<br><br>But we've edited it in. Visual Studio as memory, 194
+<br><br>we have not saved it back to the disk yet. 195
+<br><br>So we hit Ctrl + S or File &gt; Save and that's very very important. 196
+<br><br>The star goes away if we do that, if you're focused here and you go Ctrl + S, 197
+<br><br>the star goes away from introducer.cs. 198
+<br><br>This has been written to the disk, we go back to Unity and on the slide 199
+<br><br>that corresponds to what we've written to the disk we're going back to Unity. 200
+<br><br>If we were to click on Introducer, you can see in the Inspector that print hello Ben, 201
+<br><br>the formatting's messed up, horribly. 202
+<br><br>So we don't worry about the formatting too much, but you can see the file has worked. 203
+<br><br>If that script is attached to the car, then this what Start means. 204
+<br><br>When you click Play, which you've never clicked before, so look for Play. 205
+<br><br>You can either go, or just use the Play button at the top is easiest. 206
+<br><br>Click Play, everything changes color a little bit. 207
+<br><br>It switches to the game tab. 208
+<br><br>The game tab will be pointing at something. 209
+<br><br>This is because your camera, as far as the scene view is concerned is somewhere. 210
+<br><br>In my case it's over here, pointing out, just catching the front of this front car. 211
+<br><br>So that's why that looks weird, don't worry about that. 212
+<br><br>The point is that if we find the console, 213
+<br><br>you either go to Window &gt; Console which will be in there somewhere. 214
+<br><br>Where is it? 215
+<br><br>Console at the very bottom, or you just click on Console. 216
+<br><br>Look it's saying, hello Ben, hello Ben, hello Ben, okay. 217
+<br><br>Why is it saying hello Ben four times,. I wonder? 218
+<br><br>Well, make sure that you clear the console. 219
+<br><br>And click Play again, and you can say hello Ben, hello, Ben, hello, Ben Y. 220
+<br><br>That means that four, there are four versions of this script somewhere. 221
+<br><br>This is gonnahappen to you, you can find them by right-clicking on introducer and 222
+<br><br>saying find references in c, and that will highlight just this car. 223
+<br><br>So we click on the car. 224
+<br><br>And we see that this car only has one script on it. 225
+<br><br>But if you look carefully, 226
+<br><br>the car's base also has another three copies of the script. 227
+<br><br>So I'm just going to clear this search thing here, 228
+<br><br>which is doing this funny filtering, and have a look at that again. 229
+<br><br>My car, the top level, the parent. 230
+<br><br>Not the base, but the parent has one version of the script. 231
+<br><br>That's where the script should be, but 232
+<br><br>I've accidentally put another three versions on the base. 233
+<br><br>Now you've seen how to remove these before, so I'm gonna remove all of those. 234
+<br><br>That's what'll happen if you have your scripts on multiple times. 235
+<br><br>You only want one version. 236
+<br><br>So you can right-click, find references in C. 237
+<br><br>You'll see now that the only thing if we flick through these guys on the left, 238
+<br><br>that has an introducer script is the car. 239
+<br><br>The top level car, you can clear this search that's here with this little x, 240
+<br><br>if we click Play now then when the game starts. 241
+<br><br>Don't worry what the game looks like, click on Console, 242
+<br><br>we get one load of hello Ben, just one load of hello Ben, okay, wonderful. 243
+<br><br>That is a triumph, because you have now written some code. 244
+<br><br>Okay, it's absolutely trivial code, but there was a lot of what we call incidental 245
+<br><br>complexity, a lot of things you had to think about to get that working. 246
+<br><br>And this is absolutely foundational to making Unity work, 247
+<br><br>is that you can create a script, and 248
+<br><br>that you can attach it to a game object, and that it can print something. 249
+<br><br>It's been a long video, so there's no midway challenge in this one. 250
+<br><br>I just want you to make sure you're caught up to where we are. 251
+<br><br>If you weren't following along as you watched the video, 252
+<br><br>now is the time to get back and follow along. 253
+<br><br>If you were following along, great, you should just already have these prints 254
+<br><br>coming out on your console and you are good to go, so big pat on the back. 255
+<br><br>See you in the next video.
+	</p>
+  </BODY>
+</HTML>

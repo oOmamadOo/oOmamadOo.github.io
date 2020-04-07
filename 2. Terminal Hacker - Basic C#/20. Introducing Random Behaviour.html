@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[SOUND] Hey guys, 2
+<br><br>in this video we are gonna get the computer to select automatically from 3
+<br><br>its list of password even if the size of that password list varies. 4
+<br><br>And it's gonna randomly chose one of them. 5
+<br><br>It's not yet gonna give you any hints but it is gonna randomly chose. 6
+<br><br>And if I only type the right password, then I get a well done. 7
+<br><br>So let's dive in and see how that works. 8
+<br><br>Okay, let's do something exciting, let's get the computer to 9
+<br><br>exhibit some seemingly random behavior which really adds spice to your game. 10
+<br><br>So its an important concept I'm looking forward to introducing you to. 11
+<br><br>So currently, just for simplicity, while we got our code sorted, 12
+<br><br>we have just picked element zero of both of these arrays. 13
+<br><br>But if we could randomly pick between zero and, well and what? 14
+<br><br>Well, this is element zero, one, two, three, etc. 15
+<br><br>So between zero and one less than the length of the array. 16
+<br><br>So this array has six items in it, so this index is five. 17
+<br><br>So we need to pick a number between zero and five, 18
+<br><br>to randomly pluck one of those out of the hat. 19
+<br><br>And for this array here, it's got five elements with indices of zero to four, 20
+<br><br>assuming it needs to pick a random number between zero and four. 21
+<br><br>So what we need is some way of generating a random number that is between zero and 22
+<br><br>one less than the length of the array. 23
+<br><br>Well, we can do that, let's have a look at how we do it. 24
+<br><br>Let's start off with accessing the length of the array in question. 25
+<br><br>We could just print for the moment, remember always use print if you're not 26
+<br><br>sure you wanna just have a quick look at things. 27
+<br><br>So, print level1Password.Length, with a capital L like that. 28
+<br><br>That length property and it's a property of leve1Passwords, 29
+<br><br>this whole word of dots doing, as I said we'll get in future sections. 30
+<br><br>But for the moment, let's just use this tool. 31
+<br><br>If you print out leve1Passwords.Length like that and 32
+<br><br>you do it somewhere sensibly, like maybe at the start of StartGame. 33
+<br><br>You can't put it where I was trying to put it because that's in no man's land between 34
+<br><br>the opening of the switch statement and the first case. 35
+<br><br>This is no man's land, you can't type in there. 36
+<br><br>But you can type at the beginning of StartGame. 37
+<br><br>Now what this will do is it will tell us how long level1Password is out. 38
+<br><br>While I'm at it, why don't we find out how long the level two password list is. 39
+<br><br>And then this shows us how we use this dot link facility. 40
+<br><br>So I'm popping those two lines of code at this top of StartGame. 41
+<br><br>Run the game. 42
+<br><br>Have a look on the console, the developer console. 43
+<br><br>And what do we get? 44
+<br><br>Well, we need to start the game before we get anything, then we get six and five, 45
+<br><br>respectively, and is that what we want? 46
+<br><br>Yes it is, cuz that's the length of our two arrays, great. 47
+<br><br>So we have the dot length function, so that's part of the puzzle. 48
+<br><br>Now, we need a way of using a function called Random.Range, 49
+<br><br>and it works like this. 50
+<br><br>You give it a minimum and a maximum. 51
+<br><br>In our case, zero is the minimum and the maximum, 52
+<br><br>we'll talk about, because minimum is inclusive. 53
+<br><br>So it will generate the number zero on subsequent runs. 54
+<br><br>And max means exclusive, let's use an example. 55
+<br><br>So Random.Range(3, 56
+<br><br>7) will generate one of the following numbers each time it's run randomly. 57
+<br><br>So 3, 4, 5, or 6 but not 7. 58
+<br><br>So actually, this already does exactly what we want. 59
+<br><br>If we feed in as the max, the length of the array, it'll generate numbers from 60
+<br><br>zero to one less than the length of the array which is perfect. 61
+<br><br>Probably why it's creative like this. 62
+<br><br>It's very common to use a Random.Range to reach into a random array and 63
+<br><br>pluck something out of a hat. 64
+<br><br>So let me show how that's actually used. 65
+<br><br>What we could do up here is we would start here, right next to where we need it. 66
+<br><br>We would say we want some integer index. 67
+<br><br>And it would be Random.Range. 68
+<br><br>Now, just before we carry on, when you type random, 69
+<br><br>you might get an error saying there's an ambiguous reference between 70
+<br><br>UnityEngine.Random and. System.Random, complicated error. 71
+<br><br>What it's saying is that at the top of the file, we are using both system and 72
+<br><br>UnityEngine because that's how it comes by default. 73
+<br><br>We can delete everything but UnityEngine. 74
+<br><br>All we need at the top of our file is using UnityEngine. 75
+<br><br>What we're getting is a clash. 76
+<br><br>There's two different definitions of random and they were clashing, all right? 77
+<br><br>So for the moment, just make the top of your file like this using UnityEngine only 78
+<br><br>and then it'll stop complaining. 79
+<br><br>So we can go Random.Range, 0, 2, now what's its upper limit? 80
+<br><br>What do we put in there? 81
+<br><br>Well, it's level1Passwords.Length, isn't it? 82
+<br><br>Now, you then use this index in there and 83
+<br><br>then hopefully that will do the right thing. 84
+<br><br>So one way to test this is to go and play the game and see what happens. 85
+<br><br>It generates an index and uses it to reach into the bag of possible passwords. 86
+<br><br>You can play the game. 87
+<br><br>The problem with just playing the game to test it, we get font in this case, is that 88
+<br><br>you'd have to play the game a lot of times before you either got some sort or 89
+<br><br>error because you're trying to access an element you shouldn't be. 90
+<br><br>You might get a red error saying array index out of bounds or something. 91
+<br><br>You wouldn't really know for sure that you are choosing the right thing, so 92
+<br><br>here's a tip for you. 93
+<br><br>What you can do here is you can take this generation here, this int index. 94
+<br><br>And you could say, I wanna see this calculated again, and again, and 95
+<br><br>again until the cows come home. 96
+<br><br>And you can do that by putting a void update function back in 97
+<br><br>which came when you started your script in the first place. 98
+<br><br>And in there, you can put that line and then just say print index. 99
+<br><br>And what this is gonna do is just print this index out, every single frame. 100
+<br><br>This is that sort of thing I would do when using a random number. 101
+<br><br>I'd say this is really working as we expect it to. 102
+<br><br>By doing this, it's gonna print out an index, a new index, 103
+<br><br>every single frame many, many times a second. 104
+<br><br>Let's just try it. 105
+<br><br>It's gonna print it to the developer console cuz we used print. 106
+<br><br>Now, if you have collapse on, on your console and you expand the base of 107
+<br><br>the screen up a bit, you can see this it's printing evenly 2, 3, 1, 0, 4 and 5. 108
+<br><br>Roughly the same number of times each which is what we'd expect from a random 109
+<br><br>flat distribution like that, and that's working perfectly, okay? 110
+<br><br>The order in here is just because the first number generated was a 3, then a 2, 111
+<br><br>then a 1, then a 0, then a 4, then a 5, and 112
+<br><br>then it started generating more of them which you can see in a long list here. 113
+<br><br>And when you have collapse on, they all sit on top of each other. 114
+<br><br>So that's a way of making sure your random behavior is working as you want. 115
+<br><br>So that gives us confidence in its generation. 116
+<br><br>I'm gonna get rid of the update function, you can keep it if you want. 117
+<br><br>What I want you to do is just do the same thing for level 2 passwords. 118
+<br><br>So level 2 passwords should get picked randomly. 119
+<br><br>Have a play with logging values in Update (), it's good to do that type of thing. 120
+<br><br>And if you are feeling bold, go to the community site and 121
+<br><br>share your understanding of what you have just done overall with the other people. 122
+<br><br>And also where you get stuck and what was easy and what was hard. 123
+<br><br>Right, welcome back. 124
+<br><br>So the way I'm gonna do this is I need to generate a new index here. 125
+<br><br>If I copy and paste this code, it's nearly exactly what we need. 126
+<br><br>Remember, repeating yourself once is fine. 127
+<br><br>Here, we need level2Passwords but you're getting a clash. 128
+<br><br>Where it says that the variable index is already defined. 129
+<br><br>Now, you could try and move this index thing up to try and reuse it but 130
+<br><br>then you're using the level one password's length. 131
+<br><br>So, that would introduce a bug. 132
+<br><br>So what we're gonna have to do, we just create ourselves two variables, 133
+<br><br>index1 and index2. 134
+<br><br>And then use them here, index1 and index2. 135
+<br><br>All right, now let me just talk, 136
+<br><br>I said something very fast there about moving it up and it washed over you. 137
+<br><br>So let me just do this again. 138
+<br><br>What I'm saying is that, 139
+<br><br>if you move this variable up to this point somewhere up here outside this switch 140
+<br><br>statement, then it would be available in all of these places. 141
+<br><br>The problem is, 142
+<br><br>you would have set its length based from the level one password length. 143
+<br><br>It would still appear to work. 144
+<br><br>But in my case, my level2Password list is shorter and 145
+<br><br>we will end up with a problem which is why it 146
+<br><br>tries to access an element of this level2Password listed doesn't exist. 147
+<br><br>Let's see that error just for fun, because it's quite instructive to see that. 148
+<br><br>So imagine you didn't wanna create two different indexes and 149
+<br><br>you judiciously wanted to say,. I don't wanna repeat my code. 150
+<br><br>So you came up here. 151
+<br><br>If you'd have noticed that this index, let's just call it index, not index1. 152
+<br><br>If we define it here, it would be available both in here, and 153
+<br><br>we wouldn't need this duplicated line of code in here. 154
+<br><br>Things may appear to be okay, so we define index there. 155
+<br><br>We use it here. 156
+<br><br>And even if we set this as level2Passwords correctly, there's a problem because 157
+<br><br>the index some of the time, is gonna be too big, isn't it? 158
+<br><br>Because it's gonna use this length. 159
+<br><br>It's gonna generate random numbers between zero and one, two, three, four, five. 160
+<br><br>And that will be too big for this guy. 161
+<br><br>Cuz it'll be trying to choose an element that doesn't exist off the end. 162
+<br><br>Let's see what happens, let's run the game. 163
+<br><br>And this is one of these insidious bugs we 164
+<br><br>would create because you won't necessarily get it every time. 165
+<br><br>Let's try and do level two. 166
+<br><br>It's chosen hostel, let's try again. 167
+<br><br>One of these times, it's gonna crash horribly. 168
+<br><br>Two, it's okay, it chose prisoner. 169
+<br><br>Level two, it's okay, it chose arrest. 170
+<br><br>Two is okay, it's chose holster. 171
+<br><br>You see, you might think your game is okay, but 172
+<br><br>I'm confident that if I keep doing this, 173
+<br><br>it's gonna generate an index that's too high and the game is gonna crush horribly. 174
+<br><br>So it shows the importance of testing of using the update loop to print things out 175
+<br><br>and to think very carefully about where your, 176
+<br><br>the things that you are using are set and reset. 177
+<br><br>Now, this is showing just how insidious this bug is because I have asked for 178
+<br><br>level two. 179
+<br><br>I'm told times now, and it still hasn't come up with a problem 180
+<br><br>where it's giving me an index that is not working. 181
+<br><br>But that problem will happen eventually. 182
+<br><br>So let's just keep going. 183
+<br><br>And finally, after many many tries, we get an array index is 184
+<br><br>out of range which is a common error for you to get when using randoms. 185
+<br><br>And that's because it's generated a number that's too high. 186
+<br><br>So the solution to that is, either you generate two different indexes or 187
+<br><br>you don't cache or store its index, at all. 188
+<br><br>Remember, I said the two biggest problems in computer science are naming and 189
+<br><br>caching validation. 190
+<br><br>By generating a random number here and storing it, you're keeping a copy of it. 191
+<br><br>You know what you could do is this. 192
+<br><br>You could just generate the random number right there in those brackets, and 193
+<br><br>then, you could do the same for level two. 194
+<br><br>The only gotcha is to make sure that you have the word level1 here and 195
+<br><br>level2 there, then we don't need to generate this index and store it. 196
+<br><br>And then we don't have to worry about whether it's gonna be correct, 197
+<br><br>because it's gonna be generated fresh every time. 198
+<br><br>The result of this whole thing, 199
+<br><br>that expression is gonna collapse down to something between zero and 200
+<br><br>five in the case of level one, and you're gonna be good to go. 201
+<br><br>So that is an example of removing a cache, really useful tip for you. 202
+<br><br>All right, awesome, while I'm getting this far in this video, 203
+<br><br>hopefully you've gain narrative exhibiting much more interesting behavior. 204
+<br><br>And of course up next, 205
+<br><br>we need to give the users some sort of indication of what the password might be 206
+<br><br>cuz otherwise, they haven't got a snowball's chance of guessing it.
+	</p>
+  </BODY>
+</HTML>

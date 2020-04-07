@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hey, guys, in this video we are going to have particle systems for 2
+<br><br>thrust [SOUND] and for when we die and they'll be another surprise one for 3
+<br><br>when we succeed on the level. 4
+<br><br>So I will see you in there. 5
+<br><br>Just before we tidy, [LAUGH] tidy up. 6
+<br><br>Just before we dive into this, couple of things I would like to tidy up. 7
+<br><br>My bracketing in my code is a little bit inconsistent. 8
+<br><br>I've still got a to-do in about fixing a lighting bug. 9
+<br><br>We have already to done that to-do. 10
+<br><br>Stop, somewhere stop the sound on death. 11
+<br><br>I've got a note in the coder to do there that I think that we do 12
+<br><br>stop the sound when we die, so we don't need that to-do. 13
+<br><br>My update and my start method's bracketing is different. 14
+<br><br>There is a way to change the default for this in unity. 15
+<br><br>Let's not dive into it in this section. 16
+<br><br>So that's just a general whip through and a few tidies. 17
+<br><br>None of that's gonna affect your code whatsoever, so 18
+<br><br>I wouldn't worry about the fact really quickly. 19
+<br><br>So let's talk about particle systems. 20
+<br><br>Particle systems are fun. 21
+<br><br>So onto the main subject of particle systems, what are they and why do we care? 22
+<br><br>Well, if I go to this rocket ship instance in my level one and 23
+<br><br>I'm gonna add a child subobject. 24
+<br><br>This is gonna be temporary so. I'm going to call it temporary and 25
+<br><br>it's gonna temporarily show you, just introduce you to Particle Systems. 26
+<br><br>So I've got this thing called. TEMP hanging off the Rocket Ship, 27
+<br><br>childed to the Rocket Ship. 28
+<br><br>If we add a component of type Particle. System which you can find by typing part, 29
+<br><br>and there it is. 30
+<br><br>Now, immediately you start to see these strange, what are they, 31
+<br><br>magenta, squares, flying off the Rocket Ship. 32
+<br><br>And the reason that's happening is because we have this Particle System component, 33
+<br><br>it is emitting these particles. 34
+<br><br>Now, particles are just 2D objects that may be transparent, or may not. 35
+<br><br>These are just default objects with no texture on them whatsoever. 36
+<br><br>And you can put whatever texture you want on here. 37
+<br><br>And they're actually quite complicated, things Particle Systems. 38
+<br><br>You can have all sorts of different aspects to there are also 39
+<br><br>different things you can change about them. 40
+<br><br>But we're gonna leave it to Rick in this case to customize us up a two or 41
+<br><br>three Particle Systems for our game. 42
+<br><br>I just wanna show you the fundamentals of them, how you get them playing. 43
+<br><br>So what they are is they are something that is emitted into the world. 44
+<br><br>In 3D, but they are 2D billboards that always point towards the camera. 45
+<br><br>So they always look like squares. 46
+<br><br>They're always pointing towards the camera, basically for 47
+<br><br>performance reasons, okay? 48
+<br><br>If you click on a child subobject,that allows you to rotate them around 49
+<br><br>like this and also to scale them. 50
+<br><br>So if I put these in a ridiculous large and 51
+<br><br>pointing upwards fashion like that and then play the game. 52
+<br><br>Then you just see that the rocket continually emits this kind of 53
+<br><br>rubbish into the distance. 54
+<br><br>So that's what a Particle System is. 55
+<br><br>It just spits out these 2D billboards. 56
+<br><br>And because by default. Play On Awake is turned turned on. 57
+<br><br>Then when we play the game, these things are playing. 58
+<br><br>Now in the editor, 59
+<br><br>Particle Systems simulate unless you click Stop in the scene view. 60
+<br><br>Stop or simulate, you can choose whether they're simulating. 61
+<br><br>So they may be stopped in the scene view with Play on Awake turned on, and 62
+<br><br>then they will appear In the game like so. 63
+<br><br>Or they may be simulating in the scene view but 64
+<br><br>turned off in terms of Play on Awake. 65
+<br><br>And then when you play, 66
+<br><br>nothing happens unless you trigger this particle system from code. 67
+<br><br>And that of course is the subject of the rest of the video. 68
+<br><br>So I'm gonna delete this temporary subobject. 69
+<br><br>That just introduced you to what they are and why do we care? 70
+<br><br>Because they're just fun, aren't they? 71
+<br><br>They're gonna make some really cool effects. 72
+<br><br>So let's go get Rick's call effects. 73
+<br><br>Against this video, I have provided you with a download folder, 74
+<br><br>which has a boost particle, what's it called? 75
+<br><br>Project Boost Particle Pack.unitypackage. 76
+<br><br>Import that like any other unity package. 77
+<br><br>In you go, now we're getting a lot of stuff, by the way, in our assets. 78
+<br><br>We will come up with a way of tidying this up shortly. 79
+<br><br>But it's just about still manageable. 80
+<br><br>So let's focus on the thing at hand, which is that we have three things. 81
+<br><br>We have an explosion particle effect. 82
+<br><br>If you drop that in the scene, boom, 83
+<br><br>there you go, you get to see when it first lands what it looks like. 84
+<br><br>Gonna delete that from the scene. 85
+<br><br>If you drop Rocket Jet, you get to see what Rick's rocket jet looks like. 86
+<br><br>You can zoom in on it, pretty cool. 87
+<br><br>Gonna delete that. 88
+<br><br>And then you could also drop in your Success Particle effect, 89
+<br><br>which is a different kind of boom. 90
+<br><br>You just finished the level, very nice. 91
+<br><br>Works great at making particle effects. 92
+<br><br>We'll see later in the course how to make particle effects. 93
+<br><br>For now, we just need to know how to use them. 94
+<br><br>So what I'm gonna do is I'm gonna attach all three of these new particle effects 95
+<br><br>to the rocket. 96
+<br><br>Now, we talked about organizing our assets. 97
+<br><br>Rick will do that with you shortly but there is a useful tip here. 98
+<br><br>You can search by type towards the top right of your project tab. 99
+<br><br>And you could go there and you could go ahead and look and 100
+<br><br>see if there's existing filter for a particle effect, there isn't. 101
+<br><br>But there is a filter for Prefabs which should help you find it, there you go. 102
+<br><br>Now, you see all your prefabs, and three of those are particle effect. 103
+<br><br>Explosion Particles, Rocket Jet, and Success Particles. 104
+<br><br>So this is just a way of filtering down. 105
+<br><br>Drop all of those onto the ship, boom! 106
+<br><br>Lot of mess. 107
+<br><br>I'm gonna clear my search with this little x so that I have all my assets back. 108
+<br><br>And now we have all three of those, particle effects on the ship, right. 109
+<br><br>And if you click on a particular one then it will or 110
+<br><br>may simulate inside the inspector for you, all right. 111
+<br><br>All three of these have. Play On Awake off by default, 112
+<br><br>the way we've provided them to you. 113
+<br><br>So if you were to play the game with these three children on the ship 114
+<br><br>absolutely nothing happens because we haven't triggered them from a code. 115
+<br><br>So let's go ahead and trigger them from code right now. 116
+<br><br>So into our rocket. 117
+<br><br>What we're going to do is we're going to be serializing three more things. 118
+<br><br>It'll look very like this actually. 119
+<br><br>Something for the main engine, either rocket thrusts, something for success, and 120
+<br><br>something for death. 121
+<br><br>Now, of course, there are better ways of organizing our assets, 122
+<br><br>but we'll deal with that later. 123
+<br><br>So what I am going to do for now, is I am going to copy here. 124
+<br><br>I am gonna say particle system instead of audio source, audio clip rather, and 125
+<br><br>I am gonna paste that into the type. 126
+<br><br>So there's three particle systems we want to expose to the inspector. 127
+<br><br>And I'm gonna call them, I'm gonna have to call them something different because main 128
+<br><br>engine already exists. 129
+<br><br>Now, of course, as a better way to give structure to this, in fact the close in 130
+<br><br>the word, the thing is called structs, and we'll deal with those later in the course. 131
+<br><br>And you can come back, even use them if you want, 132
+<br><br>and there's also ways of making those structures show up in the inspector. 133
+<br><br>Again, all for later, but for now let's just call this mainEngineParticles, 134
+<br><br>successParticles, and deathParticles. 135
+<br><br>This should hurt a little bit. 136
+<br><br>The particular develop renew if you're appending the word particles to all 137
+<br><br>three of these, they've gotta be a better way of organizing this and there is. 138
+<br><br>But for now, let's do it this way. 139
+<br><br>So we now have references to these three particles, let's go and 140
+<br><br>look at the rocket. 141
+<br><br>Now, if you're gonna operate on the instance, 142
+<br><br>just be aware you need to apply back to the prefab. 143
+<br><br>So I'm just saying be aware. 144
+<br><br>Now, what you can do is where it says Main. Engine Particles, you can grab the actual 145
+<br><br>rocket jet particles child object and drop it in there. 146
+<br><br>I put it in the wrong place, doesn't matter. 147
+<br><br>And then Explosion Particles can go into Death Particles and 148
+<br><br>Success Particles can go into. Success Particles, okay? 149
+<br><br>And what we've done there is we've linked these guys up. 150
+<br><br>We've said, okay, show me where to find this particle system. 151
+<br><br>And why are game objects, by the way, considered particle systems? 152
+<br><br>Because the game object has a particle system on it, 153
+<br><br>it is therefore considered of type particle system. 154
+<br><br>Actually these game objects will have multiple types. 155
+<br><br>This thing of subtype particle system and of type transform. 156
+<br><br>But we'll worry about that when we get into types later. 157
+<br><br>For now, you've just exposed them like this and 158
+<br><br>then you've come into the game and you've linked them by just dragging in. 159
+<br><br>Apply this all back to the prefab, check that your rocket ship prefab 160
+<br><br>has these references linked to the prefab not to the instances. 161
+<br><br>So if I click on rocket jet particles on the prefab. 162
+<br><br>So select the prefab, click on Rocket Jet Particles, 163
+<br><br>you can see rocket jet particles of the prefab is highlighted, right? 164
+<br><br>Important that prefabs are linked to prefabs. 165
+<br><br>It will kind of happen automatically, but just a side note. 166
+<br><br>So our prefab now knows what its own three particle systems are. 167
+<br><br>Which means we can do the following in code. 168
+<br><br>Let's go in code down to where we, for 169
+<br><br>example, thrust and when we start thrusting we should apply thrust. 170
+<br><br>So we've already got a method for that so we wait till audio is finished because 171
+<br><br>the player's gonna wanna hear the audio start straight away that they trust. 172
+<br><br>And then very soon after that we can say mainEngineParticles.play. 173
+<br><br>Now, the moment you start a particle system, 174
+<br><br>you've gotta think about stopping the particle system. 175
+<br><br>So we would do that here, like so, mainEngineStopParticles.stop. 176
+<br><br>Let's try it. 177
+<br><br>Very simple, 178
+<br><br>actually it's exactly the same command .stop and .play has the audio. 179
+<br><br>So look at the pattern here, very simple. 180
+<br><br>Particle system, give it a name, audio click, give it a name, okay? 181
+<br><br>Let's see if this works. 182
+<br><br>So when I thrust now, the particle system should start. 183
+<br><br>[SOUND] And it does, look at that. 184
+<br><br>[SOUND] Thank you, Rick, awesome particle effect. 185
+<br><br>Let's crack on, let's get the next thing, success particles. 186
+<br><br>So in the success sequence, what we wanna do is once we've played the success sound, 187
+<br><br>we want to then go to successParticles.play. 188
+<br><br>Quite simple isn't it, once you've done it for 189
+<br><br>audio you're kinda building on that knowledge. 190
+<br><br>When do the successParticles get to stopped? 191
+<br><br>Well, when we load the level. 192
+<br><br>So that's okay, we don't need to stop them. 193
+<br><br>But do ask that question and what do we do when we die? 194
+<br><br>Well, I'm gonna leave that to you because. I wanna make sure that all of this has 195
+<br><br>made sense. 196
+<br><br>So I'm firstly just going to finish the level and 197
+<br><br>make sure that we get our wicked success particle system followed by a level load. 198
+<br><br>And if we do then I'm gonna leave you to do the death particles as a challenge. 199
+<br><br>[SOUND] So no death particles yet. 200
+<br><br>It's really hard when you wanna just get to the end of the level really quickly to 201
+<br><br>do it and be careful about it but hey. 202
+<br><br>You get to see me fail a few times. 203
+<br><br>Hey, so what if the video's another 30 seconds long because you get to see 204
+<br><br>my incompetent piloting. 205
+<br><br>You'd never think I was an actual proper pilot of both aircraft and 206
+<br><br>helicopters, would you? 207
+<br><br>Useless, there you go and off went the particle system. 208
+<br><br>It seemed to me like that the particle system was a tiny bit delayed. 209
+<br><br>So if you want to test this more quickly of course you can just move your ship in 210
+<br><br>plane using the blue selector, straight above there, and 211
+<br><br>make the game really easy. 212
+<br><br>[SOUND] It does apply, difficult to see for sure because of my camera perspective. 213
+<br><br>I think I'm just gonna rake back the main camera a little bit with the blue arrow. 214
+<br><br>Just so that I can see these particle systems go off. 215
+<br><br>I feel like this camera's a little bit to close. 216
+<br><br>So let me just get round here. 217
+<br><br>And in local space, just bring the camera back. 218
+<br><br>Sorry, Rick, if that upsets your level design. 219
+<br><br>I'm sure he'll fix that. 220
+<br><br>[SOUND] Okay, it went off, but the problem is that these particle systems look like, 221
+<br><br>one of these, at least the success particles. 222
+<br><br>Yes, they don't have root transforms. 223
+<br><br>So reset their transforms. 224
+<br><br>You can select all of your particle systems at the same time, 225
+<br><br>reset their transforms, and 226
+<br><br>that makes sure that they're sitting right on top of the rocket. 227
+<br><br>Now, let's see it happen. 228
+<br><br>[SOUND] Much better. 229
+<br><br>So there's a gotcha. 230
+<br><br>All right, equipped with all that knowledge. 231
+<br><br>Here's a recap, use a separate game object for particle systems. 232
+<br><br>Consider disabling Play On Awake. 233
+<br><br>That's how you expose them, that's how you fire them, and ENJOY the visual carnage! 234
+<br><br>So here's your challenge. 235
+<br><br>Trigger particle systems on death, very simple, 236
+<br><br>very similar to success, should be a spectacle on death. 237
+<br><br>Your code should be nice and clean. 238
+<br><br>And audio should still continue to work. 239
+<br><br>So go ahead, pause the video and do that challenge now. 240
+<br><br>All right, welcome back. 241
+<br><br>So hopefully this is pretty simple. 242
+<br><br>So on the death sequence, we just go deathParticles.play. 243
+<br><br>Whoops, dot play, capital P, it's a function, remember. 244
+<br><br>Okay, fantastic, and. I actually think that's all we need to do, 245
+<br><br>apart from just look at our code and say is there anything lumpy? 246
+<br><br>Is anything ugly and too difficult to read? 247
+<br><br>I don't think it is, no,. I think we're in good state. 248
+<br><br>So, yep, I've succeeded on the challenge. 249
+<br><br>Let's just go ahead and make sure that death particles actually play. 250
+<br><br>Wait for it to recombobulate. 251
+<br><br>[SOUND] Boom, awesome, so all that remains is for 252
+<br><br>me to put the rocket back to where it belongs in terms of a starting position. 253
+<br><br>Grab carefully by the blue, so you're not moving in Z. 254
+<br><br>Have a quick check of the inspector that you haven't moved in Z. 255
+<br><br>And just check the game starts okay. 256
+<br><br>It does, except the rocket's thrust is not quite coming out of the right place. 257
+<br><br>So when I reset the transformer of the rocket particles 258
+<br><br>I moved them into slightly the wrong place. 259
+<br><br>So let's just move them down there. 260
+<br><br>That looks better. 261
+<br><br>Okay, fantastic, so. I will see you in the next video.
+	</p>
+  </BODY>
+</HTML>

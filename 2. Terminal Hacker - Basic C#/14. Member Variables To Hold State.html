@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey guys, in this video we're gonna learn loads of stuff. 3
+<br><br>We are going to respond to the user choosing a level echo back what level 4
+<br><br>they're on. 5
+<br><br>We're also gonna use something called the debug mode in 6
+<br><br>the inspector over on the right here to have a peep behind the scenes and 7
+<br><br>find out what something called a member variable is set to. 8
+<br><br>We'll also find out what member variables are, why we care, and where to use them. 9
+<br><br>So all of that in this lecture. 10
+<br><br>So I wanna think about something for a moment. 11
+<br><br>If we were at the main menu and so far that's all we're handling, 12
+<br><br>it's just the menu, and the user types 1 and 13
+<br><br>selects level 1, I've got an extra space here, we'll sort that out in a minute. 14
+<br><br>But anyway, if the user selects level 1, where is that gonna get stored. 15
+<br><br>Well, if they select level 1, we wanna start the game. 16
+<br><br>So, we could go into a function called. Start game and we could have a parameter 17
+<br><br>that says int level on Start game method and we could pass that in. 18
+<br><br>So, we could say something like this, let me actually just do it and 19
+<br><br>show you what the issue is. 20
+<br><br>So, let's imagine we come in here and we put another condition for the moment, 21
+<br><br>else if and then we say level Oops, not quality level but level == 1. 22
+<br><br>Then we might wanna do something like this. 23
+<br><br>We might want to say. StartGame passing in level 24
+<br><br>1 as an integer, because we don't use strings unless we can help it. 25
+<br><br>If we're dealing with strings, like coming from the terminal, then we use them. 26
+<br><br>Otherwise, we use integers, okay? 27
+<br><br>So not if level == 1 rather, if input == 1. 28
+<br><br>StartGame with 1. 29
+<br><br>Now we need this method, this method StartGame don't exist. 30
+<br><br>By the way, you can make it the system right methods for you by right clicking, 31
+<br><br>and having a look well, kind of a Quick Fix menus you've got in your IDE. 32
+<br><br>You'll have something like generate method. 33
+<br><br>If you do that, then it'll make the method for you, it will used the word private. 34
+<br><br>I'm gonna get rid of that, it's unnecessary. 35
+<br><br>But you see it's made a method here saying StartGame(int v). 36
+<br><br>V is not very useful let's label that box level and 37
+<br><br>get rid of this throw new. NotImplemenetedException for the moment. 38
+<br><br>So we could say start game with level one this would work we can then say 39
+<br><br>Terminal.WriteLine("You have 40
+<br><br>chosen level") and then we could use this plus operator level. 41
+<br><br>Now let's make sure we understand how this works before 42
+<br><br>I'll show you what the pitfalls with this are. 43
+<br><br>So let's very clear on what's going on. 44
+<br><br>The user is coming along here and they are putting some input in, so this. 45
+<br><br>This just magically comes in. 46
+<br><br>Remember that bottle rocks up on shore with a message inside it, 47
+<br><br>I am not sure this' looking too much like a bottle, 48
+<br><br>a little bit better with a message inside it. 49
+<br><br>That message contains the input, right? 50
+<br><br>So the input, if the input is 1 then we. StartGame and pass through the number 1. 51
+<br><br>We are effectively converting the 1 string into the 1 number here ourselves, okay? 52
+<br><br>StartGame (1) goes down to here and then we should write out, 53
+<br><br>You have chosen level 1. 54
+<br><br>Let's try that, for it to start So back into Unity play the game, 55
+<br><br>it's only gonna work for level 1 clearly. 56
+<br><br>1, you have chosen level 1. 57
+<br><br>Okay, and if I say 2, please choose a valid level. 58
+<br><br>The only one that does anything is you have chosen level 1. 59
+<br><br>But the information about the fact that we have chosen level 1 is now kind of stuck 60
+<br><br>in the StartGame menu. 61
+<br><br>And if we try and come out of the function rather, inside the StartGame function. 62
+<br><br>If we try and come out of the StartGame function and 63
+<br><br>do something else, that information will be lost. 64
+<br><br>All right, and the information can't come into the OnUserInput, 65
+<br><br>cuz the terminal doesn't know anything about the levels. 66
+<br><br>It's our job, is what I'm saying, to keep track of the level. 67
+<br><br>So there's a different way. 68
+<br><br>Rather than passing around the level. I'm going from here to here. 69
+<br><br>In this case, if we ask ourselves the question is the level a feature 70
+<br><br>of this current game game that's being played? 71
+<br><br>Is it what we call game state? 72
+<br><br>Well it is game state. 73
+<br><br>And if that's the case, there's an alternative to passing it around. 74
+<br><br>We don't need a parameter, we don't need, therefore, a parameter there either. 75
+<br><br>What we can do is, of course, level doesn't exist now, 76
+<br><br>we can put level outside of either of these two methods. 77
+<br><br>Now strictly, you could put it here. 78
+<br><br>You could say int level and then that's it actually, you declare that that exists. 79
+<br><br>Therefore, level here will be accessible inside StartGame and 80
+<br><br>inside any future methods we write. 81
+<br><br>So for example, if input==1 we would say level=1, now 82
+<br><br>level this is the same level here double clicking on it you can here here and here. 83
+<br><br>We set in on user input, we leave the method and 84
+<br><br>then it's available to us in startGame. 85
+<br><br>Let's try that Hit 1,. You have chosen level 1. 86
+<br><br>Hit 2, Please choose a valid level. 87
+<br><br>Obviously 2 is not working because we haven't written any code for 2 yet. 88
+<br><br>So, what we've done here, is we have made something called a member variable. 89
+<br><br>Well, I have got a slide for you. 90
+<br><br>Let's focus on the middle of this slide to start with. 91
+<br><br>You're used to saying void Some Function and inside it we have a localVariable at 92
+<br><br>this level of indentation that I'm highlighting with my red marker now. 93
+<br><br>But if you bring that memberVariable above the function or 94
+<br><br>below but above is makes more sense and outdent it again the indentation doesn't 95
+<br><br>make any difference but conventionally we put it here. 96
+<br><br>This thing becomes a member variable and it's available inside all functions, 97
+<br><br>available everywhere. 98
+<br><br>Whereas, localVariable would only be available inside the function 99
+<br><br>itself, okay? 100
+<br><br>Now strictly speaking, some function should all be one word, so 101
+<br><br>I'm gonna correct this slide as we go because it's a bit weird to have 102
+<br><br>a function name with a space in it in fact, it's not even allowed. 103
+<br><br>Alright, so I've put int level there. 104
+<br><br>The only thing I need to do is take int level and 105
+<br><br>put it just to the top of the file. 106
+<br><br>We do this with these member variable things because 107
+<br><br>it means at a glance we can look and say, when I say the top of the file, 108
+<br><br>I mean here, just below this stuff, which we'll understand later, we say int level. 109
+<br><br>And this is state. 110
+<br><br>This is Game state, okay? 111
+<br><br>So let's just call it that, Game state. 112
+<br><br>And this is what states the current gaming. 113
+<br><br>And we set the level and 114
+<br><br>then that becomes available throughout the playing of the entire game. 115
+<br><br>Now this is Unity specific, but it's useful to see. 116
+<br><br>Let's just dive into Unity. 117
+<br><br>Click on WM2000 or wherever you have your script attached. 118
+<br><br>And up at the top right of the Inspector where there's a little hamburger, 119
+<br><br>near the lock symbol, where I've got my mouse now. 120
+<br><br>You can click there and then you can go to Debug. 121
+<br><br>And if you put the inspector in debug mode, all sort of weird stuff will come, 122
+<br><br>so you're welcome to collapse down the Transform 123
+<br><br>using this little arrow that I'm over now. 124
+<br><br>But you'll see that in grey it shows you that level 125
+<br><br>even though it's kinda of hidden, what we call a hidden member variable. 126
+<br><br>So if we play the game levels starts at zero, that's worth noticing, 127
+<br><br>that if you declare a variable like this, level, and you don't give it an initial 128
+<br><br>value, then each different types will start with a different value. 129
+<br><br>And integers, in their case, start with a default value of zero, just note that. 130
+<br><br>Now, let's go into the game, enter my selection 1. 131
+<br><br>Level become 1, if I enter 2 it stays as 1, 132
+<br><br>because we haven't written any code to handle level 2 yet. 133
+<br><br>So that's what I would like you to do,. I'd like you to pause the video and 134
+<br><br>echo back the level from StartGame as we are, but handle level 2 as well. 135
+<br><br>And the level member variable should take the value of level 1 or level 2. 136
+<br><br>And be strict with your indentation neatness. 137
+<br><br>So basically do what I've just done but handle level 2 as well and 138
+<br><br>make sure it all works as you would expect. 139
+<br><br>All right, welcome back let's get level 2 done. 140
+<br><br>So I'm gonna copy this else if block here and 141
+<br><br>then I'm gonna paste it straight down there and simply say 2. 142
+<br><br>Now you may say on you're repeating itself I'm, but 143
+<br><br>the general rule is if you repeat once it's fine. 144
+<br><br>When you get to the third time maybe you wanna think about a cleverer way of 145
+<br><br>doing things. 146
+<br><br>So if the level is 2, we set this level member variable at the top of the file, 147
+<br><br>remember, to 2. 148
+<br><br>And then we come along and we leave the StartGame exactly the same. 149
+<br><br>And let's see if this works. 150
+<br><br>Both from the standpoint of what happens if I type number 2. 151
+<br><br>You have chosen level 2, and also what happens to this level member variable. 152
+<br><br>It goes to number 2. 153
+<br><br>What would happen if I typed 1 in return now? 154
+<br><br>What would come up on the screen and what happened to a member variable? 155
+<br><br>Let's try the level goes back to 1 and 156
+<br><br>it says you have chosen level 1,it's just obeying instruction, all right? 157
+<br><br>It's not yet kinda of ask for 158
+<br><br>password mode which is what we gonna need to sort out next. 159
+<br><br>But what we have learned is an alternative to passing information around as 160
+<br><br>parameters is to store that information as a member variable. 161
+<br><br>And the guidelines around that are as follows, 162
+<br><br>use member variables to hold state. 163
+<br><br>So the state of our game is the game is currently on a state of level 1 play. 164
+<br><br>So it's valid state. 165
+<br><br>Think carefully it it's relevant &amp; necessary. 166
+<br><br>Do not abuse or overuse this stuff. 167
+<br><br>State really bites us in the bottom, so let's only use it where we need to. 168
+<br><br>And the state should be a natural property of the thing. 169
+<br><br>So the thing in this case is a hacker game, 170
+<br><br>and the level it's being played at is a very natural property of that thing. 171
+<br><br>So, that's member variables, another tool in your programming armory. 172
+<br><br>I will just to finish off show you the code changes that if happened in this 173
+<br><br>lecture cuz it often helps people to see what's going on. 174
+<br><br>So if I click on this here in my wheezy version control system, 175
+<br><br>you can see what I've done here, a little bit confusing but 176
+<br><br>I have added int level and. Game state at the top of the file. 177
+<br><br>And you can also save this by following lecture project changes in your resources. 178
+<br><br>And then you can see the other changes I have made, okay? 179
+<br><br>Fantastic, I will look forward to seeing you in the next video.
+	</p>
+  </BODY>
+</HTML>

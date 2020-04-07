@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+[MUSIC] 2
+<br><br>Hey, guys. 3
+<br><br>In this video, we are going to learn about something called a box of boxes, or 4
+<br><br>an array, which is a data structure that is gonna let us store all of our passwords 5
+<br><br>very neatly like this for each of the levels of the game that we have so far. 6
+<br><br>So let's dive in and see how that works. 7
+<br><br>So I've got a pretty exciting new tool in your arsenal now. 8
+<br><br>If you have a collection of things that are all of the same type and 9
+<br><br>are very similar in concept, 10
+<br><br>like a bunch of possible passwords or a bunch of people's names. 11
+<br><br>We're gonna use names as the example here. 12
+<br><br>Then you can have something called an array. 13
+<br><br>It's a box of boxes. 14
+<br><br>So names is the white box is a box full of boxes, which are the variables, names[0], 15
+<br><br>which is the first element of this array, names[1], and names[2]. 16
+<br><br>We start counting at zero. 17
+<br><br>That's why I've been giving your slide hints starting at zero. 18
+<br><br>Not just to be awkward and. Bill is names[0], Ben is names[1], 19
+<br><br>Lizzie is names[2], all right. 20
+<br><br>And these things are a fixed sized box of boxes. 21
+<br><br>You see, instead of string name, which is what you do if you wanted a single name, 22
+<br><br>you say string array and it almost looks like a box, doesn't it? 23
+<br><br>It's a pair of square braces that just open and close immediately. 24
+<br><br>Names, we name it in the plural because clearly it's more than one. 25
+<br><br>And then you have to create a new fixed size box immediately, right? 26
+<br><br>So you sign on a new string array, and. I'm gonna fill it up initially with three 27
+<br><br>strings, one called Bill, one called Ben, and one called Lizzie. 28
+<br><br>Element [0] would be Bill, [1] Ben, [2] Lizzie. 29
+<br><br>That's how strings work, it's kind of as simple as that. 30
+<br><br>So let's dive into the code and use that for a moment. 31
+<br><br>I'm gonna start off by giving myself a new section here between, 32
+<br><br>I'll put it above game state actually. 33
+<br><br>Because before the game even starts running, 34
+<br><br>you've got the concept of game configuration data. 35
+<br><br>This is stuff that ships with the game. 36
+<br><br>This thing up here, the level, currentScreen, password, 37
+<br><br>that can all change on each subsequent play of the game. 38
+<br><br>But this is hard coded data that for 39
+<br><br>the moment we'll just keep in this file right here for simplicity. 40
+<br><br>So what we're gonna want is we're gonna want a string array. 41
+<br><br>We're gonna call it level1Passwords. 42
+<br><br>Now yes, sure the smart people among you are saying, can't we have a box of boxes, 43
+<br><br>so that we can put all the different levels in one? 44
+<br><br>Sure, but we're trying to get used to a simple concept here. 45
+<br><br>So let's just stick with this. 46
+<br><br>Level1Passwords = { };. 47
+<br><br>Make sure the semicolon's on the end. 48
+<br><br>That's the start of your formatting. 49
+<br><br>Now I'm gonna paste in my level1Passwords cuz you don't really want to watch me 50
+<br><br>fumble while I write them all out. 51
+<br><br>But we decided it was gonna be books, aisle, self, password, font, borrow, etc. 52
+<br><br>Awesome, so that is done. 53
+<br><br>We have created an array and we filled it up with a bunch of stuff. 54
+<br><br>It automatically takes the right side. 55
+<br><br>In this case, one, two, three, four, five, six elements. 56
+<br><br>The last element's index would be five by the way. 57
+<br><br>Index zero, one, two, three, four, five, all right? 58
+<br><br>Just remember, you start counting at zero, catches a lot of people up. 59
+<br><br>What I'm gonna do when you first use something like this is just play with it. 60
+<br><br>So print(level1Passwords), if I can type straight, there you go, element 0. 61
+<br><br>What do we expect to get when I do element 0, which of these? 62
+<br><br>It's books, right? 63
+<br><br>So you would do that. 64
+<br><br>You would come along. 65
+<br><br>You would click Play. 66
+<br><br>And over here you would expect to see books in the developer console, awesome. 67
+<br><br>That proves that we have created the array and it's working well. 68
+<br><br>That was just test code. 69
+<br><br>So what we want to do then further down here is instead of setting the password, 70
+<br><br>hard coding the password inside the main menu, well, 71
+<br><br>we could hard code it inside the main menu here. 72
+<br><br>Yeah, actually I'm gonna change my mind. 73
+<br><br>Live and direct, I am gonna hard code it in here just to keep things simple. 74
+<br><br>So instead of saying donkey, I'm gonna pick from level1Passwords right here. 75
+<br><br>And I'm gonna pick element 2 for that one. 76
+<br><br>And I'm gonna make myself a TODO that says TODO make random later. 77
+<br><br>We'll have to learn how to make it random. 78
+<br><br>We're laying the foundations for 79
+<br><br>making it random because once we can access all the passwords like this, 80
+<br><br>we can create a random number between zero and whatever, five in our case. 81
+<br><br>And then that random number can choose the password at run time. 82
+<br><br>And that's gonna be the subject of a future lecture. 83
+<br><br>It's really exciting when your game starts to do stuff that is random. 84
+<br><br>It starts to appear a bit more interesting. 85
+<br><br>All right, so if we would've picked level1Passwords[2], 86
+<br><br>which one would that be? 87
+<br><br>Which word would it be? 88
+<br><br>Zero, one, two, it will be self, okay? 89
+<br><br>Let's make sure that that's the case. 90
+<br><br>Let's play the game. 91
+<br><br>Select level 2, and in the inspector, see what we've got. 92
+<br><br>We've got password = combobulate. 93
+<br><br>Okay, so that hasn't worked and that's because I selected level 2. 94
+<br><br>And what we needed to select was level 1, and then it chooses itself. 95
+<br><br>Okay, you may wonder what I was doing there. 96
+<br><br>So level 1 self works as expected. 97
+<br><br>You can probably guess what the challenge is. 98
+<br><br>I want you to put your level 2 words in an array. 99
+<br><br>Your level 2 passwords array should contain your words. 100
+<br><br>Of course, you need to create level 2 passwords array. 101
+<br><br>And make sure that selecting level 2 and 102
+<br><br>again, gives the "random" password you chose. 103
+<br><br>Okay, go ahead, pause the video. 104
+<br><br>Do the same thing as I just did for level 1 but for level 2. 105
+<br><br>Welcome back, so let's get on with this. 106
+<br><br>Pretty easy by analogy, but by you actually getting in and 107
+<br><br>doing things yourself, you're gonna learn a lot. 108
+<br><br>So string, you're all doing these challenges, right? 109
+<br><br>Please, please don't let yourself take this course without doing the challenges. 110
+<br><br>It really will only work for you if you do the challenges. 111
+<br><br>So level2Passwords equals the curly braces, put the semicolon on the end, 112
+<br><br>get yourself all set up, and then again I'm gonna paste it in. 113
+<br><br>You don't want to watch me typing strings out. 114
+<br><br>Prisoner, handcuffs, holster, uniform, and arrest. 115
+<br><br>Same thing, six different passwords for this level, is that right? 116
+<br><br>Two, three, four, five, you've only got five for this level. 117
+<br><br>That will do, doesn't really matter how many we have per level. 118
+<br><br>In fact, this is a useful demonstration if we can have different sizes. 119
+<br><br>This is a six element array one, two, three, four, five, six, and 120
+<br><br>for level2, we have simply five, okay. 121
+<br><br>But it looks about the same. 122
+<br><br>It looks pretty doesn't it, which is kind of sometimes is important. 123
+<br><br>All right, so level2Passwords works like that. 124
+<br><br>And then down here, we wanna access level2Passwords like this. 125
+<br><br>Level2Passwords, pick yourself any valid index. 126
+<br><br>I'm gonna push the bounds. 127
+<br><br>Test yourself, try and get the end element, zero, one, two, three, four, so 128
+<br><br>it should be arrest. 129
+<br><br>That's another cultural thing. 130
+<br><br>You wanna kind of push yourself and 131
+<br><br>see if you can make sure you really understand things. 132
+<br><br>So level2Passwords, four, let's see what happens. 133
+<br><br>We should get arrest if we chose level 2. 134
+<br><br>Arrest, awesome! 135
+<br><br>So that is it, we've learned how to use arrays to store things together. 136
+<br><br>It looks neat in the code, doesn't it? 137
+<br><br>It's pretty obvious how these go together. 138
+<br><br>And we also now can access elements of this thing by a number. 139
+<br><br>And whenever you want to do something randomly, you should think, hmm, 140
+<br><br>I want a box of boxes, then I wanna reach into that box. 141
+<br><br>With my eyes closed, if you like, and pick one out by random. 142
+<br><br>And we can do that now. 143
+<br><br>Because once we learn about how to use random numbers, we can pick one of these 144
+<br><br>at random and every time the game plays, you get a different password.
+	</p>
+  </BODY>
+</HTML>

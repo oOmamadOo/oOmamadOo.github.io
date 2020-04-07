@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<HTML>
+	<style>
+	pre.c {
+	  overflow-wrap:break-word ;
+	}
+	</style>
+  <BODY>
+	<p class="c"> 
+Hi I just wanted to show my face and say well done getting this far.
+<br><br>And we are about to take a step up in pace in the course so we have carefully introduced actually all
+<br><br>of the programming foundations you need in a way cause remember Alan Turing told us that you only need
+<br><br>to be to do very very few things on a computer to be to do anything you can do with a computer if you're
+<br><br>interested in that.
+<br><br>Go and look up.
+<br><br>Turing machines.
+<br><br>T u r n g as in Alan Turing.
+<br><br>Anyway you've covered most of the foundations.
+<br><br>We can branch in our code we can go somewhere else we can.
+<br><br>We've got variables is not much else you need to do.
+<br><br>To be honest so everything we do from here is about making the tools you use more powerful so that we
+<br><br>can be more expressive and we can keep the code as English as possible.
+<br><br>C At the end of the day the computer's processing ones are not.
+<br><br>But that's not very friendly to us and we want to be to keep our code written in such a way that it's
+<br><br>very very easy for us to understand what it's doing so that's why we'll be introducing more and more
+<br><br>programming constructs as we go through the course.
+<br><br>So Welldone getting these five all the basics we're about to step up a gear.
+<br><br>What I'd love to know from you in the community is how you're finding this.
+<br><br>How's it going for you.
+<br><br>Please go into the Q and or over to our community site and say How you feeling.
+<br><br>Give us some feedback.
+<br><br>Generally take a step back from it.
+<br><br>Evaluate your own learning and get ready for a slight change in pace.
+<br><br>And it's going to be a lot of fun.
+<br><br>So in the remainder of this video what I'm going to do is talk you through basic data types as we move
+<br><br>forward.
+<br><br>We're going to start to use things like booleans integers floats and even in arms.
+<br><br>And what I'd like to do now is overview that for you so that as they start to come up you've got some
+<br><br>idea of how they fit in and how they fit together.
+<br><br>So let's go over to the screen together and take a look at that now.
+<br><br>So as I said the objective here is just to Overview these data types for you so as you come to them
+<br><br>they're a little bit more familiar.
+<br><br>So there's a whole bunch of different things we're going to use.
+<br><br>Booleans string's integers floats and we're going to make our own type called screens.
+<br><br>So let's just walk through them very briefly a boolean is something that can be true or false.
+<br><br>That is it.
+<br><br>They're the only values it can take.
+<br><br>True or False.
+<br><br>Good example.
+<br><br>Try and put my teeth back in.
+<br><br>It is a valid level no would be a good way to name a boolean.
+<br><br>Starting with IS and IS valid.
+<br><br>Level no.
+<br><br>If that's true then it's a valid level no if it's false it's not.
+<br><br>We'll see how we use that later.
+<br><br>Now a string a string is a string of characters as we know it can be anything from the empty string
+<br><br>which is I've shown with these quotes here to any length.
+<br><br>Well okay not any length but massee.
+<br><br>But I think around two gigabytes just much bigger than you ever going to use or is certainly much bigger
+<br><br>than you ever should be using in a game to store a single piece of text so from your point of view it's
+<br><br>as long as you need it integers a whole number in the system we're using at the moment.
+<br><br>They range from about minus 2 billion to about plus two billion.
+<br><br>As you can see here the beady eyed among you will notice that there's a one difference between their
+<br><br>minimum size and their maximum size.
+<br><br>I'll leave that as a exercise to the reader to work out why.
+<br><br>If you care but anything you can count from about minus 2 billion to plus two billion whole numbers
+<br><br>of things you can count levels lives.
+<br><br>Fingers toes whatever.
+<br><br>They're the sorts of things these integers for now floats float sans for or is short for floating point
+<br><br>value and it's the decimal point that is floating and they're quite an interesting format actually.
+<br><br>And you could get really buried down a rabbit hole reading about them on Wikipedia.
+<br><br>If you want much I suggest you don't.
+<br><br>But what are they for there for things with decimal values your amount of health your speed etc..
+<br><br>Now the range that they have is is huge.
+<br><br>Even go from there.
+<br><br>I don't know if you know about Power of 10 notation or standard form but they can go from.
+<br><br>Plus or minus.
+<br><br>One and a half times ten to the minus 45.
+<br><br>Yes so that is like no point no no no no no.
+<br><br>Not with 45.
+<br><br>Nought one point five.
+<br><br>Well one five tiny tiny tiny number up to a huge number as big as the same thing in the positive.
+<br><br>Now the reasons for these asymmetry is and this is just don't worry about it for now.
+<br><br>Just we don't need to get into the details of float just yet.
+<br><br>We will later in the course and it will be a lot of fun.
+<br><br>But they can represent very very very very tiny things and they can very represent very very very large
+<br><br>numbers and the amount of decimal places they can handle depends on how big or small the number is and
+<br><br>that's the floating point bit.
+<br><br>So if it's a really really big number like you know 178 trillion 473 billion four hundred and eleven
+<br><br>thousand whatever 214 if it's a number as big as that you'll be not going to be to have as many things
+<br><br>after the decimal place.
+<br><br>And if it's a small number then you know you can have more basically.
+<br><br>But anyway enough said.
+<br><br>These guys are for fractional values decimal values.
+<br><br>And that's when you use it.
+<br><br>Now screen the other thing you do see us do is to define a new type called screen and I've put it in
+<br><br>this list just to show you that it's just like a ball of string aminta or float.
+<br><br>It's got a capital because we've defined it ourself it's not what we call a primitive type.
+<br><br>These other guys here with the lower case letters are primitive built in.
+<br><br>This thing we're going to define ourself.
+<br><br>It's going to be to take the values main menu password or win and it's purely used for keeping track
+<br><br>of which going on in the game and it can just be made menu password or when it's a bit like a boolean
+<br><br>but with read values.
+<br><br>In this case.
+<br><br>All right so let's use an overview.
+<br><br>You dont need to be to use these right now because you only really get to learn to use them through
+<br><br>practice which we're going to do in the rest of the section.
+<br><br>So thanks for watching.
+<br><br>Or so you say.
+	</p>
+  </BODY>
+</HTML>
