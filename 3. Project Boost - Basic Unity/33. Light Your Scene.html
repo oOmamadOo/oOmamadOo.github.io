@@ -7,7 +7,198 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+In this video we're gonna talk about scene lighting. 2
+<br><br>We're gonna add some new lights, play around with lights, turn off lights, and 3
+<br><br>even add some nifty lighting effects to our player so that we can illuminate and 4
+<br><br>crash in style as I'm doing there. 5
+<br><br>Okay before we start talking about lighting, 6
+<br><br>I need to make a couple of tweaks to my rocket. 7
+<br><br>We added a new calculation for thrust which means we need to tune that. 8
+<br><br>I'm gonna put it up to 2,000. 9
+<br><br>Mostly I'm gonna change the RCS Thrust, 10
+<br><br>that is the rotation while we hear up to 300. 11
+<br><br>So to give my play a more of a nimble feeling is the bouncing around. 12
+<br><br>Yeah, a little bit faster rotation. 13
+<br><br>Want them to feel more nimble because I want to make my game more difficult and 14
+<br><br>challenging for them. 15
+<br><br>Okay onto lighting, first of all nearly forgot which I often do, 16
+<br><br>apply back to It's a prefab and then that should be across all of our levels. 17
+<br><br>Wonderful, so talking about lighting, we have our scene here. 18
+<br><br>Currently within our scene, we have a main directional light, 19
+<br><br>we've played around with a little bit. 20
+<br><br>You can view that as the sun. 21
+<br><br>We have environment lighting which is deriving some of its 22
+<br><br>color from the skybox. 23
+<br><br>Which is the background here. 24
+<br><br>And we’ve got the default blue skybox that comes with the default 25
+<br><br>settings for the scene. 26
+<br><br>We can also place scene lights, and we can place them in a way that illuminates 27
+<br><br>objects in a scene or we can attach them to objects like our rocket ship so 28
+<br><br>that as we fly around, there's a light that sticks to the rocket. 29
+<br><br>Now the way that works, let's have a look at this in our save. 30
+<br><br>So we've got our directional light, and you can see the intensity of that. 31
+<br><br>As we drag it up, it gets more bright, and down, it gets less. 32
+<br><br>Put that back to one. 33
+<br><br>And we've got a color that we can set for our light as well. 34
+<br><br>At the moment it's kind of yellowish if we make this a little bit more pink then it 35
+<br><br>adds sort of a pink or a purple, or 36
+<br><br>a blue to the light that's going onto our scene here. 37
+<br><br>Just undo all these and go back to a straight up white with an intensity of 1. 38
+<br><br>Now that's one light that's impacting our scene. 39
+<br><br>The next light Is clicking on the Lighting tab, 40
+<br><br>if you haven't got that, Window &gt; Lighting &gt; Settings to grab the Lighting tab. 41
+<br><br>We've already looked at this before when we turned off the Auto Generate and 42
+<br><br>generated lighting. 43
+<br><br>While I am here a reminder that anything we do with lighting in this 44
+<br><br>lecture make sure your go and. Generate Lighting before you go and 45
+<br><br>try to load from level to level. 46
+<br><br>So that it loads the lighting correctly based upon the latest lighting that you've 47
+<br><br>generated. 48
+<br><br>So under Environment, we can see there's a skybox that's coming in. 49
+<br><br>The sun source, what Unity does is if we haven't told it what the sun is, 50
+<br><br>it just takes the biggest, or strongest, or main directional light, 51
+<br><br>and says, I guess this is the sun. 52
+<br><br>We could also drag that in there and say, hey, 53
+<br><br>this one's the sun We don't have to but now it knows okay, that's the sun source. 54
+<br><br>If we were to go and put any other directional lights in there it would 55
+<br><br>continue to think this is the main one. 56
+<br><br>And then when it comes to environment lighting we've got skybox, 57
+<br><br>gradient, or color. 58
+<br><br>This is pretty simple, with these ones you can choose multiple colors, or 59
+<br><br>just one color to impact the overall light that's coming from 60
+<br><br>the environment to give it a different feeling. 61
+<br><br>Just switch these back to skybox and we have the intensity multiplier if I 62
+<br><br>drop this down or. I increase it again this is gonna change 63
+<br><br>the amount of brightness that's coming from this environment lighting. 64
+<br><br>Similar from the environment reflections if I decrease the intensity multiplier 65
+<br><br>then the reflections that are bouncing around the environment I'm going to 66
+<br><br>decrease right down. 67
+<br><br>Now what we're going to do is just drop the intensity of all these down to say, 68
+<br><br>put this down to 0.3 and we'll put this one down to 0.3 as well so 69
+<br><br>it becomes a lot darker. 70
+<br><br>I'm going to turn off my directional light just by clicking here to turn it off. 71
+<br><br>So I might make these a tiny bit stronger. 72
+<br><br>I'll make them 0.5 and. I'll leave that one at 0.3. 73
+<br><br>So you can see it's pretty hard to see what's going on in our scene here. 74
+<br><br>Which says to me, there's a good reason to put a light in this scene. 75
+<br><br>If it's dark, then add a light. 76
+<br><br>Now you might wanna do something different. 77
+<br><br>You might wanna say, I'll just keep everything looking like sunlight. 78
+<br><br>Not a problem. 79
+<br><br>We're doing this so we can play around with lights and 80
+<br><br>learn a little bit about them at the moment. 81
+<br><br>If we go right click in the hierarchy and to Light We'll add a point light. 82
+<br><br>Point light is just like a light bulb. 83
+<br><br>If I drag this over here near my success landing pad, and 84
+<br><br>increase the, back to inspector. 85
+<br><br>Increase the range a little bit so it has a further travel for the light and 86
+<br><br>then increase the intensity so brighter. 87
+<br><br>I can go and put a reasonably decent. Illumination onto this green pad. 88
+<br><br>Now you can see that the sphere widget, sorry, gizmo. 89
+<br><br>The sphere gizmo that's surrounding this light is 90
+<br><br>the distance the light will travel. 91
+<br><br>If I move it over here to the wall you can see and 92
+<br><br>if I turn this up to intensity of say 100, 93
+<br><br>you can see that the light goes only where the sphere says it's allowed to go. 94
+<br><br>As I move this in and out, you can see that sphere is basically saying this is 95
+<br><br>the maximum range of the light. 96
+<br><br>Put this back to say, a four, a five, okay. 97
+<br><br>I just want a little bit of light onto to this to say this is where the player 98
+<br><br>should go. 99
+<br><br>And then, I'm gonna duplicate that set light, duplicate and 100
+<br><br>we'll drop this over in the middle, cuz this is our main kind of obstacle in 101
+<br><br>the middle here I need to bring it forward so the player can actually see it. 102
+<br><br>And there we go. 103
+<br><br>So, nice little bit of illumination. 104
+<br><br>I could also use a spotlight here. 105
+<br><br>And you can change the type of light from within the light itself from point to 106
+<br><br>spot. 107
+<br><br>And the spot is pointing directly in that direction. 108
+<br><br>Under the spot I can increase the range and decrease it make sure it's nice and 109
+<br><br>long and also open up the angle like that. 110
+<br><br>That's pretty good so a little bit of a spotlight. 111
+<br><br>If I wanted to give maximum kind of realism and justifiability, I might add 112
+<br><br>some sort of object in here, a cube or a street lamp like the street lamps we 113
+<br><br>created way back in the very first section when we were playing around with Unity. 114
+<br><br>To say the light is actually coming from something. 115
+<br><br>For the purposes of now, I'm just gonna say there happens to be a light there, 116
+<br><br>don't think about it too much player, just a light coming from somewhere. 117
+<br><br>But if you wanna give it meaning then you can give it something that is actually 118
+<br><br>shooting out off, okay. 119
+<br><br>Now as I fly, it's going to be very difficult to see my ship. 120
+<br><br>So, I'm going to put a couple of lights on my ship. 121
+<br><br>First one I'll do is just by selecting the rocket ship. 122
+<br><br>Right click, Light. 123
+<br><br>Adding a spot light there. 124
+<br><br>Now then normally the way I figure out which way I need to rotate is by hitting 125
+<br><br>E, rotate in a direction, get pretty good and then say it's on the minus. 126
+<br><br>So you have minus 90 to have it pointing straight up. 127
+<br><br>Then move this up above the players' nose or else it will be blocked. 128
+<br><br>Increase the intensity maybe up to fifteen. 129
+<br><br>Give it a wider spot. 130
+<br><br>Maybe up to 60-ish, 63 we've got there, and then increase the range. 131
+<br><br>We've got 22 and 132
+<br><br>you can see that's pointing a spotlight directly out from the player. 133
+<br><br>If I click play something really cool happens as I turn around, 134
+<br><br>my spotlight turns around which I think is really cool I think it's a pretty neat 135
+<br><br>gameplay effect that we can do there. 136
+<br><br>There's a lot of tuning and tweaking we'd need to do to get to the point where it's 137
+<br><br>the right size of spotlight and 138
+<br><br>the color of the scene is the right amount of lighting. 139
+<br><br>I think it's little bit too dark still, at the moment. 140
+<br><br>I can put this up to 0.5 for the reflections. 141
+<br><br>I don't want it too bright or else the player can see exactly where they're going 142
+<br><br>and the spotlight doesn't actually help them very much. 143
+<br><br>If I have it too dark it becomes a bit to frustrating so for now I'm 144
+<br><br>going to have it a little bit lighter than. I think I normally would just so you guys 145
+<br><br>can see what's going on here and you're not relying just upon the spotlight. 146
+<br><br>Okay, now, 147
+<br><br>you probably notice a problem I can't actually see my ship as I'm flying around, 148
+<br><br>so I'm gonna add another spotlight, Light &gt; Spotlight, point it at my rocket ship. 149
+<br><br>Just pull it back a little bit, increase the, oop, back into inspector here. 150
+<br><br>Increase the spot angle, so widen the spot angle increasing the intensity. 151
+<br><br>I should be around this side so I can see. 152
+<br><br>Until it gets to point where it's got a nice a little bit of illumination. 153
+<br><br>We could probably put a couple of spotlights around it as well just to give 154
+<br><br>it a fuller illumination but for now I'll do that. 155
+<br><br>Okay, so I can see my ship,. I can see an obstacle, and 156
+<br><br>I can see where it is that I need to get to. 157
+<br><br>So that's pretty good, 158
+<br><br>that is the start of adding some interesting gameplay-related lighting. 159
+<br><br>And my challenge to you guys, as always, 160
+<br><br>is make sure you don't just put things in just because you feel like it 161
+<br><br>try to make it suit and fit, and support your player experience. 162
+<br><br>My player experience that I'm going for is skilled rocket pilot. 163
+<br><br>And I think by making my level darker and have a few lights in there, and 164
+<br><br>having a spotlight where you have to actually point to a particular spot, and 165
+<br><br>maybe do some of these nifty somersaults that we talked about early on. 166
+<br><br>There's a reason for doing a somersault now which is when I do a somersault, 167
+<br><br>I can actually see what it is that I'm going passed. 168
+<br><br>So, it gives a meaning to it rather then just having it as a arbitrary maybe you 169
+<br><br>like to do it, maybe not. 170
+<br><br>Be kind of neat to do it now to see where you're going. 171
+<br><br>So I think that's really cool. 172
+<br><br>And a reminder, make sure you generate lighting so 173
+<br><br>that you don't have any issues when your level is loading and 174
+<br><br>also if you lose track of all the lights you've got in your scene you can go. 175
+<br><br>And go to Lighting &gt; Light Explorer. 176
+<br><br>And that will bring up a panel here with all the lights you've got in your scene. 177
+<br><br>I normally just dock it down here next to console so I can go and 178
+<br><br>see those different lights that I've got in my scene. 179
+<br><br>Wonderful, so a challenge to you guys is to add scene lighting. 180
+<br><br>Alter your scene's main directional light the sun to make your scene feel different 181
+<br><br>like darken it or change the color of it make it a sunset, or make it night or 182
+<br><br>give it an underwater feel whatever it is that you feel like doing and 183
+<br><br>then add at least one scene light. 184
+<br><br>I've added one to illuminate this is where you need to go to. 185
+<br><br>One to say here's an obstacle, and one on the player that's an actual spotlight. 186
+<br><br>So add at least one to your scene, and then share a screenshot or a short 10 or 187
+<br><br>15 second video so that we can celebrate and cheer you on and 188
+<br><br>look at the nifty stuff you've been coming up with. 189
+<br><br>So that's all for his video. 190
+<br><br>I will let you guys go off and play around with your lighting. 191
+<br><br>When you're finished with that, please jump into the next video, and 192
+<br><br>I'll see you guys shortly.
 	</p>
   </BODY>
 </HTML>

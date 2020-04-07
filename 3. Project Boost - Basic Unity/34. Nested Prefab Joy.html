@@ -7,7 +7,179 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+[MUSIC] 2
+<br><br>In this video, we're gonna talk about nested prefabs. 3
+<br><br>And I use that rocketship to see exactly what the relationship is between 4
+<br><br>prefabs that have been childed to other prefabs. 5
+<br><br>And so just previously, 6
+<br><br>you saw Ben playing around with the particle effect for success. 7
+<br><br>It wasn't quite lined up correctly. 8
+<br><br>And I'm just gonna move my platform over here, so I can trigger it very quickly and 9
+<br><br>easily for you. 10
+<br><br>If we fly over there and trigger success, you can see it's not quite triggering 11
+<br><br>right on top of the rocket where we expect it to, where we want it to. 12
+<br><br>If I go in here, 13
+<br><br>you can see there's a little particle symbol that's way off the rocket here. 14
+<br><br>Going over to the Rocket Ship, and 15
+<br><br>having a look at the Success Particles, sure enough it's triggering, 16
+<br><br>spawning, from this point over here, which is not where we want it. 17
+<br><br>We want it right on top of the rocket. 18
+<br><br>And as you and. I have talked about in the past, 19
+<br><br>well what if we just go to the prefab. 20
+<br><br>I've got my particle prefabs here, there's the Explosion, Rocket Jet, and Success. 21
+<br><br>If I click on Success, we can see aha, it hasn't been reset, my bad. 22
+<br><br>Reset that back to 0, fantastic. 23
+<br><br>Because it's on the prefab, 24
+<br><br>that will be applied to the instance that we have over here, the success particles. 25
+<br><br>But no, it's not being applied. 26
+<br><br>Interesting. 27
+<br><br>So, I have a challenge for you guys, which is to figure out the nested prefab rules. 28
+<br><br>And it's a different sort of challenge to get your brain juices flowing. 29
+<br><br>I'd like you to use our Rocket Ship which is the parent to figure 30
+<br><br>out the relationship or dependency between the child Success Particle Effect and 31
+<br><br>the success Particle Effect prefab. 32
+<br><br>Let me just show you that very specifically. 33
+<br><br>So this is our Rocket Ship parent. 34
+<br><br>Here is the Success Particle child that's under the Rocket Ship. 35
+<br><br>And here is the Success Particle prefab. 36
+<br><br>So what I'd like you to do is figure out the relationship between 37
+<br><br>the Success Particle Effect child, and the Success Particle Effect prefab. 38
+<br><br>And the reason I'm asking you to do this sort of challenge is it's good for 39
+<br><br>you guys to get in there, play around, click on things, move it around, 40
+<br><br>and think about it and feel it. 41
+<br><br>Rather than just me saying, here's the solution you'll absorb it okay that way, 42
+<br><br>but you're gonna absorb things a lot better if you get in there and 43
+<br><br>try to figure out yourself. 44
+<br><br>So take just two or three minutes. 45
+<br><br>See if you can figure that out. 46
+<br><br>And when you've had a play around with that and 47
+<br><br>figured it out or not figured it out, jump back in and we'll have a look at it. 48
+<br><br>Okay, welcome back. 49
+<br><br>Hopefully, you guys did that and didn't just sit around there for 50
+<br><br>three seconds twiddling your thumbs waiting for me to come back. 51
+<br><br>Let's have a look at what is going on here, specifically. 52
+<br><br>So I'm gonna give you the answer or the solution, which is in Unity, 53
+<br><br>you cannot have nested prefabs. 54
+<br><br>In other words, the very moment that we say, here is a prefab. 55
+<br><br>We know it's a prefab, cuz I can drop it into the scene. 56
+<br><br>There's one, there's two, there's three. 57
+<br><br>If I make a change to the parent, those three will all change. 58
+<br><br>We know that, we've played around with that. 59
+<br><br>Very cool. 60
+<br><br>The moment I drop it into becoming a child of 61
+<br><br>an existing prefab, it ceases to exist as a prefab. 62
+<br><br>Let me show you a slide on this. 63
+<br><br>So the original Particle Effect that was tended to prefab 64
+<br><br>the moment that we child the Particle. Effect to the Rocket, the Particle Effect 65
+<br><br>data goes onto the Rocket as well as the. Particle Effect data being on the prefab. 66
+<br><br>Okay let me show you that specifically. 67
+<br><br>So the moment we drag this under the. Rocket Ship that information is copied. 68
+<br><br>This Success Particles is no longer a prefab. 69
+<br><br>It's a copy of this prefab. 70
+<br><br>And if we right-click on this and say wow. 71
+<br><br>Where is this coming from? 72
+<br><br>Select the prefab. 73
+<br><br>It will show me the game object that's nested underneath the Rocket Ship. 74
+<br><br>It didn't take me to this particle effect over here, It's no longer linked to that. 75
+<br><br>It's saying that I am basically linked to me, that's what it's saying. 76
+<br><br>In other words, I am a copy. 77
+<br><br>Why do we even care that it's being copied over there? 78
+<br><br>A couple of reasons. 79
+<br><br>One, as Ben refers to it, we no longer know the source of truth. 80
+<br><br>Where is the data coming from? 81
+<br><br>If we jump back in here we've got these Success Particles here, and 82
+<br><br>Success Particles there. 83
+<br><br>If we make a change, where is that change going to be same as we're gonna be sure? 84
+<br><br>We don't know. 85
+<br><br>If I make a change here,. It's not going to end up on the rocket, so 86
+<br><br>if I make a change on the rocket it's not gonna end up here. 87
+<br><br>So we end up with this big mismatch of not knowing exactly what is what. 88
+<br><br>If we see Success Particles, we wanna know that is gonna be exactly a specific way. 89
+<br><br>So we no longer know where the truth of the data is, and I know you guys 90
+<br><br>are getting this, but just to hammer it home, if I go and select this prefab and 91
+<br><br>say let's make it, I don't know, purple and then drop it in the scene. 92
+<br><br>That's purple, if I actually drop it in the scene correctly. 93
+<br><br>There we go, it's purple. 94
+<br><br>If I go over to the Rocket, click on. Success Particles, it's still green, 95
+<br><br>it's not purple. 96
+<br><br>And while I remember,. I'm just gonna reset that, so 97
+<br><br>it is right in the middle of there. 98
+<br><br>So this guy's now purple. 99
+<br><br>It didn't propagate because it's not an instance. 100
+<br><br>That's a big problem because this no longer can be trusted 101
+<br><br>as the source of truth, that's one point. 102
+<br><br>The other point is, every time we copy something onto there, 103
+<br><br>it creates a huge amount of data that doesn't need to be on there. 104
+<br><br>We've got it once and then we have it twice and we have it three times and 105
+<br><br>four times. 106
+<br><br>We've only got one Rocket Ship in this scene, but 107
+<br><br>what if we were applying this particle effect to a, I don't know, 108
+<br><br>an enemy spaceship and we have 20, 30, 50 enemy spaceships flying around? 109
+<br><br>Each other those is going to have that information copied onto it and 110
+<br><br>each of these Particle Effects is going to be around about 77 kilobytes. 111
+<br><br>So I was looking at here it's around about, yep 76 kilobytes for each of these. 112
+<br><br>So if you times that by 10 or 20 or 100, it really adds up. 113
+<br><br>So then what is the solution to that? 114
+<br><br>Okay let's just recap. 115
+<br><br>When we've got a whole bunch of objects in our scene, and we find ourselves copying 116
+<br><br>or duplicating, we've already talked about this, then we start creating prefabs. 117
+<br><br>If we're copying game objects, then we make prefabs, we have one prefab, 118
+<br><br>all the data is there. 119
+<br><br>We know when we make a change then it's going to be seen on all of the instances, 120
+<br><br>great. 121
+<br><br>If we are finding ourselves copying prefabs, 122
+<br><br>then we need to instantiate the prefabs at runtime. 123
+<br><br>What do I mean by that? 124
+<br><br>Is, instead of having these Particles as prefabs 125
+<br><br>dragged over onto the Rocket Ship and living here as one, two, three. 126
+<br><br>We wouldn't have these here at all, we'd remove those and 127
+<br><br>then in code we would say the Rocket Ship would like to create a game object and 128
+<br><br>have it childed to itself at this point in time. 129
+<br><br>So then we can keep our data on the prefabs, we can make changes to these. 130
+<br><br>These changes can roll out in a bunch of places because the Rocket Ship says 131
+<br><br>instantiate now, something else says instantiate now, create now, 132
+<br><br>do this at specific points in time in code. 133
+<br><br>So, that's a pain that we're feeling now. 134
+<br><br>We're going to be addressing that in the next section of the course. 135
+<br><br>How to instantiate game objects and to create these from these prefabs to 136
+<br><br>create the instances at a specific point of time. 137
+<br><br>That'll be the next section. 138
+<br><br>We'll do a lot of work on that. 139
+<br><br>But for now what we need to do is simply find our particle prefabs and 140
+<br><br>delete those. 141
+<br><br>Yes, I'm gonna delete those. 142
+<br><br>I’m even gonna delete my folder here. 143
+<br><br>We don’t need it anymore because they are no longer useful valid 144
+<br><br>pieces of information. 145
+<br><br>They are just gonna get us in trouble. 146
+<br><br>We don't know the source of truth. 147
+<br><br>We've got them sitting just here. 148
+<br><br>If in the future we say, you know what, 149
+<br><br>I really wanna use these Success Particles somewhere else, then no problem. 150
+<br><br>We can drag it from the Rocket Ship over here to create a prefab and 151
+<br><br>then I can drop that into the scene or 152
+<br><br>I can instantiate it using codes that we'll talk about in the next section. 153
+<br><br>So it's not lost for ever by doing that. 154
+<br><br>Something interesting you might notice that after I dragged this over to here, 155
+<br><br>Unity said I guess you want this to be the one prefab after all. 156
+<br><br>Therefore I will make the Rocket Ship no longer a prefab it's just a whole bunch of 157
+<br><br>data I'm gonna put back into the scene and not have sitting on a prefab. 158
+<br><br>So you can have a prefab nested underneath a game object, 159
+<br><br>you just cannot have a prefab nested underneath another prefab. 160
+<br><br>So if on the Rocket Ship I click revert 161
+<br><br>It will take it back to being the prefab as we wanted it to. 162
+<br><br>So I still have my success prefab that. I created, but it says okay you didn't 163
+<br><br>want me to break this prefab or change it I will remain being a prefab. 164
+<br><br>Which means that I do need to go in and 165
+<br><br>make sure that I [LAUGH] already set my Success Particles. 166
+<br><br>The thing that we came in here to do anyway, 167
+<br><br>I'll just put my platform back to where it was supposed to be. 168
+<br><br>And I know this is a lot of conversation about prefabs, 169
+<br><br>this is all very Unity specific. 170
+<br><br>It's great for you guys to know this and 171
+<br><br>master it to know it write down to the finer details. 172
+<br><br>So, well done on you're investigation on figuring this out. 173
+<br><br>And I will see you guys in an upcoming video.
 	</p>
   </BODY>
 </HTML>

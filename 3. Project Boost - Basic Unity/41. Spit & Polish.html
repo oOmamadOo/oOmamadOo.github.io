@@ -7,7 +7,148 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+Very much like the end of the last section.
+<br><br>This video is going to be in segments with a fade in between so we can leave it open ended and we can
+<br><br>keep coming back and adding bug fixes and improvements as we see fit.
+<br><br>So we've been doing a bit of play testing and as a result of that play testing Rick has made some improvements
+<br><br>to the project offscreen between the videos.
+<br><br>You can check our version control for a full rundown.
+<br><br>The lecture project changes we'll show you a full rundown in the previous committee here off screen
+<br><br>tuning to lights blah blah blah.
+<br><br>We'll show you precisely what he's done but I'm gonna hand over to Rick for a second for a rundown in
+<br><br>his words as to what has changed and why.
+<br><br>A quick rundown in what I have changed since you last saw the build.
+<br><br>I've gone through each the levels and just turned off the directional light to give us back how dark
+<br><br>I feel.
+<br><br>I've also put back on a spotlight onto the players rocket ship that had disappeared for some reason
+<br><br>just called it light illuminating player to say that that he's pointing on to the player.
+<br><br>I've got that right there.
+<br><br>I've also renamed those last couple of levels those levels six and seven I gave them a couple of names.
+<br><br>I think I called it.
+<br><br>Let's see.
+<br><br>Gauntlet and darkness for those ones that didn't have names already.
+<br><br>I've also jumped over to our build settings and just re ordered so that we've got our easiest levels
+<br><br>to our most difficult.
+<br><br>We did a play test session we got some feedback saying that it was too difficult at the start.
+<br><br>So we tried to have the easiest ones we've got one even called Easy gap.
+<br><br>And then you turned chompers.
+<br><br>These won't mean much to you guys now but starting off one with one that's just a straightforward one
+<br><br>at the moment.
+<br><br>I've from A to B and I've gone through a few of the levels and made it even easier.
+<br><br>So gaps I've gone and made smaller and things like platforms I've gone and made bigger just because
+<br><br>people were finding our game overall just too difficult.
+<br><br>I've also added a few extra lights so you can see on our gauntlet level here.
+<br><br>I've got to just dropped in some lights to show when you're flying along you can see exactly where these
+<br><br>things are coming and going.
+<br><br>So I'm going with this darker light scene.
+<br><br>I just wanted to do that to make it crystal clear where those things were coming and going from.
+<br><br>I've also gone and added the wind ambience into all of the levels and tweaked did a little bit I've
+<br><br>changed the volume down to point three just down a little bit of mixing here with the pitch.
+<br><br>That's all I've done just change the pitch.
+<br><br>There's a one as default down to point four.
+<br><br>Just to give it a deeper kind of feel to it said something you guys can play around with as well with
+<br><br>the pitch of your of your ambiance.
+<br><br>And while I was there playing around my lights I've also removed some unnecessary lights that I had
+<br><br>flying around in my scene like some lights that were illuminating the landing pad that I wasn't actually
+<br><br>using.
+<br><br>The other major thing that I've done is made all the cameras pretty much consistent with the change
+<br><br>appended previously which was to change the field of view for all of them to 35.
+<br><br>So we now have that consistent look throughout all of the levels as you go through them.
+<br><br>And this is a good example I made this a little bit easier by making the gap a tiny bit bigger.
+<br><br>And this platform a little bit bigger.
+<br><br>So that's the majority of the changes that we've done while we've been working on our game that you
+<br><br>guys haven't seen.
+<br><br>All right.
+<br><br>So welcome back to Ben.
+<br><br>I'll be interested to have your feedback in the Q and A or on our community site about that experience
+<br><br>about making changes off screen like that so that we don't bore you with all the details of our particular
+<br><br>game implementation and just running through.
+<br><br>So do let us know if that's okay and if you're happy with that.
+<br><br>That's cool.
+<br><br>All right.
+<br><br>So want to do a few things to the code.
+<br><br>I'm gonna do them one at a time.
+<br><br>So the first thing is this is a result of a code review with Sam.
+<br><br>Very good idea to go through your code with somebody else.
+<br><br>And what Sam did is he asked What is this state about.
+<br><br>And I tried to explain.
+<br><br>Then I realized we actually only use two states really.
+<br><br>It's a boolean it doesn't need to be an enum.
+<br><br>This is a case that we slightly overengineered it thinking we'll need it for what you want to do is
+<br><br>when you realize you don't need something right now let's under engineering again let's down engineer
+<br><br>it.
+<br><br>So I'm going to change this state into a simple bool is transitioning.
+<br><br>That's what we really need.
+<br><br>We need to know when we're transitioning to another level or when we're dying so that we have time to
+<br><br>play the particle effects.
+<br><br>We'll say that we're not transitioning by default.
+<br><br>So is transitioning is false.
+<br><br>We're going to the positive because most of the time we'll be using it in the positive.
+<br><br>And then when we see the use of state I'm just gonna say instead of is alive we say if not is transitioning
+<br><br>to be very careful to read the exclamation mark.
+<br><br>But if we're not transitioning then respond to input and I'm just looking for the errors here.
+<br><br>If we are transitioning so in this case it is if is transitioning or collisions are disabled then don't
+<br><br>process the collision otherwise carry on.
+<br><br>Now in the case of case of starting the success sequence is transitioning equals true because that is
+<br><br>the definition of starting to transition.
+<br><br>And the same on the death sequence.
+<br><br>So relatively simple just a few tweaks there to the transitioning.
+<br><br>And if I double click on that you can see the summary of that we change the enum to a Boolean way and
+<br><br>we've just simplified its usage.
+<br><br>All right just quickly check that works I'm sure it will.
+<br><br>And this is just a simplification to our code so that when we come back to it later it's more obvious
+<br><br>what we're doing.
+<br><br>Yeah that's one of the things that it.
+<br><br>That looks good to me.
+<br><br>OK moving down the code the next thing that I see that I'm not too happy with the way it was it inside
+<br><br>the rocket don't see us in the respond to a thrust method.
+<br><br>The else condition this is very minor but it's important conceptually in the LS condition we've got
+<br><br>bitty details about exactly what happens if we're not responding to thrust but we said that we want
+<br><br>a particular if statement or particular method even a whole method to just do one thing.
+<br><br>So what I want to do here is only get in the habit of saying Okay let's pull out this and what we're
+<br><br>really doing when we have the else inside the response a thrust is we stop applying thrust and then
+<br><br>in future when we're tempted to come in here and start adding more lines that relate to what we do when
+<br><br>we stop applying thrust this method stays very nice and clean and simple you might say well Ben by doing
+<br><br>that you've you've removed one line from here but you've added what four lines five lines or something
+<br><br>here.
+<br><br>In total I have but I'd rather have a class like this that gets long and it's very clear and easy to
+<br><br>read and then create myself the problem that the class ends up too long which we're gonna start solving
+<br><br>from the next section.
+<br><br>We're gonna start saying actually these whole code Fi is going too long.
+<br><br>How do we start splitting this up.
+<br><br>So that's just laying the foundation for that.
+<br><br>So that's the second fix all right.
+<br><br>Back in the editor the third thing you'll notice if we play the game is that when the rocket lands on
+<br><br>its side like that watch what happens.
+<br><br>It's kind of intriguing.
+<br><br>Slowly this dude falls over.
+<br><br>It's ridiculous.
+<br><br>So what is going on there.
+<br><br>Clearly a bug.
+<br><br>Have a look back in your rocket dot C.S. code under the respond to rotate input method.
+<br><br>Now this method is called every single frame regardless of whether there's any input key held down.
+<br><br>It's not really clear why we're freezing and then unfreezing the rotation.
+<br><br>That's that's not super clear to me.
+<br><br>So by freezing the rotation what we're actually doing is stopping the rotation of the rocket and it
+<br><br>turns out actually you could stop the rotation of the rocket like that and then immediately re enable
+<br><br>rotation but that's not clear what we're actually trying to do.
+<br><br>Ultimately there's a side effect we're basically benefiting from a side effect by doing these things
+<br><br>that's not great.
+<br><br>What we're actually trying to do is simply this rigid body got angular velocity equals vector 3.0.
+<br><br>Okay so what we're saying there is what we're actually trying to do when we respond to rotate input
+<br><br>is set any angular velocity that the thing had due to the physics engine to zero.
+<br><br>So remove rotation due to physics and that's in a single line and it is right at the start and then
+<br><br>we carry on processing our case as normal.
+<br><br>I just think that's clearer than what we were trying to do before and that was Sam's feedback and I
+<br><br>wanted to incorporate it.
+<br><br>And I think I agree with him.
+<br><br>All right let's try and make sure that we don't get this syrupy syrupy flopping anymore and then that
+<br><br>fix is done.
+<br><br>So land flop properly.
+<br><br>Good job.
+<br><br>OK.
+<br><br>Thanks to those on the forum who put it pointed this out by the way this is recorded nearly a year after
+<br><br>the course was released just to let you know we do update our courses 77.
 	</p>
   </BODY>
 </HTML>

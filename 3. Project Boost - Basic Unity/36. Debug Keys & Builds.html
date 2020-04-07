@@ -7,7 +7,230 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+[NOISE]. Hey guys, 2
+<br><br>in this video we're gonna set up two debug keys. 3
+<br><br>One of those is gonna be a C key, and that is gonna prevent the machine from 4
+<br><br>responding to any collisions so that we can test our game more easily. 5
+<br><br>And the other is the L key which is immediately gonna take us to 6
+<br><br>the next level. 7
+<br><br>I'm really excited by all of these moments that Rick has had us stringing together. 8
+<br><br>So I want to advance us to the point that we can string levels together and 9
+<br><br>change from level to level. 10
+<br><br>But what I'm struggling with is it takes just too much time and 11
+<br><br>effort to get to the end of the level. 12
+<br><br>And even if you're succeeding getting one during your testing, 13
+<br><br>the chances are you're gonna die on the next level and 14
+<br><br>that's gonna slow the whole process of testing down far too much for my liking. 15
+<br><br>So a few things we need to do, firstly we need it to load at least two levels. 16
+<br><br>So, we're getting a build index error here so I'm gonna just check my build settings, 17
+<br><br>I have two levels in the build settings, level two and level one, 18
+<br><br>that's the reason. 19
+<br><br>Just swap them around, make sure that you can transition between at least, 20
+<br><br>just two levels, actually. 21
+<br><br>You won't be able to go between more than two for the moment and 22
+<br><br>that will be the subject of a video we'll get to really shortly. 23
+<br><br>So, what we want is, we want a situation where we can go between two levels, but 24
+<br><br>it's just a bit of a pain in testing. 25
+<br><br>[SOUND] That goes there, it works, it loads the next level, etc. 26
+<br><br>But I want a bit of really quickly test. 27
+<br><br>Okay, I'm getting quite adept to this yet, now, but 28
+<br><br>it's really frustrating when you die when you're trying to test. 29
+<br><br>That all just takes too long, we want rapid iteration. 30
+<br><br>I'd also I'd like to be able to turn off my collisions and do various things. 31
+<br><br>So what I'm talking about is basically debug keys. 32
+<br><br>By the way this camera on this level, 33
+<br><br>doesn't look like it's in the right place to me. 34
+<br><br>I should pull it right a little bit and see if that looks better. 35
+<br><br>Little bit, may be further left. 36
+<br><br>Yeah, that's a bit better. 37
+<br><br>Okay so debug keys. 38
+<br><br>Now what they are is something that you can press, 39
+<br><br>as developer, while the game is running. 40
+<br><br>It does something super, like I'm gonna suggest that the L key 41
+<br><br>advances us to the next level immediately, regardless of what's going on. 42
+<br><br>And the, say,. C key toggles collisions on and off. 43
+<br><br>So if we push C we can hit the walls and we can collide and we can 44
+<br><br>kind of fumble our way to the other side of the level without worrying about dying. 45
+<br><br>So that gives us a lot of scope and it's a really useful feature. 46
+<br><br>So, that's what we're gonna do and. I'm gonna challenge you to do that. 47
+<br><br>Now, don't worry about the fact that debug keys will always be on, and 48
+<br><br>yes your players could find them. 49
+<br><br>We'll deal with that in my challenge solution. 50
+<br><br>But as a starting point, what I want you to do is to set yourself up so 51
+<br><br>that the L key advances level as a minimum. 52
+<br><br>Sp pressing the L key anytime should immediately load the next level. 53
+<br><br>Don't really mind how you do it. 54
+<br><br>As an absolute bonus, 55
+<br><br>pressing the C key should toggle collision detection on and off. 56
+<br><br>It's a little more involved but still pretty, relatively simple, but 57
+<br><br>that's up to you if you do that bit and by the way this only needs to work for 58
+<br><br>one level change. 59
+<br><br>So hitting L is only gonna take you to level two and 60
+<br><br>hitting L again is just gonna reload level two. 61
+<br><br>Exactly the same as landing on the landing pad. 62
+<br><br>So pause the video and just see if you can set it up so that we test for a key and 63
+<br><br>load the next the level as a minimum. 64
+<br><br>If you want a challenge go for the bonus. 65
+<br><br>All right,. I wonder how you got on with that one, 66
+<br><br>that's a pretty good I think revision of what we've already done. 67
+<br><br>So what I'm gonna say regardless of whether we're alive or 68
+<br><br>not, we want to respond to the bug keys or something like that. 69
+<br><br>Now of course, immediately we wanted to do in here to say only if the bug on. 70
+<br><br>Now I'll explain what that means when I show you about that, 71
+<br><br>but let's just respond to the debug keys first shall we. 72
+<br><br>What I'm saying here is that we don't want the player to be able to respond in 73
+<br><br>the final build and we'll talk about that as a separate issue in a second, but for 74
+<br><br>now let's just get them working. 75
+<br><br>Okay, so inside the RespondToDebugKeys method I'm gonna say, 76
+<br><br>if (input.GetKeyDown). 77
+<br><br>Now GetKeyDown, 78
+<br><br>the difference is returns true during the frame the user starts pressing the key. 79
+<br><br>So we don't want multiple actions here. 80
+<br><br>We just say if actually the key positively goes down and 81
+<br><br>that the key is KeyCode.L, then what we want to do is load next level. 82
+<br><br>Simple as that. 83
+<br><br>At any point in the update cycle, if we notice the L key goes down for the moment, 84
+<br><br>we load the next level. 85
+<br><br>See if that works. 86
+<br><br>Wonder how you did yours. 87
+<br><br>Be interesting for you to share in the Q &amp; A if you did yours differently. 88
+<br><br>Hit the L key, loads the next level. 89
+<br><br>And this one should below this level for now and it does. 90
+<br><br>Brilliant, so that's that done. 91
+<br><br>Now whether we do else say for just another if cone doesn't matter here 92
+<br><br>because we are only gonna be hitting one or the other key in a given frame. 93
+<br><br>So it's kind of the same thing. 94
+<br><br>I'm gonna say else if input.get key down and 95
+<br><br>this time keycode.c for collisions. 96
+<br><br>Now what are we gonna do? 97
+<br><br>Well, in pseudocode we're gonna disable or toggle collision. 98
+<br><br>Now, why am I putting pseudo code in here? 99
+<br><br>Why am I putting a comment? 100
+<br><br>Because I just want to finish what I thinking about, 101
+<br><br>this is what we want to do. 102
+<br><br>Now, I can start thinking about the implementation details. 103
+<br><br>Well, how will we do that? 104
+<br><br>Because the place where gonna be thinking about collision would be 105
+<br><br>inside OnCollisionEnter, whatever we do here needs to be a member variable. 106
+<br><br>So, I'm gonna make a member variable here which is gonna be a boolean, 107
+<br><br>true or false. 108
+<br><br>And it's gonna be something like collisionsAreEnabled. 109
+<br><br>And by default, that's gonna be true. 110
+<br><br>So, let's set that, so the collisions are enabled. 111
+<br><br>And then what we will do, is we will say, well actually let's use it first. 112
+<br><br>So if we are not alive, Return. 113
+<br><br>Or, double pipe for all like that. 114
+<br><br>If collisions, or collisions are not enabled, return, okay? 115
+<br><br>So is that clear, or do we wanna call this collisionsAreDisabled? 116
+<br><br>I think I'm gonna take the not away and say, 117
+<br><br>collisionsAreDisabled, or collisions disabled. 118
+<br><br>Okay, so the not away, if we're not alive. 119
+<br><br>All of the contusions of the disabled then return. 120
+<br><br>Yeah, that's okay. 121
+<br><br>And take the comment away cuz it's stale and out of date. 122
+<br><br>This reads pretty clearly, if we're not alive or 123
+<br><br>collisions are disabled get out of here. 124
+<br><br>Okay, now that's the name of the name of the variable. 125
+<br><br>So what we want to do here to toggle collisions is this, new little trick for 126
+<br><br>you here, pretty simple load. 127
+<br><br>If we take it without collisions disabled. 128
+<br><br>Now boolean, what you want to set it to is collisions disabled, 129
+<br><br>is not collisions disabled. 130
+<br><br>Now what that does is if it's true it goes to false and 131
+<br><br>if it's false it's going to go to true. 132
+<br><br>So this is just a simple toggle, turns it on off on off on off. 133
+<br><br>Okay, so let's just to see how that works, let's go into Unity. 134
+<br><br>Select the Rocket Ship in debug mode for a moment so 135
+<br><br>that we can see collisions disabled. 136
+<br><br>And of course now that I've renamed it. I also by default it needs to be false. 137
+<br><br>By default they are not disabled. 138
+<br><br>Collisions disabled. 139
+<br><br>Now in a moment when that filters through, it should come to false. 140
+<br><br>What's wrong with that? 141
+<br><br>Did I save my script? 142
+<br><br>I have. 143
+<br><br>Not sure what's going on there, just play the game. 144
+<br><br>Check the Rocket Ship at the game. 145
+<br><br>There you go, collisions disabled. 146
+<br><br>It's false.. That's good. 147
+<br><br>So if I just play the game, it should play normally, boom, and it does now. 148
+<br><br>If I hit the C key, let's watch the collision disabled. 149
+<br><br>The check box comes up and collisions are indeed disabled. 150
+<br><br>And if I hit the C key again, collisions are enabled again. 151
+<br><br>Let's see See, boom. 152
+<br><br>Perfect, all right, so that is pretty cool. 153
+<br><br>So one of the useful things here that you've learned, 154
+<br><br>if I can find it, is the idea of this. 155
+<br><br>The way you toggle it simply like that. 156
+<br><br>Now very quickly the final thing to remember here is if anything can go wrong 157
+<br><br>it will go wrong, Murphy's law I've a link to that in the resources. 158
+<br><br>And that hope is not a strategy various people have said that I think 159
+<br><br>James Cameron a famous film director, and many others. 160
+<br><br>Barack Obama and maybe others. 161
+<br><br>Okay, so basically, it's not a negative view on life, but 162
+<br><br>if anything can go wrong, it will, and hoping that it won't is not a strategy. 163
+<br><br>So my concern here is that these debug keys will just work In the final build 164
+<br><br>that we share players, they'll find those keys and it will wreck the game for them. 165
+<br><br>It will be all over, ready, and everybody will using these debug keys. 166
+<br><br>So we need a way of turning them on and off. 167
+<br><br>But how are we gonna remember to leave them on when we're trying to debug 168
+<br><br>the game, and turn them off when we are not? 169
+<br><br>Interesting, well it is an option. 170
+<br><br>Be tenacious with this sort of thing. 171
+<br><br>Say it's not good enough to hope we've remembered to turn it off. 172
+<br><br>What we've got is this. 173
+<br><br>If we're gonna build settings and we build any platform I've switch to Mac PC for 174
+<br><br>the moment. 175
+<br><br>You've got this development build here. 176
+<br><br>And you know what you should know if your development build is on because this is 177
+<br><br>a final stage. 178
+<br><br>At least it's the right place to set it. 179
+<br><br>If the development build is on we want the debug keys to work. 180
+<br><br>And if the development build is off we don't the debug keys to work. 181
+<br><br>So it shifts it right to the end of our process. 182
+<br><br>There's several differences in the development build, 183
+<br><br>one of them is whether debug keys are on and off. 184
+<br><br>So what I want to show you the final thing that's really helpful to know 185
+<br><br>is that you can detect whether we are in a debug build or 186
+<br><br>not, and you do that very simply like this. 187
+<br><br>Simply, If Debug.is debug build. 188
+<br><br>Then we respond to debug keys and if it's not a debug build we don't. 189
+<br><br>So we just sort the brackets out, pop that in, pop that in, pop that in, 190
+<br><br>and that's it. 191
+<br><br>So we only respond to debug keys if it's a debug build. 192
+<br><br>And what that would mean, I don't wanna go through the hassle of doing it. 193
+<br><br>But if I was to build for web, or for. PC or Mac, and I took development build, 194
+<br><br>the debug keys work. 195
+<br><br>If I tick that off they do not work, and that's a very good way of making sure 196
+<br><br>it doesn't end up in the hands of your players. 197
+<br><br>Unless you accidentally ship a development build to your players, 198
+<br><br>you are now safe, and it's a very sensible way of doing it. 199
+<br><br>So congratulations on learning all about development and debug keys, 200
+<br><br>hopefully they will serve you very well in your future in game development and 201
+<br><br>make life a lot quicker. 202
+<br><br>We can now get to the end of the level. 203
+<br><br>We can hit C, turn off collisions, because basically in the editor here, 204
+<br><br>we always are in AD Bug Build. 205
+<br><br>The rocket goes a bit funny but 206
+<br><br>we can get to the end of the level even if it's tricky. 207
+<br><br>And then you have to turn collisions back on again, of course, for 208
+<br><br>it to notice the collision with the landing pad. 209
+<br><br>Now if you want to constrain the collision of your rocket more at this stage so 210
+<br><br>that it doesn't. 211
+<br><br>And you can only do this by the way in normal mode. 212
+<br><br>So that it doesn't end up rotating around like that and 213
+<br><br>you're very welcome to do that. 214
+<br><br>You can put more constraints on this guy but it's gonna be pretty tricky to stop 215
+<br><br>him rotating in that funny axis because of the way the physics system gets involved. 216
+<br><br>So I suggest that you don't slam into the walls too hard and 217
+<br><br>that you use this collisions off just as a kind of way of letting it 218
+<br><br>allow you to ignore gentle accidents so that you can still get to the end. 219
+<br><br>Just remember that you have to turn collisions back on I'm hitting the C key 220
+<br><br>now, to actually finish the level. 221
+<br><br>Or just L and 222
+<br><br>you go straight to the end of the level if that's what you wanna test. 223
+<br><br>Great, we're set up now for looping around levels in a wicked way. 224
+<br><br>See you soon.
 	</p>
   </BODY>
 </HTML>

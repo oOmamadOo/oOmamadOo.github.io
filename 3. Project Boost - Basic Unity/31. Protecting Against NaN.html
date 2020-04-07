@@ -7,7 +7,138 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+[MUSIC] 2
+<br><br>Hey, guys, in this video we are just going to tidy a few things up. 3
+<br><br>Mainly gonna be behind the scenes work. 4
+<br><br>We are going to allow the rocket to specify a level load delay. 5
+<br><br>Experienced programmers amongst you should be saying, 6
+<br><br>should the rocket really be loading levels? 7
+<br><br>No, but we're not gonna fix that until the next section. 8
+<br><br>Because we'd need to know a bit more than we do to fix that. 9
+<br><br>But, anyway, we'll have a parameter there. 10
+<br><br>We'll also protect against the idea that if you set a period on 11
+<br><br>Oscillating Obstacle to 0 it will no longer throw nasty not a number at us. 12
+<br><br>But it will just not oscillate. 13
+<br><br>Okay, I will see you in there. 14
+<br><br>So I want to start this video by trying to protect against this divide by zero here. 15
+<br><br>Remember, that we get a nasty not a number error in the last video if we 16
+<br><br>set the period to zero. 17
+<br><br>So I'm gonna start with that for you as a challenge. 18
+<br><br>Try and put some protection code in. 19
+<br><br>Don't worry if you get a compiler warning. 20
+<br><br>We're, kind of, setting you up to fail to some extent here, but have a go. 21
+<br><br>But also there are two fundamentally different ways of doing this. 22
+<br><br>So please try and see if you can think of two different ways of 23
+<br><br>protecting against this period being zero. 24
+<br><br>Maybe one of them using something you've learned very recently. 25
+<br><br>And share in the community what the ideas are. 26
+<br><br>Also, remember, we have a live Discord chat server you can join and go and 27
+<br><br>get help right now. 28
+<br><br>We typically have between 1 and 2,000 people online in the Has Unity channel. 29
+<br><br>Go ahead and look at the link in the Resources and join our chat server. 30
+<br><br>So pause the video, have a go at that protection. 31
+<br><br>I'll see you in a sec. 32
+<br><br>All right, welcome back. 33
+<br><br>So what we're going to do here, is we're gonna try and do something like this. 34
+<br><br>Actually, I'm gonna leave the comment, but just take away the to do. 35
+<br><br>It will still explain our intention. 36
+<br><br>And I'm gonna say something like this,. I'm gonna say if period == 0. 37
+<br><br>Experienced programmers, don't shout at the screen, bear with me one second. 38
+<br><br>Return. 39
+<br><br>So this is saying, if the period equals zero get out of there. 40
+<br><br>Now this will, probably, work which makes it even worse in a way. 41
+<br><br>So if I set the period to zero it actually stops. 42
+<br><br>And we don't get a complaint. 43
+<br><br>So and we think we've fixed it. 44
+<br><br>But please take notice of the warning that Visual Studio's giving you. 45
+<br><br>It says,. Fix floating point number comparing. 46
+<br><br>Compare a difference with epsilon. 47
+<br><br>Doesn't matter if I put an F on there or not. 48
+<br><br>What it doesn't like is me asking whether one float is equal to another 49
+<br><br>floating point value. 50
+<br><br>Let me talk you through why and we'll see what to do about it. 51
+<br><br>So notes about comparing floats. 52
+<br><br>Here we go. 53
+<br><br>Two floats can vary by a tiny amount because they can have a lot of decimal 54
+<br><br>places. 55
+<br><br>It's unpredictable therefore to use == with floats. 56
+<br><br>Because they may be to all intents in purposes the same. 57
+<br><br>But because they're very, very slightly different the computer says, well, 58
+<br><br>they're slightly different. 59
+<br><br>But we might want them to be the same or to consider them as the same. 60
+<br><br>So always specify an acceptable difference. 61
+<br><br>It's like saying, hey, are these two people the same height? 62
+<br><br>They're never the same height. 63
+<br><br>People's height is a floating point value. 64
+<br><br>They may be a few atoms different. 65
+<br><br>What you need to do is specify your tolerance. 66
+<br><br>Is John within one centimeter or one millimeter of Sara? 67
+<br><br>That's the type of thing. 68
+<br><br>The smallest float available is Mathf.Epsilon. 69
+<br><br>That just stores the smallest value that's available. 70
+<br><br>So what we do is we compare with that rather than zero. 71
+<br><br>For example, instead of saying if period is less than or equal to zero. 72
+<br><br>We say period is lesser than or equal to the smallest thing we can represent. 73
+<br><br>Which is Mathf.Epsilon. 74
+<br><br>And if that's the case we get out. 75
+<br><br>So I make that small change to the code. 76
+<br><br>Instead of that, we say Mathf.Epsilon. 77
+<br><br>It pretty much tells you what to do. 78
+<br><br>Visual Studio said use epsilon instead, right. 79
+<br><br>Which is nice. 80
+<br><br>We also need to say less than or equal to. 81
+<br><br>Cuz otherwise Mathf.Epsilon itself is a float. 82
+<br><br>So if we say equals equals we still haven't solved it. 83
+<br><br>We wanna say, are we less than or equal to the smallest thing we can represent? 84
+<br><br>Ok.. Then we're as good as zero. 85
+<br><br>And what happens now, is if we come in and set the period to zero. 86
+<br><br>Boom, it stops, no errors, all much more robust. 87
+<br><br>So that's what I wanted to get across, this epsilon business. 88
+<br><br>Now, couple more things to do in this video. 89
+<br><br>And then we will wrap it up as a very short video. 90
+<br><br>I'm gonna pop over to the rocket script. 91
+<br><br>And I've noticed that I've got something here, parameterise time. 92
+<br><br>We wanna load the next level after a level loadDelay. 93
+<br><br>Let's go and actually serialize the levelLoadDelay first. 94
+<br><br>It'll be easier to type. 95
+<br><br>So we come up here. 96
+<br><br>And somewhere, maybe here, we go [SerializeField] Float levelLoadDelay. 97
+<br><br>And I'm gonna set that to 2. 98
+<br><br>And Rick can tweak it in the inspector. 99
+<br><br>And then we can use this levelLoadDelay in both of these places that we've said we 100
+<br><br>should be doing it. 101
+<br><br>levelLoadDelay there and levelLoadDelay there. 102
+<br><br>And that just means it's parameterized. 103
+<br><br>And we don't have what we call magic numbers in the code i.e., 104
+<br><br>numbers that have meaning. 105
+<br><br>That are, kind of, hidden deep into the code, we don't want that. 106
+<br><br>Other magic numbers are LoadScene[1] and 0 down here. 107
+<br><br>Any numbers in your code that aren't 0 or 1 are magic numbers. 108
+<br><br>And any numbers, sometimes that are 0 and 1, could be magic numbers. 109
+<br><br>But these are very specific scenes. 110
+<br><br>But we'll sort out scene loading once. Rick's showed you how to make levels more 111
+<br><br>interesting. 112
+<br><br>Then we'll want more than two levels and we'll have a better level loading script. 113
+<br><br>Okay, so that's that. 114
+<br><br>There are some resources against this lecture as usual. 115
+<br><br>One of those Is, well there's all sorts actually. 116
+<br><br>There's some notes on the slides. 117
+<br><br>There's some stuff about not a number and what that means. 118
+<br><br>There's some stuff about the double type, which is like a floating point. 119
+<br><br>But it's 64-bit, it stores bigger numbers. 120
+<br><br>There's an invite to our. Discord chat server. 121
+<br><br>And there's some stuff about this Mathf.Epsilon. 122
+<br><br>So I wanted to show you those resources,. 123
+<br><br>And otherwise, I think we are good to go. 124
+<br><br>So I thank you for being here. 125
+<br><br>And I look forward to seeing you in the next video. 126
+<br><br>And if you liked this shorter video, 127
+<br><br>this one's Is currently running at about five minutes. 128
+<br><br>Then let me know in the comments I'll be interested to hear your feedback. 129
+<br><br>Over on the community, 130
+<br><br>.game.NetTV is an ideal place to give me that type of feedback. 131
+<br><br>And you can mention me with @Ben. 132
+<br><br>Okay, see you soon.
 	</p>
   </BODY>
 </HTML>

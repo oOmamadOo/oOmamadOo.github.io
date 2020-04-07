@@ -7,7 +7,187 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+Hey guys other instructor hang out with you and more than just a good start.
+<br><br>You know what we've just done.
+<br><br>Yeah.
+<br><br>You know we've both started.
+<br><br>It's happened.
+<br><br>Let's get into the first point.
+<br><br>When will we teach mobile.
+<br><br>Input says Ken.
+<br><br>Hold your horses.
+<br><br>We will be teaching mobile input in the next section in Argon assault.
+<br><br>So for this section we decided to show you the simplest possible way of dealing with input which is
+<br><br>to query the input data get key down directly later.
+<br><br>We will be introducing the cross platform input manager and you'll be dealing with a virtual input layer
+<br><br>which opens up all sorts of possibilities and a little bit more complexity which is why we haven't used
+<br><br>it.
+<br><br>This first time round.
+<br><br>So is it important to be good at maths say adamant and Cam.
+<br><br>Yes but you don't have to consider it like you're being good at maths.
+<br><br>You just have to follow the course and the maths that you need.
+<br><br>We will show you as you go along.
+<br><br>We are going to assume you can add up sort of things but we're not going to assume too much knowledge
+<br><br>in maths.
+<br><br>So for some of you it's good to be really painful when I showed you in detail how Sign way to work and
+<br><br>for some of you it's going to be a real relief that you've been showing it a different way.
+<br><br>What I want you to do when you get to some maths is to recognise that some of you might have emotional
+<br><br>scars from school or want you to put them aside and just take a fresh view on mathematics.
+<br><br>Hey that's a potential topic of a new course.
+<br><br>Check off in any anyway.
+<br><br>Rick what would you say about that.
+<br><br>As somebody who's rubbish at maths can you Ken Oregon as me.
+<br><br>Can you be a programmer if you're rubbish at maths.
+<br><br>Yes you can.
+<br><br>There's some parts that you need to work a little bit harder on but it's not as you guys know going
+<br><br>through the course.
+<br><br>It's not every lecturer is maths.
+<br><br>It's just every now and again it's important absolutely the way that you think your programming is very
+<br><br>similar to the way that you need to think for maths.
+<br><br>By getting good at programming you're going to get better at maths.
+<br><br>Basically we've got another one of these old chestnut conversations we're closing the loop on the one
+<br><br>script versus many scripts you've probably feeling a little bit of the pain that I'm filming on Project
+<br><br>Bruce that we've got a pretty big long script that's trying to handle many different things at once.
+<br><br>N Ben is that the way we should always set ourselves up or are we about to dive into a new paradigm
+<br><br>in the next section here and the next section we will start to look at not using one script so there
+<br><br>is a set of principles called the solid principles now linked you to one of those in the resources called
+<br><br>the single responsibility principle that's the S in solid.
+<br><br>That basically says a class or at our stage of learning a script should have a single reason to change.
+<br><br>Now in projec we're already getting to the point where this class has more than one reason to change.
+<br><br>You'd have to go and change it edit the file if you want to change the way that scene loading works.
+<br><br>You have to go and edit it if you want to change the way the rocket flies.
+<br><br>It's starting to get multiple reasons to change.
+<br><br>That's bad as a project gets big because you break every time you change something you break other things
+<br><br>so if you went in to try and fix scene management and suddenly the rocket flies differently.
+<br><br>Not good.
+<br><br>If it's in a different file and those files are properly separated which is harder then you are not
+<br><br>going to get this crosstalk where trying to fix one thing breaks another but we're not doing that yet
+<br><br>because we're trying to create the pain our general patterns we create you a little bit of pain with
+<br><br>something and then we solve it.
+<br><br>Sorry about that but if we didn't then you would really be at this stage wondering why Ben got five
+<br><br>scripts already and why they only 7 lines long.
+<br><br>I'd bigger more because I'm architecting it for some perfect whatever.
+<br><br>Bear with us we'll get there.
+<br><br>Yeah the scripts are getting a bit long.
+<br><br>Were about okay a couple hundred lines is fine.
+<br><br>We will start separate them out later.
+<br><br>And there's a lot of conversation.
+<br><br>I have it listed here on our on our points but there's a lot of questions that come up from time to
+<br><br>time that are going to show us how to architect code what architect code or what of the architect I
+<br><br>think Ben has just entered that to a degree which is when we've got a small project.
+<br><br>The architecture is pretty clear one script and that's all we need to do as we get a bigger project
+<br><br>we need more scripts.
+<br><br>How many scripts and what should they look like much of be in them.
+<br><br>It's very specific to the project that you're working on so were going to show you a number of projects
+<br><br>and a number of ways to get there.
+<br><br>But just remember that everything that we're doing when we create the project is architecting the project.
+<br><br>Yeah.
+<br><br>If we're doing bottom up design right so I've got it.
+<br><br>Here's a rule of thumb an order of magnitude rule of thumb that you're going to have as many game objects
+<br><br>in your game as you need right or prefabs which are kind of the templates of those game objects.
+<br><br>Each game object should have of order 10 components on it.
+<br><br>You've started to see that already you stick anything down and it's got a collider and it's got to render
+<br><br>when you added yet and you were going to start adding our own scripts of order 10 components including
+<br><br>our scripts.
+<br><br>If you start adding more than 10 of your own script to one game objects got too complicated.
+<br><br>So the game's going to have as many game objects as it needs to be depending on the size of the game
+<br><br>that's just going to grow as the game grows.
+<br><br>Are jobs going to be to keep around 10 maximum absolute maximum 10 grips on a particular game object
+<br><br>and then each group wants to be about 100 to 200 lines long something like that.
+<br><br>So we're going to constantly comb it down and filter it down so that our scripts are never too long
+<br><br>and there's never too many on a game object.
+<br><br>And we're just going to break it out and break it out but it's going to take a lot of time and experience
+<br><br>with coding before we start to even realize how you would start to break that stuff down so bear with
+<br><br>us.
+<br><br>Yes we will be architecting code from the bottom up not from the top down not from some golden tower
+<br><br>but this is ideally how the game should be when we don't even know the games any fun yet.
+<br><br>We build the game and then we read architect as we go it's not like a house where you have to have a
+<br><br>blueprint yet to know what the foundations need to be.
+<br><br>You change the foundations as you go.
+<br><br>If you look at our RPG course you'll see how we get to quite complicated and very cool architecture
+<br><br>but starting from very humble beginnings.
+<br><br>So everything and change I've worked on a lot of games games where we have programmers that have a background
+<br><br>outside of the games industry and they come in they say to someone like me who might be the designer
+<br><br>on the project what exactly are we going to do.
+<br><br>I'm like I I'll give you my best guess what exactly we're going to do.
+<br><br>They create something that's beautiful and amazing.
+<br><br>Exactly to the spec end they make it to the spec and then we do that for a week or so and then people
+<br><br>start buying it.
+<br><br>That is moving too fast that's no fun.
+<br><br>We need three of these instead of two and they get very frustrated because they're lovely architecture
+<br><br>has been ripped apart.
+<br><br>They have to start from scratch.
+<br><br>So the point we're trying to show you guys is just not going to get it right the first time you've got
+<br><br>to have it evolve as you create your project.
+<br><br>So really guys look I'm very idealistic about code but this is how I think it should be.
+<br><br>The only code that should be really tidy in what you call lovely is the code that you've just refactored
+<br><br>because you need to build on it.
+<br><br>The very latest stuff will always be a mess if it's not you've over polished it.
+<br><br>So what you do is that it's like making a Mudhouse if you make a mad house you put some money on right
+<br><br>the outer mug doesn't need to be compacted down smoothed out.
+<br><br>Doesn't matter but if you're going to build on it.
+<br><br>You need to make the foundation strong.
+<br><br>So he makes some code is a bit messy.
+<br><br>Then we go at this game.
+<br><br>This code this game is fun.
+<br><br>Let's reorganize make this into a solid foundation.
+<br><br>Refactor it then build on it what you put on top will be messy and it will stay messy unless somebody
+<br><br>tells you that it's fun and worth playing and you're going to build on top of that then you reorganize
+<br><br>compact all this together into one cohesive beautiful unit and then you go again you make a mess on
+<br><br>top.
+<br><br>And when you ship your game there will be a mess on top still this should be a mess on top still because
+<br><br>you have no reason to add to it so you only tidy up and compact down when you need to in order to add
+<br><br>to it because remember by refactoring and making things beautiful you're also breaking them.
+<br><br>You had something that worked only fix it when you need to fix it.
+<br><br>So yeah it's a constant process of dealing with a little bit of mess at the borderline at the front
+<br><br>of what you're doing.
+<br><br>I think that that links on really nicely to our final bullet point we've got and our slides here if
+<br><br>you want to jump to the next well let me just go with the slides so we've covered ones crypt vs. many
+<br><br>what to do next with the project here what to do next yet.
+<br><br>So there's a little bit of all we've talked about so far is each section you'll be building more knowledge
+<br><br>and then doing the same things that you've done already a little bit to get better at it and to in there
+<br><br>and then build out and build on it.
+<br><br>So you can come back to Projekt boost with the things that you'll learn in the subsequent sections to
+<br><br>add to your project add more features add more scope add more detail to it for now.
+<br><br>Are you getting really excited about it at some more levels you just about at the end of this session.
+<br><br>That's why we're talking about it now as more details polish it up make a play or get some videos out
+<br><br>there see what else your players would like you to put into the game and you can keep building it.
+<br><br>Now what we encourage you to do is keep pushing through the course to finish everything in the course
+<br><br>and then if you've got a project that you particularly want or resonated with come back to then add
+<br><br>your knowledge to make that bigger and better and more amazing.
+<br><br>Absolutely.
+<br><br>And remember when you were sharing your pride.
+<br><br>That you've got to make it easy for people to engage with it.
+<br><br>Right.
+<br><br>So at first you have to attract their attention with an image in a headline.
+<br><br>That's it.
+<br><br>If you attract more attention with an image in a headline they might watch your second video clip.
+<br><br>They won't even watch the 20 second video clip unless they know that the video something's worth it
+<br><br>it's worth it for them if they watch a 20 second video clip.
+<br><br>Then they might load up some random web page and actually play your game.
+<br><br>So lead people in one step at a time make it easy for them to take action on it.
+<br><br>Thank you all you guys that is sharing your project dearest.
+<br><br>The twist that you guys have put on some crazy things out there are some interesting crazy wonderful
+<br><br>amazing out of you seeing the games of a goat with fire coming out of his bottom that that does not
+<br><br>fly well it's not an aerodynamic goal but there is a lot of fun it's a bit bloody.
+<br><br>By the way so be careful if you are younger audiences don't necessarily play that game.
+<br><br>But my my has been playing in finding it very frustrating but very fun so what.
+<br><br>What a creative twist on it and I've seen some other beautiful renderings of the game as well some guys
+<br><br>done one with a a mini map in orbs you have to collect and beautiful sounds and so well done those of
+<br><br>you who put up why it's an underwater scene.
+<br><br>Lots of great stuff in there.
+<br><br>Absolutely.
+<br><br>Hey you know in the day of Iraq's not even expecting this an Easter egg I'm just going to show you something
+<br><br>that you won't expect me to show you.
+<br><br>If you play your game just just so that you never know what's coming in these videos and you klicks
+<br><br>that's up the top right of the game window.
+<br><br>Then when you're playing a game it'll tell you the number of frames per second.
+<br><br>Pier 87 frames and so on your game is running and various other information that might get your geek
+<br><br>out.
+<br><br>Why am I telling you that because you never know when were going to drop in a nugget of value in these
+<br><br>hangouts so keep watch in.
+<br><br>Excellent day sir joining us guys.
+<br><br>See ya.
 	</p>
   </BODY>
 </HTML>

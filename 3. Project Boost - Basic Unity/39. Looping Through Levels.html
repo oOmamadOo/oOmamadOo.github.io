@@ -7,7 +7,209 @@
 	</style>
   <BODY>
 	<p class="c"> 
-
+[MUSIC] 2
+<br><br>Hey guys, so in this video we're gonna get to the point where we cycle through all 3
+<br><br>the levels, which is going to allow us to get on to play testing. 4
+<br><br>So, if I hit my debug key level two, three, four, five, six, seven, and 5
+<br><br>back to level one, we could see you in there. 6
+<br><br>I'm pretty excited that we're going to be able to actually loop through levels. 7
+<br><br>Now, in order to do that, when we call the. LoadNextLevel method inside our Rocket.cs, 8
+<br><br>we're gonna need to know what level we're currently on. 9
+<br><br>Otherwise, it's not gonna know whether to load level 1 or level with index 1, or 10
+<br><br>2 or 3. 11
+<br><br>So firstly, how do we find out what level we're currently on? 12
+<br><br>Well, in the resources. I've given you a link, but 13
+<br><br>we have something called a Scene.buildIndex. 14
+<br><br>And that will just return the build index where is the building index, 15
+<br><br>what is the build index, let's just recap that, it's this thing here. 16
+<br><br>So to set us up for this first thing I'm gonna do is just pop all of the scenes 17
+<br><br>in the build index apart from my sandbox. 18
+<br><br>Use of you don't have to have every single scene in the build index, the sandbox 19
+<br><br>can be something we are working on for a future release of the game. 20
+<br><br>So, with all of the scenes in the build index, let's go ahead and 21
+<br><br>think about how we may actually get that from code. 22
+<br><br>The slight challenge is that if we just look for SceneManager, and 23
+<br><br>you start searching for, say, build index, you can get a scene by build index. 24
+<br><br>So you can find out how many scenes there are in the build settings, so 25
+<br><br>in our current case I think that would be seven right now, 26
+<br><br>that I've added all seven of them. 27
+<br><br>But what you can't seem to do is get the build index of the current scene. 28
+<br><br>So this is one of these cases where you need to do it in two stages. 29
+<br><br>So another one of the things I've linked you to is SceneManager.GetActiveScene, and 30
+<br><br>that returns the active scene. 31
+<br><br>Now I appreciate we're getting a bit ahead of ourselves, 32
+<br><br>you don't even really know what returning a scene means. 33
+<br><br>But again, we'll look back to this in details when we look at creating our own 34
+<br><br>customs classes in the next section. 35
+<br><br>But for now let's just look and see how we'd use it. 36
+<br><br>We would say SceneManager.GetActiveScene. 37
+<br><br>And now in this context if we hit dot again, we're now operating on a scene. 38
+<br><br>So this is the active scene, we could store it in a variable but 39
+<br><br>I don't think that would make it any cleaner. 40
+<br><br>But the interesting this is you can go to dot again. 41
+<br><br>Now I don't want you going dot, dot, dot, dot forever, because there's a chap called 42
+<br><br>demeter who would be very upset with and we'll explain about him later. 43
+<br><br>But for now, a couple of dots in Unity is absolutely fine. 44
+<br><br>So to go to the Scene Manager and say, what's the active scene? 45
+<br><br>And then say .buildIndex as an integer is absolutely fine. 46
+<br><br>And that, I would store in a variable cuz it's quite long. 47
+<br><br>So I'm gonna say int. CurrentSceneIndex equals that. 48
+<br><br>Now let's just print that out for a moment, always good when you've done a new 49
+<br><br>thing like this just to take a little purchase hook at it. 50
+<br><br>So if we were to save this, start on a level 1, for example, 51
+<br><br>which will have scene index 0. 52
+<br><br>Play the game, use our new fancy debug key, boom to hit L. 53
+<br><br>What do we get? 54
+<br><br>A current scene index of 0. 55
+<br><br>The previous scene that we were in a minute ago was level 1 with scene index 0. 56
+<br><br>Let's just test that that works for another scene. 57
+<br><br>Level five, what scene index if you're on level five, 58
+<br><br>would you expect or build index would you expect it to print when I hit L? 59
+<br><br>I expect it to print four. 60
+<br><br>And it does.. Console four. 61
+<br><br>Great, so 62
+<br><br>it looks like we are probably getting the right scene index out of this function. 63
+<br><br>So that's good news. 64
+<br><br>So we know how to do that. 65
+<br><br>So what we need to do next, of course, is to transition onto the next thing. 66
+<br><br>So we pretty much want to say that the next scene is the current scene plus 1, 67
+<br><br>type of thing. 68
+<br><br>Now, I think that you're pretty much there. 69
+<br><br>Obviously, you're gonna need to be changing this guy and 70
+<br><br>this shouldn't be hard coded. 71
+<br><br>So we're gonna wanna make ourself a nextSceneIndex. 72
+<br><br>And that's gonna equal something, and. I'll leave it to you what it equals. 73
+<br><br>And that's what you wanna use in here, right? 74
+<br><br>So if, and by the way,. I can't really leave this line unfinished. 75
+<br><br>I'm gonna have to put, say, 0 otherwise. I can't get my spacing right, so. 76
+<br><br>What I want you to do is in here instead of being 0, 77
+<br><br>I want you to do the right thing. 78
+<br><br>And this is gonna be your challenge. 79
+<br><br>So we don't need the other todo because we are in the middle of it. 80
+<br><br>But what I want you to do is work out what the next scene index should be. 81
+<br><br>In all cases, not just when you get to the end of the current set of levels, 82
+<br><br>number 7. 83
+<br><br>In our particular case, or. Rick and I's particular case. 84
+<br><br>But when we get to the end of 7, what I want it to do is to loop back to Level 1. 85
+<br><br>Because that's better than just abruptly ending the game for the player. 86
+<br><br>At the moment, we don't have the ability to provide the necessary user 87
+<br><br>interface feedback that we would need to say, hey, the levels of the game's over. 88
+<br><br>Don't worry, we'll come to all of that in future sections. 89
+<br><br>But for now, this is your section, your challenge. 90
+<br><br>I just want it to loop around when you get to level seven back to level one. 91
+<br><br>Just before I put you on the challenge, 92
+<br><br>I want to remind you of a temporary limitation. 93
+<br><br>You might think, we could count the number of times the player's gone round 7 or 94
+<br><br>20 or how many levels you've got. 95
+<br><br>And kind of display that as a score. 96
+<br><br>Well, hold your horses. 97
+<br><br>We'll come back to this and I'll challenge you in a future section to do this. 98
+<br><br>But for now understand that a new rocket is created on every level load. 99
+<br><br>So if we look very carefully at our rocketship here, 100
+<br><br>when we complete the level I hit L. 101
+<br><br>Notice the hierarchy collapses down and disappears. 102
+<br><br>This rocketship is a different rocketship. 103
+<br><br>It's a brand new one because when we load the scene, 104
+<br><br>we load all these prefabs in and the rocketship is brand new. 105
+<br><br>So the consequence of that is that if a new rocket is created on every level load, 106
+<br><br>then any member variables you put on the rocket will be reset. 107
+<br><br>So what I mean is, if I put any member variable up here, any of the state 108
+<br><br>will be different and it will be reset to its default when you load a new level. 109
+<br><br>Therefore, we can't store the number of levels that we've been through 110
+<br><br>on the rocket. 111
+<br><br>Because it gets reset every time we load a scene. 112
+<br><br>So we're going to just simply use a conditional for the last level for now. 113
+<br><br>And we are just going to say, hey, if it the highest level we have 114
+<br><br>then we are going to just back to the first level. 115
+<br><br>We're just going to put a special condition in. 116
+<br><br>So how would you find out what the highest level we have is? 117
+<br><br>Well, there's one more API we've given you access to in the docs, 118
+<br><br>which is this guy here. 119
+<br><br>SceneManager.sceneCountInBuildSettings, and 120
+<br><br>that will tell you how many scene there are, in my case, seven. 121
+<br><br>So given that,. SceneManager.sceneCountInBuildSettings, 122
+<br><br>and given the template of code. I've already kind of set up for 123
+<br><br>you here in the LoadNextLevel function that I've got highlighted on the screen. 124
+<br><br>I would like you to have a go at just adding one to the current scene index and 125
+<br><br>doing a conditional statement. 126
+<br><br>And saying, hey, if I'm on number seven or 127
+<br><br>if I'm on the last one, then go back to the first. 128
+<br><br>See if you can do it. 129
+<br><br>Here's the challenge. 130
+<br><br>Get the levels cycling. 131
+<br><br>Your game should loop around all the levels in the current build order. 132
+<br><br>If you add or remove levels from build order in build settings, 133
+<br><br>it should still work. 134
+<br><br>When you get to the last therefore return to the first. 135
+<br><br>And, for the experienced amongst you, you may wanna use model percent, but 136
+<br><br>there's no need to do that. 137
+<br><br>We're gonna introduce that later in the course. 138
+<br><br>If you don't know what I just said, 139
+<br><br>that's normal [LAUGH] don't worry that's just a word to experience people. 140
+<br><br>So pause the video, see if you can get the levels cycling now. 141
+<br><br>Okay, welcome back, so if you think you succeeded in the challenge awesome. 142
+<br><br>If you didn't then maybe as soon as you kind of get where I'm going, 143
+<br><br>have the discipline to pause the video and finish it off yourself, all right? 144
+<br><br>So the nextSceneIndex should be the currentSceneIndex + 1. 145
+<br><br>Now that will get us most of the way there. 146
+<br><br>Let's try it and see what happens. 147
+<br><br>If we simply said the next index is the current index + 1, let's see what happens. 148
+<br><br>So if I'm starting on, say, level 6 in this case, and I use my debug key L, 149
+<br><br>by the way, I don't like this camera so. I'm just gonna quickly fix that camera. 150
+<br><br>Camera is just a little bit too far, one way, it's a little bit too close. 151
+<br><br>By the way, you can put the camera much further out if you want, 152
+<br><br>like this back in the z direction, and 153
+<br><br>then on the camera settings you can just change the field of view if you wish. 154
+<br><br>And that will make the whole thing a little bit less perspective. 155
+<br><br>It will be a little bit more zoomed in. 156
+<br><br>Everything will be a bit flatter. 157
+<br><br>So I'm going to do that just for this level. 158
+<br><br>Anyway on five, there you go looking a bit better to me. 159
+<br><br>If I hit L, it goes to six and you can see that both at the top of the screen and 160
+<br><br>on the top of your hierarchy level 6, level 7. 161
+<br><br>And then of course we get a red error because we are trying to load something 162
+<br><br>with build index seven, which would be level eight, and it doesn't exist. 163
+<br><br>So this is where we need to pop our special casing. 164
+<br><br>We need to say if nextSceneIndex ==. 165
+<br><br>Now what would it equal? 166
+<br><br>This SceneManager.get, what was it, I gave you a hint and then I forgot my own hint. 167
+<br><br>SceneCountInBuildSettings, that's the one, .sceneCountInBuildSettings. 168
+<br><br>So if the next, how many scenes would there be in build settings seven? 169
+<br><br>So if the next scene index is seven, then we would be trying to load level eight. 170
+<br><br>Yeah, this is the condition under which we want to just override what we have done 171
+<br><br>and say that the next scene index becomes 0, in our case. 172
+<br><br>So, why are we doing this? 173
+<br><br>Loop back to start. 174
+<br><br>Let's see if that works. 175
+<br><br>So we, by default, just add 1, but we just check that we haven't got to the end. 176
+<br><br>If we have we go back to the beginning, okay? 177
+<br><br>So hopefully that condition will make sense there. 178
+<br><br>Let's take a little look and see if it runs as we'd expect. 179
+<br><br>So, we start on level 5 again, L takes you to 6, 7, and 1, 2, 3, 4, 5, 6, 7. 180
+<br><br>And now the benefit of our debug keys is really very clear. 181
+<br><br>You may want to run this camera trick on a couple of the other levels where you pull 182
+<br><br>the camera back and you change, as I did before, on the other level. 183
+<br><br>You go to the field of view and just change that. 184
+<br><br>So that you just get that slightly flatter image. 185
+<br><br>It's like the difference it's actually a dramatic difference in photography 186
+<br><br>between the following two things that we just quickly show you this. 187
+<br><br>So photography zoomed in verses out portrait, or something. 188
+<br><br>I'm hoping that then we will get what we're looking for 189
+<br><br>here in a really quick example. 190
+<br><br>And something like this is a relatively simple example. 191
+<br><br>This is the same, apparently the same, your game from the lady's left to right 192
+<br><br>shoulder is like your launch pad to your landing pad, but look at the difference in 193
+<br><br>perspective in the background, how much of the street is there. 194
+<br><br>And also look how different she looks. 195
+<br><br>So even though it's kind of exactly the same distance from shoulder to shoulder, 196
+<br><br>very, very different look. 197
+<br><br>And that's what you're doing in your game by pulling the camera back, and 198
+<br><br>then changing the field of view down or up accordingly. 199
+<br><br>So that you get the same kind of game screen width, but 200
+<br><br>a very different sense of perspective. 201
+<br><br>So do have a play with it, do enjoy cycling through your levels. 202
+<br><br>And congratulations on getting this far in the course. 203
+<br><br>Crack on, you're doing wonderful.
 	</p>
   </BODY>
 </HTML>
